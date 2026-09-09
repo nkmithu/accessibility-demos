@@ -208,7 +208,7 @@ a:hover { color: var(--accent-hover); text-decoration-thickness: max(2px, 0.12em
   display: flex;
   flex-wrap: wrap;                 /* wraps instead of overflowing at 320px */
   gap: var(--sp-3) var(--sp-5);
-  align-items: baseline;
+  align-items: center;
   padding-block: var(--sp-3);
 }
 .site-header__title {
