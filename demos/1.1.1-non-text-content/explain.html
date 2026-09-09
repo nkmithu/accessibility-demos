@@ -1,0 +1,73 @@
+      <section aria-labelledby="decide-h">
+        <h2 id="decide-h">Choosing the right text alternative</h2>
+        <p>Most alt-text mistakes come from asking "what is in this picture?" instead of
+           <strong>"why is this picture here?"</strong> The same photograph needs different alt text
+           depending on the job it is doing on the page.</p>
+
+        <div class="table-scroll" tabindex="0" role="region" aria-labelledby="alt-decision-caption">
+          <table>
+            <caption id="alt-decision-caption">Deciding what alt text an image needs</caption>
+            <thead>
+              <tr>
+                <th scope="col">If the image…</th>
+                <th scope="col">Then…</th>
+                <th scope="col">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">is purely decorative</th>
+                <td>Use <code>alt=""</code>. The attribute must be present and empty. Better still, move it to CSS.</td>
+                <td><code>&lt;img src="flourish.svg" alt=""&gt;</code></td>
+              </tr>
+              <tr>
+                <th scope="row">carries information</th>
+                <td>Describe the information, not the picture. Skip "image of" — the screen reader already says "graphic".</td>
+                <td><code>alt="Estuary at low tide under a grey sky"</code></td>
+              </tr>
+              <tr>
+                <th scope="row">is the only content of a link or button</th>
+                <td>The alt text must describe <em>the destination or action</em>, not the artwork.</td>
+                <td><code>alt="Riverline Books home"</code>, not <code>alt="logo"</code></td>
+              </tr>
+              <tr>
+                <th scope="row">is complex — a chart, map or diagram</th>
+                <td>Short alt stating the conclusion, plus a full text equivalent nearby.</td>
+                <td>See the chart in the passing example</td>
+              </tr>
+              <tr>
+                <th scope="row">repeats adjacent text exactly</th>
+                <td>Use <code>alt=""</code>. Duplicating the caption makes a screen reader say it twice.</td>
+                <td>A thumbnail beside a headline that already links</td>
+              </tr>
+              <tr>
+                <th scope="row">contains text</th>
+                <td>The alt must contain that same text — and consider whether it should be real text instead
+                    (see <a href="../1.4.5-images-of-text/index.html">1.4.5 Images of Text</a>).</td>
+                <td><code>alt="Free delivery over £25"</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout--note">
+          <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Why the empty alt matters</p>
+          <p><code>alt=""</code> and a missing <code>alt</code> are not the same thing.
+             An empty alt tells assistive technology "this image carries nothing, skip it".
+             A <em>missing</em> alt tells it "I do not know what this is" — so screen readers
+             fall back to announcing the file name, which is usually worse than silence.
+             This one-character difference is the most common finding in any real audit.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="try-h">
+        <h2 id="try-h">Try it yourself</h2>
+        <ol>
+          <li>Open the failing example and run your screen reader's "list all images" command
+              (<kbd>Insert</kbd>+<kbd>Ctrl</kbd>+<kbd>G</kbd> in NVDA, the Rotor in VoiceOver).
+              Count how many tell you something useful.</li>
+          <li>Tab to the icon-only button in each example and listen to the difference.</li>
+          <li>Run <code>npm run test:a11y</code> and note that the scanner catches failures 1 and 3,
+              but is completely blind to failures 2, 4 and 5 — the alt text that exists but is useless.</li>
+        </ol>
+      </section>

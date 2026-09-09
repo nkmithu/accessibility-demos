@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.5.1 Pointer Gestures</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .carousel { border:1px solid var(--border); border-radius:6px; padding:1rem; touch-action:none;
+                user-select:none; }
+    .slide { font-size:1.1rem; font-weight:600; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.5.1 Pointer Gestures.</p>
+
+  <!-- excerpt:start -->
+  <h1>Staff picks</h1>
+
+  <!-- FAILURE 1: the only way to change slide is a horizontal swipe - a
+       path-based gesture. There are no previous and next buttons.
+
+       Who this excludes: anyone using a head pointer, eye tracker or switch,
+       all of which produce single points and cannot trace a path; anyone with
+       tremor who cannot hold a straight line; and every keyboard user. -->
+  <div class="carousel" id="car">
+    <p class="slide" id="slide">Tidal Flats, by A. Marsh</p>
+    <p>Swipe left or right to see more.</p>
+  </div>
+
+  <!-- FAILURE 2: pinch-to-zoom is the only way to enlarge the cover image.
+       Pinch is a multipoint gesture; a single-pointer user cannot perform it. -->
+  <h2>Cover</h2>
+  <p>Pinch to zoom.</p>
+  <img src="../../assets/media/book-cover.svg" alt="Cover of Tidal Flats" width="120" height="170">
+  <!-- excerpt:end -->
+
+  <script>
+    var picks = ['Tidal Flats, by A. Marsh', 'The Long Field, by R. Owen', 'Salt, by J. Nandi'];
+    var i = 0, x0 = null;
+    var car = document.getElementById('car');
+    car.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+    car.addEventListener('pointerup', function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0;
+      if (Math.abs(dx) > 40) {
+        i = (i + (dx < 0 ? 1 : picks.length - 1)) % picks.length;
+        document.getElementById('slide').textContent = picks[i];
+      }
+      x0 = null;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.10 Reflow</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FIX 1: a max-width, not a width. The layout shrinks below 320px happily. */
+    .shell { max-width: 900px; }
+    /* FIX 2: auto-fit with minmax collapses to one column when there is no room,
+       with no media query needed. */
+    .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+    .col { border: 1px solid var(--border); border-radius: 6px; padding: .75rem; }
+    /* FIX 3: no fixed height, so the box grows with its content - which also
+       keeps 1.4.12 Text Spacing satisfied when the user overrides line height. */
+    .notes { border:1px solid var(--border); border-radius:6px; padding:.5rem; }
+    /* FIX 4: long strings are allowed to break. */
+    .wrap { overflow-wrap: break-word; }
+    /* FIX 5: a data table is EXEMPT from reflow, but its scroll container must
+       be reachable by keyboard - hence tabindex="0" on the wrapper. */
+    .table-scroll { overflow-x: auto; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.10 Reflow.
+     Narrow the window to 320px — everything stacks, nothing is lost.</p>
+
+  <!-- excerpt:start -->
+  <div class="shell">
+    <h1>Our shops</h1>
+
+    <div class="cols">
+      <div class="col"><h2>Riverside</h2><p>12 River Street</p></div>
+      <div class="col"><h2>Old Town</h2><p>4 Market Row</p></div>
+      <div class="col"><h2>Hillgate</h2><p>88 Hillgate Lane</p></div>
+    </div>
+
+    <h2>Notes</h2>
+    <div class="notes">
+      <p>Our Riverside shop has step-free access, an accessible toilet, and a hearing
+         loop at the counter. Assistance dogs are welcome in all three shops.</p>
+    </div>
+
+    <p class="wrap">Email us at hello@riverlinebooks.example for accessibility enquiries.</p>
+
+    <h2>Opening hours by shop</h2>
+    <div class="table-scroll" tabindex="0" role="region" aria-labelledby="hours-cap">
+      <table>
+        <caption id="hours-cap">Opening hours by shop and day</caption>
+        <thead>
+          <tr><th scope="col">Shop</th><th scope="col">Mon–Fri</th><th scope="col">Sat</th><th scope="col">Sun</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Riverside</th><td>9–6</td><td>10–4</td><td>Closed</td></tr>
+          <tr><th scope="row">Old Town</th><td>9–5</td><td>10–4</td><td>Closed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- The target: 320 CSS pixels wide with no loss of content or functionality,
+       and no scrolling in two directions. 320px is not arbitrary - it is what a
+       1280px display shows at 400% zoom, which is the magnification many
+       low-vision users work at every day.
+
+       Exempt from the no-horizontal-scroll rule: data tables, maps, diagrams,
+       code blocks, and video - content that genuinely needs two dimensions.
+       Your page layout is never exempt. -->
+  <!-- excerpt:end -->
+</body>
+</html>

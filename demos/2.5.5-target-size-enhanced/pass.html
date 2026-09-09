@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.5.5 Target Size (Enhanced)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .row button{min-width:44px;min-height:44px;padding:.4rem;margin:0 .4rem .4rem 0;
+                border:1px solid var(--border-strong);background:#fff;font-size:15px;cursor:pointer;
+                border-radius:4px}
+    .pager a{display:inline-flex;align-items:center;justify-content:center;
+             min-width:44px;min-height:44px;border:1px solid var(--border-strong);
+             border-radius:4px;margin:0 .4rem .4rem 0;text-decoration:none}
+    .pager{display:flex;flex-wrap:wrap}
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.5.5 Target Size (Enhanced).</p>
+
+  <!-- excerpt:start -->
+  <h1>Your reading list</h1>
+
+  <!-- FIX: every target is at least 44 x 44 CSS pixels. Note that the GLYPHS are
+       barely larger than before - the growth is almost all padding, so the design
+       does not have to look clumsy to conform.
+
+       44px is not arbitrary. It is roughly the width of an adult fingertip
+       contact patch, and it is the figure both Apple and Google use in their own
+       platform guidelines - so meeting 2.5.5 usually means simply following the
+       mobile design guidance you were already given. -->
+  <p class="row">
+    <button type="button" aria-label="Bold">B</button>
+    <button type="button" aria-label="Italic">I</button>
+    <button type="button" aria-label="Underline">U</button>
+  </p>
+
+  <nav class="pager" aria-label="Pagination">
+    <a href="#a">1</a><a href="#a">2</a><a href="#a">3</a><a href="#a">4</a><a href="#a">5</a>
+  </nav>
+
+  <p id="a">Page.</p>
+
+  <!-- The AAA exceptions, which are fewer than at AA:
+         - INLINE targets, such as a link inside a sentence
+         - an EQUIVALENT control of full size elsewhere on the page
+         - a target whose presentation is ESSENTIAL, or is legally required
+         - controls styled entirely by the user agent
+       Crucially, the SPACING exception that 2.5.8 offers does not exist here:
+       at AAA a small target with generous spacing around it still fails. -->
+  <!-- excerpt:end -->
+</body>
+</html>

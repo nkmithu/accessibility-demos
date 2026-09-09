@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.5.8 Target Size (Minimum)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .toolbar button { width: 16px; height: 16px; padding: 0; margin: 0 1px;
+                      border: 1px solid var(--border-strong); background: #fff;
+                      font-size: 10px; line-height: 1; cursor: pointer; }
+    .closer { width: 18px; height: 18px; padding: 0; border: 0; background: none;
+              font-size: 14px; cursor: pointer; }
+    .stepper button { width: 20px; height: 20px; padding: 0; }
+    .qty { width: 3rem; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.5.8 Target Size (Minimum).
+     Every target below is under 24 by 24 CSS pixels.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your basket</h1>
+
+  <!-- FAILURE 1: a toolbar of 16x16 buttons packed 2px apart. Both the size and
+       the spacing exception fail: 24px circles centred on adjacent targets
+       overlap heavily. -->
+  <p class="toolbar">
+    <button type="button" aria-label="Bold">B</button>
+    <button type="button" aria-label="Italic">I</button>
+    <button type="button" aria-label="Underline">U</button>
+    <button type="button" aria-label="Strikethrough">S</button>
+  </p>
+
+  <!-- FAILURE 2: an 18x18 close button - the single most commonly undersized
+       control on the web, and the one with the worst consequence when missed,
+       because the surrounding area is usually a link. -->
+  <div class="card-ish">
+    <button type="button" class="closer" aria-label="Remove Tidal Flats from basket">×</button>
+    Tidal Flats, by A. Marsh — £12.99
+  </div>
+
+  <!-- FAILURE 3: 20x20 quantity steppers, tightly packed. -->
+  <p class="stepper">
+    <button type="button" aria-label="Decrease quantity">−</button>
+    <input type="text" class="qty" value="1" aria-label="Quantity">
+    <button type="button" aria-label="Increase quantity">+</button>
+  </p>
+  <!-- excerpt:end -->
+</body>
+</html>

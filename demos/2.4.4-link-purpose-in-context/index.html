@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.4.4 Link Purpose (In Context) (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="The purpose of each link can be determined from the link text alone, or from the link text together with its programmatically determined context.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.4.4 Link Purpose (In Context)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.4.4</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 2.4 Navigable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Link Purpose (In Context)</h1>
+        <p class="sc-header__summary">The purpose of each link can be determined from the link text alone, or from the link text together with its programmatically determined context.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users who pull up a list of all links on the page to navigate. A list of fifteen entries all reading &quot;Read more&quot; is useless.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.4.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.4.4 Link Purpose (In Context)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;News&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: three identical &quot;Read more&quot; links. Pulled into a screen
+     reader's link list they read: &quot;Read more, Read more, Read more&quot;.
+     They are also not disambiguated by any programmatic context - the
+     headings are divs, so there is no list item, heading or paragraph
+     relationship tying each link to its story. --&gt;
+&lt;div&gt;
+  &lt;div style=&quot;font-weight:700&quot;&gt;Spring reading festival announced&lt;/div&gt;
+  &lt;p&gt;Three days of events across both shops.&lt;/p&gt;
+  &lt;a href=&quot;#a&quot;&gt;Read more&lt;/a&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  &lt;div style=&quot;font-weight:700&quot;&gt;Rare first editions arriving&lt;/div&gt;
+  &lt;p&gt;A private collection has come to us.&lt;/p&gt;
+  &lt;a href=&quot;#b&quot;&gt;Read more&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- FAILURE 2: the link text is a bare URL. A screen reader reads it character
+     by character: &quot;h t t p colon slash slash...&quot; --&gt;
+&lt;p&gt;Full programme: &lt;a href=&quot;#c&quot;&gt;https://example.org/events/spring/programme/2026&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- FAILURE 3: &quot;click here&quot; carries no information at all, and the useful
+     words sit outside the link where a link list cannot see them. --&gt;
+&lt;p&gt;To book a place, &lt;a href=&quot;#d&quot;&gt;click here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- FAILURE 4: an image link whose alt describes the picture rather than the
+     destination. --&gt;
+&lt;p&gt;&lt;a href=&quot;#e&quot;&gt;&lt;img src=&quot;../../assets/media/book-cover.svg&quot; alt=&quot;book cover&quot; width=&quot;60&quot; height=&quot;85&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p id=&quot;a&quot;&gt;Story A.&lt;/p&gt;&lt;p id=&quot;b&quot;&gt;Story B.&lt;/p&gt;&lt;p id=&quot;c&quot;&gt;Programme.&lt;/p&gt;
+&lt;p id=&quot;d&quot;&gt;Booking.&lt;/p&gt;&lt;p id=&quot;e&quot;&gt;Tidal Flats.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.4.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.4.4 Link Purpose (In Context)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;News&lt;/h1&gt;
+
+&lt;!-- FIX 1: the whole headline is the link, so the link text alone says where
+     it goes. This is almost always better than adding hidden text to a
+     &quot;Read more&quot; - it gives every user a bigger target (2.5.8) as well. --&gt;
+&lt;article&gt;
+  &lt;h2&gt;&lt;a href=&quot;#a&quot;&gt;Spring reading festival announced&lt;/a&gt;&lt;/h2&gt;
+  &lt;p&gt;Three days of events across both shops.&lt;/p&gt;
+&lt;/article&gt;
+&lt;article&gt;
+  &lt;h2&gt;&lt;a href=&quot;#b&quot;&gt;Rare first editions arriving&lt;/a&gt;&lt;/h2&gt;
+  &lt;p&gt;A private collection has come to us.&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;!-- FIX 2: if a &quot;Read more&quot; pattern is required by the design, keep the
+     visible text short and extend the accessible name with visually hidden
+     text. The visible words must still be inside the accessible name, or you
+     break 2.5.3 Label in Name for speech-input users. --&gt;
+&lt;p&gt;
+  &lt;a href=&quot;#a&quot;&gt;Read more&lt;span class=&quot;visually-hidden&quot;&gt; about the spring reading festival&lt;/span&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;!-- FIX 3: describe the destination instead of pasting the URL. --&gt;
+&lt;p&gt;Read the &lt;a href=&quot;#c&quot;&gt;full spring programme&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- FIX 4: the link text says what will happen. --&gt;
+&lt;p&gt;&lt;a href=&quot;#d&quot;&gt;Book a place at the festival&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- FIX 5: for an image link, the alt text describes the DESTINATION, not the
+     artwork - the image is standing in for the link text. --&gt;
+&lt;p&gt;
+  &lt;a href=&quot;#e&quot;&gt;&lt;img src=&quot;../../assets/media/book-cover.svg&quot;
+      alt=&quot;Tidal Flats by A. Marsh — read the review&quot; width=&quot;60&quot; height=&quot;85&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&quot;a&quot;&gt;Spring reading festival&lt;/h2&gt;&lt;p&gt;Story A.&lt;/p&gt;
+&lt;h2 id=&quot;b&quot;&gt;Rare first editions&lt;/h2&gt;&lt;p&gt;Story B.&lt;/p&gt;
+&lt;h2 id=&quot;c&quot;&gt;Full programme&lt;/h2&gt;&lt;p&gt;Programme.&lt;/p&gt;
+&lt;h2 id=&quot;d&quot;&gt;Booking&lt;/h2&gt;&lt;p&gt;Booking.&lt;/p&gt;
+&lt;h2 id=&quot;e&quot;&gt;Tidal Flats&lt;/h2&gt;&lt;p&gt;Review.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Extract every link's accessible name and read the list out of context. Ambiguous entries must at least be disambiguated by their sentence, list item, or table cell. Check that icon-only links have accessible names.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Empty links and links whose name is only an image filename are caught. Whether &quot;Read more&quot; is adequately disambiguated by context requires judgement.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> Every link on the failing page has text, so axe's link-name rule is satisfied. Judging that three links reading &quot;Read more&quot; are ambiguous requires understanding the content. axe's identical-links-same-purpose rule is experimental and returns &quot;needs review&quot; at best.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>link-name</code></li>
+              <li><code>identical-links-same-purpose</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.4.9-link-purpose-link-only/index.html">2.4.9 Link Purpose (Link Only) (Level AAA)</a></li>
+          <li><a href="../1.1.1-non-text-content/index.html">1.1.1 Non-text Content (Level A)</a></li>
+          <li><a href="../2.5.3-label-in-name/index.html">2.5.3 Label in Name (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">Understanding 2.4.4 Link Purpose (In Context)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#link-purpose-in-context">2.4.4 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.4.3-focus-order/index.html"><span class="sc-pager__dir">Previous criterion</span>2.4.3 Focus Order</a>
+        <a href="../2.4.5-multiple-ways/index.html"><span class="sc-pager__dir">Next criterion</span>2.4.5 Multiple Ways</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.5.1 Pointer Gestures (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Functionality using multipoint or path-based gestures can also be operated with a single pointer without a path-based gesture, unless the gesture is essential.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.5.1 Pointer Gestures</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.5.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 2.5 Input Modalities</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Pointer Gestures</h1>
+        <p class="sc-header__summary">Functionality using multipoint or path-based gestures can also be operated with a single pointer without a path-based gesture, unless the gesture is essential.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with tremor or limited dexterity who cannot perform a pinch or swipe. Users of a head pointer or eye tracker, which produce single points only.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.5.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.5.1 Pointer Gestures"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Staff picks&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: the only way to change slide is a horizontal swipe - a
+     path-based gesture. There are no previous and next buttons.
+
+     Who this excludes: anyone using a head pointer, eye tracker or switch,
+     all of which produce single points and cannot trace a path; anyone with
+     tremor who cannot hold a straight line; and every keyboard user. --&gt;
+&lt;div class=&quot;carousel&quot; id=&quot;car&quot;&gt;
+  &lt;p class=&quot;slide&quot; id=&quot;slide&quot;&gt;Tidal Flats, by A. Marsh&lt;/p&gt;
+  &lt;p&gt;Swipe left or right to see more.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- FAILURE 2: pinch-to-zoom is the only way to enlarge the cover image.
+     Pinch is a multipoint gesture; a single-pointer user cannot perform it. --&gt;
+&lt;h2&gt;Cover&lt;/h2&gt;
+&lt;p&gt;Pinch to zoom.&lt;/p&gt;
+&lt;img src=&quot;../../assets/media/book-cover.svg&quot; alt=&quot;Cover of Tidal Flats&quot; width=&quot;120&quot; height=&quot;170&quot;&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.5.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.5.1 Pointer Gestures"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Staff picks&lt;/h1&gt;
+
+&lt;!-- FIX 1: the swipe still works for people who like it, but it is now an
+     ENHANCEMENT. Previous and Next are real buttons, operable with a single
+     tap, a keyboard, a switch or a voice command.
+
+     2.5.1 does not ask you to remove the gesture. It asks you to make sure the
+     gesture is not the only way. --&gt;
+&lt;div class=&quot;carousel&quot; id=&quot;car&quot;&gt;
+  &lt;p class=&quot;slide&quot; id=&quot;slide&quot; role=&quot;status&quot;&gt;Tidal Flats, by A. Marsh&lt;/p&gt;
+  &lt;p&gt;
+    &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; id=&quot;prev&quot;&gt;Previous pick&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; id=&quot;next&quot;&gt;Next pick&lt;/button&gt;
+  &lt;/p&gt;
+  &lt;p&gt;You can also swipe left or right.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- FIX 2: zoom controls alongside pinch. Note that the buttons are at least
+     44 x 44 CSS pixels, which also satisfies 2.5.8 Target Size. --&gt;
+&lt;h2&gt;Cover&lt;/h2&gt;
+&lt;p&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; id=&quot;zin&quot;&gt;Zoom in&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; id=&quot;zout&quot;&gt;Zoom out&lt;/button&gt;
+&lt;/p&gt;
+&lt;img class=&quot;cover&quot; id=&quot;cover&quot; src=&quot;../../assets/media/book-cover.svg&quot;
+     alt=&quot;Cover of Tidal Flats&quot; width=&quot;120&quot; height=&quot;170&quot;&gt;
+
+&lt;!-- The essential-gesture exception is narrow: it covers things like a
+     signature pad or a drawing canvas, where the path IS the content.
+     A carousel, a map and a slider are never essential gestures. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Find every pinch-zoom, swipe, and multi-finger gesture. Confirm a single-tap alternative exists — buttons beside a carousel, zoom controls on a map.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Gesture handlers live in script and must be discovered and tested by hand.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.5.7-dragging-movements/index.html">2.5.7 Dragging Movements (Level AA)</a></li>
+          <li><a href="../2.1.1-keyboard/index.html">2.1.1 Keyboard (Level A)</a></li>
+          <li><a href="../2.5.2-pointer-cancellation/index.html">2.5.2 Pointer Cancellation (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html">Understanding 2.5.1 Pointer Gestures</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#pointer-gestures">2.5.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.4.13-focus-appearance/index.html"><span class="sc-pager__dir">Previous criterion</span>2.4.13 Focus Appearance</a>
+        <a href="../2.5.2-pointer-cancellation/index.html"><span class="sc-pager__dir">Next criterion</span>2.5.2 Pointer Cancellation</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

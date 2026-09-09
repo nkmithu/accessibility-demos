@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.3.5 Help</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .hint{color:var(--text-muted);font-size:.9375rem;margin:.15rem 0 .35rem}
+    details{border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;margin:.35rem 0}
+    summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.3.5 Help.</p>
+
+  <!-- excerpt:start -->
+  <h1>Apply for a trade account</h1>
+
+  <form>
+    <!-- FIX 1: always-visible hint text is the best kind of help - it needs no
+         interaction at all, so nobody has to discover that help exists. -->
+    <div class="field">
+      <label for="vat">VAT registration number</label>
+      <p class="hint" id="vat-h">Nine digits, for example 123456789. Leave blank if you
+         are not VAT registered.</p>
+      <input type="text" id="vat" aria-describedby="vat-h">
+    </div>
+
+    <!-- FIX 2: where the explanation is longer, a disclosure keeps the form
+         scannable while keeping the help one keystroke away and IN PLACE - the
+         user never leaves the form. -->
+    <div class="field">
+      <label for="sic">SIC code</label>
+      <p class="hint" id="sic-h">The five-digit code describing your main business activity.</p>
+      <details>
+        <summary>What is a SIC code and where do I find mine?</summary>
+        <p>SIC stands for Standard Industrial Classification. It is the code you gave
+           when you registered your company — you can find it on your incorporation
+           documents, or look it up on the Companies House website.</p>
+        <p>Booksellers are usually 47610. If you are unsure, give your best guess and
+           we will check it.</p>
+      </details>
+      <input type="text" id="sic" aria-describedby="sic-h">
+    </div>
+
+    <!-- FIX 3: define the jargon in the hint rather than assuming it. -->
+    <div class="field">
+      <label for="terms">Requested payment terms</label>
+      <p class="hint" id="terms-h">How long you would like to pay us in, in days.
+         Most new accounts start at 30 days.</p>
+      <input type="text" id="terms" aria-describedby="terms-h">
+    </div>
+
+    <div class="field">
+      <label for="credit">Estimated monthly credit requirement</label>
+      <p class="hint" id="credit-h">Roughly how much you expect to order each month,
+         in pounds. An estimate is fine — we will review it with you.</p>
+      <input type="text" id="credit" aria-describedby="credit-h">
+    </div>
+
+    <button type="submit" class="button">Submit application</button>
+  </form>
+
+  <!-- FIX 4: human help, offered beside the form rather than only in the footer. -->
+  <h2>If you get stuck</h2>
+  <p>Call our trade desk on 01234 567890, Monday to Friday, or
+     <a href="#c">email the trade team</a>. We can fill the form in with you over the phone.</p>
+
+  <p id="c">Contact page.</p>
+
+  <!-- 3.3.5 asks for CONTEXT-SENSITIVE help - help at the point of difficulty,
+       not a manual somewhere else. Note how it differs from its neighbours:
+         3.3.2 (A)    every field must have a label or instruction
+         3.3.5 (AAA)  fields that need explaining must have help available
+         3.2.6 (A)    if help exists across pages, it must be in a consistent place -->
+  <!-- excerpt:end -->
+</body>
+</html>

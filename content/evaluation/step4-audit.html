@@ -1,0 +1,83 @@
+<!--page
+title: Step 4 — Audit the selected sample — WCAG 2.2 Demo Suite
+description: How to check each sampled page against every criterion in scope, and how to record evidence.
+nav: evaluation
+section: Evaluation (WCAG-EM)
+sectionHref: evaluation/index.html
+crumb: Step 4 — Audit the sample
+-->
+      <h1>Step 4 — Audit the selected sample</h1>
+      <p class="sc-header__summary">Check every page in your sample against every criterion in
+         scope. Record pass, fail, or not applicable — with evidence for each failure, because a
+         finding nobody can reproduce will not get fixed.</p>
+
+      <h2>4a. Check for the criteria in scope</h2>
+      <p class="prose">For each page, work through the criteria for your target level. Use the
+         <a href="../testing/index.html#order">testing sequence</a>: automated scan, keyboard pass,
+         zoom and reflow, text spacing, screen reader, error states, content review.</p>
+      <p class="prose">Three outcomes per criterion per page:</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="out-cap">
+        <table>
+          <caption id="out-cap">Recording an outcome</caption>
+          <thead><tr><th scope="col">Outcome</th><th scope="col">When</th><th scope="col">Record</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Pass</th><td>The criterion is met on this page</td><td>How you checked it</td></tr>
+            <tr><th scope="row">Fail</th><td>At least one instance does not meet it</td><td>Location, evidence, who it affects, and the fix</td></tr>
+            <tr><th scope="row">Not applicable</th><td>There is nothing on the page the criterion applies to</td><td><em>Why</em> — "no video on this page", not just "N/A"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">Do not invent a fourth outcome. "Partially passes" is not a thing: WCAG
+         conformance is binary per criterion per page. If one image in twenty lacks alt text, 1.1.1
+         fails on that page.</p>
+
+      <h2>4b. Record what you find</h2>
+      <p class="prose">A finding that cannot be reproduced will be argued with and then dropped.
+         Every failure needs six things:</p>
+      <ol class="prose">
+        <li><strong>The criterion</strong> — number, title and level.</li>
+        <li><strong>The location</strong> — page URL and a CSS selector or unambiguous description.</li>
+        <li><strong>What happens</strong> — the observed behaviour, not your interpretation of it.</li>
+        <li><strong>How you found it</strong> — the tool, browser, assistive technology, and steps.</li>
+        <li><strong>Who it affects, and how badly</strong> — "a screen reader user cannot complete
+            checkout" lands very differently from "missing label".</li>
+        <li><strong>A suggested fix</strong> — usually a technique from the W3C Understanding document.</li>
+      </ol>
+
+      <h2>Severity</h2>
+      <p class="prose">WCAG has no severity scale — every failure is equally a failure for
+         conformance. But a report that does not prioritise is unusable, so rank the findings
+         separately from the conformance result:</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="sev-cap">
+        <table>
+          <caption id="sev-cap">A workable severity scale for reporting</caption>
+          <thead><tr><th scope="col">Severity</th><th scope="col">Meaning</th><th scope="col">Example</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Blocker</th><td>A group of users cannot complete an essential task at all</td><td>A keyboard trap in the checkout modal</td></tr>
+            <tr><th scope="row">Serious</th><td>A task can be completed, but with substantial difficulty or risk of error</td><td>Errors signalled by colour alone</td></tr>
+            <tr><th scope="row">Moderate</th><td>Noticeable friction; workarounds exist</td><td>Vague link text in a list of articles</td></tr>
+            <tr><th scope="row">Minor</th><td>Small barrier, low frequency</td><td>A decorative image with unnecessary alt text</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>4c. Check for accessibility support</h2>
+      <p class="prose">Verify that the techniques the site relies on actually work in the
+         <a href="step1-define-scope.html">baseline</a> you defined. An ARIA pattern that works
+         beautifully in one screen reader and is silent in another is a failure if both are in your
+         baseline.</p>
+
+      <h2>4d. Archive your evidence</h2>
+      <p class="prose">Keep screenshots, screen reader transcripts, the scanner's raw output, and the
+         exact URLs and dates. Sites change; six months later your report is the only record of what
+         you saw.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Aggregate before you report</p>
+        <p>The same defect usually appears on many pages, because it lives in a shared template or
+           component. Report it once, list the pages it affects, and fix it once. A register of 240
+           separate findings that are really 12 defects buries the signal and exhausts the team.</p>
+      </div>
+
+      <p class="prose"><a class="button" href="templates/audit-record.html">Open the audit record</a></p>
+      <p class="prose"><a href="step5-report.html">Next: Step 5 — Report the findings</a></p>

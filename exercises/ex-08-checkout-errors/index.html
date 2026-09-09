@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 8 — Checkout errors</title>
+<link rel="stylesheet" href="../exercise.css">
+<style>.bad{border-color:#c00 !important;background:#fff6f6}</style>
+</head>
+<body>
+<p class="task"><strong>Exercise 8.</strong> Fix this form's error handling.
+   Submit it empty first, with a screen reader running. See <code>README.md</code>.</p>
+
+<h1>Checkout</h1>
+
+<form id="f" novalidate>
+  <div class="field">
+    <label for="email">Email address</label>
+    <input type="email" id="email">
+  </div>
+  <div class="field">
+    <label for="card">Card number</label>
+    <input type="text" id="card">
+  </div>
+  <div class="field">
+    <label for="exp">Expiry date</label>
+    <input type="text" id="exp">
+  </div>
+  <button type="submit" class="btn">Pay £44.97 now</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+  // Marks bad fields with a red border. Nothing else.
+  document.getElementById('f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    ['email','card','exp'].forEach(function (id) {
+      var el = document.getElementById(id);
+      var bad = el.value.trim() === '';
+      el.classList.toggle('bad', bad);
+      if (bad) ok = false;
+    });
+    if (ok) { document.getElementById('msg').textContent = 'Payment taken.'; }
+  });
+</script>
+</body>
+</html>

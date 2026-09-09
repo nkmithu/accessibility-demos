@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.8 Location</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.nav ul{list-style:none;padding:0;display:flex;gap:1rem;flex-wrap:wrap}
+         .nav a.here{color:#0a4f9e}</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.8 Location.</p>
+
+  <!-- excerpt:start -->
+  <!-- FAILURE 1: no breadcrumb, so a user arriving from search has no idea where
+       in the hierarchy this page sits or how to get to the parent section. -->
+  <nav class="nav" aria-label="Main">
+    <ul>
+      <li><a href="#a">Books</a></li>
+      <!-- FAILURE 2: the current page is signalled by colour alone, with no
+           aria-current. A screen reader user is told nothing, and a colour-blind
+           user cannot see it either (also failing 1.4.1). -->
+      <li><a class="here" href="#a">Nature writing</a></li>
+      <li><a href="#a">Events</a></li>
+    </ul>
+  </nav>
+
+  <h1>Nature writing</h1>
+  <p>Our nature writing shelves.</p>
+
+  <!-- FAILURE 3: a multi-step process with no step indicator - the user cannot
+       tell how far through they are or how much is left. -->
+  <h2>Reserve a book</h2>
+  <form>
+    <div class="field"><label for="d">Collection date</label><input type="text" id="d"></div>
+    <button type="submit" class="button">Continue</button>
+  </form>
+
+  <p id="a">Section.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

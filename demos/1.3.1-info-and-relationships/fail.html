@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.3.1 Info and Relationships</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .looks-like-heading { font-size: 1.3rem; font-weight: 700; margin: 1.2rem 0 .5rem; }
+    .looks-like-list div::before { content: "• "; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.3.1 Info and Relationships.</p>
+
+  <!-- excerpt:start -->
+  <!-- FAILURE 1: styled to look like a heading, but it is a plain div.
+       A screen reader user pressing H to jump between headings finds nothing. -->
+  <div class="looks-like-heading">Opening hours</div>
+
+  <!-- FAILURE 2: a list to the eye, unrelated divs to assistive technology.
+       Screen readers announce "list with 3 items" - here they announce nothing. -->
+  <div class="looks-like-list">
+    <div>Monday to Friday, 9am to 6pm</div>
+    <div>Saturday, 10am to 4pm</div>
+    <div>Sunday, closed</div>
+  </div>
+
+  <div class="looks-like-heading">Stock by branch</div>
+
+  <!-- FAILURE 3: a data table with no header cells. Every cell is a td, so a
+       screen reader cannot say which column or row a value belongs to.
+       Reading cell "12" tells the user nothing at all. -->
+  <table>
+    <tr>
+      <td><strong>Branch</strong></td>
+      <td><strong>Hardback</strong></td>
+      <td><strong>Paperback</strong></td>
+    </tr>
+    <tr><td>Riverside</td><td>12</td><td>34</td></tr>
+    <tr><td>Old Town</td><td>4</td><td>19</td></tr>
+  </table>
+
+  <div class="looks-like-heading">Join the mailing list</div>
+
+  <form>
+    <!-- FAILURE 4: the label is just text sitting next to the input. There is no
+         programmatic association, so the field announces as "edit, blank". -->
+    <div class="field">
+      Email address
+      <input type="email" name="email">
+    </div>
+
+    <!-- FAILURE 5: a radio group with no fieldset and no legend. Each option
+         announces its own label, but the question they answer is invisible to
+         assistive technology. -->
+    <div class="field">
+      <div class="looks-like-heading">How often?</div>
+      <input type="radio" id="f-weekly" name="freq" value="weekly">
+      <label for="f-weekly">Weekly</label>
+      <input type="radio" id="f-monthly" name="freq" value="monthly">
+      <label for="f-monthly">Monthly</label>
+    </div>
+
+    <button type="button" class="button">Subscribe</button>
+  </form>
+  <!-- excerpt:end -->
+</body>
+</html>

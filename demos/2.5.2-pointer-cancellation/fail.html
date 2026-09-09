@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.5.2 Pointer Cancellation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.5.2 Pointer Cancellation.
+     Press down on the button, drag away, and release — it fires anyway.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your account</h1>
+
+  <!-- FAILURE: the action fires on the DOWN event. The moment the pointer
+       touches the control, the account is deleted.
+
+       Why the up-event matters: everyone occasionally presses the wrong thing.
+       Firing on up gives you the universal escape - slide off the control before
+       letting go and nothing happens. Users with tremor or imprecise pointing
+       rely on that escape constantly. Firing on down removes it, and here it
+       removes it from an irreversible action. -->
+  <button type="button" class="button" id="del"
+          onpointerdown="deleteAccount()">Delete my account</button>
+
+  <p id="log" role="status"></p>
+  <!-- excerpt:end -->
+
+  <script>
+    function deleteAccount() {
+      document.getElementById('log').textContent = 'Account deleted. (No confirmation, no undo.)';
+    }
+  </script>
+</body>
+</html>

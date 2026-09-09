@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.2.2 On Input</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.2.2 On Input.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your account</h1>
+
+  <form>
+    <!-- FAILURE 1: the classic "jump menu". Changing the selection navigates
+         immediately. With a keyboard, arrowing down through a select changes the
+         selection on every key press - so the user is thrown to "Orders" while
+         trying to reach "Addresses", and can never get past the first option. -->
+    <div class="field">
+      <label for="section">Go to section</label>
+      <select id="section" onchange="navigate(this.value)">
+        <option value="">Choose…</option>
+        <option value="orders">Orders</option>
+        <option value="addresses">Addresses</option>
+        <option value="payment">Payment methods</option>
+      </select>
+    </div>
+
+    <!-- FAILURE 2: ticking a checkbox submits the whole form and reloads the
+         page, with no warning that it would. -->
+    <p class="field">
+      <input type="checkbox" id="gift" onchange="submitNow()">
+      <label for="gift">This is a gift</label>
+    </p>
+
+    <!-- FAILURE 3: filling the last character of a field auto-advances focus to
+         the next one. Users who type slowly, use speech input, or need to review
+         what they typed lose their place - and correcting a typo becomes a
+         fight with the interface. -->
+    <div class="field">
+      <label for="pc1">Postcode (first part)</label>
+      <input type="text" id="pc1" maxlength="4" oninput="if(this.value.length===4) document.getElementById('pc2').focus()">
+    </div>
+    <div class="field">
+      <label for="pc2">Postcode (second part)</label>
+      <input type="text" id="pc2" maxlength="3">
+    </div>
+  </form>
+
+  <p id="log" role="status"></p>
+  <!-- excerpt:end -->
+
+  <script>
+    function navigate(v) { if (v) document.getElementById('log').textContent = 'Navigated to ' + v + '.'; }
+    function submitNow() { document.getElementById('log').textContent = 'Form submitted and page reloaded.'; }
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.4.13 Focus Appearance (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="The focus indicator is at least as large as a 2 CSS pixel perimeter of the focused control, and has a contrast ratio of at least 3:1 between its focused and unfocused states.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.4.13 Focus Appearance</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.4.13</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 2.4 Navigable</span>
+          <span class="tag">Added in WCAG 2.2</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Focus Appearance</h1>
+        <p class="sc-header__summary">The focus indicator is at least as large as a 2 CSS pixel perimeter of the focused control, and has a contrast ratio of at least 3:1 between its focused and unfocused states.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Low-vision keyboard users, for whom a thin 1px light-grey outline satisfies 2.4.7 in principle but is invisible in practice.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.4.13
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.4.13 Focus Appearance"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Checkout&lt;/h1&gt;
+
+&lt;p&gt;&lt;a class=&quot;thin&quot; href=&quot;#a&quot;&gt;Too thin: a 1px outline&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;faint&quot; href=&quot;#a&quot;&gt;Too faint: 3px but only 1.6:1 against the page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;shift&quot;&gt;Too subtle: a slight fill change only&lt;/button&gt;&lt;/p&gt;
+
+&lt;!-- All three satisfy 2.4.7 at AA, which only asks that SOME visible indicator
+     exists. 2.4.13 at AAA is what puts numbers on &quot;visible&quot;: a minimum area
+     and a minimum contrast change. --&gt;
+
+&lt;p id=&quot;a&quot;&gt;Target.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.4.13
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.4.13 Focus Appearance"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Checkout&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;#a&quot;&gt;A link with a 3px, 8:1 focus ring&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;button&quot;&gt;A button with the same ring&lt;/button&gt;&lt;/p&gt;
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;dark&quot;&gt;A dark button with a two-tone ring&lt;/button&gt;&lt;/p&gt;
+&lt;p class=&quot;field&quot;&gt;&lt;label for=&quot;p&quot;&gt;Promotion code&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;p&quot;&gt;&lt;/p&gt;
+
+&lt;!-- What 2.4.13 actually requires:
+       AREA     - the indicator is at least as large as the area of a 2 CSS
+                  pixel thick perimeter of the unfocused control
+       CONTRAST - at least 3:1 between the focused and unfocused states of
+                  those changed pixels
+       and the indicator must not be obscured (which is 2.4.11 and 2.4.12).
+
+     Practical shortcut: a 2px or thicker solid outline, in a colour at 3:1 or
+     better against its surroundings, with a small offset, passes every time.
+     You do not need to compute perimeter areas if you simply use an outline.
+
+     Never write `outline: none` without replacing it. If you dislike the ring
+     on mouse click, :focus-visible already solves that - it shows the ring for
+     keyboard users and hides it for pointer users. --&gt;
+
+&lt;p id=&quot;a&quot;&gt;Target.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Measure the indicator's thickness and its contrast against both the adjacent colours and its own unfocused state. A 2px solid outline with sufficient contrast is the straightforward way to pass.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires measuring the rendered indicator's size and contrast.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.4.7-focus-visible/index.html">2.4.7 Focus Visible (Level AA)</a></li>
+          <li><a href="../1.4.11-non-text-contrast/index.html">1.4.11 Non-text Contrast (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html">Understanding 2.4.13 Focus Appearance</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#focus-appearance">2.4.13 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.4.12-focus-not-obscured-enhanced/index.html"><span class="sc-pager__dir">Previous criterion</span>2.4.12 Focus Not Obscured (Enhanced)</a>
+        <a href="../2.5.1-pointer-gestures/index.html"><span class="sc-pager__dir">Next criterion</span>2.5.1 Pointer Gestures</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

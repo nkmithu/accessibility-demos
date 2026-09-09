@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.2.3 No Timing</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.timer{font-weight:700;font-family:var(--font-mono)}
+         .warn{border:2px solid var(--note-border);background:var(--note-bg);color:var(--note);
+               border-radius:6px;padding:.75rem 1rem}</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.2.3 No Timing
+     (though it PASSES 2.2.1 at Level A).</p>
+
+  <!-- excerpt:start -->
+  <h1>Membership quiz</h1>
+
+  <!-- This page satisfies 2.2.1 Timing Adjustable at Level A: the user is warned
+       well before the limit expires and can extend it with one action.
+
+       It still fails 2.2.3 at AAA, which does not accept an adjustable limit -
+       it requires that timing is NOT AN ESSENTIAL PART of the activity at all.
+       A countdown that can be extended is still a countdown, and it still
+       imposes pressure on someone who reads slowly, uses a screen reader, or
+       needs to think. -->
+  <p>Time remaining: <span class="timer" id="t">45</span> seconds
+     <button type="button" class="button button--secondary" id="more">Give me more time</button></p>
+
+  <div class="warn" role="status" id="warn" hidden>
+    <p>Less than 20 seconds remaining.</p>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Which year did Riverline Books open?</legend>
+      <p><input type="radio" id="y1" name="y"><label for="y1">1988</label></p>
+      <p><input type="radio" id="y2" name="y"><label for="y2">1998</label></p>
+      <p><input type="radio" id="y3" name="y"><label for="y3">2008</label></p>
+    </fieldset>
+    <button type="submit" class="button">Submit answer</button>
+  </form>
+  <!-- excerpt:end -->
+
+  <script>
+    var left = 45;
+    var tick = setInterval(function () {
+      left--; document.getElementById('t').textContent = left;
+      if (left === 20) { document.getElementById('warn').hidden = false; }
+      if (left <= 0) { clearInterval(tick); }
+    }, 1000);
+    document.getElementById('more').addEventListener('click', function () {
+      left = 45; document.getElementById('warn').hidden = true;
+    });
+  </script>
+</body>
+</html>

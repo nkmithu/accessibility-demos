@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- FAILURE 1: the viewport meta tag blocks zoom entirely on mobile.
+       user-scalable=no and maximum-scale=1 are the two worst attributes in
+       mobile web development. Some browsers now ignore them, which hides the
+       failure during testing but does not fix it. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Failing example — 1.4.4 Resize Text</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FAILURE 2: fixed pixel heights on text containers. At 200% the text is
+       twice as tall and the box is not, so content is clipped away. */
+    .promo { height: 70px; overflow: hidden; border:1px solid var(--border);
+             border-radius:6px; padding:.5rem .75rem; margin-bottom:1rem; }
+    /* FAILURE 3: a button sized in px that cannot grow with its label. */
+    .cta { width: 170px; height: 34px; line-height: 34px; overflow: hidden;
+           white-space: nowrap; background:#0a4f9e; color:#fff; border:0;
+           border-radius:6px; display:inline-block; text-align:center; }
+    /* FAILURE 4: text sized in px inside a container sized in px - the whole
+       layout is locked to the pixel grid and ignores the user's font setting. */
+    .locked { font-size: 12px; width: 260px; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.4 Resize Text.
+     Zoom your browser to 200%.</p>
+
+  <!-- excerpt:start -->
+  <h1>This week</h1>
+
+  <div class="promo">
+    <p>Spring reading festival: three days of events across both shops, 12 to 14 April.</p>
+  </div>
+
+  <p><span class="cta">Book festival tickets</span></p>
+
+  <p class="locked">Members save 20% on all festival tickets and get priority booking
+     from 1 March.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

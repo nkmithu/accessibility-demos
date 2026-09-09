@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.2.1 Timing Adjustable</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .timer { font-weight:700; font-family:var(--font-mono); }
+    .warn { border:2px solid var(--note-border); background:var(--note-bg); color:var(--note);
+            border-radius:6px; padding:.75rem 1rem; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.2.1 Timing Adjustable.</p>
+
+  <!-- excerpt:start -->
+  <h1>Complete your booking</h1>
+
+  <!-- FIX: 2.2.1 is satisfied by ANY ONE of three routes. This example takes the
+       third, which is the one most real systems can implement:
+
+         1. Turn it off      - let the user remove the limit entirely, or
+         2. Adjust it        - let them set it to at least ten times the default
+                               BEFORE it starts, or
+         3. Extend it        - warn them at least 20 seconds before it expires
+                               and let them extend with a simple action.
+
+       The warning is announced through a live region, so a screen reader user
+       hears it without having to be looking at the timer. -->
+  <p>Your seats are held for <span class="timer" id="t">30</span> seconds.
+     <button type="button" class="button button--secondary" id="off">Remove the time limit</button></p>
+
+  <div class="warn" id="warn" role="alert" hidden>
+    <p>Your booking will expire in <span id="w">20</span> seconds.
+       <button type="button" class="button" id="more">Give me more time</button></p>
+  </div>
+
+  <form id="f">
+    <div class="field">
+      <label for="nm">Name on booking</label>
+      <input type="text" id="nm" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="rq">Any access requirements?</label>
+      <textarea id="rq"></textarea>
+    </div>
+    <button type="submit" class="button">Confirm booking</button>
+  </form>
+
+  <p id="msg" role="status"></p>
+
+  <!-- Exceptions worth knowing: 2.2.1 does not apply where the time limit is
+       essential and extending it would invalidate the activity - a live auction,
+       a timed exam - or where the limit is longer than 20 hours. -->
+  <!-- excerpt:end -->
+
+  <script>
+    var left = 30, tick = null, warned = false;
+
+    function start() {
+      tick = setInterval(function () {
+        left--;
+        document.getElementById('t').textContent = left;
+        // Warn with at least 20 seconds still on the clock, as the criterion requires.
+        if (left === 20 && !warned) {
+          warned = true;
+          document.getElementById('warn').hidden = false;
+          document.getElementById('w').textContent = left;
+        }
+        if (warned) { document.getElementById('w').textContent = left; }
+        if (left <= 0) {
+          clearInterval(tick);
+          document.getElementById('msg').textContent = 'Your hold expired. Your details have been kept.';
+        }
+      }, 1000);
+    }
+
+    document.getElementById('more').addEventListener('click', function () {
+      left = 30; warned = false;
+      document.getElementById('warn').hidden = true;
+      document.getElementById('t').textContent = left;
+      document.getElementById('msg').textContent = 'Your booking time has been extended by 30 seconds.';
+    });
+
+    document.getElementById('off').addEventListener('click', function () {
+      clearInterval(tick);
+      document.getElementById('warn').hidden = true;
+      document.getElementById('t').parentNode.hidden = true;
+      document.getElementById('msg').textContent = 'The time limit has been removed. Take as long as you need.';
+    });
+
+    start();
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.8 Media Alternative (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.8.</p>
+
+  <!-- excerpt:start -->
+  <h1>A short tour of the shop</h1>
+
+  <!-- FAILURE: captions AND audio description are both provided, so this passes
+       1.2.2, 1.2.3 and 1.2.5. It still fails 1.2.8, because there is no full
+       TEXT alternative for the presentation.
+
+       Who that leaves out: DEAFBLIND users. Captions are visual, so they are
+       useless without sight. Audio description is auditory, so it is useless
+       without hearing. A deafblind user reads with a refreshable braille
+       display, which needs TEXT - and there is none here.
+
+       It also leaves out anyone who would rather read than watch, anyone on a
+       slow connection, and every search engine. -->
+  <video controls width="640">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+    <track kind="descriptions" src="../../assets/media/shop-tour-descriptions.vtt"
+           srclang="en" label="Audio description">
+  </video>
+  <!-- excerpt:end -->
+</body>
+</html>

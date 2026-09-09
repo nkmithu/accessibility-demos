@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automated testing — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="What axe, pa11y and Lighthouse actually catch, what they miss, and how to run them against this repository.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../index.html"><img src="../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../demos/index.html">Criteria</a></li>
+        <li><a href="../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../testing/index.html" aria-current="page">Testing</a></li>
+        <li><a href="../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../testing/index.html">Testing</a></li>
+        <li><span aria-current="page">Automated testing</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Automated testing</h1>
+      <p class="sc-header__summary">Automated scanners are fast, repeatable and cheap enough to run
+         on every commit. They are also blind to most of WCAG. Both halves of that sentence matter:
+         teams that skip automation ship defects they could have caught for free, and teams that
+         stop at automation ship inaccessible sites with a green badge.</p>
+
+      <h2>What this repository's own test run reports</h2>
+      <p class="prose">Run it yourself:</p>
+      <pre tabindex="0"><code>npm install
+npm run test:a11y</code></pre>
+      <p class="prose">The run asserts three things for every one of the 86 criteria:</p>
+      <ul class="prose">
+        <li><code>pass.html</code> produces <strong>zero</strong> violations.</li>
+        <li><code>fail.html</code> produces <strong>at least one</strong> violation, and it is a rule
+            that genuinely maps to that criterion. A demo that quietly stops failing is reported as
+            loudly as a broken fix.</li>
+        <li>Where the failure is invisible to the scanner, the run says so explicitly, and the
+            criterion's page explains why.</li>
+      </ul>
+      <p class="prose">The summary it prints is the honest coverage map:</p>
+      <pre tabindex="0"><code>Criteria in WCAG 2.2                         86
+With at least one mapped axe rule            31  (36%)
+No automated test exists at all              55  (64%)</code></pre>
+
+      <div class="callout callout--fail">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#10007;</span> The number behind the number</p>
+        <p>36% of criteria have <em>some</em> rule mapped to them. That is not the same as 36% of
+           accessibility problems being detectable. Within those 31 criteria the coverage is partial:
+           a scanner sees that <code>alt</code> is missing, never that the alt text is wrong; that a
+           label is absent, never that it is meaningless; that contrast fails on a solid background,
+           rarely over an image.</p>
+        <p>Independent studies of automated tooling consistently put real-world detection at
+           roughly <strong>a quarter to a third of actual defects</strong>. Plan your testing budget
+           on that basis.</p>
+      </div>
+
+      <h2>The three outcomes axe reports, and why the third one matters</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="out-cap">
+        <table>
+          <caption id="out-cap">How to read an axe result</caption>
+          <thead><tr><th scope="col">Outcome</th><th scope="col">What it means</th><th scope="col">What you do</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">violations</th><td>The rule failed, with confidence</td><td>Fix it</td></tr>
+            <tr><th scope="row">passes</th><td>The rule was checked and satisfied</td><td>Nothing — but this is not proof the criterion is met</td></tr>
+            <tr><th scope="row">incomplete</th><td>The rule fired but axe will not decide. Also called "needs review"</td><td><strong>Check it by hand.</strong> This is not a pass</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">Most CI setups report only <code>violations</code> and silently discard
+         <code>incomplete</code>. That is how a page with no skip link, no landmarks and no headings
+         is recorded as clean —
+         <a href="../demos/2.4.1-bypass-blocks/index.html">2.4.1 Bypass Blocks</a> returns
+         <em>incomplete</em>, not a violation. This repository's runner reports it as a distinct
+         outcome for exactly that reason.</p>
+
+      <h2>Traps that make automated results misleading</h2>
+      <ul class="prose">
+        <li><strong>Scanning one state of the page.</strong> A form with excellent error handling and a
+            form with none look identical until you submit it. Drive the page into each state and
+            scan again.</li>
+        <li><strong>Scanning inside iframes by accident.</strong> axe descends into same-origin frames by
+            default. This suite has to pass <code>.exclude('iframe')</code> or every deliberate
+            failure would be reported against the page teaching about it.</li>
+        <li><strong>Best-practice rules mixed with WCAG rules.</strong> Some genuinely useful rules — such
+            as <code>tabindex</code>, which catches positive tabindex values — are tagged
+            <code>best-practice</code>, so a WCAG-scoped scan never runs them.</li>
+        <li><strong>Experimental rules disabled by default.</strong> <code>label-content-name-mismatch</code>
+            is exactly the rule for <a href="../demos/2.5.3-label-in-name/index.html">2.5.3</a>, and
+            it is off unless you opt in.</li>
+        <li><strong>Testing only the components, not the pages.</strong> A component library can be flawless
+            and the assembled page still fail on heading order, landmarks, focus order and
+            duplicate ids.</li>
+      </ul>
+
+      <h2>The tools</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="tools-cap">
+        <table>
+          <caption id="tools-cap">Automated accessibility tools and what each is for</caption>
+          <thead><tr><th scope="col">Tool</th><th scope="col">Engine</th><th scope="col">Best for</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">axe DevTools</th><td>axe-core</td><td>Browser extension. The fastest way to check a page while building it.</td></tr>
+            <tr><th scope="row">axe-core</th><td>axe-core</td><td>The library. Use it in unit and end-to-end tests, where you can drive the page into each state first.</td></tr>
+            <tr><th scope="row">pa11y-ci</th><td>HTML_CodeSniffer or axe</td><td>Crawling many URLs in CI. A second engine cross-checks the first.</td></tr>
+            <tr><th scope="row">Lighthouse</th><td>axe-core (subset)</td><td>A quick score. Its accessibility number is a subset of axe and should never be treated as a conformance measure.</td></tr>
+            <tr><th scope="row">WAVE</th><td>Own</td><td>Visual, in-page annotation. Excellent for teaching, because it shows you <em>where</em> on the page each issue is.</td></tr>
+            <tr><th scope="row">ANDI</th><td>Own</td><td>A bookmarklet from the US SSA. Good for inspecting the accessible name of a specific control.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Wiring it into CI properly</h2>
+      <ul class="prose">
+        <li>Fail the build on violations, but <strong>also surface <code>incomplete</code></strong> as
+            output a human reads.</li>
+        <li>Scan the states, not just the routes: logged out and in, empty and populated, valid and
+            error, dialogs open.</li>
+        <li>Pin the axe-core version. New rules arriving on a Friday afternoon should be a decision,
+            not a surprise.</li>
+        <li>Never let a green pipeline be described as "accessible". It means "no machine-detectable
+            defects found", and the difference is most of WCAG.</li>
+      </ul>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

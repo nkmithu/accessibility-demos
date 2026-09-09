@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.9 Images of Text (No Exception)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.panel { border:1px solid var(--border); border-radius:6px; padding:1rem; margin-bottom:1rem; }</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.9 (though the first
+     example passes 1.4.5 at AA).</p>
+
+  <!-- excerpt:start -->
+  <h1>Spring festival</h1>
+
+  <!-- The distinction between 1.4.5 (AA) and 1.4.9 (AAA):
+       1.4.5 allows an image of text if the user can CUSTOMISE its presentation.
+       1.4.9 removes that allowance entirely. -->
+
+  <div class="panel">
+    <h2>Customisable image of text — passes 1.4.5, fails 1.4.9</h2>
+    <!-- The controls below let the user change the rendering, which is exactly
+         what the AA exception permits. At AAA it is still a failure, because the
+         text is still not real text: it cannot be selected, searched,
+         translated, reflowed, or restyled by the user's own stylesheet. -->
+    <p>
+      <button type="button" class="button button--secondary" onclick="setSize(1)">Small</button>
+      <button type="button" class="button button--secondary" onclick="setSize(1.6)">Large</button>
+    </p>
+    <img id="promo" src="../../assets/media/promo-heading.svg" width="420" height="70"
+         alt="Three days of events, 12 to 14 April">
+  </div>
+
+  <div class="panel">
+    <h2>Plain image of text — fails both</h2>
+    <img src="../../assets/media/promo-terms.svg" width="420" height="96"
+         alt="Tickets are non-refundable. Members save 20%. Under 16s go free with a paying adult.">
+  </div>
+  <!-- excerpt:end -->
+
+  <script>
+    function setSize(k) {
+      var img = document.getElementById('promo');
+      img.width = 420 * k; img.height = 70 * k;
+    }
+  </script>
+</body>
+</html>

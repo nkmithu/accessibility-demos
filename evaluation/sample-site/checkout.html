@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — Riverline Books</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<p class="audit-banner">Audit material — deliberate accessibility defects.
+   <a href="../index.html">Back to the walkthrough</a></p>
+<div class="topbar"><div class="wrap">Free delivery on orders over £25</div></div>
+<div class="masthead"><div class="wrap">
+  <a class="logo" href="index.html">Riverline Books</a>
+  <div class="nav"><ul>
+    <li><a href="index.html">Home</a></li><li><a href="catalogue.html">Books</a></li>
+    <li><a href="contact.html">Contact</a></li><li><a href="login.html">Sign in</a></li>
+    <li><a href="cart.html">Basket</a></li>
+  </ul></div>
+</div></div>
+
+<div class="content"><div class="wrap">
+  <h1>Checkout</h1>
+  <!-- DEFECT 2.4.8: no step indicator anywhere in a four-step process. -->
+
+  <form id="checkout" novalidate>
+    <h2>Delivery address</h2>
+    <!-- DEFECT 3.3.2: placeholder used instead of a label. The label disappears
+         the moment the user types.
+         DEFECT 1.3.5: no autocomplete tokens anywhere, so no password manager or
+         browser autofill can help. -->
+    <div class="field"><input type="text" id="d-name" placeholder="Full name"></div>
+    <div class="field"><input type="text" id="d-addr" placeholder="Address"></div>
+    <div class="field"><input type="text" id="d-post" placeholder="Postcode"></div>
+
+    <h2>Billing address</h2>
+    <!-- DEFECT 3.3.7: the same address is demanded a second time, with no
+         "same as delivery" option and nothing pre-filled. -->
+    <div class="field"><input type="text" id="b-name" placeholder="Full name"></div>
+    <div class="field"><input type="text" id="b-addr" placeholder="Address"></div>
+    <div class="field"><input type="text" id="b-post" placeholder="Postcode"></div>
+
+    <h2>Payment</h2>
+    <div class="field"><input type="text" id="card" placeholder="Card number"></div>
+    <!-- DEFECT 3.3.2: a strict format is required and never stated. -->
+    <div class="field"><input type="text" id="exp" placeholder="Expiry"></div>
+    <div class="field"><input type="text" id="cvc" placeholder="Security code"></div>
+
+    <!-- DEFECT 3.3.4: a financial transaction with no review step, no
+         confirmation and no way to reverse it. One press takes the money. -->
+    <p><button type="submit" class="btn">Pay £44.97 now</button></p>
+  </form>
+
+  <p id="result"></p>
+</div></div>
+
+<div class="footer"><div class="wrap"><ul>
+  <li><a href="help.html">Help</a></li><li><a href="contact.html">Contact us</a></li>
+  <li><a href="help.html">Accessibility</a></li>
+</ul></div></div>
+
+<script>
+  // DEFECT 3.3.1: errors are signalled with a red border and nothing else.
+  //   - no message in text
+  //   - no programmatic association with the field
+  //   - no aria-invalid, no announcement
+  // DEFECT 3.3.3: and therefore no suggestion for how to fix anything.
+  // DEFECT 1.4.1: colour is the only signal.
+  document.getElementById('checkout').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = 0;
+    ['d-name','d-addr','d-post','b-name','b-addr','b-post','card','exp','cvc']
+      .forEach(function (id) {
+        var el = document.getElementById(id);
+        var empty = el.value.trim() === '';
+        el.classList.toggle('err-field', empty);
+        if (empty) bad++;
+      });
+    if (!bad) {
+      document.getElementById('result').textContent = 'Payment taken. £44.97 charged.';
+      document.getElementById('checkout').hidden = true;
+    }
+  });
+</script>
+</body>
+</html>

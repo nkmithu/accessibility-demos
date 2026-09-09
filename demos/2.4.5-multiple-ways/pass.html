@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.5 Multiple Ways</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .nav ul { list-style:none; padding:0; display:flex; gap:1rem; flex-wrap:wrap; }
+    .crumb ol { list-style:none; padding:0; display:flex; gap:.5rem; flex-wrap:wrap; font-size:.9375rem; }
+    .crumb li + li::before { content:"/"; margin-right:.5rem; color:var(--border-strong); }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.5 Multiple Ways.</p>
+
+  <!-- excerpt:start -->
+  <!-- WAY 1: search. For most sites this is the single highest-value addition,
+       because it does not require the user to guess your categories. -->
+  <form role="search" class="field">
+    <label for="q">Search the catalogue</label>
+    <input type="search" id="q" name="q">
+    <button type="submit" class="button">Search</button>
+  </form>
+
+  <!-- WAY 2: the navigation menu. -->
+  <nav class="nav" aria-label="Main">
+    <ul>
+      <li><a href="#a">Fiction</a></li>
+      <li><a href="#a">Non-fiction</a></li>
+      <li><a href="#a">Children's</a></li>
+      <li><a href="#a">Events</a></li>
+      <li><a href="#map">Site map</a></li>
+    </ul>
+  </nav>
+
+  <!-- WAY 3: a breadcrumb trail, which also satisfies 2.4.8 Location at AAA. -->
+  <nav class="crumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="#a">Home</a></li>
+      <li><a href="#a">Books</a></li>
+      <li><span aria-current="page">Non-fiction</span></li>
+    </ol>
+  </nav>
+
+  <h1>Non-fiction</h1>
+  <p>Browse our non-fiction shelves.</p>
+
+  <!-- WAY 4: a site map. -->
+  <h2 id="map">Site map</h2>
+  <ul>
+    <li><a href="#a">Fiction</a></li>
+    <li><a href="#a">Non-fiction</a>
+      <ul><li><a href="#a">History</a></li><li><a href="#a">Nature</a></li></ul></li>
+    <li><a href="#a">Events</a></li>
+  </ul>
+
+  <!-- The criterion asks for TWO OR MORE ways. Any two of: search, a site map,
+       a table of contents, a navigation menu, related links, or an A-to-Z index.
+
+       The exception: a page that is a STEP IN A PROCESS is exempt - you do not
+       need two routes to step 3 of a checkout, and offering them would be
+       actively confusing. -->
+
+  <p id="a">Section.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

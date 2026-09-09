@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Riverline Books</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .fake-btn{display:inline-block;background:var(--brand);color:#fff;border-radius:3px;
+            padding:.5rem 1rem;cursor:pointer;user-select:none}
+  .cancel-btn{display:inline-block;background:#a8582f;color:#fff;border-radius:3px;
+              padding:.5rem 1rem;cursor:pointer;user-select:none}
+  .modal{border:2px solid var(--brand);border-radius:4px;padding:1rem;background:#fff;
+         max-width:26rem;margin-top:1rem}
+  .row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+</style>
+</head>
+<body>
+<p class="audit-banner">Audit material — deliberate accessibility defects.
+   <a href="../index.html">Back to the walkthrough</a></p>
+<div class="topbar"><div class="wrap">Free delivery on orders over £25</div></div>
+<div class="masthead"><div class="wrap">
+  <a class="logo" href="index.html">Riverline Books</a>
+  <div class="nav"><ul>
+    <li><a href="index.html">Home</a></li><li><a href="catalogue.html">Books</a></li>
+    <li><a href="contact.html">Contact</a></li><li><a href="login.html">Sign in</a></li>
+    <li><a href="cart.html">Basket</a></li>
+  </ul></div>
+</div></div>
+
+<div class="content"><div class="wrap">
+  <h1>Contact us</h1>
+
+  <!-- DEFECT 1.3.3: the instruction identifies controls by shape, colour and
+       position only. A blind user has no "right"; a colour-blind user has no
+       "green"; at 400% zoom the buttons stack and "right" stops being true. -->
+  <p>Fill in the form below, then press the green button on the right to send it.
+     Press the orange button on the left to start again.</p>
+
+  <form>
+    <div class="field"><label for="name">Your name</label><input type="text" id="name"></div>
+    <div class="field"><label for="email">Your email address</label><input type="email" id="email"></div>
+    <div class="field"><label for="msg">Message</label><textarea id="msg" rows="5"></textarea></div>
+
+    <div class="row">
+      <!-- DEFECT 2.1.1: both "buttons" are divs with click handlers. Not
+           focusable, no role, no keyboard operation. A keyboard user cannot
+           send the form at all.
+           DEFECT 4.1.2: neither has a role or an accessible name. -->
+      <div class="cancel-btn" onclick="reset()">Start again</div>
+      <div class="fake-btn" onclick="send()">Send message</div>
+    </div>
+  </form>
+
+  <!-- DEFECT 2.4.3: this dialog appears without focus being moved into it, and
+       focus is not returned when it closes.
+       DEFECT 4.1.3: the confirmation is not in a live region. -->
+  <div class="modal" id="sent" hidden>
+    <div style="font-size:1.1rem;font-weight:bold">Thanks — your message has been sent</div>
+    <p>We reply within two working days.</p>
+    <button type="button" class="btn" onclick="document.getElementById('sent').hidden=true">Close</button>
+  </div>
+
+  <h2>Visit us</h2>
+  <p>12 River Street, Riverside. Open Monday to Friday, 9am to 6pm.</p>
+</div></div>
+
+<div class="footer"><div class="wrap"><ul>
+  <li><a href="help.html">Help</a></li><li><a href="contact.html">Contact us</a></li>
+  <li><a href="help.html">Accessibility</a></li>
+</ul></div></div>
+
+<script>
+  function send() { document.getElementById('sent').hidden = false; }
+  function reset() { document.querySelector('form').reset(); }
+</script>
+</body>
+</html>

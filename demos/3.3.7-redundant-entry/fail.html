@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.7 Redundant Entry</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.step { border:1px solid var(--border); border-radius:6px; padding:1rem; margin-bottom:1rem; }</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.3.7 Redundant Entry.</p>
+
+  <!-- excerpt:start -->
+  <h1>Checkout</h1>
+
+  <div class="step">
+    <h2>Step 1: Delivery address</h2>
+    <div class="field">
+      <label for="d-name">Full name</label>
+      <input type="text" id="d-name" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="d-addr">Address</label>
+      <input type="text" id="d-addr" autocomplete="street-address">
+    </div>
+  </div>
+
+  <!-- FAILURE 1: the same address is asked for a second time in the same process,
+       with no way to reuse what was already entered. For a user with a memory or
+       motor disability this doubles the cost of the task and doubles the chance
+       of a mismatch that fails validation later. -->
+  <div class="step">
+    <h2>Step 2: Billing address</h2>
+    <div class="field">
+      <label for="b-name">Full name</label>
+      <input type="text" id="b-name">
+    </div>
+    <div class="field">
+      <label for="b-addr">Address</label>
+      <input type="text" id="b-addr">
+    </div>
+  </div>
+
+  <!-- FAILURE 2: information the user already gave, asked again at the end. -->
+  <div class="step">
+    <h2>Step 3: Confirm</h2>
+    <div class="field">
+      <label for="c-email">Re-enter your email address</label>
+      <input type="email" id="c-email">
+    </div>
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

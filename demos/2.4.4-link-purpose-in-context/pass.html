@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.4 Link Purpose (In Context)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.4 Link Purpose (In Context).</p>
+
+  <!-- excerpt:start -->
+  <h1>News</h1>
+
+  <!-- FIX 1: the whole headline is the link, so the link text alone says where
+       it goes. This is almost always better than adding hidden text to a
+       "Read more" - it gives every user a bigger target (2.5.8) as well. -->
+  <article>
+    <h2><a href="#a">Spring reading festival announced</a></h2>
+    <p>Three days of events across both shops.</p>
+  </article>
+  <article>
+    <h2><a href="#b">Rare first editions arriving</a></h2>
+    <p>A private collection has come to us.</p>
+  </article>
+
+  <!-- FIX 2: if a "Read more" pattern is required by the design, keep the
+       visible text short and extend the accessible name with visually hidden
+       text. The visible words must still be inside the accessible name, or you
+       break 2.5.3 Label in Name for speech-input users. -->
+  <p>
+    <a href="#a">Read more<span class="visually-hidden"> about the spring reading festival</span></a>
+  </p>
+
+  <!-- FIX 3: describe the destination instead of pasting the URL. -->
+  <p>Read the <a href="#c">full spring programme</a>.</p>
+
+  <!-- FIX 4: the link text says what will happen. -->
+  <p><a href="#d">Book a place at the festival</a></p>
+
+  <!-- FIX 5: for an image link, the alt text describes the DESTINATION, not the
+       artwork - the image is standing in for the link text. -->
+  <p>
+    <a href="#e"><img src="../../assets/media/book-cover.svg"
+        alt="Tidal Flats by A. Marsh — read the review" width="60" height="85"></a>
+  </p>
+
+  <h2 id="a">Spring reading festival</h2><p>Story A.</p>
+  <h2 id="b">Rare first editions</h2><p>Story B.</p>
+  <h2 id="c">Full programme</h2><p>Programme.</p>
+  <h2 id="d">Booking</h2><p>Booking.</p>
+  <h2 id="e">Tidal Flats</h2><p>Review.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

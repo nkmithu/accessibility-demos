@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.3 Contrast (Minimum)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .muted   { color: #9aa3ac; }                    /* 2.3:1 on white */
+    .ghost   { color: #b9c2cb; }                    /* 1.7:1 on white */
+    .brand   { background: #7fb8f5; color: #ffffff; padding:.6rem 1rem; border:0;
+               border-radius:6px; font:inherit; min-height:44px; }   /* 1.9:1 */
+    .placeholder-demo::placeholder { color: #c2c9d0; }
+    .on-image { background: url("../../assets/media/sales-chart.svg") no-repeat center/cover;
+                color: #f0f4f8; padding: 1.5rem; border-radius: 6px; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.3 Contrast (Minimum).</p>
+
+  <!-- excerpt:start -->
+  <h1>Your order</h1>
+
+  <!-- FAILURE 1: light grey body text. 2.3:1, against a 4.5:1 requirement.
+       This is the single most common finding in any real accessibility audit,
+       and it almost always comes from a designer picking grey on a calibrated
+       monitor in a dark room. -->
+  <p class="muted">Order #1041, placed on 3 March 2026.</p>
+
+  <!-- FAILURE 2: even lighter "secondary" text at 1.7:1 - effectively invisible
+       to a lot of people, including anyone reading outdoors. -->
+  <p class="ghost">Delivery usually takes 3 to 5 working days.</p>
+
+  <!-- FAILURE 3: white on a pale brand colour, 1.9:1. Brand palettes are the
+       usual culprit; the fix is a darker tint for text, not abandoning the
+       brand. -->
+  <button type="button" class="brand">Track this order</button>
+
+  <!-- FAILURE 4: placeholder text at very low contrast. Placeholders are real
+       text and are in scope for 1.4.3 - another reason not to use them as
+       labels (see 3.3.2). -->
+  <div class="field">
+    <label for="q" class="muted">Order reference</label>
+    <input type="text" id="q" class="placeholder-demo" placeholder="e.g. 1041">
+  </div>
+
+  <!-- FAILURE 5: text over an image. The contrast changes across the image, so
+       it must be measured at its WORST point - and scanners generally skip this
+       case entirely, reporting nothing. -->
+  <p class="on-image">Sales are up 40% this quarter.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

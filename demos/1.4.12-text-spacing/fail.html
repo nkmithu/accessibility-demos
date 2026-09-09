@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.12 Text Spacing</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* Simulating the user's override so the failure is visible without a
+       bookmarklet. These are the exact values WCAG 1.4.12 requires a page to
+       survive. */
+    .spaced { line-height: 1.5 !important; letter-spacing: .12em !important;
+              word-spacing: .16em !important; }
+    .spaced p { margin-bottom: 2em !important; }
+
+    /* FAILURE 1: a fixed height on a text container. The extra leading pushes
+       text out of the box, and overflow:hidden throws it away. */
+    .card { height: 6rem; overflow: hidden; border:1px solid var(--border);
+            border-radius:6px; padding:.75rem; margin-bottom:1rem; }
+    /* FAILURE 2: a button sized in px with nowrap - the label overflows. */
+    .pill { display:inline-block; width: 150px; height: 40px; line-height: 40px;
+            white-space: nowrap; overflow: hidden; text-align:center;
+            background:#0a4f9e; color:#fff; border-radius:999px; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.12 Text Spacing.
+     The user's spacing overrides are applied below and content is clipped.</p>
+
+  <!-- excerpt:start -->
+  <div class="spaced">
+    <h1>Delivery</h1>
+
+    <!-- With the user's spacing applied, the last line of this card is cut off
+         and there is no way to reach it. -->
+    <div class="card">
+      <p>We deliver across the county on Tuesdays and Fridays. Orders placed
+         before noon are usually dispatched the same week.</p>
+    </div>
+
+    <!-- The label no longer fits inside its fixed-width pill. -->
+    <p><span class="pill">Track your delivery</span></p>
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.1 Bypass Blocks</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .navbar ul { list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:.75rem; }
+    .skip { position:absolute; left:.5rem; top:.5rem; transform:translateY(-250%);
+            background:#0a4f9e; color:#fff; padding:.6rem 1rem; border-radius:6px;
+            text-decoration:none; font-weight:600; z-index:10; }
+    .skip:focus { transform:translateY(0); }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.1 Bypass Blocks.
+     Press Tab once — the skip link appears.</p>
+
+  <!-- excerpt:start -->
+  <!-- FIX 1: a skip link as the first focusable element. It is moved off-screen
+       with transform rather than display:none, because display:none and
+       visibility:hidden remove it from the tab order entirely. It becomes
+       visible on focus, which matters: a sighted keyboard user needs to see it. -->
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <!-- FIX 2: real landmarks. A screen reader user can jump straight to the main
+       landmark, or list all landmarks, without using the skip link at all. -->
+  <header>
+    <nav class="navbar" aria-label="Main">
+      <ul>
+        <li><a href="#">Fiction</a></li><li><a href="#">Non-fiction</a></li>
+        <li><a href="#">Poetry</a></li><li><a href="#">Children's</a></li>
+        <li><a href="#">Rare books</a></li><li><a href="#">Second hand</a></li>
+        <li><a href="#">Events</a></li><li><a href="#">Book clubs</a></li>
+        <li><a href="#">Gift cards</a></li><li><a href="#">Our shops</a></li>
+        <li><a href="#">Contact</a></li><li><a href="#">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- FIX 3: tabindex="-1" on the target. Without it, some browsers scroll to
+       the element but leave focus behind in the navigation, so the next Tab
+       press sends the user back to link two. This is the detail most skip-link
+       implementations get wrong. -->
+  <main id="main" tabindex="-1">
+    <!-- FIX 4: a real heading, so heading navigation is a third way past the block. -->
+    <h1>This week's staff pick</h1>
+    <p>Tidal Flats, by A. Marsh.</p>
+    <p><a href="#">Read the review</a></p>
+  </main>
+  <!-- excerpt:end -->
+</body>
+</html>

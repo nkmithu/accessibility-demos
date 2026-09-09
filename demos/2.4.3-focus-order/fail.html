@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.3 Focus Order</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .modal { border:2px solid #6d7883; border-radius:8px; padding:1rem; background:#fff;
+             max-width:22rem; margin-top:1rem; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.3 Focus Order.
+     Tab through it and watch focus jump around.</p>
+
+  <!-- excerpt:start -->
+  <h1>Contact us</h1>
+
+  <!-- FAILURE 1: positive tabindex values scramble the order. Any element with
+       tabindex greater than 0 jumps to the FRONT of the tab order, ahead of
+       everything in the document. Here the user tabs: Message, Send, Name,
+       Email - the reverse of the visual order.
+
+       There is essentially never a good reason to use a positive tabindex.
+       Use 0 to make something focusable, -1 to make it focusable by script
+       only, and fix the DOM order instead. -->
+  <form>
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" tabindex="3">
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" tabindex="4">
+    </div>
+    <div class="field">
+      <label for="msg">Message</label>
+      <textarea id="msg" tabindex="1"></textarea>
+    </div>
+    <button type="submit" class="button" tabindex="2">Send</button>
+  </form>
+
+  <!-- FAILURE 2: a dialog that never receives focus. Opening it leaves focus on
+       the button behind it, so a keyboard user has to Tab through the whole page
+       to reach the dialog - and a screen reader user is not told it opened.
+       Focus is also not returned to the trigger on close. -->
+  <p><button type="button" class="button button--secondary" onclick="openDlg()">Open help</button></p>
+  <div class="modal" id="dlg" hidden>
+    <h2>Help</h2>
+    <p>We reply within two working days.</p>
+    <button type="button" class="button" onclick="closeDlg()">Close</button>
+  </div>
+  <!-- excerpt:end -->
+
+  <script>
+    function openDlg() { document.getElementById('dlg').hidden = false; }
+    function closeDlg() { document.getElementById('dlg').hidden = true; }
+  </script>
+</body>
+</html>

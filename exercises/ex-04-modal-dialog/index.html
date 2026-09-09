@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 4 — Modal dialog</title>
+<link rel="stylesheet" href="../exercise.css">
+<style>
+  .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45)}
+  .dlg{position:fixed;left:50%;top:20%;transform:translateX(-50%);background:#fff;
+       border-radius:8px;padding:1.25rem;width:min(26rem,90vw)}
+  .x{float:right;border:0;background:none;font-size:1.2rem;cursor:pointer;width:20px;height:20px;padding:0}
+</style>
+</head>
+<body>
+<p class="task"><strong>Exercise 4.</strong> Make this dialog work for keyboard and screen reader
+   users. See <code>README.md</code>.</p>
+
+<h1>Your account</h1>
+<p><a href="#a">A link before the dialog trigger</a></p>
+<p><button type="button" class="btn" onclick="open_()">Change your email address</button></p>
+<p><a href="#a">A link after the dialog trigger</a></p>
+<p id="a">Target.</p>
+
+<div class="backdrop" id="bd" hidden></div>
+<div class="dlg" id="dlg" hidden>
+  <button type="button" class="x" onclick="close_()">×</button>
+  <div style="font-size:1.15rem;font-weight:700">Change your email address</div>
+  <div class="field">
+    <label for="em">New email address</label>
+    <input type="email" id="em">
+  </div>
+  <button type="button" class="btn" onclick="close_()">Save</button>
+</div>
+
+<script>
+  // Opens and closes. That is all it does.
+  function open_() {
+    document.getElementById('bd').hidden = false;
+    document.getElementById('dlg').hidden = false;
+  }
+  function close_() {
+    document.getElementById('bd').hidden = true;
+    document.getElementById('dlg').hidden = true;
+  }
+</script>
+</body>
+</html>

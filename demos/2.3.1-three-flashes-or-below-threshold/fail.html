@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.3.1 Three Flashes or Below Threshold</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .flasher { width: 100%; max-width: 30rem; height: 9rem; border-radius: 6px;
+               border: 2px solid var(--border-strong); background: #b9c2cb; }
+    .flasher.on { animation: strobe .18s steps(2) infinite; }
+    @keyframes strobe { 50% { background: #ffffff; } }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately DEMONSTRATES a WCAG 2.3.1 failure.
+     The flashing is <strong>not</strong> started automatically — see the warning below.</p>
+
+  <!-- excerpt:start -->
+  <h1>Flash sale</h1>
+
+  <!-- 2.3.1 is the only success criterion whose failure can cause immediate
+       physical harm: a sequence flashing more than three times a second, over a
+       large enough area, can trigger a seizure in someone with photosensitive
+       epilepsy.
+
+       For that reason this demonstration is BUILT DIFFERENTLY from every other
+       fail.html in this suite. The unsafe animation does not start on load, and
+       the user has to opt in after an explicit warning. Teaching material must
+       not injure the person being taught.
+
+       WHAT WOULD BE WRONG in production: a banner that strobes at roughly 5.5
+       flashes per second, over a large area, with high luminance contrast
+       between the two states, and no way to stop it. -->
+  <div class="callout callout--fail">
+    <p class="callout__title">Health warning</p>
+    <p>The button below starts a rapidly flashing animation of the kind 2.3.1
+       prohibits. <strong>Do not use it if you have photosensitive epilepsy</strong>,
+       or if you are unsure.</p>
+    <button type="button" class="button" id="go">Show the unsafe flashing (5 seconds)</button>
+  </div>
+
+  <div class="flasher" id="box" role="img" aria-label="Demonstration area for the flashing animation"></div>
+  <!-- excerpt:end -->
+
+  <script>
+    document.getElementById('go').addEventListener('click', function () {
+      var box = document.getElementById('box');
+      box.classList.add('on');
+      setTimeout(function () { box.classList.remove('on'); }, 5000);
+    });
+  </script>
+</body>
+</html>

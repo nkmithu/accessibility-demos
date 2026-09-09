@@ -1,0 +1,62 @@
+      <section aria-labelledby="minwidth-h">
+        <h2 id="minwidth-h">The bug that breaks reflow most often</h2>
+        <p>Almost every reflow failure in a modern layout comes from one CSS rule that
+           nobody wrote. Grid and flex items default to <code>min-width: auto</code>, which
+           means <strong>they refuse to shrink below the intrinsic minimum width of their
+           content</strong>. One long unbreakable string — a code sample, a URL, a wide
+           table — and the whole column stops shrinking, taking the page with it.</p>
+
+        <div class="code-block">
+          <p class="code-block__caption">The fix</p>
+          <pre tabindex="0"><code>.grid-item {
+  min-width: 0;   /* allow this item to be narrower than its content */
+}</code></pre>
+        </div>
+
+        <p>What makes it hard to spot is that the offending child is usually behaving
+           perfectly. A <code>&lt;pre&gt;</code> with <code>overflow-x: auto</code> scrolls
+           its own content correctly and looks fine in isolation. It still reports its full
+           content width as its intrinsic size, and that number propagates up through every
+           grid and flex ancestor until something has a <code>min-width</code> that stops it.</p>
+
+        <div class="callout callout--note">
+          <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> This suite failed its own test on exactly this</p>
+          <p>Every criterion page on this site puts the failing and passing examples in a CSS
+             grid, and each panel contains a code block. At 320&nbsp;px those panels would not
+             shrink, and all 87 demo pages scrolled horizontally — while passing every axe
+             check, because no automated accessibility rule detects this.</p>
+          <p>It was caught by <code>npm run test:reflow</code>, which renders each page at
+             320&nbsp;×&nbsp;256 and measures the actual overflow. The fix was
+             <code>min-width: 0</code> on the grid items, and it is commented in
+             <code>assets/css/demo.css</code> so it does not get "tidied away" later.</p>
+        </div>
+
+        <h3>Where else this bites</h3>
+        <ul>
+          <li>A flex row containing a long email address or a file path.</li>
+          <li>A card grid where one card holds a wide data table.</li>
+          <li>A sidebar layout where the main column holds a code sample.</li>
+          <li>Anything using <code>white-space: nowrap</code> inside a grid or flex child.</li>
+        </ul>
+        <p>The companion fix for text is <code>overflow-wrap: break-word</code>, which lets
+           long words break rather than forcing the container wider.</p>
+      </section>
+
+      <section aria-labelledby="test410-h">
+        <h2 id="test410-h">Testing this properly</h2>
+        <ol>
+          <li>Set the browser window to 1280&nbsp;px wide and zoom to 400%. That gives you a
+              320&nbsp;px viewport — which is why 320 is the number, not an arbitrary phone
+              width.</li>
+          <li>Check for a horizontal scrollbar on the page itself. Content that scrolls
+              <em>inside its own container</em> is fine; the page must not.</li>
+          <li>Confirm nothing is cut off or unreachable — overflow is only the mechanical
+              half of this criterion.</li>
+          <li>Remember the exemptions: data tables, maps, diagrams, code blocks and video may
+              require two dimensions. Your page layout never does.</li>
+        </ol>
+        <p>To check a whole site at once, see <code>tools/check-reflow.mjs</code> in this
+           repository — it renders every page at 320&nbsp;×&nbsp;256, applies the
+           <a href="../1.4.12-text-spacing/index.html">1.4.12 text-spacing overrides</a>, and
+           names the widest offending element when it finds overflow.</p>
+      </section>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.13 Content on Hover or Focus</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .tip-wrap { position: relative; display: inline-block; }
+    .tip { position: absolute; left: 0; top: 1.6rem; width: 17rem; padding: .6rem .75rem;
+           background: #14171c; color: #fff; border-radius: 6px; font-size: .9375rem; z-index: 3; }
+    /* HOVERABLE: no gap between trigger and popup - the popup starts where the
+       trigger ends, so the pointer can travel onto it without leaving either. */
+    .tip[hidden] { display: none; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.13.
+     Hover or focus the term, move onto the tooltip, and press Escape to dismiss it.</p>
+
+  <!-- excerpt:start -->
+  <h1>Membership</h1>
+
+  <!-- The three requirements, all satisfied:
+         DISMISSABLE - Escape closes it, without moving the pointer or focus.
+         HOVERABLE   - the popup touches the trigger and stays open while the
+                       pointer is over EITHER, so you can move onto it and read.
+         PERSISTENT  - it stays until dismissed, focus moves away, or the
+                       information becomes invalid. No timer.
+
+       aria-describedby ties the description to the trigger, so a screen reader
+       user gets the content without needing the popup at all. -->
+  <p>
+    Members get
+    <span class="tip-wrap">
+      <button type="button" class="link-like" id="trigger" aria-describedby="tip"
+              style="font:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;">
+        priority reservations</button>
+      <span class="tip" id="tip" role="tooltip" hidden>Members can reserve up to five titles at
+        once and collect them within fourteen days rather than seven.</span>
+    </span>
+    and free delivery.
+  </p>
+
+  <!-- FIX: the confirmation is a persistent status message with its own dismiss
+       control, not a disappearing toast. It is in a live region so it is
+       announced (4.1.3), and it does not cover anything. -->
+  <p><button type="button" class="button" onclick="save()">Save preferences</button></p>
+  <div id="saved" role="status"></div>
+  <!-- excerpt:end -->
+
+  <script>
+    var trigger = document.getElementById('trigger');
+    var tip = document.getElementById('tip');
+    var wrap = trigger.parentNode;
+
+    function show() { tip.hidden = false; }
+    function hide() { tip.hidden = true; }
+
+    // Hover on the WRAPPER, so the popup stays open while the pointer is on it.
+    wrap.addEventListener('pointerenter', show);
+    wrap.addEventListener('pointerleave', hide);
+    trigger.addEventListener('focus', show);
+    trigger.addEventListener('blur', hide);
+
+    // Escape dismisses without moving pointer or focus. Listening on the document
+    // matters: the user may have moved the pointer onto the popup itself.
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+
+    function save() {
+      var box = document.getElementById('saved');
+      box.innerHTML = '';
+      var p = document.createElement('p');
+      p.textContent = 'Preferences saved. ';
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'button button--secondary';
+      btn.textContent = 'Dismiss';
+      btn.addEventListener('click', function () { box.innerHTML = ''; });
+      p.appendChild(btn); box.appendChild(p);
+    }
+  </script>
+</body>
+</html>

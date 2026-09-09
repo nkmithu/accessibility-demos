@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.2.3 Consistent Navigation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .mini { border:1px solid var(--border); border-radius:6px; padding:.75rem; }
+    .mini nav ul { list-style:none; margin:0 0 .5rem; padding:0; display:flex; gap:.6rem;
+                   flex-wrap:wrap; font-size:.9rem; }
+    .pages { display:grid; gap:1rem; }
+    @media (min-width:44rem) { .pages { grid-template-columns:1fr 1fr 1fr; } }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.2.3 Consistent Navigation.</p>
+
+  <!-- excerpt:start -->
+  <h1>Three pages from the same site</h1>
+  <p>Like 3.2.6, this criterion cannot be judged from one page. Compare the
+     navigation across the set.</p>
+
+  <div class="pages">
+    <div class="mini">
+      <h2>Home</h2>
+      <nav aria-label="Page 1"><ul>
+        <li>Books</li><li>Events</li><li>Membership</li><li>Contact</li>
+      </ul></nav>
+      <p>Welcome.</p>
+    </div>
+
+    <!-- FAILURE 1: the same four items, reordered. A user who learned "Contact
+         is last" or "Events is the second Tab press" has to relearn the page. -->
+    <div class="mini">
+      <h2>Books</h2>
+      <nav aria-label="Page 2"><ul>
+        <li>Contact</li><li>Membership</li><li>Books</li><li>Events</li>
+      </ul></nav>
+      <p>Browse our shelves.</p>
+    </div>
+
+    <!-- FAILURE 2: reordered again, and the navigation has moved from the top of
+         the page to below the content. -->
+    <div class="mini">
+      <h2>Events</h2>
+      <p>What's on this month.</p>
+      <nav aria-label="Page 3"><ul>
+        <li>Membership</li><li>Events</li><li>Contact</li><li>Books</li>
+      </ul></nav>
+    </div>
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

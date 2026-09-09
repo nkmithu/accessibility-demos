@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.3.2 Three Flashes</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .small-flasher{width:120px;height:90px;border-radius:6px;border:2px solid var(--border-strong);
+                   background:#b9c2cb}
+    .small-flasher.on{animation:strobe .18s steps(2) infinite}
+    @keyframes strobe{50%{background:#ffffff}}
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page DEMONSTRATES a WCAG 2.3.2 failure.
+     The flashing does <strong>not</strong> start automatically — read the warning first.</p>
+
+  <!-- excerpt:start -->
+  <h1>New arrivals</h1>
+
+  <!-- The difference between 2.3.1 (Level A) and 2.3.2 (AAA):
+
+       2.3.1 permits flashing above three times a second IF the flashing area is
+       small enough - below about 25% of 10 degrees of visual field, roughly a
+       341 x 256 pixel area - and does not involve saturated red.
+
+       The badge below is 120 x 90 pixels, well under that threshold. It flashes
+       at about 5.5 times a second. It therefore PASSES 2.3.1 under the small-area
+       exception, and FAILS 2.3.2, which allows no such exception.
+
+       As with 2.3.1, this demonstration is opt-in. Content that can trigger a
+       seizure must never be started without warning, not even to teach. -->
+  <div class="callout callout--fail">
+    <p class="callout__title">Health warning</p>
+    <p>The button below starts a small rapidly flashing element.
+       <strong>Do not use it if you have photosensitive epilepsy</strong>, or if you are unsure.</p>
+    <button type="button" class="button" id="go">Show the flashing badge (5 seconds)</button>
+  </div>
+
+  <div class="small-flasher" id="box" role="img"
+       aria-label="Demonstration area for the flashing badge"></div>
+  <!-- excerpt:end -->
+
+  <script>
+    document.getElementById('go').addEventListener('click', function () {
+      var box = document.getElementById('box');
+      box.classList.add('on');
+      setTimeout(function () { box.classList.remove('on'); }, 5000);
+    });
+  </script>
+</body>
+</html>

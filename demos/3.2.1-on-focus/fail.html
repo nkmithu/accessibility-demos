@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.2.1 On Focus</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.2.1 On Focus.
+     Tab into the fields and watch things happen you did not ask for.</p>
+
+  <!-- excerpt:start -->
+  <h1>Find a branch</h1>
+
+  <form>
+    <!-- FAILURE 1: the select submits as soon as it receives focus. A keyboard
+         user tabbing to it, or a screen reader user arrowing through the options
+         to hear them, triggers navigation before they have chosen anything.
+         They can never reach the option they actually want. -->
+    <div class="field">
+      <label for="branch">Branch</label>
+      <select id="branch" onfocus="go()">
+        <option>Riverside</option>
+        <option>Old Town</option>
+        <option>Hillgate</option>
+      </select>
+    </div>
+
+    <!-- FAILURE 2: focusing the field opens a dialog, so focus is yanked
+         somewhere else the instant the user arrives. -->
+    <div class="field">
+      <label for="date">Visit date</label>
+      <input type="text" id="date" onfocus="openHelp()">
+    </div>
+
+    <!-- FAILURE 3: focus moves focus. Tabbing here throws the user to the
+         bottom of the page, and everything between is unreachable by Tab. -->
+    <div class="field">
+      <label for="post">Postcode</label>
+      <input type="text" id="post" onfocus="document.getElementById('end').focus()">
+    </div>
+
+    <button type="submit" class="button">Search</button>
+  </form>
+
+  <p id="log" role="status"></p>
+  <p><a href="#x" id="end">Last link on the page</a></p>
+  <p id="x">Target.</p>
+  <!-- excerpt:end -->
+
+  <script>
+    function go() { document.getElementById('log').textContent = 'Form submitted on focus.'; }
+    function openHelp() { document.getElementById('log').textContent = 'Dialog opened on focus.'; }
+  </script>
+</body>
+</html>

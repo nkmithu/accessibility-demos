@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.4 Error Prevention (Legal, Financial, Data)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.3.4.</p>
+
+  <!-- excerpt:start -->
+  <h1>Confirm your order</h1>
+
+  <!-- FAILURE 1: a financial transaction committed in one click, with no review
+       step, no confirmation, and no way to reverse it. The user cannot check
+       what they are about to buy or correct a mistake before it costs money. -->
+  <p>Total: £48.97</p>
+  <button type="button" class="button" onclick="pay()">Pay now</button>
+
+  <!-- FAILURE 2: an irreversible data deletion with no confirmation. -->
+  <h2>Account</h2>
+  <button type="button" class="button" onclick="wipe()">Delete all my order history</button>
+
+  <!-- FAILURE 3: a legal commitment accepted implicitly, with the terms not
+       shown and no explicit act of agreement. -->
+  <p><small>By pressing Pay now you agree to our terms of sale.</small></p>
+
+  <p id="log" role="status"></p>
+  <!-- excerpt:end -->
+
+  <script>
+    function pay() { document.getElementById('log').textContent = 'Payment taken. £48.97 charged.'; }
+    function wipe() { document.getElementById('log').textContent = 'All order history permanently deleted.'; }
+  </script>
+</body>
+</html>

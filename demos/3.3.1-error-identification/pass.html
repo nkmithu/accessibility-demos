@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.3.1 Error Identification</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .in-error { border-color: #a3121f !important; }
+    .error-text { color:#a3121f; font-weight:600; margin:.25rem 0 0; }
+    .error-summary { border:2px solid #a3121f; background:#fdf1f2; padding:1rem; border-radius:6px; margin-bottom:1rem; }
+    .error-summary h2 { margin-top:0; font-size:1.0625rem; color:#a3121f; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.3.1 Error Identification.
+     Submit the empty form and listen with a screen reader.</p>
+
+  <!-- excerpt:start -->
+  <h1>Create your account</h1>
+
+  <!-- FIX 1: an error summary at the top of the form. It is focused after a
+       failed submit, so a screen reader reads the whole problem immediately, and
+       each entry links to the field that caused it. tabindex="-1" makes it
+       focusable by script without adding it to the tab order. -->
+  <div id="summary" class="error-summary" role="alert" tabindex="-1" hidden>
+    <h2>There is a problem</h2>
+    <ul id="summary-list"></ul>
+  </div>
+
+  <form id="signup" novalidate>
+    <div class="field">
+      <label for="email">Email address</label>
+      <!-- FIX 2: aria-describedby ties the message to the field, so moving focus
+           to the input reads the label AND the error. aria-invalid marks the
+           state, so the field announces as "invalid entry". -->
+      <input type="email" id="email" name="email" aria-describedby="email-err">
+      <p class="error-text" id="email-err" hidden></p>
+    </div>
+
+    <div class="field">
+      <label for="pw">Password</label>
+      <input type="password" id="pw" name="pw" aria-describedby="pw-err">
+      <p class="error-text" id="pw-err" hidden></p>
+    </div>
+
+    <button type="submit" class="button">Create account</button>
+  </form>
+  <!-- excerpt:end -->
+
+  <script>
+    // FIX 3: the message names the field and says what is wrong, in text.
+    var RULES = [
+      { id: 'email', label: 'Email address', test: function (v) { return v.trim() !== ''; },
+        msg: 'Error: enter your email address.' },
+      { id: 'pw', label: 'Password', test: function (v) { return v.length >= 8; },
+        msg: 'Error: your password must be at least 8 characters long.' }
+    ];
+
+    document.getElementById('signup').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var summary = document.getElementById('summary');
+      var list = document.getElementById('summary-list');
+      list.innerHTML = '';
+      var bad = 0;
+
+      RULES.forEach(function (rule) {
+        var el = document.getElementById(rule.id);
+        var msg = document.getElementById(rule.id + '-err');
+        var ok = rule.test(el.value);
+
+        el.classList.toggle('in-error', !ok);
+        // aria-invalid must be removed when valid, not set to "false" and left.
+        if (ok) { el.removeAttribute('aria-invalid'); } else { el.setAttribute('aria-invalid', 'true'); }
+        msg.textContent = ok ? '' : rule.msg;
+        msg.hidden = ok;
+
+        if (!ok) {
+          bad++;
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = '#' + rule.id;
+          a.textContent = rule.msg;
+          a.addEventListener('click', function (ev) { ev.preventDefault(); el.focus(); });
+          li.appendChild(a);
+          list.appendChild(li);
+        }
+      });
+
+      summary.hidden = bad === 0;
+      if (bad) { summary.focus(); }
+    });
+  </script>
+</body>
+</html>

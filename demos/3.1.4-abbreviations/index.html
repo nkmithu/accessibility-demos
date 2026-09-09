@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.1.4 Abbreviations (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A mechanism for identifying the expanded form or meaning of abbreviations is available.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.1.4 Abbreviations</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.1.4</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 3.1 Readable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Abbreviations</h1>
+        <p class="sc-header__summary">A mechanism for identifying the expanded form or meaning of abbreviations is available.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users, since a screen reader may spell out or mispronounce an abbreviation. Users with cognitive disabilities and readers unfamiliar with the domain.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.1.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.1.4 Abbreviations"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Trade terms&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: initialisms never expanded. A reader who does not already know
+     the trade cannot decode them, and a screen reader may spell them out
+     letter by letter or, worse, attempt to pronounce them as words. --&gt;
+&lt;p&gt;All prices are RRP excluding VAT. Delivery is POA for orders outside the UK.&lt;/p&gt;
+
+&lt;!-- FAILURE 2: an abbreviation that collides with an everyday word. A screen
+     reader will usually read &quot;ISBN&quot; as letters but &quot;no.&quot; as &quot;no&quot;, and
+     &quot;Dr&quot; may be read as &quot;doctor&quot; or &quot;drive&quot; depending on context the software
+     cannot see. --&gt;
+&lt;p&gt;Quote the ISBN and our ref. no. when you write to Dr Ellis at our head office.&lt;/p&gt;
+
+&lt;!-- FAILURE 3: a domain-specific abbreviation with no expansion anywhere. --&gt;
+&lt;p&gt;Condition: VG in a G+ dust jacket.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.1.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.1.4 Abbreviations"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Trade terms&lt;/h1&gt;
+
+&lt;!-- FIX 1: expand at first use, with the abbreviation in brackets after the
+     full form. This is the most reliable technique, because it works for every
+     user and every technology - it is just text. --&gt;
+&lt;p&gt;All prices are recommended retail price (&lt;abbr title=&quot;recommended retail price&quot;&gt;RRP&lt;/abbr&gt;)
+   excluding value added tax (&lt;abbr title=&quot;value added tax&quot;&gt;VAT&lt;/abbr&gt;).
+   Delivery is price on application (&lt;abbr title=&quot;price on application&quot;&gt;POA&lt;/abbr&gt;)
+   for orders outside the United Kingdom.&lt;/p&gt;
+
+&lt;!-- FIX 2: after first use, the abbr element with a title carries the
+     expansion. A caution worth teaching: the title attribute is NOT reliable
+     on its own. It is not shown on touch devices, is not announced by every
+     screen reader by default, and cannot be reached by keyboard. Use abbr as a
+     supplement to expanding in text, never as a replacement. --&gt;
+&lt;p&gt;Quote the &lt;abbr title=&quot;International Standard Book Number&quot;&gt;ISBN&lt;/abbr&gt; and our
+   reference number when you write to Dr Ellis at our head office.&lt;/p&gt;
+
+&lt;!-- FIX 3: domain abbreviations expanded and collected in a glossary, so a
+     reader arriving mid-page can still resolve them. --&gt;
+&lt;p&gt;Condition: very good (&lt;abbr title=&quot;very good&quot;&gt;VG&lt;/abbr&gt;) in a
+   good-plus (&lt;abbr title=&quot;good plus&quot;&gt;G+&lt;/abbr&gt;) dust jacket.
+   See our &lt;a href=&quot;#grades&quot;&gt;condition grades&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;grades&quot;&gt;Condition grades&lt;/h2&gt;
+&lt;dl&gt;
+  &lt;dt&gt;VG — very good&lt;/dt&gt;&lt;dd&gt;Clean and sound, with only minor shelf wear.&lt;/dd&gt;
+  &lt;dt&gt;G+ — good plus&lt;/dt&gt;&lt;dd&gt;Complete and readable, with visible wear or small tears.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;!-- Practical rules:
+     - expand in text at first use on EVERY page, not just once across the site;
+       users arrive mid-site from search
+     - do not mark up abbreviations everyone already knows in context, such as
+       BBC or DVD - over-marking makes a page tiring to listen to
+     - never rely on title alone --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Find every abbreviation and acronym. Confirm it is expanded at first use or marked up with abbr and a title, or defined in a glossary.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Detecting abbreviations reliably and judging whether they are explained requires a human.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.1.3-unusual-words/index.html">3.1.3 Unusual Words (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/abbreviations.html">Understanding 3.1.4 Abbreviations</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#abbreviations">3.1.4 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.1.3-unusual-words/index.html"><span class="sc-pager__dir">Previous criterion</span>3.1.3 Unusual Words</a>
+        <a href="../3.1.5-reading-level/index.html"><span class="sc-pager__dir">Next criterion</span>3.1.5 Reading Level</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

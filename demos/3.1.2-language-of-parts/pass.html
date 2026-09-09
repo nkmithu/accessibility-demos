@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.1.2 Language of Parts</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.1.2 Language of Parts.
+     Every Bangla passage declares <code>lang="bn"</code>.</p>
+
+  <!-- excerpt:start -->
+  <h1>Book review: Gitanjali</h1>
+
+  <p>Rabindranath Tagore's collection was first published in Bangla in 1910.
+     The opening line is one of the most quoted in the language:</p>
+
+  <!-- FIX 1: the quotation carries its own lang, so a screen reader switches
+       to a Bangla voice for this passage and switches back afterwards. -->
+  <blockquote>
+    <p lang="bn">আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।</p>
+    <footer>— Rabindranath Tagore, <cite>Gitanjali</cite></footer>
+  </blockquote>
+
+  <!-- FIX 2: an inline span is enough for a single word or phrase. -->
+  <p>The word <span lang="bn">গীতাঞ্জলি</span> translates roughly as "song offering".</p>
+
+  <!-- FIX 3: each language option is marked with the language it names, so it is
+       pronounced correctly by the user who is looking for it. The hreflang
+       attribute describes the language of the destination page - useful, but it
+       is lang, not hreflang, that controls pronunciation of the link text. -->
+  <nav aria-label="Language">
+    <ul class="plain">
+      <li><a href="#en" hreflang="en">English</a></li>
+      <li><a href="#bn" hreflang="bn" lang="bn">বাংলা</a></li>
+    </ul>
+  </nav>
+
+  <!-- Note what does NOT need marking: proper names, and words that have been
+       absorbed into the surrounding language. "Rabindranath Tagore" stays
+       unmarked here, and so would a word like "rendezvous" in English text. -->
+  <h2 id="en">English edition</h2>
+  <p>The English translation, 1912.</p>
+  <h2 id="bn" lang="bn">বাংলা সংস্করণ</h2>
+  <p lang="bn">মূল বাংলা সংস্করণ, ১৯১০ সালে প্রকাশিত।</p>
+  <!-- excerpt:end -->
+</body>
+</html>

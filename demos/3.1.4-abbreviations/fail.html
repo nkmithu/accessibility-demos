@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.1.4 Abbreviations</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.1.4 Abbreviations.</p>
+
+  <!-- excerpt:start -->
+  <h1>Trade terms</h1>
+
+  <!-- FAILURE 1: initialisms never expanded. A reader who does not already know
+       the trade cannot decode them, and a screen reader may spell them out
+       letter by letter or, worse, attempt to pronounce them as words. -->
+  <p>All prices are RRP excluding VAT. Delivery is POA for orders outside the UK.</p>
+
+  <!-- FAILURE 2: an abbreviation that collides with an everyday word. A screen
+       reader will usually read "ISBN" as letters but "no." as "no", and
+       "Dr" may be read as "doctor" or "drive" depending on context the software
+       cannot see. -->
+  <p>Quote the ISBN and our ref. no. when you write to Dr Ellis at our head office.</p>
+
+  <!-- FAILURE 3: a domain-specific abbreviation with no expansion anywhere. -->
+  <p>Condition: VG in a G+ dust jacket.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

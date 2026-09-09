@@ -1,0 +1,749 @@
+{
+  "principle": "1",
+  "principleTitle": "Perceivable",
+  "principleIntent": "Information and user interface components must be presentable to users in ways they can perceive. If a user cannot perceive it, nothing else about the interface matters.",
+  "guidelines": {
+    "1.1": "Text Alternatives",
+    "1.2": "Time-based Media",
+    "1.3": "Adaptable",
+    "1.4": "Distinguishable"
+  },
+  "criteria": [
+    {
+      "id": "1.1.1",
+      "slug": "non-text-content",
+      "title": "Non-text Content",
+      "level": "A",
+      "guideline": "1.1",
+      "version": "2.0",
+      "summary": "All non-text content has a text alternative that serves the equivalent purpose. Decorative images are given an empty alt attribute so assistive technology ignores them.",
+      "whoItAffects": "Screen reader users get nothing at all from an unlabelled image. Users who disable images, are on slow connections, or use text-only browsers lose the content entirely. Search indexing and translation tools also depend on it.",
+      "howToTest": "Inspect every img, svg, canvas, area, input[type=image], and CSS background that carries meaning. Ask: if this image vanished and were replaced by its alt text, would the page still make sense? Decorative images must have alt=\"\" (not a missing alt, and not alt=\"decorative image\").",
+      "automatable": "partial",
+      "automationNote": "Scanners detect a missing alt attribute reliably. They cannot judge whether the alt text is accurate or meaningful — alt=\"image\" passes every automated tool and fails every real user.",
+      "axeRules": [
+        "image-alt",
+        "input-image-alt",
+        "area-alt",
+        "role-img-alt",
+        "svg-img-alt",
+        "object-alt"
+      ],
+      "related": [
+        "1.4.5",
+        "1.4.9",
+        "2.4.4",
+        "4.1.2"
+      ],
+      "tags": [
+        "images",
+        "media",
+        "text-alternatives"
+      ]
+    },
+    {
+      "id": "1.2.1",
+      "slug": "audio-only-and-video-only-prerecorded",
+      "title": "Audio-only and Video-only (Prerecorded)",
+      "level": "A",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "Prerecorded audio-only content has a text transcript. Prerecorded video-only content has either a transcript or an audio track describing what is shown.",
+      "whoItAffects": "Deaf and hard-of-hearing users cannot access audio-only content such as a podcast. Blind users cannot access silent video such as an animated explainer or a screen recording with no narration.",
+      "howToTest": "Find every audio-only and video-only file. Confirm a transcript exists, is reachable from the same page, and conveys the same information — including who is speaking and any meaningful sound.",
+      "automatable": "no",
+      "automationNote": "No tool can tell whether a transcript exists elsewhere on the page or whether it matches the media. This is entirely a human judgement.",
+      "axeRules": [],
+      "related": [
+        "1.2.2",
+        "1.2.3",
+        "1.2.8"
+      ],
+      "tags": [
+        "media",
+        "audio",
+        "video",
+        "transcripts"
+      ]
+    },
+    {
+      "id": "1.2.2",
+      "slug": "captions-prerecorded",
+      "title": "Captions (Prerecorded)",
+      "level": "A",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "Captions are provided for all prerecorded audio content in synchronised media. Captions carry dialogue plus speaker identification and meaningful non-speech sound.",
+      "whoItAffects": "Deaf and hard-of-hearing users. Also anyone in a loud environment, in a quiet environment without headphones, or watching in a second language.",
+      "howToTest": "Play every video with sound off. Confirm captions are synchronised, accurate, identify speakers, and include relevant sounds such as [door slams]. Auto-generated captions with no human correction routinely fail on names, technical terms, and punctuation.",
+      "automatable": "partial",
+      "automationNote": "A scanner can detect that a track element with kind=\"captions\" is absent. It cannot verify caption accuracy, synchronisation, or completeness.",
+      "axeRules": [
+        "video-caption"
+      ],
+      "related": [
+        "1.2.4",
+        "1.2.8",
+        "1.4.2"
+      ],
+      "tags": [
+        "media",
+        "video",
+        "captions"
+      ]
+    },
+    {
+      "id": "1.2.3",
+      "slug": "audio-description-or-media-alternative-prerecorded",
+      "title": "Audio Description or Media Alternative (Prerecorded)",
+      "level": "A",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "Prerecorded video in synchronised media has either an audio description of the visual information or a full text alternative for the whole presentation.",
+      "whoItAffects": "Blind and low-vision users, who miss any information shown but never spoken — on-screen text, a demonstrated action, a chart, a facial reaction.",
+      "howToTest": "Watch the video with the screen off. If you lose information, the visual content is not described. Confirm either a described audio track or a text alternative covering both dialogue and visuals.",
+      "automatable": "no",
+      "automationNote": "Requires watching the media and judging whether the visuals carry information the audio does not.",
+      "axeRules": [],
+      "related": [
+        "1.2.5",
+        "1.2.7",
+        "1.2.8"
+      ],
+      "tags": [
+        "media",
+        "video",
+        "audio-description"
+      ]
+    },
+    {
+      "id": "1.2.4",
+      "slug": "captions-live",
+      "title": "Captions (Live)",
+      "level": "AA",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "Captions are provided for all live audio content in synchronised media — webinars, live streams, virtual events.",
+      "whoItAffects": "Deaf and hard-of-hearing users, who are excluded from live events in real time. A transcript published afterwards does not satisfy this criterion.",
+      "howToTest": "Attend or review a recording of the live stream as delivered. Confirm real-time captions were available during the broadcast, with acceptable accuracy and latency.",
+      "automatable": "no",
+      "automationNote": "Requires observing a live event as it happens.",
+      "axeRules": [],
+      "related": [
+        "1.2.2",
+        "1.2.9"
+      ],
+      "tags": [
+        "media",
+        "live",
+        "captions"
+      ]
+    },
+    {
+      "id": "1.2.5",
+      "slug": "audio-description-prerecorded",
+      "title": "Audio Description (Prerecorded)",
+      "level": "AA",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "Audio description is provided for all prerecorded video content. At AA the text-alternative escape hatch allowed at 1.2.3 is removed — a real described audio track is required.",
+      "whoItAffects": "Blind and low-vision users. At AA the standard assumes they should be able to consume the video itself, not a separate document.",
+      "howToTest": "Confirm a described audio track exists and is selectable. Play it and verify descriptions fit the natural pauses in dialogue without talking over it.",
+      "automatable": "no",
+      "automationNote": "Requires listening to the described track and judging its completeness.",
+      "axeRules": [],
+      "related": [
+        "1.2.3",
+        "1.2.7"
+      ],
+      "tags": [
+        "media",
+        "video",
+        "audio-description"
+      ]
+    },
+    {
+      "id": "1.2.6",
+      "slug": "sign-language-prerecorded",
+      "title": "Sign Language (Prerecorded)",
+      "level": "AAA",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "Sign language interpretation is provided for all prerecorded audio in synchronised media.",
+      "whoItAffects": "Deaf users whose first language is a sign language. For many, a signed language is native and the written language of the page is a second language read at reduced fluency — captions alone are not equivalent.",
+      "howToTest": "Confirm a sign language track or picture-in-picture interpreter is available, in the correct sign language for the audience (BSL, ASL and others are distinct languages).",
+      "automatable": "no",
+      "automationNote": "Requires a fluent human reviewer.",
+      "axeRules": [],
+      "related": [
+        "1.2.2",
+        "1.2.4"
+      ],
+      "tags": [
+        "media",
+        "video",
+        "sign-language"
+      ]
+    },
+    {
+      "id": "1.2.7",
+      "slug": "extended-audio-description-prerecorded",
+      "title": "Extended Audio Description (Prerecorded)",
+      "level": "AAA",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "Where the pauses in the foreground audio are too short to carry adequate description, extended audio description pauses the video to allow a longer description.",
+      "whoItAffects": "Blind and low-vision users watching dense visual content — a software demo or a lab procedure — where standard description cannot fit in the gaps.",
+      "howToTest": "Identify video with dense visuals and little silence. Confirm an extended-description version exists that pauses playback to describe.",
+      "automatable": "no",
+      "automationNote": "Requires human review of timing and content density.",
+      "axeRules": [],
+      "related": [
+        "1.2.3",
+        "1.2.5"
+      ],
+      "tags": [
+        "media",
+        "video",
+        "audio-description"
+      ]
+    },
+    {
+      "id": "1.2.8",
+      "slug": "media-alternative-prerecorded",
+      "title": "Media Alternative (Prerecorded)",
+      "level": "AAA",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "A full text alternative is provided for all prerecorded synchronised media and for prerecorded video-only media.",
+      "whoItAffects": "Deafblind users, who reach content through a refreshable braille display and cannot use captions or audio description. Also users who prefer to read or search rather than watch.",
+      "howToTest": "Confirm a complete text document covering dialogue, speakers, and visual information, reachable from the media, and readable as a standalone narrative.",
+      "automatable": "no",
+      "automationNote": "Requires comparing the document against the media.",
+      "axeRules": [],
+      "related": [
+        "1.2.1",
+        "1.2.3"
+      ],
+      "tags": [
+        "media",
+        "transcripts",
+        "deafblind"
+      ]
+    },
+    {
+      "id": "1.2.9",
+      "slug": "audio-only-live",
+      "title": "Audio-only (Live)",
+      "level": "AAA",
+      "guideline": "1.2",
+      "version": "2.0",
+      "summary": "A text alternative presenting equivalent information is provided for live audio-only content, such as a live radio broadcast or audio-only conference call.",
+      "whoItAffects": "Deaf and hard-of-hearing users attending live audio-only events.",
+      "howToTest": "Confirm live captioning or real-time text (CART) is offered during the broadcast.",
+      "automatable": "no",
+      "automationNote": "Requires observing the live event.",
+      "axeRules": [],
+      "related": [
+        "1.2.4"
+      ],
+      "tags": [
+        "media",
+        "live",
+        "audio"
+      ]
+    },
+    {
+      "id": "1.3.1",
+      "slug": "info-and-relationships",
+      "title": "Info and Relationships",
+      "level": "A",
+      "guideline": "1.3",
+      "version": "2.0",
+      "summary": "Structure and relationships conveyed visually are also available programmatically. Headings are headings, lists are lists, tables have header cells, and form fields have real labels.",
+      "whoItAffects": "Screen reader users navigate by structure — jumping heading to heading, listing landmarks, reading a table cell with its row and column headers. Bold text styled to look like a heading provides none of that.",
+      "howToTest": "Turn off CSS, or view the accessibility tree. Every visual grouping, heading level, list, and table relationship should still be expressed in the markup. Check label/for pairings, th with scope, fieldset/legend for radio groups.",
+      "automatable": "partial",
+      "automationNote": "Scanners catch missing form labels, empty headings, and layout tables with headers. They cannot detect a div styled to look like an h2, or a heading hierarchy that is technically valid but semantically wrong.",
+      "axeRules": [
+        "label",
+        "form-field-multiple-labels",
+        "th-has-data-cells",
+        "td-headers-attr",
+        "empty-heading",
+        "definition-list",
+        "list",
+        "listitem",
+        "aria-required-children",
+        "aria-required-parent"
+      ],
+      "related": [
+        "1.3.2",
+        "2.4.6",
+        "2.4.10",
+        "4.1.2"
+      ],
+      "tags": [
+        "semantics",
+        "forms",
+        "tables",
+        "headings",
+        "structure"
+      ]
+    },
+    {
+      "id": "1.3.2",
+      "slug": "meaningful-sequence",
+      "title": "Meaningful Sequence",
+      "level": "A",
+      "guideline": "1.3",
+      "version": "2.0",
+      "summary": "When the order in which content is presented affects its meaning, a correct reading sequence can be determined programmatically. The DOM order must match the logical reading order.",
+      "whoItAffects": "Screen reader users and users of any linearised view receive content in DOM order, not visual order. CSS that reorders columns visually leaves them reading in the original, now-nonsensical order.",
+      "howToTest": "Disable CSS and read top to bottom — the sequence must still make sense. Watch for flexbox order, grid placement, and absolute positioning that move content visually without moving it in the DOM.",
+      "automatable": "no",
+      "automationNote": "Detecting whether a reading order is meaningful requires understanding the content.",
+      "axeRules": [],
+      "related": [
+        "1.3.1",
+        "2.4.3"
+      ],
+      "tags": [
+        "semantics",
+        "css",
+        "structure",
+        "reading-order"
+      ]
+    },
+    {
+      "id": "1.3.3",
+      "slug": "sensory-characteristics",
+      "title": "Sensory Characteristics",
+      "level": "A",
+      "guideline": "1.3",
+      "version": "2.0",
+      "summary": "Instructions do not rely solely on shape, colour, size, visual location, orientation, or sound. \"Click the round button on the right\" fails; \"select Continue\" passes.",
+      "whoItAffects": "Blind users have no concept of \"on the right\". Low-vision users zoomed to 400% see a reflowed layout where \"right\" is meaningless. Colour-blind users cannot act on \"the green box\".",
+      "howToTest": "Search the page text for shape, colour, size, and position words in instructions. Each must be accompanied by a name or other non-sensory identifier.",
+      "automatable": "no",
+      "automationNote": "Requires reading and understanding instructional text.",
+      "axeRules": [],
+      "related": [
+        "1.4.1",
+        "1.3.4"
+      ],
+      "tags": [
+        "content",
+        "instructions",
+        "cognitive"
+      ]
+    },
+    {
+      "id": "1.3.4",
+      "slug": "orientation",
+      "title": "Orientation",
+      "level": "AA",
+      "guideline": "1.3",
+      "version": "2.1",
+      "summary": "Content does not restrict its view to a single display orientation such as portrait or landscape, unless a specific orientation is essential.",
+      "whoItAffects": "Users with a device mounted to a wheelchair or a fixed stand cannot rotate it. Locking to portrait makes the content unusable for them.",
+      "howToTest": "Rotate the device or resize the browser to both orientations. Content must reflow and remain usable in both. Check for CSS orientation media queries that hide content and for scripts that force rotation.",
+      "automatable": "partial",
+      "automationNote": "Scanners can flag a locked orientation in a web app manifest or a CSS transform used to force rotation, but not all approaches.",
+      "axeRules": [
+        "css-orientation-lock"
+      ],
+      "related": [
+        "1.4.10",
+        "1.3.3"
+      ],
+      "tags": [
+        "responsive",
+        "mobile",
+        "css"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "axe's css-orientation-lock rule detects one narrow technique: a CSS transform used to rotate the page inside an orientation media query. The failure shown here is different and far more common - hiding the content in one orientation and demanding the user rotate. No rule catches that, and none catches screen.orientation.lock() in script."
+    },
+    {
+      "id": "1.3.5",
+      "slug": "identify-input-purpose",
+      "title": "Identify Input Purpose",
+      "level": "AA",
+      "guideline": "1.3",
+      "version": "2.1",
+      "summary": "The purpose of each input field collecting information about the user can be determined programmatically, using the HTML autocomplete attribute with the standard token list.",
+      "whoItAffects": "Users with motor disabilities benefit from autofill instead of typing. Users with cognitive disabilities benefit from tools that add familiar icons to fields. Everyone benefits from fewer keystrokes.",
+      "howToTest": "For each field asking for the user's own information (name, email, address, phone, credit card), confirm a correct autocomplete token. Note the token must come from the WCAG-defined list — autocomplete=\"on\" is not sufficient.",
+      "automatable": "partial",
+      "automationNote": "Scanners validate that an autocomplete value is a recognised token. They cannot confirm the token is the right one for the field.",
+      "axeRules": [
+        "autocomplete-valid"
+      ],
+      "related": [
+        "1.3.6",
+        "3.3.2",
+        "3.3.7"
+      ],
+      "tags": [
+        "forms",
+        "autocomplete",
+        "cognitive"
+      ]
+    },
+    {
+      "id": "1.3.6",
+      "slug": "identify-purpose",
+      "title": "Identify Purpose",
+      "level": "AAA",
+      "guideline": "1.3",
+      "version": "2.1",
+      "summary": "The purpose of user interface components, icons, and regions can be determined programmatically — extending 1.3.5 beyond form fields to the whole interface.",
+      "whoItAffects": "Users with cognitive disabilities who rely on personalisation tools that swap in familiar symbols, simplify layouts, or hide non-essential regions.",
+      "howToTest": "Check that landmarks, controls, and icons carry semantics or ARIA that identify their purpose, so a personalisation layer can act on them.",
+      "automatable": "partial",
+      "automationNote": "Landmark presence can be checked automatically; semantic correctness of every component's declared purpose cannot.",
+      "axeRules": [
+        "landmark-one-main",
+        "region"
+      ],
+      "related": [
+        "1.3.5",
+        "3.2.4"
+      ],
+      "tags": [
+        "semantics",
+        "cognitive",
+        "personalisation"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "axe's landmark-one-main and region rules would catch the missing landmarks here, but both are tagged best-practice rather than as WCAG rules, so a scan scoped to conformance never runs them. And the deeper requirement - that a personalisation tool could identify each control's purpose - is not something any rule evaluates."
+    },
+    {
+      "id": "1.4.1",
+      "slug": "use-of-color",
+      "title": "Use of Color",
+      "level": "A",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "Colour is not the only visual means of conveying information, indicating an action, prompting a response, or distinguishing an element.",
+      "whoItAffects": "Around 1 in 12 men and 1 in 200 women have some colour vision deficiency. Users of monochrome displays, high-contrast modes, and printouts are affected too.",
+      "howToTest": "View the page in greyscale. Any information still distinguishable? Classic failures: required fields marked only in red, chart series distinguished only by colour, links in body text with no underline.",
+      "automatable": "partial",
+      "automationNote": "Scanners can flag links that rely on colour alone against surrounding text. Most other uses of colour require human review in greyscale.",
+      "axeRules": [
+        "link-in-text-block"
+      ],
+      "related": [
+        "1.4.3",
+        "1.4.11",
+        "1.3.3"
+      ],
+      "tags": [
+        "colour",
+        "visual",
+        "charts",
+        "links"
+      ]
+    },
+    {
+      "id": "1.4.2",
+      "slug": "audio-control",
+      "title": "Audio Control",
+      "level": "A",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "If audio plays automatically for more than three seconds, a mechanism is available to pause, stop, or independently control its volume.",
+      "whoItAffects": "Screen reader users hear the page audio and their screen reader simultaneously, making both unintelligible. Users with cognitive and attention disabilities are unable to concentrate.",
+      "howToTest": "Load the page and listen. If anything autoplays beyond three seconds, confirm a pause or stop control exists near the start of the page and is keyboard reachable before the audio becomes disruptive.",
+      "automatable": "partial",
+      "automationNote": "Autoplay attributes can be detected; script-triggered playback and the presence of a usable control generally cannot.",
+      "axeRules": [
+        "no-autoplay-audio"
+      ],
+      "related": [
+        "2.2.2",
+        "1.4.7"
+      ],
+      "tags": [
+        "media",
+        "audio",
+        "autoplay"
+      ]
+    },
+    {
+      "id": "1.4.3",
+      "slug": "contrast-minimum",
+      "title": "Contrast (Minimum)",
+      "level": "AA",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "Text and images of text have a contrast ratio of at least 4.5:1, or 3:1 for large text (18pt, or 14pt bold). Logos and incidental text are exempt.",
+      "whoItAffects": "Users with low vision, reduced contrast sensitivity, or age-related sight loss. Also anyone reading on a phone in sunlight.",
+      "howToTest": "Sample foreground and background with a contrast checker. Test every state — default, hover, focus, visited, disabled-but-meaningful — and text over images or gradients at its worst point.",
+      "automatable": "partial",
+      "automationNote": "Scanners compute contrast accurately for solid backgrounds. They skip or guess when text sits on an image, a gradient, or a semi-transparent overlay, and they cannot test states they do not trigger.",
+      "axeRules": [
+        "color-contrast"
+      ],
+      "related": [
+        "1.4.6",
+        "1.4.11",
+        "1.4.1"
+      ],
+      "tags": [
+        "colour",
+        "contrast",
+        "visual",
+        "low-vision"
+      ]
+    },
+    {
+      "id": "1.4.4",
+      "slug": "resize-text",
+      "title": "Resize Text",
+      "level": "AA",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "Text can be resized up to 200% without assistive technology and without loss of content or functionality.",
+      "whoItAffects": "Users with low vision who enlarge text rather than use a full screen magnifier.",
+      "howToTest": "Zoom the browser to 200% and check for clipped text, overlapping elements, controls pushed off screen, and fixed-height containers that hide overflow. Also test text-only zoom where the browser supports it.",
+      "automatable": "partial",
+      "automationNote": "A scanner can flag a viewport meta tag that blocks zoom. Whether content survives 200% requires actually rendering and looking.",
+      "axeRules": [
+        "meta-viewport",
+        "meta-viewport-large"
+      ],
+      "related": [
+        "1.4.10",
+        "1.4.12",
+        "1.4.8"
+      ],
+      "tags": [
+        "zoom",
+        "responsive",
+        "low-vision"
+      ]
+    },
+    {
+      "id": "1.4.5",
+      "slug": "images-of-text",
+      "title": "Images of Text",
+      "level": "AA",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "Text is used to convey information rather than images of text, except where the presentation is essential (logotypes) or the image is customisable by the user.",
+      "whoItAffects": "Low-vision users cannot restyle an image of text — it pixelates on zoom and ignores their font, spacing, and colour preferences. Screen reader users depend entirely on the alt text.",
+      "howToTest": "Look for headings, buttons, banners, quotes, and infographics rendered as images. Ask whether CSS could produce the same effect with real text.",
+      "automatable": "no",
+      "automationNote": "Recognising that an image contains text requires OCR and human judgement about whether it is essential.",
+      "axeRules": [],
+      "related": [
+        "1.4.9",
+        "1.1.1",
+        "1.4.4"
+      ],
+      "tags": [
+        "images",
+        "text",
+        "css"
+      ]
+    },
+    {
+      "id": "1.4.6",
+      "slug": "contrast-enhanced",
+      "title": "Contrast (Enhanced)",
+      "level": "AAA",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "Text and images of text have a contrast ratio of at least 7:1, or 4.5:1 for large text.",
+      "whoItAffects": "Users with moderately low vision (roughly 20/80) who do not use assistive technology. The AA 4.5:1 threshold approximates 20/40 vision; 7:1 extends coverage further.",
+      "howToTest": "Same procedure as 1.4.3 with the higher thresholds. Check whether the palette can meet 7:1 without becoming pure black on white.",
+      "automatable": "partial",
+      "automationNote": "Same tooling as 1.4.3, configured to the AAA threshold; same blind spots.",
+      "axeRules": [
+        "color-contrast-enhanced"
+      ],
+      "related": [
+        "1.4.3",
+        "1.4.11"
+      ],
+      "tags": [
+        "colour",
+        "contrast",
+        "visual",
+        "low-vision"
+      ]
+    },
+    {
+      "id": "1.4.7",
+      "slug": "low-or-no-background-audio",
+      "title": "Low or No Background Audio",
+      "level": "AAA",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "For prerecorded audio that is primarily speech, background sound is either absent, switchable off, or at least 20 dB below the foreground speech.",
+      "whoItAffects": "Hard-of-hearing users, for whom background music competes with speech and destroys intelligibility. Hearing aids amplify everything, not just the voice.",
+      "howToTest": "Listen for background music or ambience under narration. Confirm it is at least 20 dB quieter (roughly four times quieter in perceived loudness) or that a speech-only track is offered.",
+      "automatable": "no",
+      "automationNote": "Requires audio analysis and listening.",
+      "axeRules": [],
+      "related": [
+        "1.4.2",
+        "1.2.2"
+      ],
+      "tags": [
+        "media",
+        "audio",
+        "hard-of-hearing"
+      ]
+    },
+    {
+      "id": "1.4.8",
+      "slug": "visual-presentation",
+      "title": "Visual Presentation",
+      "level": "AAA",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "Blocks of text meet five requirements: user-selectable foreground and background colours, width of no more than 80 characters, no full justification, line spacing of at least 1.5 within paragraphs and 1.5 times that between them, and resizable to 200% without horizontal scrolling.",
+      "whoItAffects": "Users with dyslexia and low vision. Justified text creates rivers of whitespace that disrupt tracking; over-long lines make it hard to find the start of the next line.",
+      "howToTest": "Measure line length, line height, and paragraph spacing. Confirm text-align is not justify. Confirm a colour-adjustment mechanism exists or the page respects user stylesheets.",
+      "automatable": "partial",
+      "automationNote": "Line height and justification are computable from CSS; the colour-selection mechanism requirement is not.",
+      "axeRules": [],
+      "related": [
+        "1.4.12",
+        "1.4.4",
+        "3.1.5"
+      ],
+      "tags": [
+        "typography",
+        "dyslexia",
+        "low-vision",
+        "css"
+      ]
+    },
+    {
+      "id": "1.4.9",
+      "slug": "images-of-text-no-exception",
+      "title": "Images of Text (No Exception)",
+      "level": "AAA",
+      "guideline": "1.4",
+      "version": "2.0",
+      "summary": "Images of text are used only for pure decoration or where a particular presentation is essential. The AA allowance for customisable images is removed.",
+      "whoItAffects": "Same population as 1.4.5, held to a stricter standard — no image of text at all unless the exact visual form carries the meaning.",
+      "howToTest": "As 1.4.5, but the only surviving exceptions are logotypes and cases where the specific rendering is the information (a font specimen, a scanned historical document).",
+      "automatable": "no",
+      "automationNote": "Requires human judgement about essentiality.",
+      "axeRules": [],
+      "related": [
+        "1.4.5",
+        "1.1.1"
+      ],
+      "tags": [
+        "images",
+        "text"
+      ]
+    },
+    {
+      "id": "1.4.10",
+      "slug": "reflow",
+      "title": "Reflow",
+      "level": "AA",
+      "guideline": "1.4",
+      "version": "2.1",
+      "summary": "Content can be presented at 320 CSS pixels wide without loss of information or functionality, and without requiring scrolling in two dimensions. Data tables, maps, and code blocks are exempt.",
+      "whoItAffects": "Low-vision users at 400% zoom on a 1280px display see a 320px viewport. Requiring both horizontal and vertical scrolling to read a single line of text makes reading exhausting.",
+      "howToTest": "Set the browser to 1280px wide and zoom to 400%, or set the viewport to 320×256 CSS pixels. Nothing may be cut off, and the page must not scroll horizontally except for exempt content.",
+      "automatable": "no",
+      "automationNote": "Requires rendering at the target viewport and inspecting for horizontal overflow and lost content.",
+      "axeRules": [],
+      "related": [
+        "1.4.4",
+        "1.3.4",
+        "1.4.12"
+      ],
+      "tags": [
+        "responsive",
+        "zoom",
+        "css",
+        "low-vision"
+      ]
+    },
+    {
+      "id": "1.4.11",
+      "slug": "non-text-contrast",
+      "title": "Non-text Contrast",
+      "level": "AA",
+      "guideline": "1.4",
+      "version": "2.1",
+      "summary": "User interface components and meaningful graphical objects have a contrast ratio of at least 3:1 against adjacent colours — input borders, focus indicators, icons, and chart elements.",
+      "whoItAffects": "Low-vision users who can read the label but cannot see where the input box ends, whether a checkbox is ticked, or which element has focus.",
+      "howToTest": "Check the boundary of every control against its background, in every state. Check icons that convey meaning and the parts of charts needed to understand them. Pure-white input fields on a white page are the most common failure.",
+      "automatable": "partial",
+      "automationNote": "Very limited automated coverage. Most non-text contrast must be measured by hand with a colour picker.",
+      "axeRules": [],
+      "related": [
+        "1.4.3",
+        "2.4.7",
+        "2.4.13"
+      ],
+      "tags": [
+        "colour",
+        "contrast",
+        "forms",
+        "focus",
+        "icons"
+      ]
+    },
+    {
+      "id": "1.4.12",
+      "slug": "text-spacing",
+      "title": "Text Spacing",
+      "level": "AA",
+      "guideline": "1.4",
+      "version": "2.1",
+      "summary": "No loss of content or functionality when the user sets line height to 1.5× the font size, paragraph spacing to 2×, letter spacing to 0.12×, and word spacing to 0.16×.",
+      "whoItAffects": "Users with dyslexia and low vision who apply their own spacing overrides through a browser extension or user stylesheet.",
+      "howToTest": "Apply the four spacing overrides via a bookmarklet or devtools and look for clipped text, overlapping elements, and text escaping its container. Fixed heights on text containers are the usual cause.",
+      "automatable": "no",
+      "automationNote": "Requires applying the overrides and visually inspecting the result.",
+      "axeRules": [],
+      "related": [
+        "1.4.8",
+        "1.4.10",
+        "1.4.4"
+      ],
+      "tags": [
+        "typography",
+        "css",
+        "dyslexia"
+      ]
+    },
+    {
+      "id": "1.4.13",
+      "slug": "content-on-hover-or-focus",
+      "title": "Content on Hover or Focus",
+      "level": "AA",
+      "guideline": "1.4",
+      "version": "2.1",
+      "summary": "Additional content triggered by hover or focus must be dismissable without moving the pointer or focus, hoverable so the pointer can move onto it, and persistent until dismissed or no longer valid.",
+      "whoItAffects": "Screen magnifier users whose tooltip disappears the moment they move toward it. Users with tremor who cannot hold a pointer steady. Keyboard users trapped by content they cannot dismiss.",
+      "howToTest": "Hover over each tooltip or popover: press Escape (must dismiss), move the pointer onto the popup (must stay open), and wait (must not vanish on a timer). Repeat with keyboard focus.",
+      "automatable": "no",
+      "automationNote": "Requires interactive testing of hover and focus behaviour.",
+      "axeRules": [],
+      "related": [
+        "2.1.1",
+        "2.4.11",
+        "3.2.1"
+      ],
+      "tags": [
+        "tooltips",
+        "hover",
+        "focus",
+        "magnification"
+      ]
+    }
+  ]
+}

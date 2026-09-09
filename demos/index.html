@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All success criteria — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Browse and filter all 86 WCAG 2.2 success criteria, each with a failing example, a passing example and a testing procedure.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../index.html"><img src="../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../testing/index.html">Testing</a></li>
+        <li><a href="../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><span aria-current="page">Criteria</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <h1>All WCAG 2.2 success criteria</h1>
+      <p class="prose">Every one of the 86 success criteria in WCAG 2.2, each with a
+         failing example, a passing example, and a testing procedure. Filter the list below, or browse
+         by principle and guideline.</p>
+
+      <ul class="stat-row">
+        <li class="stat"><span class="stat__value">31</span><span class="stat__label">Level A criteria</span></li>
+        <li class="stat"><span class="stat__value">24</span><span class="stat__label">Level AA criteria</span></li>
+        <li class="stat"><span class="stat__value">31</span><span class="stat__label">Level AAA criteria</span></li>
+        <li class="stat"><span class="stat__value">86</span><span class="stat__label">Total in WCAG 2.2</span></li>
+      </ul>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Conformance is cumulative</p>
+        <p>A Level AA claim requires all 31 Level&nbsp;A criteria <em>and</em> all
+           24 Level&nbsp;AA criteria — 55 in total.
+           A Level AAA claim adds the remaining 31. Most legislation and procurement
+           policy targets AA; W3C does not recommend AAA as a general policy for entire sites.</p>
+      </div>
+
+      <!-- Filtering is an enhancement. With scripting off this whole form is hidden
+           and the full list below stays available. -->
+      <form class="filters" id="filters" hidden>
+        <h2 class="visually-hidden">Filter criteria</h2>
+        <fieldset>
+          <legend>Conformance level</legend>
+          <div class="filters__options">
+            <span class="filters__option"><input type="checkbox" id="f-level-A" value="A" checked><label for="f-level-A">Level A (31)</label></span>
+            <span class="filters__option"><input type="checkbox" id="f-level-AA" value="AA" checked><label for="f-level-AA">Level AA (24)</label></span>
+            <span class="filters__option"><input type="checkbox" id="f-level-AAA" value="AAA" checked><label for="f-level-AAA">Level AAA (31)</label></span>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Testable by automation</legend>
+          <div class="filters__options">
+            <span class="filters__option"><input type="checkbox" id="f-auto-partial" value="partial" checked><label for="f-auto-partial">Partly automatable</label></span>
+            <span class="filters__option"><input type="checkbox" id="f-auto-no" value="no" checked><label for="f-auto-no">Manual only</label></span>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>WCAG version that introduced it</legend>
+          <div class="filters__options">
+            <span class="filters__option"><input type="checkbox" id="f-ver-2.0" value="2.0" checked><label for="f-ver-2.0">2.0</label></span>
+            <span class="filters__option"><input type="checkbox" id="f-ver-2.1" value="2.1" checked><label for="f-ver-2.1">2.1</label></span>
+            <span class="filters__option"><input type="checkbox" id="f-ver-2.2" value="2.2" checked><label for="f-ver-2.2">2.2 (new)</label></span>
+          </div>
+        </fieldset>
+        <div>
+          <label for="f-search">Search by number, title or keyword</label><br>
+          <input type="search" id="f-search" autocomplete="off" placeholder="e.g. contrast, focus, 1.4.3">
+        </div>
+      </form>
+
+      <!-- 4.1.3 Status Messages: the count updates in a live region, so screen
+           reader users hear the result of filtering without moving focus. -->
+      <p class="filter-status" id="filter-status" role="status" aria-live="polite">
+        Showing all 87 criteria.
+      </p>
+
+      <section class="principle-section" aria-labelledby="p-1" data-principle="1">
+        <h2 id="p-1">Principle 1: Perceivable</h2>
+        <p class="prose">Information and user interface components must be presentable to users in ways they can perceive. If a user cannot perceive it, nothing else about the interface matters.</p>
+        <h3 class="guideline-heading" id="g-1.1">1.1 Text Alternatives</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.1.1 non-text content images media text-alternatives all non-text content has a text alternative that serves the equivalent purpose. decorative images are given an empty alt attribute so assistive technology ignores them.">
+            <h4 class="sc-card__title">
+              <a href="1.1.1-non-text-content/index.html"><span class="sc-card__num">1.1.1</span> Non-text Content</a>
+            </h4>
+            <p>All non-text content has a text alternative that serves the equivalent purpose. Decorative images are given an empty alt attribute so assistive technology ignores them.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-1.2">1.2 Time-based Media</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.2.1 audio-only and video-only (prerecorded) media audio video transcripts prerecorded audio-only content has a text transcript. prerecorded video-only content has either a transcript or an audio track describing what is shown.">
+            <h4 class="sc-card__title">
+              <a href="1.2.1-audio-only-and-video-only-prerecorded/index.html"><span class="sc-card__num">1.2.1</span> Audio-only and Video-only (Prerecorded)</a>
+            </h4>
+            <p>Prerecorded audio-only content has a text transcript. Prerecorded video-only content has either a transcript or an audio track describing what is shown.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.2.2 captions (prerecorded) media video captions captions are provided for all prerecorded audio content in synchronised media. captions carry dialogue plus speaker identification and meaningful non-speech sound.">
+            <h4 class="sc-card__title">
+              <a href="1.2.2-captions-prerecorded/index.html"><span class="sc-card__num">1.2.2</span> Captions (Prerecorded)</a>
+            </h4>
+            <p>Captions are provided for all prerecorded audio content in synchronised media. Captions carry dialogue plus speaker identification and meaningful non-speech sound.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.2.3 audio description or media alternative (prerecorded) media video audio-description prerecorded video in synchronised media has either an audio description of the visual information or a full text alternative for the whole presentation.">
+            <h4 class="sc-card__title">
+              <a href="1.2.3-audio-description-or-media-alternative-prerecorded/index.html"><span class="sc-card__num">1.2.3</span> Audio Description or Media Alternative (Prerecorded)</a>
+            </h4>
+            <p>Prerecorded video in synchronised media has either an audio description of the visual information or a full text alternative for the whole presentation.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.2.4 captions (live) media live captions captions are provided for all live audio content in synchronised media — webinars, live streams, virtual events.">
+            <h4 class="sc-card__title">
+              <a href="1.2.4-captions-live/index.html"><span class="sc-card__num">1.2.4</span> Captions (Live)</a>
+            </h4>
+            <p>Captions are provided for all live audio content in synchronised media — webinars, live streams, virtual events.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.2.5 audio description (prerecorded) media video audio-description audio description is provided for all prerecorded video content. at aa the text-alternative escape hatch allowed at 1.2.3 is removed — a real described audio track is required.">
+            <h4 class="sc-card__title">
+              <a href="1.2.5-audio-description-prerecorded/index.html"><span class="sc-card__num">1.2.5</span> Audio Description (Prerecorded)</a>
+            </h4>
+            <p>Audio description is provided for all prerecorded video content. At AA the text-alternative escape hatch allowed at 1.2.3 is removed — a real described audio track is required.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.2.6 sign language (prerecorded) media video sign-language sign language interpretation is provided for all prerecorded audio in synchronised media.">
+            <h4 class="sc-card__title">
+              <a href="1.2.6-sign-language-prerecorded/index.html"><span class="sc-card__num">1.2.6</span> Sign Language (Prerecorded)</a>
+            </h4>
+            <p>Sign language interpretation is provided for all prerecorded audio in synchronised media.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.2.7 extended audio description (prerecorded) media video audio-description where the pauses in the foreground audio are too short to carry adequate description, extended audio description pauses the video to allow a longer description.">
+            <h4 class="sc-card__title">
+              <a href="1.2.7-extended-audio-description-prerecorded/index.html"><span class="sc-card__num">1.2.7</span> Extended Audio Description (Prerecorded)</a>
+            </h4>
+            <p>Where the pauses in the foreground audio are too short to carry adequate description, extended audio description pauses the video to allow a longer description.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.2.8 media alternative (prerecorded) media transcripts deafblind a full text alternative is provided for all prerecorded synchronised media and for prerecorded video-only media.">
+            <h4 class="sc-card__title">
+              <a href="1.2.8-media-alternative-prerecorded/index.html"><span class="sc-card__num">1.2.8</span> Media Alternative (Prerecorded)</a>
+            </h4>
+            <p>A full text alternative is provided for all prerecorded synchronised media and for prerecorded video-only media.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.2.9 audio-only (live) media live audio a text alternative presenting equivalent information is provided for live audio-only content, such as a live radio broadcast or audio-only conference call.">
+            <h4 class="sc-card__title">
+              <a href="1.2.9-audio-only-live/index.html"><span class="sc-card__num">1.2.9</span> Audio-only (Live)</a>
+            </h4>
+            <p>A text alternative presenting equivalent information is provided for live audio-only content, such as a live radio broadcast or audio-only conference call.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-1.3">1.3 Adaptable</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.3.1 info and relationships semantics forms tables headings structure structure and relationships conveyed visually are also available programmatically. headings are headings, lists are lists, tables have header cells, and form fields have real labels.">
+            <h4 class="sc-card__title">
+              <a href="1.3.1-info-and-relationships/index.html"><span class="sc-card__num">1.3.1</span> Info and Relationships</a>
+            </h4>
+            <p>Structure and relationships conveyed visually are also available programmatically. Headings are headings, lists are lists, tables have header cells, and form fields have real labels.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.3.2 meaningful sequence semantics css structure reading-order when the order in which content is presented affects its meaning, a correct reading sequence can be determined programmatically. the dom order must match the logical reading order.">
+            <h4 class="sc-card__title">
+              <a href="1.3.2-meaningful-sequence/index.html"><span class="sc-card__num">1.3.2</span> Meaningful Sequence</a>
+            </h4>
+            <p>When the order in which content is presented affects its meaning, a correct reading sequence can be determined programmatically. The DOM order must match the logical reading order.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.3.3 sensory characteristics content instructions cognitive instructions do not rely solely on shape, colour, size, visual location, orientation, or sound. &quot;click the round button on the right&quot; fails; &quot;select continue&quot; passes.">
+            <h4 class="sc-card__title">
+              <a href="1.3.3-sensory-characteristics/index.html"><span class="sc-card__num">1.3.3</span> Sensory Characteristics</a>
+            </h4>
+            <p>Instructions do not rely solely on shape, colour, size, visual location, orientation, or sound. &quot;Click the round button on the right&quot; fails; &quot;select Continue&quot; passes.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.1"
+              data-search="1.3.4 orientation responsive mobile css content does not restrict its view to a single display orientation such as portrait or landscape, unless a specific orientation is essential.">
+            <h4 class="sc-card__title">
+              <a href="1.3.4-orientation/index.html"><span class="sc-card__num">1.3.4</span> Orientation</a>
+            </h4>
+            <p>Content does not restrict its view to a single display orientation such as portrait or landscape, unless a specific orientation is essential.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.1</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.1"
+              data-search="1.3.5 identify input purpose forms autocomplete cognitive the purpose of each input field collecting information about the user can be determined programmatically, using the html autocomplete attribute with the standard token list.">
+            <h4 class="sc-card__title">
+              <a href="1.3.5-identify-input-purpose/index.html"><span class="sc-card__num">1.3.5</span> Identify Input Purpose</a>
+            </h4>
+            <p>The purpose of each input field collecting information about the user can be determined programmatically, using the HTML autocomplete attribute with the standard token list.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.1</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.1"
+              data-search="1.3.6 identify purpose semantics cognitive personalisation the purpose of user interface components, icons, and regions can be determined programmatically — extending 1.3.5 beyond form fields to the whole interface.">
+            <h4 class="sc-card__title">
+              <a href="1.3.6-identify-purpose/index.html"><span class="sc-card__num">1.3.6</span> Identify Purpose</a>
+            </h4>
+            <p>The purpose of user interface components, icons, and regions can be determined programmatically — extending 1.3.5 beyond form fields to the whole interface.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.1</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-1.4">1.4 Distinguishable</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.4.1 use of color colour visual charts links colour is not the only visual means of conveying information, indicating an action, prompting a response, or distinguishing an element.">
+            <h4 class="sc-card__title">
+              <a href="1.4.1-use-of-color/index.html"><span class="sc-card__num">1.4.1</span> Use of Color</a>
+            </h4>
+            <p>Colour is not the only visual means of conveying information, indicating an action, prompting a response, or distinguishing an element.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.4.2 audio control media audio autoplay if audio plays automatically for more than three seconds, a mechanism is available to pause, stop, or independently control its volume.">
+            <h4 class="sc-card__title">
+              <a href="1.4.2-audio-control/index.html"><span class="sc-card__num">1.4.2</span> Audio Control</a>
+            </h4>
+            <p>If audio plays automatically for more than three seconds, a mechanism is available to pause, stop, or independently control its volume.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.4.3 contrast (minimum) colour contrast visual low-vision text and images of text have a contrast ratio of at least 4.5:1, or 3:1 for large text (18pt, or 14pt bold). logos and incidental text are exempt.">
+            <h4 class="sc-card__title">
+              <a href="1.4.3-contrast-minimum/index.html"><span class="sc-card__num">1.4.3</span> Contrast (Minimum)</a>
+            </h4>
+            <p>Text and images of text have a contrast ratio of at least 4.5:1, or 3:1 for large text (18pt, or 14pt bold). Logos and incidental text are exempt.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.4.4 resize text zoom responsive low-vision text can be resized up to 200% without assistive technology and without loss of content or functionality.">
+            <h4 class="sc-card__title">
+              <a href="1.4.4-resize-text/index.html"><span class="sc-card__num">1.4.4</span> Resize Text</a>
+            </h4>
+            <p>Text can be resized up to 200% without assistive technology and without loss of content or functionality.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.4.5 images of text images text css text is used to convey information rather than images of text, except where the presentation is essential (logotypes) or the image is customisable by the user.">
+            <h4 class="sc-card__title">
+              <a href="1.4.5-images-of-text/index.html"><span class="sc-card__num">1.4.5</span> Images of Text</a>
+            </h4>
+            <p>Text is used to convey information rather than images of text, except where the presentation is essential (logotypes) or the image is customisable by the user.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.4.6 contrast (enhanced) colour contrast visual low-vision text and images of text have a contrast ratio of at least 7:1, or 4.5:1 for large text.">
+            <h4 class="sc-card__title">
+              <a href="1.4.6-contrast-enhanced/index.html"><span class="sc-card__num">1.4.6</span> Contrast (Enhanced)</a>
+            </h4>
+            <p>Text and images of text have a contrast ratio of at least 7:1, or 4.5:1 for large text.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.4.7 low or no background audio media audio hard-of-hearing for prerecorded audio that is primarily speech, background sound is either absent, switchable off, or at least 20 db below the foreground speech.">
+            <h4 class="sc-card__title">
+              <a href="1.4.7-low-or-no-background-audio/index.html"><span class="sc-card__num">1.4.7</span> Low or No Background Audio</a>
+            </h4>
+            <p>For prerecorded audio that is primarily speech, background sound is either absent, switchable off, or at least 20 dB below the foreground speech.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="1.4.8 visual presentation typography dyslexia low-vision css blocks of text meet five requirements: user-selectable foreground and background colours, width of no more than 80 characters, no full justification, line spacing of at least 1.5 within paragraphs and 1.5 times that between them, and resizable to 200% without horizontal scrolling.">
+            <h4 class="sc-card__title">
+              <a href="1.4.8-visual-presentation/index.html"><span class="sc-card__num">1.4.8</span> Visual Presentation</a>
+            </h4>
+            <p>Blocks of text meet five requirements: user-selectable foreground and background colours, width of no more than 80 characters, no full justification, line spacing of at least 1.5 within paragraphs and 1.5 times that between them, and resizable to 200% without horizontal scrolling.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="1.4.9 images of text (no exception) images text images of text are used only for pure decoration or where a particular presentation is essential. the aa allowance for customisable images is removed.">
+            <h4 class="sc-card__title">
+              <a href="1.4.9-images-of-text-no-exception/index.html"><span class="sc-card__num">1.4.9</span> Images of Text (No Exception)</a>
+            </h4>
+            <p>Images of text are used only for pure decoration or where a particular presentation is essential. The AA allowance for customisable images is removed.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="1.4.10 reflow responsive zoom css low-vision content can be presented at 320 css pixels wide without loss of information or functionality, and without requiring scrolling in two dimensions. data tables, maps, and code blocks are exempt.">
+            <h4 class="sc-card__title">
+              <a href="1.4.10-reflow/index.html"><span class="sc-card__num">1.4.10</span> Reflow</a>
+            </h4>
+            <p>Content can be presented at 320 CSS pixels wide without loss of information or functionality, and without requiring scrolling in two dimensions. Data tables, maps, and code blocks are exempt.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="partial"
+              data-version="2.1"
+              data-search="1.4.11 non-text contrast colour contrast forms focus icons user interface components and meaningful graphical objects have a contrast ratio of at least 3:1 against adjacent colours — input borders, focus indicators, icons, and chart elements.">
+            <h4 class="sc-card__title">
+              <a href="1.4.11-non-text-contrast/index.html"><span class="sc-card__num">1.4.11</span> Non-text Contrast</a>
+            </h4>
+            <p>User interface components and meaningful graphical objects have a contrast ratio of at least 3:1 against adjacent colours — input borders, focus indicators, icons, and chart elements.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.1</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="1.4.12 text spacing typography css dyslexia no loss of content or functionality when the user sets line height to 1.5× the font size, paragraph spacing to 2×, letter spacing to 0.12×, and word spacing to 0.16×.">
+            <h4 class="sc-card__title">
+              <a href="1.4.12-text-spacing/index.html"><span class="sc-card__num">1.4.12</span> Text Spacing</a>
+            </h4>
+            <p>No loss of content or functionality when the user sets line height to 1.5× the font size, paragraph spacing to 2×, letter spacing to 0.12×, and word spacing to 0.16×.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="1"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="1.4.13 content on hover or focus tooltips hover focus magnification additional content triggered by hover or focus must be dismissable without moving the pointer or focus, hoverable so the pointer can move onto it, and persistent until dismissed or no longer valid.">
+            <h4 class="sc-card__title">
+              <a href="1.4.13-content-on-hover-or-focus/index.html"><span class="sc-card__num">1.4.13</span> Content on Hover or Focus</a>
+            </h4>
+            <p>Additional content triggered by hover or focus must be dismissable without moving the pointer or focus, hoverable so the pointer can move onto it, and persistent until dismissed or no longer valid.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="principle-section" aria-labelledby="p-2" data-principle="2">
+        <h2 id="p-2">Principle 2: Operable</h2>
+        <p class="prose">User interface components and navigation must be operable. Every user must be able to drive the interface, whatever input device they use.</p>
+        <h3 class="guideline-heading" id="g-2.1">2.1 Keyboard Accessible</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.1.1 keyboard keyboard motor blind core all functionality is operable through a keyboard interface, without requiring specific timings for individual keystrokes.">
+            <h4 class="sc-card__title">
+              <a href="2.1.1-keyboard/index.html"><span class="sc-card__num">2.1.1</span> Keyboard</a>
+            </h4>
+            <p>All functionality is operable through a keyboard interface, without requiring specific timings for individual keystrokes.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="2.1.2 no keyboard trap keyboard modals focus core if focus can be moved to a component using the keyboard, it can be moved away again using only the keyboard. if a non-standard key is needed to exit, the user must be told.">
+            <h4 class="sc-card__title">
+              <a href="2.1.2-no-keyboard-trap/index.html"><span class="sc-card__num">2.1.2</span> No Keyboard Trap</a>
+            </h4>
+            <p>If focus can be moved to a component using the keyboard, it can be moved away again using only the keyboard. If a non-standard key is needed to exit, the user must be told.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="2.1.3 keyboard (no exception) keyboard motor all functionality is keyboard operable with no exception for functions that require path-dependent input such as freehand drawing.">
+            <h4 class="sc-card__title">
+              <a href="2.1.3-keyboard-no-exception/index.html"><span class="sc-card__num">2.1.3</span> Keyboard (No Exception)</a>
+            </h4>
+            <p>All functionality is keyboard operable with no exception for functions that require path-dependent input such as freehand drawing.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="2.1.4 character key shortcuts keyboard shortcuts speech-input if a shortcut uses only letter, punctuation, number, or symbol characters, it can be turned off, remapped, or is active only when the relevant component has focus.">
+            <h4 class="sc-card__title">
+              <a href="2.1.4-character-key-shortcuts/index.html"><span class="sc-card__num">2.1.4</span> Character Key Shortcuts</a>
+            </h4>
+            <p>If a shortcut uses only letter, punctuation, number, or symbol characters, it can be turned off, remapped, or is active only when the relevant component has focus.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-2.2">2.2 Enough Time</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="2.2.1 timing adjustable timing forms cognitive sessions for each time limit, the user can turn it off, adjust it to at least ten times the default, or extend it with a simple action after a warning with at least 20 seconds to respond.">
+            <h4 class="sc-card__title">
+              <a href="2.2.1-timing-adjustable/index.html"><span class="sc-card__num">2.2.1</span> Timing Adjustable</a>
+            </h4>
+            <p>For each time limit, the user can turn it off, adjust it to at least ten times the default, or extend it with a simple action after a warning with at least 20 seconds to respond.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.2.2 pause, stop, hide animation carousels motion vestibular moving, blinking, or scrolling content that starts automatically, lasts more than five seconds, and runs alongside other content can be paused, stopped, or hidden. the same applies to auto-updating content.">
+            <h4 class="sc-card__title">
+              <a href="2.2.2-pause-stop-hide/index.html"><span class="sc-card__num">2.2.2</span> Pause, Stop, Hide</a>
+            </h4>
+            <p>Moving, blinking, or scrolling content that starts automatically, lasts more than five seconds, and runs alongside other content can be paused, stopped, or hidden. The same applies to auto-updating content.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="2.2.3 no timing timing cognitive timing is not an essential part of the event or activity presented, except for non-interactive synchronised media and real-time events.">
+            <h4 class="sc-card__title">
+              <a href="2.2.3-no-timing/index.html"><span class="sc-card__num">2.2.3</span> No Timing</a>
+            </h4>
+            <p>Timing is not an essential part of the event or activity presented, except for non-interactive synchronised media and real-time events.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="2.2.4 interruptions notifications cognitive attention interruptions can be postponed or suppressed by the user, except those involving an emergency.">
+            <h4 class="sc-card__title">
+              <a href="2.2.4-interruptions/index.html"><span class="sc-card__num">2.2.4</span> Interruptions</a>
+            </h4>
+            <p>Interruptions can be postponed or suppressed by the user, except those involving an emergency.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="2.2.5 re-authenticating timing sessions forms when an authenticated session expires, the user can continue the activity after re-authenticating without losing any data.">
+            <h4 class="sc-card__title">
+              <a href="2.2.5-re-authenticating/index.html"><span class="sc-card__num">2.2.5</span> Re-authenticating</a>
+            </h4>
+            <p>When an authenticated session expires, the user can continue the activity after re-authenticating without losing any data.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="2.2.6 timeouts timing cognitive sessions users are warned about the duration of any inactivity that could cause data loss, unless the data is preserved for more than 20 hours of inactivity.">
+            <h4 class="sc-card__title">
+              <a href="2.2.6-timeouts/index.html"><span class="sc-card__num">2.2.6</span> Timeouts</a>
+            </h4>
+            <p>Users are warned about the duration of any inactivity that could cause data loss, unless the data is preserved for more than 20 hours of inactivity.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-2.3">2.3 Seizures and Physical Reactions</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.3.1 three flashes or below threshold seizures video animation safety content does not contain anything that flashes more than three times in any one second, unless the flash is below the general flash and red flash thresholds.">
+            <h4 class="sc-card__title">
+              <a href="2.3.1-three-flashes-or-below-threshold/index.html"><span class="sc-card__num">2.3.1</span> Three Flashes or Below Threshold</a>
+            </h4>
+            <p>Content does not contain anything that flashes more than three times in any one second, unless the flash is below the general flash and red flash thresholds.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.3.2 three flashes seizures video safety content does not contain anything that flashes more than three times in any one second, with no threshold exception at all.">
+            <h4 class="sc-card__title">
+              <a href="2.3.2-three-flashes/index.html"><span class="sc-card__num">2.3.2</span> Three Flashes</a>
+            </h4>
+            <p>Content does not contain anything that flashes more than three times in any one second, with no threshold exception at all.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.1"
+              data-search="2.3.3 animation from interactions animation motion vestibular css motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or information.">
+            <h4 class="sc-card__title">
+              <a href="2.3.3-animation-from-interactions/index.html"><span class="sc-card__num">2.3.3</span> Animation from Interactions</a>
+            </h4>
+            <p>Motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or information.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.1</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-2.4">2.4 Navigable</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.4.1 bypass blocks navigation keyboard landmarks skip-link a mechanism is available to bypass blocks of content repeated on multiple pages — typically a skip link, and supported by proper landmarks and headings.">
+            <h4 class="sc-card__title">
+              <a href="2.4.1-bypass-blocks/index.html"><span class="sc-card__num">2.4.1</span> Bypass Blocks</a>
+            </h4>
+            <p>A mechanism is available to bypass blocks of content repeated on multiple pages — typically a skip link, and supported by proper landmarks and headings.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.4.2 page titled navigation structure titles web pages have titles that describe their topic or purpose.">
+            <h4 class="sc-card__title">
+              <a href="2.4.2-page-titled/index.html"><span class="sc-card__num">2.4.2</span> Page Titled</a>
+            </h4>
+            <p>Web pages have titles that describe their topic or purpose.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.4.3 focus order keyboard focus modals core if a page can be navigated sequentially and the order affects meaning or operation, focusable components receive focus in an order that preserves meaning and operability.">
+            <h4 class="sc-card__title">
+              <a href="2.4.3-focus-order/index.html"><span class="sc-card__num">2.4.3</span> Focus Order</a>
+            </h4>
+            <p>If a page can be navigated sequentially and the order affects meaning or operation, focusable components receive focus in an order that preserves meaning and operability.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.4.4 link purpose (in context) links navigation screen-reader the purpose of each link can be determined from the link text alone, or from the link text together with its programmatically determined context.">
+            <h4 class="sc-card__title">
+              <a href="2.4.4-link-purpose-in-context/index.html"><span class="sc-card__num">2.4.4</span> Link Purpose (In Context)</a>
+            </h4>
+            <p>The purpose of each link can be determined from the link text alone, or from the link text together with its programmatically determined context.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="2.4.5 multiple ways navigation search site-map cognitive more than one way is available to locate a page within a set of pages, unless the page is a step in a process.">
+            <h4 class="sc-card__title">
+              <a href="2.4.5-multiple-ways/index.html"><span class="sc-card__num">2.4.5</span> Multiple Ways</a>
+            </h4>
+            <p>More than one way is available to locate a page within a set of pages, unless the page is a step in a process.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.4.6 headings and labels headings labels forms structure headings and labels describe the topic or purpose of the content they introduce.">
+            <h4 class="sc-card__title">
+              <a href="2.4.6-headings-and-labels/index.html"><span class="sc-card__num">2.4.6</span> Headings and Labels</a>
+            </h4>
+            <p>Headings and labels describe the topic or purpose of the content they introduce.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.4.7 focus visible keyboard focus css core any keyboard operable interface has a mode of operation where the keyboard focus indicator is visible.">
+            <h4 class="sc-card__title">
+              <a href="2.4.7-focus-visible/index.html"><span class="sc-card__num">2.4.7</span> Focus Visible</a>
+            </h4>
+            <p>Any keyboard operable interface has a mode of operation where the keyboard focus indicator is visible.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="2.4.8 location navigation breadcrumbs cognitive information about the user's location within a set of pages is available — breadcrumbs, a highlighted current navigation item, or a step indicator.">
+            <h4 class="sc-card__title">
+              <a href="2.4.8-location/index.html"><span class="sc-card__num">2.4.8</span> Location</a>
+            </h4>
+            <p>Information about the user's location within a set of pages is available — breadcrumbs, a highlighted current navigation item, or a step indicator.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.4.9 link purpose (link only) links screen-reader a mechanism is available to identify the purpose of each link from the link text alone, except where the purpose is ambiguous to all users.">
+            <h4 class="sc-card__title">
+              <a href="2.4.9-link-purpose-link-only/index.html"><span class="sc-card__num">2.4.9</span> Link Purpose (Link Only)</a>
+            </h4>
+            <p>A mechanism is available to identify the purpose of each link from the link text alone, except where the purpose is ambiguous to all users.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="2.4.10 section headings headings structure cognitive section headings are used to organise content. this applies where content divides into sections, not to every paragraph.">
+            <h4 class="sc-card__title">
+              <a href="2.4.10-section-headings/index.html"><span class="sc-card__num">2.4.10</span> Section Headings</a>
+            </h4>
+            <p>Section headings are used to organise content. This applies where content divides into sections, not to every paragraph.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.2"
+              data-search="2.4.11 focus not obscured (minimum) focus keyboard sticky wcag22 when a component receives keyboard focus, it is not entirely hidden by author-created content such as a sticky header, footer, or cookie banner.">
+            <h4 class="sc-card__title">
+              <a href="2.4.11-focus-not-obscured-minimum/index.html"><span class="sc-card__num">2.4.11</span> Focus Not Obscured (Minimum)</a>
+            </h4>
+            <p>When a component receives keyboard focus, it is not entirely hidden by author-created content such as a sticky header, footer, or cookie banner.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.2</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.2"
+              data-search="2.4.12 focus not obscured (enhanced) focus keyboard sticky wcag22 when a component receives keyboard focus, no part of it is hidden by author-created content.">
+            <h4 class="sc-card__title">
+              <a href="2.4.12-focus-not-obscured-enhanced/index.html"><span class="sc-card__num">2.4.12</span> Focus Not Obscured (Enhanced)</a>
+            </h4>
+            <p>When a component receives keyboard focus, no part of it is hidden by author-created content.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.2</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.2"
+              data-search="2.4.13 focus appearance focus contrast low-vision wcag22 the focus indicator is at least as large as a 2 css pixel perimeter of the focused control, and has a contrast ratio of at least 3:1 between its focused and unfocused states.">
+            <h4 class="sc-card__title">
+              <a href="2.4.13-focus-appearance/index.html"><span class="sc-card__num">2.4.13</span> Focus Appearance</a>
+            </h4>
+            <p>The focus indicator is at least as large as a 2 CSS pixel perimeter of the focused control, and has a contrast ratio of at least 3:1 between its focused and unfocused states.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.2</span>
+              <span>manual only</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-2.5">2.5 Input Modalities</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="2.5.1 pointer gestures touch gestures motor mobile functionality using multipoint or path-based gestures can also be operated with a single pointer without a path-based gesture, unless the gesture is essential.">
+            <h4 class="sc-card__title">
+              <a href="2.5.1-pointer-gestures/index.html"><span class="sc-card__num">2.5.1</span> Pointer Gestures</a>
+            </h4>
+            <p>Functionality using multipoint or path-based gestures can also be operated with a single pointer without a path-based gesture, unless the gesture is essential.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="2.5.2 pointer cancellation touch pointer motor events for functionality operated by a single pointer, the action completes on the up-event, or can be aborted or undone.">
+            <h4 class="sc-card__title">
+              <a href="2.5.2-pointer-cancellation/index.html"><span class="sc-card__num">2.5.2</span> Pointer Cancellation</a>
+            </h4>
+            <p>For functionality operated by a single pointer, the action completes on the up-event, or can be aborted or undone.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.1"
+              data-search="2.5.3 label in name labels speech-input aria forms for components with a visible text label, the accessible name contains the visible text.">
+            <h4 class="sc-card__title">
+              <a href="2.5.3-label-in-name/index.html"><span class="sc-card__num">2.5.3</span> Label in Name</a>
+            </h4>
+            <p>For components with a visible text label, the accessible name contains the visible text.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.1</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="2.5.4 motion actuation motion mobile motor functionality operated by device motion or user motion can also be operated by interface components, and motion actuation can be disabled.">
+            <h4 class="sc-card__title">
+              <a href="2.5.4-motion-actuation/index.html"><span class="sc-card__num">2.5.4</span> Motion Actuation</a>
+            </h4>
+            <p>Functionality operated by device motion or user motion can also be operated by interface components, and motion actuation can be disabled.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.1"
+              data-search="2.5.5 target size (enhanced) touch target-size motor mobile the size of the target for pointer inputs is at least 44 by 44 css pixels, with exceptions for inline targets, equivalents available elsewhere, and essential presentations.">
+            <h4 class="sc-card__title">
+              <a href="2.5.5-target-size-enhanced/index.html"><span class="sc-card__num">2.5.5</span> Target Size (Enhanced)</a>
+            </h4>
+            <p>The size of the target for pointer inputs is at least 44 by 44 CSS pixels, with exceptions for inline targets, equivalents available elsewhere, and essential presentations.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.1</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.1"
+              data-search="2.5.6 concurrent input mechanisms input touch keyboard mobile content does not restrict use of input modalities available on a platform, except where necessary for security or to respect user settings.">
+            <h4 class="sc-card__title">
+              <a href="2.5.6-concurrent-input-mechanisms/index.html"><span class="sc-card__num">2.5.6</span> Concurrent Input Mechanisms</a>
+            </h4>
+            <p>Content does not restrict use of input modalities available on a platform, except where necessary for security or to respect user settings.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.1</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="2"
+              data-automatable="no"
+              data-version="2.2"
+              data-search="2.5.7 dragging movements touch drag motor wcag22 functionality that uses a dragging movement can be achieved with a single pointer without dragging, unless dragging is essential.">
+            <h4 class="sc-card__title">
+              <a href="2.5.7-dragging-movements/index.html"><span class="sc-card__num">2.5.7</span> Dragging Movements</a>
+            </h4>
+            <p>Functionality that uses a dragging movement can be achieved with a single pointer without dragging, unless dragging is essential.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.2</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="2"
+              data-automatable="partial"
+              data-version="2.2"
+              data-search="2.5.8 target size (minimum) touch target-size motor wcag22 targets are at least 24 by 24 css pixels, unless spacing, inline position, an equivalent control, or essential presentation applies. undersized targets can pass if a 24px circle centred on each does not overlap its neighbours.">
+            <h4 class="sc-card__title">
+              <a href="2.5.8-target-size-minimum/index.html"><span class="sc-card__num">2.5.8</span> Target Size (Minimum)</a>
+            </h4>
+            <p>Targets are at least 24 by 24 CSS pixels, unless spacing, inline position, an equivalent control, or essential presentation applies. Undersized targets can pass if a 24px circle centred on each does not overlap its neighbours.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.2</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="principle-section" aria-labelledby="p-3" data-principle="3">
+        <h2 id="p-3">Principle 3: Understandable</h2>
+        <p class="prose">Information and the operation of the user interface must be understandable. Content a user can perceive and operate is still inaccessible if they cannot comprehend it or recover from their mistakes.</p>
+        <h3 class="guideline-heading" id="g-3.1">3.1 Readable</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="3"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="3.1.1 language of page language screen-reader i18n bilingual the default human language of each page can be determined programmatically, using the lang attribute on the html element with a valid bcp 47 language tag.">
+            <h4 class="sc-card__title">
+              <a href="3.1.1-language-of-page/index.html"><span class="sc-card__num">3.1.1</span> Language of Page</a>
+            </h4>
+            <p>The default human language of each page can be determined programmatically, using the lang attribute on the html element with a valid BCP 47 language tag.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="3"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="3.1.2 language of parts language screen-reader i18n bilingual the human language of each passage or phrase in the content can be determined programmatically, except for proper names, technical terms, and words that have become part of the surrounding language.">
+            <h4 class="sc-card__title">
+              <a href="3.1.2-language-of-parts/index.html"><span class="sc-card__num">3.1.2</span> Language of Parts</a>
+            </h4>
+            <p>The human language of each passage or phrase in the content can be determined programmatically, except for proper names, technical terms, and words that have become part of the surrounding language.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.1.3 unusual words content cognitive plain-language a mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.">
+            <h4 class="sc-card__title">
+              <a href="3.1.3-unusual-words/index.html"><span class="sc-card__num">3.1.3</span> Unusual Words</a>
+            </h4>
+            <p>A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.1.4 abbreviations content cognitive abbreviations a mechanism for identifying the expanded form or meaning of abbreviations is available.">
+            <h4 class="sc-card__title">
+              <a href="3.1.4-abbreviations/index.html"><span class="sc-card__num">3.1.4</span> Abbreviations</a>
+            </h4>
+            <p>A mechanism for identifying the expanded form or meaning of abbreviations is available.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="3"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="3.1.5 reading level content cognitive plain-language literacy where text requires reading ability more advanced than the lower secondary education level, supplemental content or a simpler version is available.">
+            <h4 class="sc-card__title">
+              <a href="3.1.5-reading-level/index.html"><span class="sc-card__num">3.1.5</span> Reading Level</a>
+            </h4>
+            <p>Where text requires reading ability more advanced than the lower secondary education level, supplemental content or a simpler version is available.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.1.6 pronunciation content screen-reader pronunciation a mechanism is available for identifying specific pronunciation of words where meaning is ambiguous without it.">
+            <h4 class="sc-card__title">
+              <a href="3.1.6-pronunciation/index.html"><span class="sc-card__num">3.1.6</span> Pronunciation</a>
+            </h4>
+            <p>A mechanism is available for identifying specific pronunciation of words where meaning is ambiguous without it.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-3.2">3.2 Predictable</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.2.1 on focus focus forms keyboard predictability when any component receives focus, it does not initiate a change of context — no automatic form submission, navigation, new window, or focus move elsewhere.">
+            <h4 class="sc-card__title">
+              <a href="3.2.1-on-focus/index.html"><span class="sc-card__num">3.2.1</span> On Focus</a>
+            </h4>
+            <p>When any component receives focus, it does not initiate a change of context — no automatic form submission, navigation, new window, or focus move elsewhere.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.2.2 on input forms predictability screen-reader changing the setting of a component does not automatically cause a change of context unless the user has been advised of the behaviour beforehand.">
+            <h4 class="sc-card__title">
+              <a href="3.2.2-on-input/index.html"><span class="sc-card__num">3.2.2</span> On Input</a>
+            </h4>
+            <p>Changing the setting of a component does not automatically cause a change of context unless the user has been advised of the behaviour beforehand.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.2.3 consistent navigation navigation consistency cognitive multi-page navigational mechanisms repeated across multiple pages occur in the same relative order each time, unless the user changes it.">
+            <h4 class="sc-card__title">
+              <a href="3.2.3-consistent-navigation/index.html"><span class="sc-card__num">3.2.3</span> Consistent Navigation</a>
+            </h4>
+            <p>Navigational mechanisms repeated across multiple pages occur in the same relative order each time, unless the user changes it.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.2.4 consistent identification consistency labels cognitive multi-page components with the same functionality within a set of pages are identified consistently — the same label, name, and icon for the same action.">
+            <h4 class="sc-card__title">
+              <a href="3.2.4-consistent-identification/index.html"><span class="sc-card__num">3.2.4</span> Consistent Identification</a>
+            </h4>
+            <p>Components with the same functionality within a set of pages are identified consistently — the same label, name, and icon for the same action.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="3"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="3.2.5 change on request predictability cognitive navigation changes of context are initiated only by user request, or a mechanism is available to turn off such changes.">
+            <h4 class="sc-card__title">
+              <a href="3.2.5-change-on-request/index.html"><span class="sc-card__num">3.2.5</span> Change on Request</a>
+            </h4>
+            <p>Changes of context are initiated only by user request, or a mechanism is available to turn off such changes.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.2"
+              data-search="3.2.6 consistent help help consistency cognitive multi-page wcag22 if a page includes help mechanisms — contact details, a help link, a chat widget, self-help — they appear in the same relative order on every page that has them.">
+            <h4 class="sc-card__title">
+              <a href="3.2.6-consistent-help/index.html"><span class="sc-card__num">3.2.6</span> Consistent Help</a>
+            </h4>
+            <p>If a page includes help mechanisms — contact details, a help link, a chat widget, self-help — they appear in the same relative order on every page that has them.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.2</span>
+              <span>manual only</span>
+            </p>
+          </li>
+        </ul>
+        <h3 class="guideline-heading" id="g-3.3">3.3 Input Assistance</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="A"
+              data-principle="3"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="3.3.1 error identification forms errors validation core if an input error is automatically detected, the item in error is identified and the error is described to the user in text.">
+            <h4 class="sc-card__title">
+              <a href="3.3.1-error-identification/index.html"><span class="sc-card__num">3.3.1</span> Error Identification</a>
+            </h4>
+            <p>If an input error is automatically detected, the item in error is identified and the error is described to the user in text.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="3"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="3.3.2 labels or instructions forms labels instructions core labels or instructions are provided when content requires user input, including format requirements and which fields are required.">
+            <h4 class="sc-card__title">
+              <a href="3.3.2-labels-or-instructions/index.html"><span class="sc-card__num">3.3.2</span> Labels or Instructions</a>
+            </h4>
+            <p>Labels or instructions are provided when content requires user input, including format requirements and which fields are required.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.3.3 error suggestion forms errors validation cognitive if an input error is detected and a correction is known, the suggestion is provided to the user, unless it would jeopardise security or the purpose of the content.">
+            <h4 class="sc-card__title">
+              <a href="3.3.3-error-suggestion/index.html"><span class="sc-card__num">3.3.3</span> Error Suggestion</a>
+            </h4>
+            <p>If an input error is detected and a correction is known, the suggestion is provided to the user, unless it would jeopardise security or the purpose of the content.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.3.4 error prevention (legal, financial, data) forms errors transactions checkout for pages causing legal commitments or financial transactions, modifying user-controllable data, or submitting test responses, submissions are reversible, checked and correctable, or confirmed before finalising.">
+            <h4 class="sc-card__title">
+              <a href="3.3.4-error-prevention-legal-financial-data/index.html"><span class="sc-card__num">3.3.4</span> Error Prevention (Legal, Financial, Data)</a>
+            </h4>
+            <p>For pages causing legal commitments or financial transactions, modifying user-controllable data, or submitting test responses, submissions are reversible, checked and correctable, or confirmed before finalising.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.3.5 help forms help cognitive context-sensitive help is available for functions requiring user input.">
+            <h4 class="sc-card__title">
+              <a href="3.3.5-help/index.html"><span class="sc-card__num">3.3.5</span> Help</a>
+            </h4>
+            <p>Context-sensitive help is available for functions requiring user input.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.0"
+              data-search="3.3.6 error prevention (all) forms errors validation for any page requiring the user to submit information, submissions are reversible, checked and correctable, or confirmed before finalising — extending 3.3.4 to all submissions, not only consequential ones.">
+            <h4 class="sc-card__title">
+              <a href="3.3.6-error-prevention-all/index.html"><span class="sc-card__num">3.3.6</span> Error Prevention (All)</a>
+            </h4>
+            <p>For any page requiring the user to submit information, submissions are reversible, checked and correctable, or confirmed before finalising — extending 3.3.4 to all submissions, not only consequential ones.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.0</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.2"
+              data-search="3.3.7 redundant entry forms checkout cognitive memory wcag22 information previously entered by the user in the same process is auto-populated or available to select, unless re-entry is essential, the information is security-sensitive, or the earlier value is no longer valid.">
+            <h4 class="sc-card__title">
+              <a href="3.3.7-redundant-entry/index.html"><span class="sc-card__num">3.3.7</span> Redundant Entry</a>
+            </h4>
+            <p>Information previously entered by the user in the same process is auto-populated or available to select, unless re-entry is essential, the information is security-sensitive, or the earlier value is no longer valid.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.2</span>
+              <span>manual only</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="3"
+              data-automatable="partial"
+              data-version="2.2"
+              data-search="3.3.8 accessible authentication (minimum) authentication login cognitive captcha wcag22 a cognitive function test such as remembering a password or solving a puzzle is not required for any authentication step, unless an alternative method exists, a mechanism assists the user, or the test is object recognition or personal non-text content.">
+            <h4 class="sc-card__title">
+              <a href="3.3.8-accessible-authentication-minimum/index.html"><span class="sc-card__num">3.3.8</span> Accessible Authentication (Minimum)</a>
+            </h4>
+            <p>A cognitive function test such as remembering a password or solving a puzzle is not required for any authentication step, unless an alternative method exists, a mechanism assists the user, or the test is object recognition or personal non-text content.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.2</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AAA"
+              data-principle="3"
+              data-automatable="no"
+              data-version="2.2"
+              data-search="3.3.9 accessible authentication (enhanced) authentication login cognitive wcag22 a cognitive function test is not required for any authentication step, with the object-recognition and personal-content exceptions of 3.3.8 removed.">
+            <h4 class="sc-card__title">
+              <a href="3.3.9-accessible-authentication-enhanced/index.html"><span class="sc-card__num">3.3.9</span> Accessible Authentication (Enhanced)</a>
+            </h4>
+            <p>A cognitive function test is not required for any authentication step, with the object-recognition and personal-content exceptions of 3.3.8 removed.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AAA">Level AAA</span>
+              <span>WCAG 2.2</span>
+              <span>manual only</span>
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="principle-section" aria-labelledby="p-4" data-principle="4">
+        <h2 id="p-4">Principle 4: Robust</h2>
+        <p class="prose">Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies. This is the contract between your markup and the tools that read it.</p>
+        <h3 class="guideline-heading" id="g-4.1">4.1 Compatible</h3>
+        <ul class="sc-list">
+          <li class="sc-card"
+              data-level="OBSOLETE"
+              data-principle="4"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="4.1.1 parsing obsolete html parsing history removed from wcag 2.2. this criterion required elements to have complete start and end tags, be nested correctly, avoid duplicate attributes, and have unique ids. it is retained here as an explainer, not as a demo, and does not count toward conformance.">
+            <h4 class="sc-card__title">
+              <a href="4.1.1-parsing/index.html"><span class="sc-card__num">4.1.1</span> Parsing</a>
+            </h4>
+            <p>Removed from WCAG 2.2. This criterion required elements to have complete start and end tags, be nested correctly, avoid duplicate attributes, and have unique IDs. It is retained here as an explainer, not as a demo, and does not count toward conformance.</p>
+            <p class="sc-card__meta">
+              <span class="level level--OBSOLETE">Level OBSOLETE</span>
+              <span>Removed in 2.2</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="A"
+              data-principle="4"
+              data-automatable="partial"
+              data-version="2.0"
+              data-search="4.1.2 name, role, value aria semantics widgets screen-reader core for all user interface components, the name and role can be determined programmatically; states, properties, and values can be set by the user and programmatically determined; and changes to them are notified to user agents.">
+            <h4 class="sc-card__title">
+              <a href="4.1.2-name-role-value/index.html"><span class="sc-card__num">4.1.2</span> Name, Role, Value</a>
+            </h4>
+            <p>For all user interface components, the name and role can be determined programmatically; states, properties, and values can be set by the user and programmatically determined; and changes to them are notified to user agents.</p>
+            <p class="sc-card__meta">
+              <span class="level level--A">Level A</span>
+              <span>WCAG 2.0</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+          <li class="sc-card"
+              data-level="AA"
+              data-principle="4"
+              data-automatable="partial"
+              data-version="2.1"
+              data-search="4.1.3 status messages aria live-regions screen-reader dynamic status messages can be programmatically determined through role or properties so they are announced by assistive technology without receiving focus.">
+            <h4 class="sc-card__title">
+              <a href="4.1.3-status-messages/index.html"><span class="sc-card__num">4.1.3</span> Status Messages</a>
+            </h4>
+            <p>Status messages can be programmatically determined through role or properties so they are announced by assistive technology without receiving focus.</p>
+            <p class="sc-card__meta">
+              <span class="level level--AA">Level AA</span>
+              <span>WCAG 2.1</span>
+              <span>partly automatable</span>
+            </p>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+  <script src="../assets/js/catalogue-filter.js"></script>
+</body>
+</html>

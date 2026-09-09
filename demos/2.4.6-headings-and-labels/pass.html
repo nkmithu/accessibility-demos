@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.6 Headings and Labels</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.6 Headings and Labels.</p>
+
+  <!-- excerpt:start -->
+  <!-- FIX 1: headings that work as an outline on their own. Read just the
+       headings: "Visiting Riverline Books / Delivery days / How long we hold a
+       reservation / Access at our Riverside shop". You know exactly where to go
+       without reading a single paragraph. That is the test. -->
+  <h1>Visiting Riverline Books</h1>
+
+  <h2>Delivery days</h2>
+  <p>We deliver across the county on Tuesdays and Fridays.</p>
+
+  <h2>How long we hold a reservation</h2>
+  <p>Reservations are held for seven days.</p>
+
+  <h2>Access at our Riverside shop</h2>
+  <p>Our Riverside shop has step-free access and a hearing loop.</p>
+
+  <!-- FIX 2: labels that name the specific thing being asked for. -->
+  <h2>Reserve a book</h2>
+  <form>
+    <div class="field">
+      <label for="a">Book title</label>
+      <input type="text" id="a">
+    </div>
+    <div class="field">
+      <label for="b">Your membership number</label>
+      <input type="text" id="b">
+    </div>
+    <div class="field">
+      <label for="c">Date you would like to collect it</label>
+      <input type="text" id="c">
+    </div>
+    <button type="submit" class="button">Reserve this book</button>
+  </form>
+
+  <!-- Two things 2.4.6 does NOT require:
+       - it does not require headings to exist at all (that is 2.4.10 at AAA)
+       - it does not require a visible label for every control (that is 3.3.2)
+       It only says that the headings and labels you DO have must describe the
+       topic or purpose.
+
+       A useful review technique: extract every heading into a flat list and read
+       it aloud. If it does not work as a table of contents, the headings fail. -->
+  <!-- excerpt:end -->
+</body>
+</html>

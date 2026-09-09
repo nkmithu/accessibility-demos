@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 7 — Custom dropdown</title>
+<link rel="stylesheet" href="../exercise.css">
+<style>
+  .dd{position:relative;max-width:18rem}
+  .dd-btn{border:1px solid #6d7883;border-radius:4px;padding:.45rem .6rem;background:#fff;cursor:pointer}
+  .dd-list{position:absolute;left:0;right:0;border:1px solid #6d7883;border-top:0;background:#fff;
+           margin:0;padding:0;list-style:none}
+  .dd-list li{padding:.4rem .6rem;cursor:pointer}
+  .dd-list li:hover{background:#eef2f6}
+</style>
+</head>
+<body>
+<p class="task"><strong>Exercise 7.</strong> Make this dropdown operable.
+   See <code>README.md</code>.</p>
+
+<h1>Filter the catalogue</h1>
+
+<!-- A dropdown built from divs. Not focusable, no role, no state,
+     no keyboard support of any kind. -->
+<div class="dd">
+  <div class="dd-btn" id="btn" onclick="toggle()">Choose a genre</div>
+  <ul class="dd-list" id="list" hidden>
+    <li onclick="pick('Fiction')">Fiction</li>
+    <li onclick="pick('Non-fiction')">Non-fiction</li>
+    <li onclick="pick('Poetry')">Poetry</li>
+    <li onclick="pick('Children\'s')">Children's</li>
+  </ul>
+</div>
+
+<p id="out">Nothing selected.</p>
+
+<script>
+  function toggle() {
+    var l = document.getElementById('list');
+    l.hidden = !l.hidden;
+  }
+  function pick(v) {
+    document.getElementById('btn').textContent = v;
+    document.getElementById('list').hidden = true;
+    document.getElementById('out').textContent = 'Selected: ' + v;
+  }
+</script>
+</body>
+</html>

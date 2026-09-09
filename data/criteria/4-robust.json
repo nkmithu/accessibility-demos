@@ -1,0 +1,112 @@
+{
+  "principle": "4",
+  "principleTitle": "Robust",
+  "principleIntent": "Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies. This is the contract between your markup and the tools that read it.",
+  "guidelines": {
+    "4.1": "Compatible"
+  },
+  "criteria": [
+    {
+      "id": "4.1.2",
+      "slug": "name-role-value",
+      "title": "Name, Role, Value",
+      "level": "A",
+      "guideline": "4.1",
+      "version": "2.0",
+      "summary": "For all user interface components, the name and role can be determined programmatically; states, properties, and values can be set by the user and programmatically determined; and changes to them are notified to user agents.",
+      "whoItAffects": "Screen reader users, who are told what a control is, what it is called, and what state it is in entirely through this information. A custom toggle built from a div announces as nothing at all.",
+      "howToTest": "For every control, inspect the accessibility tree for an accessible name, a correct role, and accurate state. Custom widgets — dropdowns, tabs, accordions, toggles, modals — are where this fails. Using a native button or input passes for free.",
+      "automatable": "partial",
+      "automationNote": "Scanners catch missing accessible names, invalid ARIA roles and attributes, and forbidden role and attribute combinations. They cannot confirm that state stays accurate as the user interacts, which is the harder half.",
+      "axeRules": [
+        "button-name",
+        "link-name",
+        "aria-roles",
+        "aria-valid-attr",
+        "aria-valid-attr-value",
+        "aria-required-attr",
+        "aria-allowed-attr",
+        "aria-allowed-role",
+        "aria-hidden-focus",
+        "aria-toggle-field-name",
+        "aria-command-name",
+        "aria-input-field-name",
+        "aria-meter-name",
+        "aria-progressbar-name",
+        "aria-tooltip-name",
+        "aria-dialog-name",
+        "frame-title",
+        "nested-interactive"
+      ],
+      "related": [
+        "1.3.1",
+        "2.5.3",
+        "4.1.3",
+        "2.1.1"
+      ],
+      "tags": [
+        "aria",
+        "semantics",
+        "widgets",
+        "screen-reader",
+        "core"
+      ]
+    },
+    {
+      "id": "4.1.3",
+      "slug": "status-messages",
+      "title": "Status Messages",
+      "level": "AA",
+      "guideline": "4.1",
+      "version": "2.1",
+      "summary": "Status messages can be programmatically determined through role or properties so they are announced by assistive technology without receiving focus.",
+      "whoItAffects": "Screen reader users, who otherwise never learn that a search returned 12 results, that an item was added to the basket, or that a form saved. The message appears on screen and is silently invisible to them.",
+      "howToTest": "Trigger each status update — search results, validation summaries, add-to-cart confirmations, loading states, auto-save notices. Confirm each is inside a live region that exists in the DOM before the message arrives, and confirm a screen reader actually announces it.",
+      "automatable": "partial",
+      "automationNote": "Scanners validate live region attributes when present. They cannot detect a status message that has no live region — the actual failure — and cannot verify announcement really happens.",
+      "axeRules": [
+        "aria-valid-attr-value",
+        "aria-allowed-attr"
+      ],
+      "related": [
+        "4.1.2",
+        "3.3.1"
+      ],
+      "tags": [
+        "aria",
+        "live-regions",
+        "screen-reader",
+        "dynamic"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "There is nothing for a rule to fire on. axe validates live-region attributes when they are present; the failure here is that no live region EXISTS, so the scanner sees an ordinary paragraph. A scanner also cannot press the button, so it never observes the update at all. 4.1.3 has to be tested by triggering each status change with a screen reader running."
+    },
+    {
+      "id": "4.1.1",
+      "slug": "parsing",
+      "title": "Parsing",
+      "level": "OBSOLETE",
+      "guideline": "4.1",
+      "version": "2.0",
+      "obsolete": true,
+      "summary": "Removed from WCAG 2.2. This criterion required elements to have complete start and end tags, be nested correctly, avoid duplicate attributes, and have unique IDs. It is retained here as an explainer, not as a demo, and does not count toward conformance.",
+      "whoItAffects": "Historically, screen reader users on browsers that could not recover from malformed HTML. Modern browsers and assistive technologies all use the same standardised HTML parsing and error-recovery algorithm, so the criterion no longer described a real barrier.",
+      "howToTest": "Not applicable — do not evaluate this criterion in a WCAG 2.2 audit. Note that genuine parsing problems that do cause harm, such as duplicate IDs breaking a label association, are already failures of 1.3.1 or 4.1.2.",
+      "automatable": "partial",
+      "automationNote": "Validators still report these issues, and they remain worth fixing as code quality. They are simply no longer a WCAG conformance requirement in their own right.",
+      "axeRules": [
+        "duplicate-id-aria"
+      ],
+      "related": [
+        "1.3.1",
+        "4.1.2"
+      ],
+      "tags": [
+        "obsolete",
+        "html",
+        "parsing",
+        "history"
+      ]
+    }
+  ]
+}

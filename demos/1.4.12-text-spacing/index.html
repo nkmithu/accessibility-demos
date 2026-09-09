@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.4.12 Text Spacing (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="No loss of content or functionality when the user sets line height to 1.5× the font size, paragraph spacing to 2×, letter spacing to 0.12×, and word spacing to 0.16×.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.4.12 Text Spacing</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.4.12</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 1.4 Distinguishable</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Text Spacing</h1>
+        <p class="sc-header__summary">No loss of content or functionality when the user sets line height to 1.5× the font size, paragraph spacing to 2×, letter spacing to 0.12×, and word spacing to 0.16×.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with dyslexia and low vision who apply their own spacing overrides through a browser extension or user stylesheet.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.4.12
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.4.12 Text Spacing"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;div class=&quot;spaced&quot;&gt;
+  &lt;h1&gt;Delivery&lt;/h1&gt;
+
+  &lt;!-- With the user's spacing applied, the last line of this card is cut off
+       and there is no way to reach it. --&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;p&gt;We deliver across the county on Tuesdays and Fridays. Orders placed
+       before noon are usually dispatched the same week.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;!-- The label no longer fits inside its fixed-width pill. --&gt;
+  &lt;p&gt;&lt;span class=&quot;pill&quot;&gt;Track your delivery&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.4.12
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.4.12 Text Spacing"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;div class=&quot;spaced&quot;&gt;
+  &lt;h1&gt;Delivery&lt;/h1&gt;
+
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;p&gt;We deliver across the county on Tuesdays and Fridays. Orders placed
+       before noon are usually dispatched the same week.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;p&gt;&lt;span class=&quot;pill&quot;&gt;Track your delivery&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- The four values a page must survive, set by the USER through a browser
+     extension or user stylesheet:
+       line-height:    at least 1.5 x the font size
+       paragraph gap:  at least 2 x the font size
+       letter-spacing: at least 0.12 x the font size
+       word-spacing:   at least 0.16 x the font size
+
+     You do not have to PROVIDE these controls. You have to not break when
+     someone else applies them.
+
+     The rule of thumb that prevents almost every failure: never put a fixed
+     height on anything that contains text. Use min-height, or let the content
+     size the box. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Apply the four spacing overrides via a bookmarklet or devtools and look for clipped text, overlapping elements, and text escaping its container. Fixed heights on text containers are the usual cause.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires applying the overrides and visually inspecting the result.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.4.8-visual-presentation/index.html">1.4.8 Visual Presentation (Level AAA)</a></li>
+          <li><a href="../1.4.10-reflow/index.html">1.4.10 Reflow (Level AA)</a></li>
+          <li><a href="../1.4.4-resize-text/index.html">1.4.4 Resize Text (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html">Understanding 1.4.12 Text Spacing</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#text-spacing">1.4.12 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.4.11-non-text-contrast/index.html"><span class="sc-pager__dir">Previous criterion</span>1.4.11 Non-text Contrast</a>
+        <a href="../1.4.13-content-on-hover-or-focus/index.html"><span class="sc-pager__dir">Next criterion</span>1.4.13 Content on Hover or Focus</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

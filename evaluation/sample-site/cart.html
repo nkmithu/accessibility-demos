@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basket — Riverline Books</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .remove{width:16px;height:16px;padding:0;border:0;background:none;cursor:pointer;font-size:13px}
+  .qty-in{width:3rem;text-align:center;display:inline-block}
+</style>
+</head>
+<body>
+<p class="audit-banner">Audit material — deliberate accessibility defects.
+   <a href="../index.html">Back to the walkthrough</a></p>
+<div class="topbar"><div class="wrap">Free delivery on orders over £25</div></div>
+<div class="masthead"><div class="wrap">
+  <a class="logo" href="index.html">Riverline Books</a>
+  <div class="nav"><ul>
+    <li><a href="index.html">Home</a></li><li><a href="catalogue.html">Books</a></li>
+    <li><a href="contact.html">Contact</a></li><li><a href="login.html">Sign in</a></li>
+    <li><a href="cart.html">Basket</a></li>
+  </ul></div>
+</div></div>
+
+<div class="content"><div class="wrap">
+  <h1>Your basket</h1>
+
+  <!-- DEFECT 1.3.1: a data table with no header cells, no caption and no scope.
+       Every cell is a td, so a screen reader reading "2" cannot say what it is
+       the quantity OF, or which column it belongs to. -->
+  <table>
+    <tr>
+      <td><strong>Book</strong></td><td><strong>Price</strong></td>
+      <td><strong>Quantity</strong></td><td><strong>Total</strong></td><td></td>
+    </tr>
+    <tr>
+      <td>Tidal Flats</td><td>£12.99</td>
+      <!-- DEFECT 3.3.2: quantity inputs have no labels at all. -->
+      <td><input type="text" class="qty-in" value="1"></td>
+      <td>£12.99</td>
+      <!-- DEFECT 2.5.8: 16x16 remove buttons, and they sit right beside a link.
+           DEFECT 4.1.2: the accessible name is the character "x". -->
+      <td><button type="button" class="remove" onclick="removeRow(this)">×</button></td>
+    </tr>
+    <tr>
+      <td>The Long Field</td><td>£15.99</td>
+      <td><input type="text" class="qty-in" value="2"></td>
+      <td>£31.98</td>
+      <td><button type="button" class="remove" onclick="removeRow(this)">×</button></td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Total</strong></td>
+      <td><strong>£44.97</strong></td><td></td>
+    </tr>
+  </table>
+
+  <!-- DEFECT 4.1.3: removing a row changes the page with no announcement. -->
+  <p id="cart-msg"></p>
+
+  <!-- DEFECT 1.4.11: the promo code input has a 1.2:1 border (site-wide defect
+       in site.css) — the label is readable but the field is invisible. -->
+  <div class="field" style="margin-top:1.2rem">
+    <label for="promo">Promotion code</label>
+    <input type="text" id="promo">
+  </div>
+
+  <p><a class="btn" href="checkout.html">Continue to checkout</a></p>
+</div></div>
+
+<div class="footer"><div class="wrap"><ul>
+  <li><a href="help.html">Help</a></li><li><a href="contact.html">Contact us</a></li>
+  <li><a href="help.html">Accessibility</a></li>
+</ul></div></div>
+
+<script>
+  function removeRow(btn) {
+    var row = btn.closest('tr');
+    row.parentNode.removeChild(row);
+    document.getElementById('cart-msg').textContent = 'Item removed from your basket.';
+  }
+</script>
+</body>
+</html>

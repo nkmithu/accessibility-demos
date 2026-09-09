@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.7 Low or No Background Audio</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.7.</p>
+
+  <!-- excerpt:start -->
+  <h1>Author interview: A. Marsh</h1>
+
+  <!-- FAILURE: a speech recording mixed with a music bed that sits only a few
+       decibels below the voice, and there is no way to turn the music off.
+
+       Why this matters more than it sounds: a hearing aid or cochlear implant
+       amplifies everything in the signal, not just the voice. Background music
+       that a hearing listener filters out effortlessly arrives at the same
+       volume as the speech, and the words become unrecoverable. Many people who
+       would never call themselves disabled cannot follow speech over music
+       either.
+
+       There is one mixed file, no speech-only version, and no music control. -->
+  <audio controls src="../../assets/media/shop-doorbell.mp3"></audio>
+  <p>Recorded live in the Riverside shop, with our usual background music playing.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

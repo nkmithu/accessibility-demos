@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.9 Audio-only (Live)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.stage{background:#14171c;color:#fff;border-radius:6px;padding:2rem 1rem;text-align:center}</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.9 Audio-only (Live).</p>
+
+  <!-- excerpt:start -->
+  <h1>Live: Riverline Radio book club</h1>
+
+  <!-- FAILURE: a live audio-only broadcast - no picture, so captions have
+       nowhere to appear and no captions track is offered. There is no live
+       transcript, no CART provision, and nothing to read.
+
+       A deaf or hard-of-hearing listener simply cannot attend. Note that this is
+       AUDIO-ONLY: 1.2.4 covers live synchronised media (audio plus video), while
+       1.2.9 covers live audio on its own - a radio stream, a phone-in, an
+       audio-only conference call. -->
+  <div class="stage">
+    <p><strong>LIVE</strong> — audio stream</p>
+    <p>This month's book club discussion, broadcasting now</p>
+  </div>
+
+  <p>A recording will be available to members next week.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

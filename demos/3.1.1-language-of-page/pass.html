@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- FIX: the page declares its primary language with a valid BCP 47 subtag.
+     "bn" is Bangla/Bengali. Use "bn-BD" or "bn-IN" only if the regional
+     distinction actually matters to your content. -->
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>রিভারলাইন বইঘর — উদাহরণ</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <!-- This banner is English inside a Bangla page, so it carries its own lang
+       attribute. That is 3.1.2 Language of Parts, demonstrated in passing. -->
+  <p class="example-banner" lang="en">This page MEETS WCAG 3.1.1 Language of Page.
+     The content is Bangla and the page declares <code>lang="bn"</code>.</p>
+
+  <!-- excerpt:start -->
+  <!-- With lang="bn" on <html>, a screen reader switches to its Bangla voice and
+       pronunciation rules, the browser picks an appropriate font, and translation
+       tools know what they are translating from. -->
+
+  <h1>রিভারলাইন বইঘর</h1>
+
+  <h2>আমাদের সম্পর্কে</h2>
+  <p>আমরা ১৯৯৮ সাল থেকে পুরনো ও নতুন বই বিক্রি করছি। নদীর ধারে আমাদের ছোট দোকানটিতে
+     প্রায় বিশ হাজার বই আছে।</p>
+
+  <h2>খোলার সময়</h2>
+  <ul>
+    <li>সোমবার থেকে শুক্রবার: সকাল ৯টা – সন্ধ্যা ৬টা</li>
+    <li>শনিবার: সকাল ১০টা – বিকাল ৪টা</li>
+    <li>রবিবার: বন্ধ</li>
+  </ul>
+  <!-- excerpt:end -->
+</body>
+</html>

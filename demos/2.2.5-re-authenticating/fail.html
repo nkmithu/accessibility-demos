@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.2.5 Re-authenticating</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.2.5 Re-authenticating.
+     Fill the form in and press "Simulate session expiry".</p>
+
+  <!-- excerpt:start -->
+  <h1>Apply for a library card</h1>
+
+  <!-- FAILURE: when the session expires the user is sent back to sign in, and
+       everything they typed is thrown away.
+
+       This is one of the most damaging failures in real systems, and it falls
+       hardest on the people least able to absorb it: anyone who types slowly,
+       reads slowly, navigates by screen reader, or has to stop and find a
+       document. They are the most likely to hit the timeout AND the most costly
+       to make start again. -->
+  <form id="f">
+    <div class="field"><label for="n">Full name</label><input type="text" id="n" autocomplete="name"></div>
+    <div class="field"><label for="a">Address</label><input type="text" id="a" autocomplete="street-address"></div>
+    <div class="field"><label for="w">Why would you like a card?</label>
+      <textarea id="w" rows="4"></textarea></div>
+    <button type="submit" class="button">Submit application</button>
+  </form>
+
+  <p><button type="button" class="button button--secondary" onclick="expire()">Simulate session expiry</button></p>
+  <div id="out" role="status"></div>
+  <!-- excerpt:end -->
+
+  <script>
+    function expire() {
+      document.getElementById('f').reset();
+      document.getElementById('f').hidden = true;
+      document.getElementById('out').innerHTML =
+        '<h2>Your session has expired</h2><p>Please sign in again. Your application was not saved.</p>';
+    }
+  </script>
+</body>
+</html>

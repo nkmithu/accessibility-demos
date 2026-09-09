@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.5 Images of Text</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .promo-heading { font-size: clamp(1.4rem, 1rem + 2.2vw, 2.1rem); font-weight: 800;
+                     letter-spacing: -.01em; color: #0a4f9e; margin: 0 0 .5rem; }
+    .promo-terms { border-left: 4px solid var(--border-strong); padding-left: .9rem;
+                   color: var(--text-muted); }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.5 Images of Text.
+     Zoom to 300% — every word stays sharp.</p>
+
+  <!-- excerpt:start -->
+  <h1>Spring festival</h1>
+
+  <!-- FIX 1: real text styled with CSS. It stays sharp at any zoom, respects the
+       user's font and spacing overrides, can be selected, searched, translated
+       and read by a screen reader as text rather than as an alt attribute. -->
+  <p class="promo-heading">Three days of events, 12 to 14 April</p>
+
+  <!-- FIX 2: a real link styled as a button. It grows with the text, reflows,
+       and its label is in the DOM. -->
+  <p><a class="button" href="#book">Book festival tickets</a></p>
+
+  <!-- FIX 3: terms as real text. -->
+  <p class="promo-terms">Tickets are non-refundable. Members save 20%.
+     Under 16s go free with a paying adult.</p>
+
+  <!-- The exceptions, and they are narrow:
+         - LOGOTYPES: a brand's wordmark is exempt. Your logo can stay an image.
+         - ESSENTIAL presentation: a font specimen, a scanned manuscript, or a
+           typographic artwork where the exact rendering IS the content.
+         - Customisable images: at AA you may use an image of text if the user
+           can adjust its font, size and colours. This exception is removed
+           entirely at AAA by 1.4.9.
+
+       "Our designer wanted a specific typeface" is not an exception - web fonts
+       exist. Neither is "the CSS was hard". -->
+
+  <p id="book">Booking.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

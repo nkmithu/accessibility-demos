@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.4 Link Purpose (In Context)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.4 Link Purpose.
+     List the links with a screen reader and see how useless the list is.</p>
+
+  <!-- excerpt:start -->
+  <h1>News</h1>
+
+  <!-- FAILURE 1: three identical "Read more" links. Pulled into a screen
+       reader's link list they read: "Read more, Read more, Read more".
+       They are also not disambiguated by any programmatic context - the
+       headings are divs, so there is no list item, heading or paragraph
+       relationship tying each link to its story. -->
+  <div>
+    <div style="font-weight:700">Spring reading festival announced</div>
+    <p>Three days of events across both shops.</p>
+    <a href="#a">Read more</a>
+  </div>
+  <div>
+    <div style="font-weight:700">Rare first editions arriving</div>
+    <p>A private collection has come to us.</p>
+    <a href="#b">Read more</a>
+  </div>
+
+  <!-- FAILURE 2: the link text is a bare URL. A screen reader reads it character
+       by character: "h t t p colon slash slash..." -->
+  <p>Full programme: <a href="#c">https://example.org/events/spring/programme/2026</a></p>
+
+  <!-- FAILURE 3: "click here" carries no information at all, and the useful
+       words sit outside the link where a link list cannot see them. -->
+  <p>To book a place, <a href="#d">click here</a>.</p>
+
+  <!-- FAILURE 4: an image link whose alt describes the picture rather than the
+       destination. -->
+  <p><a href="#e"><img src="../../assets/media/book-cover.svg" alt="book cover" width="60" height="85"></a></p>
+
+  <p id="a">Story A.</p><p id="b">Story B.</p><p id="c">Programme.</p>
+  <p id="d">Booking.</p><p id="e">Tidal Flats.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

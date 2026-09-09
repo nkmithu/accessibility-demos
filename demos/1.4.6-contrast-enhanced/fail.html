@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.6 Contrast (Enhanced)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* Every colour below PASSES 1.4.3 at AA and FAILS 1.4.6 at AAA. That is the
+       whole point of this demo: these are not sloppy choices, they are the
+       choices a careful team makes when AA is the target. */
+    .body-text { color: #6a7480; }   /* 4.6:1 — passes AA (4.5), fails AAA (7) */
+    .link      { color: #2f6fb5; }   /* 4.6:1 — passes AA, fails AAA */
+    .cta       { background:#2f6fb5; color:#fff; border:0; padding:.6rem 1.2rem;
+                 border-radius:6px; min-height:44px; font:inherit; }  /* 4.6:1 */
+    .big       { font-size: 1.6rem; color: #8a949e; }  /* 3.1:1 — passes AA as
+                                                          large text, fails AAA (4.5) */
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.6 Contrast (Enhanced).
+     Every colour here PASSES the AA threshold.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your membership</h1>
+
+  <!-- 4.6:1. Comfortably over the 4.5:1 AA minimum, comfortably under 7:1. -->
+  <p class="body-text">Your membership renews on 1 April. Members get free delivery
+     and priority booking for all events.</p>
+
+  <p class="body-text">See our <a class="link" href="#t">membership terms</a>.</p>
+
+  <button type="button" class="cta">Renew membership</button>
+
+  <!-- Large text: 3.1:1 passes AA (where large text only needs 3:1) but fails
+       AAA (where large text needs 4.5:1). -->
+  <p class="big">Renewing saves you £12 a year</p>
+
+  <p id="t">Terms.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

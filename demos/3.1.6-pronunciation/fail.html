@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.1.6 Pronunciation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.1.6 Pronunciation.
+     Listen to it with a screen reader.</p>
+
+  <!-- excerpt:start -->
+  <h1>This month's reading</h1>
+
+  <!-- FAILURE 1: heteronyms - words spelled the same but pronounced differently,
+       with different meanings. A screen reader must guess, and when it guesses
+       wrong the sentence changes meaning.
+
+       "read" (present) vs "read" (past); "lead" (the verb) vs "lead" (the metal);
+       "live" (verb) vs "live" (adjective); "tear" (to rip) vs "tear" (crying);
+       "wound" (an injury) vs "wound" (past tense of wind). -->
+  <p>We read the winning entry aloud last night. Anna will read the runner-up tonight.</p>
+  <p>The chapter about the lead mines will lead us into a discussion of the strike.</p>
+  <p>Come to a live reading, or listen to where the authors live.</p>
+  <p>She wound the clock, then described the wound in careful detail.</p>
+
+  <!-- FAILURE 2: a name whose pronunciation is not obvious and is never given. -->
+  <p>Our guest is the poet Siobhán Ó Ceallaigh.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

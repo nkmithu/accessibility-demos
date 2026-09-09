@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.3.6 Error Prevention (All)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.preview{border:1px solid var(--border);border-radius:6px;padding:1rem;margin-top:1rem}</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.3.6 Error Prevention (All).</p>
+
+  <!-- excerpt:start -->
+  <h1>Leave a review</h1>
+
+  <form id="f">
+    <div class="field">
+      <label for="who">Display name</label>
+      <input type="text" id="who" autocomplete="nickname">
+    </div>
+    <div class="field">
+      <label for="r">Your review</label>
+      <textarea id="r" rows="5"></textarea>
+    </div>
+
+    <!-- FIX — CHECKED AND CORRECTABLE: a preview step, so nothing is published
+         without the user seeing exactly what will appear. -->
+    <button type="button" class="button" id="preview">Preview your review</button>
+  </form>
+
+  <div class="preview" id="out" hidden>
+    <h2 id="out-h" tabindex="-1">Check your review before posting</h2>
+    <p><strong id="p-who"></strong> wrote:</p>
+    <p id="p-r"></p>
+    <button type="button" class="button" id="post">Post this review</button>
+    <button type="button" class="button button--secondary" id="edit">Go back and edit</button>
+  </div>
+
+  <p id="done" role="status"></p>
+
+  <!-- FIX — REVERSIBLE: and afterwards, it can be undone. Saying so up front is
+       what lets a nervous user proceed at all. -->
+  <p>You can edit or delete your review at any time from your account.</p>
+
+  <!-- 3.3.6 is satisfied by ANY ONE of the same three routes as 3.3.4 -
+       reversible, checked and correctable, or confirmed - applied to every form
+       rather than only consequential ones.
+
+       Is this realistic site-wide? For most sites, largely yes, and cheaply:
+       a preview step on anything published, an undo window on anything
+       destructive, and inline validation everywhere else covers almost all of it.
+       The place it gets expensive is high-volume interactions where an extra
+       confirmation would itself become a barrier - which is a legitimate reason
+       to meet 3.3.4 at AA and document why 3.3.6 is not claimed. -->
+  <!-- excerpt:end -->
+
+  <script>
+    document.getElementById('preview').addEventListener('click', function () {
+      document.getElementById('p-who').textContent = document.getElementById('who').value || '(no name)';
+      document.getElementById('p-r').textContent = document.getElementById('r').value || '(empty review)';
+      document.getElementById('out').hidden = false;
+      document.getElementById('out-h').focus();
+    });
+    document.getElementById('edit').addEventListener('click', function () {
+      document.getElementById('out').hidden = true;
+      document.getElementById('r').focus();
+    });
+    document.getElementById('post').addEventListener('click', function () {
+      document.getElementById('out').hidden = true;
+      document.getElementById('f').hidden = true;
+      document.getElementById('done').textContent =
+        'Review posted. You can edit or delete it from your account at any time.';
+    });
+  </script>
+</body>
+</html>

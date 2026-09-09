@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.5 Audio Description (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.transcript { border:1px solid var(--border); border-radius:6px; padding:1rem; margin:.75rem 0; }</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.5 (though it passes 1.2.3).</p>
+
+  <!-- excerpt:start -->
+  <h1>A short tour of the shop</h1>
+
+  <!-- This is the subtle one. The page below satisfies 1.2.3 at Level A, because
+       1.2.3 accepts EITHER audio description OR a full text alternative - and a
+       text alternative is provided.
+
+       1.2.5 at Level AA removes that choice. At AA you must provide actual
+       AUDIO DESCRIPTION: a described audio track the user can listen to while
+       watching. A separate document is no longer sufficient.
+
+       FAILURE: there is no described audio track and no described version of the
+       video. A blind user is sent off to read a document instead of watching the
+       video with everyone else. -->
+  <video controls width="640">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+  </video>
+
+  <details class="transcript">
+    <summary>Text alternative (satisfies 1.2.3 at Level A, but not 1.2.5 at AA)</summary>
+    <p>Five title cards with sound effects: the shop name; opening hours; reserve
+       online and collect within seven days; free delivery over 25 pounds; the web
+       address.</p>
+  </details>
+  <!-- excerpt:end -->
+</body>
+</html>

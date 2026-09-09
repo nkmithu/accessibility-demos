@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.5.3 Label in Name (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="For components with a visible text label, the accessible name contains the visible text.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.5.3 Label in Name</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.5.3</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 2.5 Input Modalities</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Label in Name</h1>
+        <p class="sc-header__summary">For components with a visible text label, the accessible name contains the visible text.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Speech input users who say &quot;click Submit order&quot; — if the accessible name is &quot;Send&quot;, the command fails. Screen reader users with some sight hear one thing and see another.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.5.3
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.5.3 Label in Name"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your basket&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: the visible label says &quot;Place order&quot;. The accessible name says
+     &quot;Submit&quot;. A speech-input user says &quot;click Place order&quot; and nothing happens,
+     because the name the software matches against does not contain the words
+     on screen. --&gt;
+&lt;button type=&quot;button&quot; class=&quot;button&quot; aria-label=&quot;Submit&quot;&gt;Place order&lt;/button&gt;
+
+&lt;!-- FAILURE 2: aria-label completely replaces the visible text. Note that
+     aria-label wins over the element's content, so the visible words are
+     simply gone from the accessibility tree. --&gt;
+&lt;p&gt;&lt;a href=&quot;#promo&quot; aria-label=&quot;Discounts&quot;&gt;Apply a promotion code&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- FAILURE 3: the accessible name starts with extra words, so it does not
+     CONTAIN the visible label as a contiguous string. Extra words are allowed
+     by 2.5.3 only if the visible text still appears intact within the name -
+     &quot;Go to basket page&quot; does not contain &quot;View basket&quot;. --&gt;
+&lt;p&gt;&lt;a href=&quot;#basket&quot; aria-label=&quot;Go to basket page&quot;&gt;View basket&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- FAILURE 4: a search field labelled visually as &quot;Search books&quot; but named
+     &quot;query&quot; by its title attribute. --&gt;
+&lt;div class=&quot;field&quot;&gt;
+  &lt;label for=&quot;q&quot;&gt;Search books&lt;/label&gt;
+  &lt;input type=&quot;search&quot; id=&quot;q&quot; aria-label=&quot;query&quot;&gt;
+&lt;/div&gt;
+
+&lt;p id=&quot;promo&quot;&gt;Promo.&lt;/p&gt;&lt;p id=&quot;basket&quot;&gt;Basket.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.5.3
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.5.3 Label in Name"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your basket&lt;/h1&gt;
+
+&lt;!-- FIX 1: no aria-label at all. The button's own text becomes its accessible
+     name, so the visible label and the name are the same string by
+     construction and cannot drift apart. This is the reliable fix. --&gt;
+&lt;button type=&quot;button&quot; class=&quot;button&quot;&gt;Place order&lt;/button&gt;
+
+&lt;!-- FIX 2: the link text is the name. --&gt;
+&lt;p&gt;&lt;a href=&quot;#promo&quot;&gt;Apply a promotion code&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- FIX 3: if you must extend the name for extra context, the visible text
+     must still appear inside it, unbroken - and it should come first, so
+     speech commands match on the words the user can actually see. --&gt;
+&lt;p&gt;&lt;a href=&quot;#basket&quot; aria-label=&quot;View basket, 2 items&quot;&gt;View basket&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- FIX 4: a real label element. The visible label IS the accessible name. --&gt;
+&lt;div class=&quot;field&quot;&gt;
+  &lt;label for=&quot;q&quot;&gt;Search books&lt;/label&gt;
+  &lt;input type=&quot;search&quot; id=&quot;q&quot; name=&quot;q&quot;&gt;
+&lt;/div&gt;
+
+&lt;!-- Note: a purely graphical control has no visible text label, so 2.5.3 does
+     not apply to it - but 4.1.2 still requires it to have an accessible name. --&gt;
+
+&lt;p id=&quot;promo&quot;&gt;Promo.&lt;/p&gt;&lt;p id=&quot;basket&quot;&gt;Basket.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Compare each control's visible text against its accessible name in the accessibility tree. An aria-label that overrides the visible text is the classic failure.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners compare visible text with the accessible name and catch most mismatches, but cannot always determine the visible label for complex controls.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> axe does have a label-content-name-mismatch rule for exactly this failure, but it is marked EXPERIMENTAL and is therefore switched off in axe's default configuration. A standard scan reports nothing. You have to opt in to experimental rules to see it - and most CI pipelines never do.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>label-content-name-mismatch</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../4.1.2-name-role-value/index.html">4.1.2 Name, Role, Value (Level A)</a></li>
+          <li><a href="../2.4.4-link-purpose-in-context/index.html">2.4.4 Link Purpose (In Context) (Level A)</a></li>
+          <li><a href="../3.3.2-labels-or-instructions/index.html">3.3.2 Labels or Instructions (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html">Understanding 2.5.3 Label in Name</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#label-in-name">2.5.3 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.5.2-pointer-cancellation/index.html"><span class="sc-pager__dir">Previous criterion</span>2.5.2 Pointer Cancellation</a>
+        <a href="../2.5.4-motion-actuation/index.html"><span class="sc-pager__dir">Next criterion</span>2.5.4 Motion Actuation</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

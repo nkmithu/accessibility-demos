@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.2.1 Timing Adjustable</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.timer { font-weight:700; font-family:var(--font-mono); }</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.2.1 Timing Adjustable.
+     Wait 20 seconds without touching anything.</p>
+
+  <!-- excerpt:start -->
+  <h1>Complete your booking</h1>
+
+  <!-- FAILURE: a hard time limit with
+         - no way to turn it off
+         - no way to extend it
+         - no warning before it expires
+         - and the user's entered data discarded when it does.
+
+       Twenty seconds is compressed for the demo; in the wild this is a
+       ten-minute checkout hold or a fifteen-minute session timeout. The effect
+       is identical for anyone who reads slowly, types slowly, navigates by
+       screen reader, or has to step away - all of whom are disproportionately
+       disabled users. -->
+  <p>Your seats are held for <span class="timer" id="t">20</span> seconds.</p>
+
+  <form id="f">
+    <div class="field">
+      <label for="nm">Name on booking</label>
+      <input type="text" id="nm" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="rq">Any access requirements?</label>
+      <textarea id="rq"></textarea>
+    </div>
+    <button type="submit" class="button">Confirm booking</button>
+  </form>
+
+  <p id="msg" role="status"></p>
+  <!-- excerpt:end -->
+
+  <script>
+    var left = 20;
+    var tick = setInterval(function () {
+      left--;
+      document.getElementById('t').textContent = left;
+      if (left <= 0) {
+        clearInterval(tick);
+        document.getElementById('f').reset();          // all typing discarded
+        document.getElementById('f').hidden = true;
+        document.getElementById('msg').textContent =
+          'Your session expired and your booking was cancelled. Please start again.';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.5.3 Label in Name</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.5.3 Label in Name.
+     A speech-input user saying what they can see will not activate these.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your basket</h1>
+
+  <!-- FAILURE 1: the visible label says "Place order". The accessible name says
+       "Submit". A speech-input user says "click Place order" and nothing happens,
+       because the name the software matches against does not contain the words
+       on screen. -->
+  <button type="button" class="button" aria-label="Submit">Place order</button>
+
+  <!-- FAILURE 2: aria-label completely replaces the visible text. Note that
+       aria-label wins over the element's content, so the visible words are
+       simply gone from the accessibility tree. -->
+  <p><a href="#promo" aria-label="Discounts">Apply a promotion code</a></p>
+
+  <!-- FAILURE 3: the accessible name starts with extra words, so it does not
+       CONTAIN the visible label as a contiguous string. Extra words are allowed
+       by 2.5.3 only if the visible text still appears intact within the name -
+       "Go to basket page" does not contain "View basket". -->
+  <p><a href="#basket" aria-label="Go to basket page">View basket</a></p>
+
+  <!-- FAILURE 4: a search field labelled visually as "Search books" but named
+       "query" by its title attribute. -->
+  <div class="field">
+    <label for="q">Search books</label>
+    <input type="search" id="q" aria-label="query">
+  </div>
+
+  <p id="promo">Promo.</p><p id="basket">Basket.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

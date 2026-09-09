@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Books — Riverline Books</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .sortlist{list-style:none;padding:0;max-width:26rem}
+  .sortlist li{border:1px solid var(--rule);border-radius:3px;padding:.45rem .6rem;
+               margin-bottom:.3rem;background:#fff;cursor:grab;user-select:none}
+  .filters{border:1px solid var(--rule);border-radius:4px;padding:.8rem;margin-bottom:1.2rem}
+</style>
+</head>
+<body>
+<p class="audit-banner">Audit material — deliberate accessibility defects.
+   <a href="../index.html">Back to the walkthrough</a></p>
+<div class="topbar"><div class="wrap">Free delivery on orders over £25</div></div>
+<div class="masthead"><div class="wrap">
+  <a class="logo" href="index.html">Riverline Books</a>
+  <!-- DEFECT 3.2.3: nav order differs from the home page. -->
+  <div class="nav"><ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="cart.html">Basket</a></li>
+    <li><a href="login.html">Sign in</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="help.html">Help</a></li>
+  </ul></div>
+</div></div>
+
+<div class="content"><div class="wrap">
+  <h1>Books</h1>
+
+  <!-- DEFECT 1.3.1: a group of related checkboxes with no fieldset and no legend.
+       The question "Filter by" is a styled div, so the grouping is visual only. -->
+  <div class="filters">
+    <div style="font-weight:bold;margin-bottom:.4rem">Filter by</div>
+    <input type="checkbox" id="f1"><label for="f1">Fiction</label>
+    <input type="checkbox" id="f2"><label for="f2">Non-fiction</label>
+    <input type="checkbox" id="f3"><label for="f3">Second hand</label>
+    <input type="checkbox" id="f4"><label for="f4">In stock only</label>
+    <p style="margin:.6rem 0 0">
+      <button type="button" class="btn btn-sm" onclick="applyFilters()">Apply filters</button>
+    </p>
+  </div>
+
+  <!-- DEFECT 4.1.3: the result count changes with no live region, so a screen
+       reader user is never told the filter did anything. -->
+  <p id="count">Showing 3 of 3 books</p>
+
+  <!-- DEFECT 2.5.7: reordering is drag-only. No move up / move down controls,
+       no keyboard route. Also fails 2.1.1. -->
+  <h2>Your shortlist</h2>
+  <p class="muted">Drag the titles to put them in the order you want.</p>
+  <ul class="sortlist" id="shortlist">
+    <li draggable="true">Tidal Flats</li>
+    <li draggable="true">The Long Field</li>
+    <li draggable="true">Salt</li>
+  </ul>
+
+  <h2>All books</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/cover-3.svg" width="200" height="280" alt="Tidal Flats cover">
+      <h3>Tidal Flats</h3>
+      <p class="price">£12.99</p>
+      <!-- DEFECT 2.4.4 / 2.4.9: three identical "View" links, no context in the
+           link text and no programmatic relationship to the heading. -->
+      <a href="product.html">View</a>
+      <!-- DEFECT 3.2.4: called "Buy now" here, "Add to basket" on the home page. -->
+      <button type="button" class="btn btn-sm">Buy now</button>
+    </div>
+    <div class="card">
+      <img src="assets/cover-1.svg" width="200" height="280" alt="The Long Field cover">
+      <h3>The Long Field</h3>
+      <p class="price">£15.99</p>
+      <a href="product.html">View</a>
+      <button type="button" class="btn btn-sm">Buy now</button>
+    </div>
+    <div class="card">
+      <img src="assets/cover-2.svg" width="200" height="280" alt="Salt cover">
+      <h3>Salt</h3>
+      <p class="price">£11.50</p>
+      <a href="product.html">View</a>
+      <button type="button" class="btn btn-sm">Buy now</button>
+    </div>
+  </div>
+</div></div>
+
+<div class="footer"><div class="wrap"><ul>
+  <li><a href="help.html">Help</a></li><li><a href="contact.html">Contact us</a></li>
+  <li><a href="help.html">Accessibility</a></li>
+</ul></div></div>
+
+<script>
+  function applyFilters() {
+    var n = 1 + Math.floor(Math.random() * 3);
+    document.getElementById('count').textContent = 'Showing ' + n + ' of 3 books';
+  }
+  var list = document.getElementById('shortlist'), dragged = null;
+  list.addEventListener('dragstart', function (e) { dragged = e.target; });
+  list.addEventListener('dragover', function (e) { e.preventDefault(); });
+  list.addEventListener('drop', function (e) {
+    e.preventDefault();
+    var t = e.target.closest('li');
+    if (t && dragged && t !== dragged) list.insertBefore(dragged, t);
+  });
+</script>
+</body>
+</html>

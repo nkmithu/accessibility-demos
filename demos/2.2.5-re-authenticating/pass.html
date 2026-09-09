@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.2.5 Re-authenticating</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.reauth{border:2px solid var(--note-border);background:var(--note-bg);border-radius:6px;padding:1rem}</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.2.5 Re-authenticating.
+     Fill the form in and press "Simulate session expiry".</p>
+
+  <!-- excerpt:start -->
+  <h1>Apply for a library card</h1>
+
+  <!-- FIX: the session can still expire - that is a legitimate security
+       requirement - but NOTHING THE USER TYPED IS LOST. They re-authenticate in
+       place and continue exactly where they were.
+
+       Implementation patterns that achieve this:
+         - keep the form data client-side and re-post it after re-authentication
+         - save a draft server-side on a timer, keyed to the user
+         - re-authenticate in a dialog over the page rather than navigating away -->
+  <form id="f">
+    <div class="field"><label for="n">Full name</label><input type="text" id="n" autocomplete="name"></div>
+    <div class="field"><label for="a">Address</label><input type="text" id="a" autocomplete="street-address"></div>
+    <div class="field"><label for="w">Why would you like a card?</label>
+      <textarea id="w" rows="4"></textarea></div>
+    <button type="submit" class="button">Submit application</button>
+  </form>
+
+  <div class="reauth" id="reauth" role="alert" hidden>
+    <h2 id="reauth-h" tabindex="-1">Please sign in again</h2>
+    <p>Your session timed out. <strong>Your application has been kept</strong> and will
+       be exactly as you left it.</p>
+    <div class="field"><label for="pw">Password</label>
+      <input type="password" id="pw" autocomplete="current-password"></div>
+    <button type="button" class="button" onclick="resume()">Sign in and continue</button>
+  </div>
+
+  <p><button type="button" class="button button--secondary" onclick="expire()">Simulate session expiry</button></p>
+  <p id="out" role="status"></p>
+  <!-- excerpt:end -->
+
+  <script>
+    var saved = null;
+    function expire() {
+      var f = document.getElementById('f');
+      // Preserve everything before showing the re-authentication prompt.
+      saved = { n: f.n ? f.n.value : document.getElementById('n').value,
+                a: document.getElementById('a').value,
+                w: document.getElementById('w').value };
+      f.hidden = true;
+      var r = document.getElementById('reauth');
+      r.hidden = false;
+      document.getElementById('reauth-h').focus();
+    }
+    function resume() {
+      document.getElementById('reauth').hidden = true;
+      var f = document.getElementById('f');
+      f.hidden = false;
+      if (saved) {
+        document.getElementById('n').value = saved.n;
+        document.getElementById('a').value = saved.a;
+        document.getElementById('w').value = saved.w;
+      }
+      document.getElementById('out').textContent =
+        'Signed back in. Your application has been restored exactly as you left it.';
+      document.getElementById('n').focus();
+    }
+  </script>
+</body>
+</html>

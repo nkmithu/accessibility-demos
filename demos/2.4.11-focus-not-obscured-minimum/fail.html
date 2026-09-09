@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.11 Focus Not Obscured (Minimum)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .sticky-bar { position: sticky; top: 0; z-index: 5; background: #0a4f9e; color: #fff;
+                  padding: 1.4rem 1rem; font-weight: 700; }
+    .cookie { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
+              background: #14171c; color: #fff; padding: 1.2rem 1rem; }
+    .long { margin-bottom: .9rem; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.11.
+     Tab down the list — focused links disappear under the bars.</p>
+
+  <!-- excerpt:start -->
+  <!-- FAILURE: a tall sticky header and a fixed cookie banner. Tabbing down the
+       list scrolls the focused link to the top of the viewport, where the header
+       covers it completely. Focus is there; the user simply cannot see it.
+
+       This is why 2.4.11 was added in WCAG 2.2. A perfectly good focus indicator
+       satisfies 2.4.7, and the user still cannot tell where they are. -->
+  <div class="sticky-bar">Riverline Books — free delivery over £25</div>
+
+  <h1>Browse by subject</h1>
+  <p class="long"><a href="#a">Archaeology</a></p>
+  <p class="long"><a href="#a">Biography</a></p>
+  <p class="long"><a href="#a">Cookery</a></p>
+  <p class="long"><a href="#a">Drama</a></p>
+  <p class="long"><a href="#a">Economics</a></p>
+  <p class="long"><a href="#a">Fiction</a></p>
+  <p class="long"><a href="#a">Geography</a></p>
+  <p class="long"><a href="#a">History</a></p>
+  <p class="long"><a href="#a">Illustration</a></p>
+  <p class="long"><a href="#a">Journalism</a></p>
+  <p class="long"><a href="#a">Linguistics</a></p>
+  <p class="long"><a href="#a">Music</a></p>
+  <p class="long" id="a">Natural history</p>
+
+  <div class="cookie">We use cookies. <a href="#a" style="color:#9ec9f5">Manage preferences</a></div>
+  <!-- excerpt:end -->
+</body>
+</html>

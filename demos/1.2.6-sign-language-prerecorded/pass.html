@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.2.6 Sign Language (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .with-signer { position:relative; max-width:640px; }
+    .signer { position:absolute; right:.6rem; bottom:.6rem; width:30%; min-width:120px;
+              border:2px solid #fff; border-radius:6px; background:#333; color:#fff;
+              font-size:.8rem; text-align:center; padding:2.2rem .4rem; }
+    .note { border:1px solid var(--border); border-radius:6px; padding:1rem; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.2.6 Sign Language (Prerecorded).</p>
+
+  <!-- excerpt:start -->
+  <h1>How to reserve a book</h1>
+
+  <!-- FIX: a sign language interpretation is provided alongside the video.
+       Two common patterns:
+         a) picture-in-picture, with the interpreter inset over the video
+         b) a separate signed version the user selects
+
+       Requirements that are easy to get wrong:
+         - the interpreter must be large enough to read. Facial expression and
+           mouth pattern are grammar in signed languages, not decoration, so a
+           tiny corner inset is useless.
+         - the interpreter must not be croppable or coverable by player controls
+         - it must be the RIGHT signed language for your audience -->
+  <p>
+    <button type="button" class="button button--secondary" id="sign-toggle" aria-pressed="false">
+      Show British Sign Language interpretation</button>
+  </p>
+
+  <div class="with-signer">
+    <video controls width="640">
+      <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+      <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+             srclang="en" label="English" default>
+    </video>
+    <div class="signer" id="signer" hidden>BSL interpreter</div>
+  </div>
+
+  <div class="note">
+    <p><strong>A note on this demo.</strong> The panel above is a placeholder, not a
+       real interpreter. Producing genuine signed video requires a qualified Deaf or
+       hearing interpreter and cannot be synthesised, so this suite marks the position
+       and size an interpreter must occupy rather than faking the content.</p>
+    <p>For real projects: commission a qualified interpreter, film them against a
+       plain contrasting background, and give the viewer a control to show, hide and
+       enlarge the panel.</p>
+  </div>
+  <!-- excerpt:end -->
+
+  <script>
+    var b = document.getElementById('sign-toggle');
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', String(on));
+      b.textContent = on ? 'Hide British Sign Language interpretation'
+                         : 'Show British Sign Language interpretation';
+      document.getElementById('signer').hidden = !on;
+    });
+  </script>
+</body>
+</html>

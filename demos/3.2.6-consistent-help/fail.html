@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.2.6 Consistent Help</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .mini { border:1px solid var(--border); border-radius:6px; padding:.75rem; }
+    .mini nav ul { list-style:none; margin:0; padding:0; display:flex; gap:.6rem; flex-wrap:wrap; font-size:.9rem; }
+    .pages { display:grid; gap:1rem; }
+    @media (min-width:44rem) { .pages { grid-template-columns:1fr 1fr 1fr; } }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.2.6 Consistent Help.
+     Help moves on every page.</p>
+
+  <!-- excerpt:start -->
+  <h1>Three pages from the same checkout</h1>
+  <p>3.2.6 is one of the few criteria you cannot evaluate on a single page. It is
+     about consistency <em>across</em> a set of pages, so you have to compare them.</p>
+
+  <div class="pages">
+    <!-- Page 1: help is a link in the header. -->
+    <div class="mini">
+      <h2>Step 1: Basket</h2>
+      <nav aria-label="Page 1"><ul><li>Home</li><li>Books</li><li><a href="#h">Help</a></li></ul></nav>
+      <p>2 items in your basket.</p>
+    </div>
+
+    <!-- FAILURE: on page 2 the help link has moved to the very bottom, after the
+         content. A user who learned "help is top right" cannot find it. -->
+    <div class="mini">
+      <h2>Step 2: Delivery</h2>
+      <nav aria-label="Page 2"><ul><li>Home</li><li>Books</li></ul></nav>
+      <p>Choose a delivery date.</p>
+      <p><a href="#h">Help</a></p>
+    </div>
+
+    <!-- FAILURE: on page 3 it is missing entirely, and a differently named
+         "Contact us" appears in a third position instead. Users have to
+         relearn the interface at the exact moment they are stuck. -->
+    <div class="mini">
+      <h2>Step 3: Payment</h2>
+      <p><a href="#h">Contact us</a></p>
+      <nav aria-label="Page 3"><ul><li>Home</li><li>Books</li></ul></nav>
+      <p>Enter your card details.</p>
+    </div>
+  </div>
+
+  <p id="h">Help page.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

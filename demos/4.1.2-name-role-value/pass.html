@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 4.1.2 Name, Role, Value</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .switch-btn { display:inline-flex; align-items:center; gap:.6rem; background:none; border:0;
+                  font:inherit; color:inherit; cursor:pointer; padding:.3rem; min-height:44px; }
+    .switch-track { width:52px; height:28px; background:#6d7883; border-radius:999px; position:relative; }
+    .switch-btn[aria-pressed="true"] .switch-track { background:#0a4f9e; }
+    .switch-track::after { content:""; position:absolute; top:3px; left:3px; width:22px; height:22px;
+                           background:#fff; border-radius:50%; }
+    .switch-btn[aria-pressed="true"] .switch-track::after { left:27px; }
+    .acc-btn { display:block; width:100%; text-align:left; font:inherit; font-weight:700;
+               background:none; border:0; padding:.5rem 0; cursor:pointer; min-height:44px; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 4.1.2 Name, Role, Value.</p>
+
+  <!-- excerpt:start -->
+  <h1>Account settings</h1>
+
+  <!-- FIX 1: a real button carries the role. aria-pressed carries the state and
+       is kept in sync in script, so the switch announces as
+       "Marketing emails, toggle button, pressed". The visual state and the
+       programmatic state are driven by the same attribute, so they cannot drift. -->
+  <p>
+    <button type="button" class="switch-btn" aria-pressed="false" onclick="toggleSwitch(this)">
+      <span class="switch-track" aria-hidden="true"></span>
+      <span>Marketing emails</span>
+    </button>
+  </p>
+
+  <!-- FIX 2: the icon is hidden from assistive technology and the name comes
+       from visually hidden text, so it announces as "Delete account, button". -->
+  <button type="button" class="button button--secondary">
+    <span aria-hidden="true">🗑</span>
+    <span class="visually-hidden">Delete account</span>
+  </button>
+
+  <!-- FIX 3: the accordion header is a real button. aria-expanded exposes open
+       or closed state, and aria-controls points at the region it governs. -->
+  <h2>
+    <button type="button" class="acc-btn" aria-expanded="false" aria-controls="panel" onclick="togglePanel(this)">
+      Privacy options
+    </button>
+  </h2>
+  <div id="panel" hidden>
+    <p>Your data is never sold.</p>
+  </div>
+
+  <!-- FIX 4: use the native checkbox. It supplies role, state and keyboard
+       behaviour with no script at all. Reach for ARIA only when HTML has no
+       element that already does the job. -->
+  <p class="field">
+    <input type="checkbox" id="public-reviews">
+    <label for="public-reviews">Show my reviews publicly</label>
+  </p>
+  <!-- excerpt:end -->
+
+  <script>
+    function toggleSwitch(btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    }
+    function togglePanel(btn) {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      document.getElementById('panel').hidden = open;
+    }
+  </script>
+</body>
+</html>

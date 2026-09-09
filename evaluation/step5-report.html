@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Step 5 — Report the findings — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="What a WCAG-EM evaluation report must contain, how to state a conformance result honestly, and what a VPAT is for.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../index.html"><img src="../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../demos/index.html">Criteria</a></li>
+        <li><a href="../evaluation/index.html" aria-current="page">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../testing/index.html">Testing</a></li>
+        <li><a href="../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><span aria-current="page">Step 5 — Report the findings</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Step 5 — Report the findings</h1>
+      <p class="sc-header__summary">The report is the deliverable. It has two jobs: to say honestly
+         what you found, and to let somebody else check your work.</p>
+
+      <h2>5a. Document the outcome</h2>
+      <p class="prose">A WCAG-EM report must contain all of this. Omitting the sample is the most
+         common failing, and it is the omission that makes a report unverifiable.</p>
+      <ul class="prose">
+        <li>The <strong>scope</strong> from Step 1 — the site definition, the conformance target, the
+            baseline, and anything excluded.</li>
+        <li>The <strong>date</strong> of the evaluation and who performed it.</li>
+        <li>The <strong>sample</strong> from Step 3, listed as URLs, with the reason each page was
+            chosen. This is what makes the audit reproducible.</li>
+        <li>The <strong>result for each criterion</strong> in scope: pass, fail, or not applicable.</li>
+        <li>The <strong>detailed findings</strong> from Step 4, with evidence and suggested fixes.</li>
+        <li>The <strong>tools and methods</strong> used.</li>
+      </ul>
+
+      <h2>5b. Make a conformance claim — or do not</h2>
+      <p class="prose">Be careful and be literal. A conformance claim is a formal statement, and
+         overstating it is both dishonest and a legal exposure.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="claim-cap">
+        <table>
+          <caption id="claim-cap">Wording that is defensible, and wording that is not</caption>
+          <thead><tr><th scope="col">Say</th><th scope="col">Not</th><th scope="col">Why</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>"The 14 pages evaluated on 9 September 2026 did not meet WCAG 2.2 Level AA. 11 criteria failed."</td>
+              <td>"The site is 87% accessible."</td>
+              <td>There is no percentage in WCAG. Conformance is per page and binary.</td>
+            </tr>
+            <tr>
+              <td>"No failures were found in the sample. This is not a claim about pages outside it."</td>
+              <td>"The site conforms to WCAG 2.2 AA."</td>
+              <td>A sample cannot prove conformance of pages you did not open.</td>
+            </tr>
+            <tr>
+              <td>"Partially conformant: the site meets Level A but not Level AA."</td>
+              <td>"Mostly accessible."</td>
+              <td>Name the level. "Mostly" means nothing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">Note the asymmetry, which students find counter-intuitive: sampling can
+         <em>disprove</em> conformance conclusively — one failure is enough — but it can never
+         <em>prove</em> it. This is why an honest report says what was evaluated and when, not that
+         the site is accessible.</p>
+
+      <h2>5c. Provide a performance score — carefully</h2>
+      <p class="prose">WCAG-EM permits an optional score, and warns against it. If a client insists,
+         report counts rather than a percentage: how many criteria failed, on how many pages, at what
+         severity. A single number invites the wrong conversation — teams optimise the number instead
+         of fixing the barriers.</p>
+
+      <h2>Accessibility statements and VPATs</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="doc-cap">
+        <table>
+          <caption id="doc-cap">Three documents that get confused with each other</caption>
+          <thead><tr><th scope="col">Document</th><th scope="col">Audience</th><th scope="col">Purpose</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Evaluation report</th><td>The team that will fix it</td><td>What is broken, where, and how to fix it</td></tr>
+            <tr><th scope="row">Accessibility statement</th><td>Users of the site</td><td>What is and is not accessible, what to do if you hit a barrier, and how to complain. Often legally required and published on the site.</td></tr>
+            <tr><th scope="row">VPAT / ACR</th><td>Procurement</td><td>A standard-format declaration of how a product conforms, criterion by criterion, used when buying software</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">A <strong>VPAT</strong> is the blank template; once you fill it in it becomes an
+         <strong>ACR</strong> — an Accessibility Conformance Report. Each criterion gets one of
+         "Supports", "Partially Supports", "Does Not Support" or "Not Applicable", with remarks.
+         "Partially Supports" is not a WCAG conformance category — it exists so a procurement reader
+         can see nuance — so never let a VPAT's language leak into a conformance claim.</p>
+
+      <h2>Writing findings people will act on</h2>
+      <ul class="prose">
+        <li>Lead with the user impact, not the criterion number. "A blind customer cannot complete
+            checkout" gets fixed; "4.1.2 failure" gets triaged.</li>
+        <li>Group by cause, not by page. One component fix usually closes dozens of instances.</li>
+        <li>Give a concrete fix, with code where you can.</li>
+        <li>Note what is already good. A report that is only bad news gets read once.</li>
+        <li>Separate the conformance result from the priority list. They answer different questions.</li>
+      </ul>
+
+      <p class="prose">
+        <a class="button" href="templates/wcagem-report.html">Open the report template</a>
+        <a class="button button--secondary" href="templates/vpat-acr.html">Open the VPAT / ACR skeleton</a>
+      </p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

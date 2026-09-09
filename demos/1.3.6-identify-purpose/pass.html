@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.3.6 Identify Purpose</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.bar{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem;list-style:none;padding:0}</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.3.6 Identify Purpose.</p>
+
+  <!-- excerpt:start -->
+  <!-- FIX 1: real landmarks. A personalisation tool can now distinguish
+       navigation from main content from complementary material, and can hide or
+       reorder them on the user's behalf. -->
+  <header>
+    <nav aria-label="Main">
+      <ul class="bar">
+        <li><a href="#a">Home</a></li>
+        <li><a href="#a">Orders</a></li>
+        <li><a href="#a">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Your account</h1>
+
+    <!-- FIX 2: every icon control has a text name, and the icon is hidden from
+         assistive technology. The purpose is now in the accessibility tree, so a
+         tool can replace the glyph with a symbol set the user recognises -
+         Bliss, Widgit, or simply larger plain words. -->
+    <ul class="bar">
+      <li><button type="button" class="button button--secondary">
+        <span aria-hidden="true">🏠</span><span class="visually-hidden">Home</span></button></li>
+      <li><button type="button" class="button button--secondary">
+        <span aria-hidden="true">🔍</span><span class="visually-hidden">Search</span></button></li>
+      <li><button type="button" class="button button--secondary">
+        <span aria-hidden="true">🗑</span><span class="visually-hidden">Delete</span></button></li>
+      <li><button type="button" class="button button--secondary">
+        <span aria-hidden="true">⚙</span><span class="visually-hidden">Settings</span></button></li>
+    </ul>
+
+    <section aria-labelledby="orders-h">
+      <h2 id="orders-h">Recent orders</h2>
+      <p>Order #1041 — 3 March</p>
+    </section>
+  </main>
+
+  <!-- FIX 3: non-essential content is in a complementary landmark, clearly
+       labelled, so it can be identified and suppressed. -->
+  <aside aria-labelledby="ad-h">
+    <h2 id="ad-h">Advertisement</h2>
+    <p>Buy a tote bag.</p>
+  </aside>
+
+  <footer>
+    <p id="a">Riverline Books</p>
+  </footer>
+
+  <!-- Honest note: 1.3.6 was written with a "personalisation semantics"
+       specification in mind that has not been widely implemented, so there are
+       few tools today that consume this metadata. It is still worth doing, for
+       two reasons: the landmark and naming work benefits screen reader users
+       immediately under 1.3.1 and 4.1.2, and it costs almost nothing once you
+       are writing semantic HTML anyway. -->
+  <!-- excerpt:end -->
+</body>
+</html>

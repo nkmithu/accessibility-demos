@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.3.9 Accessible Authentication (Enhanced) (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A cognitive function test is not required for any authentication step, with the object-recognition and personal-content exceptions of 3.3.8 removed.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.3.9 Accessible Authentication (Enhanced)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.3.9</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 3.3 Input Assistance</span>
+          <span class="tag">Added in WCAG 2.2</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Accessible Authentication (Enhanced)</h1>
+        <p class="sc-header__summary">A cognitive function test is not required for any authentication step, with the object-recognition and personal-content exceptions of 3.3.8 removed.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with cognitive disabilities, held to the strictest standard — even &quot;select all the images with a bus&quot; is disallowed.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.3.9
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.3.9 Accessible Authentication (Enhanced)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Sign in&lt;/h1&gt;
+
+&lt;!-- This page satisfies 3.3.8 at AA:
+       - autocomplete tokens are present, so a password manager can fill the form
+       - paste is not blocked
+       - the CAPTCHA is OBJECT RECOGNITION, which 3.3.8 explicitly permits
+
+     3.3.9 at AAA removes the object-recognition exception, and the
+     personal-content exception with it. &quot;Select every image with a book&quot; is
+     still a cognitive function test: it requires the user to perceive images,
+     categorise them, and hold the instruction in working memory. --&gt;
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;u&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;u&quot; autocomplete=&quot;username&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;p&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;p&quot; autocomplete=&quot;current-password&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;Select every image that shows a book&lt;/legend&gt;
+    &lt;div class=&quot;grid&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;cell&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Image 1: a book&quot;&gt;📕&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;cell&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Image 2: a cup&quot;&gt;☕&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;cell&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Image 3: a book&quot;&gt;📗&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;cell&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Image 4: a tree&quot;&gt;🌳&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;cell&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Image 5: a book&quot;&gt;📘&lt;/button&gt;
+      &lt;button type=&quot;button&quot; class=&quot;cell&quot; aria-pressed=&quot;false&quot; aria-label=&quot;Image 6: a car&quot;&gt;🚗&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Sign in&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.3.9
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.3.9 Accessible Authentication (Enhanced)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Sign in&lt;/h1&gt;
+
+&lt;!-- FIX 1: a passkey. The user proves who they are with their device -
+     fingerprint, face, or a hardware key. Nothing is recalled, transcribed or
+     solved, so there is no cognitive function test at any point. This is the
+     cleanest way to satisfy 3.3.9, and it is also more secure than a password. --&gt;
+&lt;div class=&quot;opt&quot;&gt;
+  &lt;h2&gt;Sign in with a passkey&lt;/h2&gt;
+  &lt;p&gt;Use your device's fingerprint, face recognition or security key. Nothing to
+     remember and nothing to type.&lt;/p&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button&quot;&gt;Continue with a passkey&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- FIX 2: a one-time sign-in link by email. The user clicks a link; they do
+     not transcribe a code, which would itself be a cognitive function test
+     unless it can be pasted. --&gt;
+&lt;div class=&quot;opt&quot;&gt;
+  &lt;h2&gt;Sign in with an email link&lt;/h2&gt;
+  &lt;p&gt;We will email you a link that signs you in. No password, no code to copy.&lt;/p&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;e&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;e&quot; autocomplete=&quot;username&quot;&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;Email me a sign-in link&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- FIX 3: the password route remains for people who prefer it, with paste
+     allowed and correct autocomplete tokens so a password manager does the
+     remembering. Keeping this option is important: removing choice is its own
+     accessibility problem. --&gt;
+&lt;div class=&quot;opt&quot;&gt;
+  &lt;h2&gt;Sign in with a password&lt;/h2&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;u&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;u&quot; autocomplete=&quot;username&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;p&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;p&quot; autocomplete=&quot;current-password&quot;&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Sign in&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- No CAPTCHA of any kind. Where you need bot protection without a cognitive
+     function test: server-side risk scoring, rate limiting, proof-of-work
+     challenges the browser solves invisibly, or a hardware factor.
+
+     How the two criteria differ:
+       3.3.8 (AA)  no cognitive function test, EXCEPT object recognition or
+                   identifying non-text content the user provided
+       3.3.9 (AAA) no cognitive function test, no exceptions
+
+     And remember what 3.3.8 already establishes: &quot;remember your password&quot; IS a
+     cognitive function test. It is only permitted at AA because password
+     managers exist - which is precisely why blocking paste breaks conformance. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Confirm authentication relies on something other than recall or puzzle solving: a passkey, a hardware token, an email or SMS link, or biometrics.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires assessing the authentication mechanisms offered.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.3.8-accessible-authentication-minimum/index.html">3.3.8 Accessible Authentication (Minimum) (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced.html">Understanding 3.3.9 Accessible Authentication (Enhanced)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#accessible-authentication-enhanced">3.3.9 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.3.8-accessible-authentication-minimum/index.html"><span class="sc-pager__dir">Previous criterion</span>3.3.8 Accessible Authentication (Minimum)</a>
+        <a href="../4.1.1-parsing/index.html"><span class="sc-pager__dir">Next criterion</span>4.1.1 Parsing</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

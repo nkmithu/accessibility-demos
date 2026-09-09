@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.3.1 Error Identification (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="If an input error is automatically detected, the item in error is identified and the error is described to the user in text.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.3.1 Error Identification</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.3.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 3.3 Input Assistance</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Error Identification</h1>
+        <p class="sc-header__summary">If an input error is automatically detected, the item in error is identified and the error is described to the user in text.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users, who cannot see a red border. Colour-blind users, for whom red-only marking is invisible. Anyone who needs to know which of fifteen fields is wrong and why.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.3.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.3.1 Error Identification"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Create your account&lt;/h1&gt;
+
+&lt;form id=&quot;signup&quot; novalidate&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;email&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;pw&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;pw&quot; name=&quot;pw&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FAILURE: on submit the script marks bad fields with a red border and
+       nothing else. There is no text describing the error, no programmatic
+       link between the message and the field, and no announcement.
+       A screen reader user hears silence and has no idea what went wrong,
+       or which of the two fields is the problem. Colour is the only signal,
+       which also fails 1.4.1 Use of Color. --&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Create account&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.3.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.3.1 Error Identification"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Create your account&lt;/h1&gt;
+
+&lt;!-- FIX 1: an error summary at the top of the form. It is focused after a
+     failed submit, so a screen reader reads the whole problem immediately, and
+     each entry links to the field that caused it. tabindex=&quot;-1&quot; makes it
+     focusable by script without adding it to the tab order. --&gt;
+&lt;div id=&quot;summary&quot; class=&quot;error-summary&quot; role=&quot;alert&quot; tabindex=&quot;-1&quot; hidden&gt;
+  &lt;h2&gt;There is a problem&lt;/h2&gt;
+  &lt;ul id=&quot;summary-list&quot;&gt;&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;form id=&quot;signup&quot; novalidate&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;email&quot;&gt;Email address&lt;/label&gt;
+    &lt;!-- FIX 2: aria-describedby ties the message to the field, so moving focus
+         to the input reads the label AND the error. aria-invalid marks the
+         state, so the field announces as &quot;invalid entry&quot;. --&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; aria-describedby=&quot;email-err&quot;&gt;
+    &lt;p class=&quot;error-text&quot; id=&quot;email-err&quot; hidden&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;pw&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;pw&quot; name=&quot;pw&quot; aria-describedby=&quot;pw-err&quot;&gt;
+    &lt;p class=&quot;error-text&quot; id=&quot;pw-err&quot; hidden&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Create account&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Submit a form with deliberate errors. Confirm each error is described in text, names the specific field, and is programmatically associated with it via aria-describedby, and that the error is announced.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners check aria-invalid and aria-describedby wiring when errors are present, but must be driven into the error state first — a static scan of a clean form finds nothing.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> The errors are signalled with a CSS class and a red border. There is no aria-invalid and no message for axe to validate, so there is nothing for a rule to fire on. A scanner also has to be driven into the error state first: scanning the clean, unsubmitted form finds nothing no matter how broken the error handling is.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>aria-valid-attr-value</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.3.3-error-suggestion/index.html">3.3.3 Error Suggestion (Level AA)</a></li>
+          <li><a href="../3.3.2-labels-or-instructions/index.html">3.3.2 Labels or Instructions (Level A)</a></li>
+          <li><a href="../4.1.3-status-messages/index.html">4.1.3 Status Messages (Level AA)</a></li>
+          <li><a href="../1.4.1-use-of-color/index.html">1.4.1 Use of Color (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html">Understanding 3.3.1 Error Identification</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#error-identification">3.3.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.2.6-consistent-help/index.html"><span class="sc-pager__dir">Previous criterion</span>3.2.6 Consistent Help</a>
+        <a href="../3.3.2-labels-or-instructions/index.html"><span class="sc-pager__dir">Next criterion</span>3.3.2 Labels or Instructions</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

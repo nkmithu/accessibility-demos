@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.2.1 Timing Adjustable (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="For each time limit, the user can turn it off, adjust it to at least ten times the default, or extend it with a simple action after a warning with at least 20 seconds to respond.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.2.1 Timing Adjustable</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.2.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 2.2 Enough Time</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Timing Adjustable</h1>
+        <p class="sc-header__summary">For each time limit, the user can turn it off, adjust it to at least ten times the default, or extend it with a simple action after a warning with at least 20 seconds to respond.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users who read slowly, type slowly, use a screen reader to review a form, or need to consult someone before submitting. A silent session timeout that discards a half-completed form is a hard failure.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.2.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.2.1 Timing Adjustable"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Complete your booking&lt;/h1&gt;
+
+&lt;!-- FAILURE: a hard time limit with
+       - no way to turn it off
+       - no way to extend it
+       - no warning before it expires
+       - and the user's entered data discarded when it does.
+
+     Twenty seconds is compressed for the demo; in the wild this is a
+     ten-minute checkout hold or a fifteen-minute session timeout. The effect
+     is identical for anyone who reads slowly, types slowly, navigates by
+     screen reader, or has to step away - all of whom are disproportionately
+     disabled users. --&gt;
+&lt;p&gt;Your seats are held for &lt;span class=&quot;timer&quot; id=&quot;t&quot;&gt;20&lt;/span&gt; seconds.&lt;/p&gt;
+
+&lt;form id=&quot;f&quot;&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;nm&quot;&gt;Name on booking&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nm&quot; autocomplete=&quot;name&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;rq&quot;&gt;Any access requirements?&lt;/label&gt;
+    &lt;textarea id=&quot;rq&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Confirm booking&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;p id=&quot;msg&quot; role=&quot;status&quot;&gt;&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.2.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.2.1 Timing Adjustable"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Complete your booking&lt;/h1&gt;
+
+&lt;!-- FIX: 2.2.1 is satisfied by ANY ONE of three routes. This example takes the
+     third, which is the one most real systems can implement:
+
+       1. Turn it off      - let the user remove the limit entirely, or
+       2. Adjust it        - let them set it to at least ten times the default
+                             BEFORE it starts, or
+       3. Extend it        - warn them at least 20 seconds before it expires
+                             and let them extend with a simple action.
+
+     The warning is announced through a live region, so a screen reader user
+     hears it without having to be looking at the timer. --&gt;
+&lt;p&gt;Your seats are held for &lt;span class=&quot;timer&quot; id=&quot;t&quot;&gt;30&lt;/span&gt; seconds.
+   &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; id=&quot;off&quot;&gt;Remove the time limit&lt;/button&gt;&lt;/p&gt;
+
+&lt;div class=&quot;warn&quot; id=&quot;warn&quot; role=&quot;alert&quot; hidden&gt;
+  &lt;p&gt;Your booking will expire in &lt;span id=&quot;w&quot;&gt;20&lt;/span&gt; seconds.
+     &lt;button type=&quot;button&quot; class=&quot;button&quot; id=&quot;more&quot;&gt;Give me more time&lt;/button&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;form id=&quot;f&quot;&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;nm&quot;&gt;Name on booking&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;nm&quot; autocomplete=&quot;name&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;rq&quot;&gt;Any access requirements?&lt;/label&gt;
+    &lt;textarea id=&quot;rq&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Confirm booking&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;p id=&quot;msg&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+
+&lt;!-- Exceptions worth knowing: 2.2.1 does not apply where the time limit is
+     essential and extending it would invalidate the activity - a live auction,
+     a timed exam - or where the limit is longer than 20 hours. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Find every timer — session timeouts, checkout holds, auto-advancing carousels with forms, quiz timers. Confirm a warning appears with at least 20 seconds to act and a way to extend.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires waiting out real timers and observing the warning behaviour.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.2.3-no-timing/index.html">2.2.3 No Timing (Level AAA)</a></li>
+          <li><a href="../2.2.5-re-authenticating/index.html">2.2.5 Re-authenticating (Level AAA)</a></li>
+          <li><a href="../2.2.6-timeouts/index.html">2.2.6 Timeouts (Level AAA)</a></li>
+          <li><a href="../3.3.4-error-prevention-legal-financial-data/index.html">3.3.4 Error Prevention (Legal, Financial, Data) (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html">Understanding 2.2.1 Timing Adjustable</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#timing-adjustable">2.2.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.1.4-character-key-shortcuts/index.html"><span class="sc-pager__dir">Previous criterion</span>2.1.4 Character Key Shortcuts</a>
+        <a href="../2.2.2-pause-stop-hide/index.html"><span class="sc-pager__dir">Next criterion</span>2.2.2 Pause, Stop, Hide</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

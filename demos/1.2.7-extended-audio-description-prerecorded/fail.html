@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.7 Extended Audio Description (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.7.</p>
+
+  <!-- excerpt:start -->
+  <h1>How to reserve a book — screen recording</h1>
+
+  <!-- FAILURE: this clip is visually dense. Each card is on screen for four
+       seconds and carries several lines of information, while the soundtrack has
+       almost no gaps long enough to describe them in.
+
+       Standard audio description has to fit in the existing pauses. When the
+       visuals are this dense, it cannot - the describer either talks over the
+       content or leaves things out. 1.2.7 exists for exactly this case and
+       requires an EXTENDED description, which pauses the video to make room.
+
+       Here there is neither: only a standard descriptions track that cannot
+       possibly fit everything. -->
+  <video controls width="640">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+    <track kind="descriptions" src="../../assets/media/shop-tour-descriptions.vtt"
+           srclang="en" label="Audio description">
+  </video>
+  <!-- excerpt:end -->
+</body>
+</html>

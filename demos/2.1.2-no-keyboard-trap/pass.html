@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.1.2 No Keyboard Trap</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .modal { border:2px solid #4c9871; border-radius:8px; padding:1rem; background:#fff; max-width:24rem; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.1.2 No Keyboard Trap.
+     Escape or the close button always gets you out.</p>
+
+  <!-- excerpt:start -->
+  <h1>Newsletter</h1>
+  <p><a href="#before">A link before the dialog</a></p>
+
+  <!-- FIX: a modal SHOULD hold focus while it is open - that part is correct and
+       expected. What makes it lawful rather than a trap is that there is always
+       a way out using only the keyboard:
+         - Escape closes it
+         - a visible Close button is in the cycle
+         - focus returns to the element that opened it
+       If a component genuinely needs an unusual key to exit, 2.1.2 requires you
+       to tell the user what that key is, at the point they need to know. -->
+  <div class="modal" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-h">
+    <h2 id="dlg-h" tabindex="-1">Before you go…</h2>
+    <p id="dlg-hint">Press <kbd>Escape</kbd> to close this dialog.</p>
+    <div class="field">
+      <label for="em">Email address</label>
+      <input type="email" id="em" autocomplete="email">
+    </div>
+    <button type="button" class="button" id="sub">Subscribe</button>
+    <button type="button" class="button button--secondary" id="close">Close</button>
+  </div>
+
+  <p><a href="#after">A link after the dialog</a></p>
+  <p id="before">Before.</p><p id="after">After.</p>
+  <!-- excerpt:end -->
+
+  <script>
+    var dlg = document.getElementById('dlg');
+    var stops = dlg.querySelectorAll('input, button');
+    var first = stops[0], last = stops[stops.length - 1];
+
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {          // the exit that makes this not a trap
+        dlg.hidden = true;
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    document.getElementById('close').addEventListener('click', function () { dlg.hidden = true; });
+  </script>
+</body>
+</html>

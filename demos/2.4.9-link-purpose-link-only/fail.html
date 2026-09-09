@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.9 Link Purpose (Link Only)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.9 (though it passes
+     2.4.4 at Level A).</p>
+
+  <!-- excerpt:start -->
+  <h1>Support</h1>
+
+  <!-- This page PASSES 2.4.4 Link Purpose (In Context) at Level A: each "Read
+       more" sits inside its own list item with a heading, so its purpose can be
+       worked out from the programmatically determined context.
+
+       It FAILS 2.4.9 at AAA, which drops the "in context" allowance. The link
+       text ALONE must identify the purpose - because that is how a screen reader
+       user navigating by link list actually encounters it: stripped of all
+       surrounding content. -->
+  <ul>
+    <li>
+      <h2>Delivery and collection</h2>
+      <p>How long orders take and where to collect them.</p>
+      <a href="#a">Read more</a>
+    </li>
+    <li>
+      <h2>Returns</h2>
+      <p>Our 30-day returns policy.</p>
+      <a href="#b">Read more</a>
+    </li>
+    <li>
+      <h2>Accessibility</h2>
+      <p>Step-free access and hearing loops at our shops.</p>
+      <a href="#c">Read more</a>
+    </li>
+  </ul>
+
+  <p id="a">Delivery.</p><p id="b">Returns.</p><p id="c">Accessibility.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

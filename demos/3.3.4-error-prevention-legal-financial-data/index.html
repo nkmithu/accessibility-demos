@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.3.4 Error Prevention (Legal, Financial, Data) (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="For pages causing legal commitments or financial transactions, modifying user-controllable data, or submitting test responses, submissions are reversible, checked and correctable, or confirmed before finalising.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.3.4 Error Prevention (Legal, Financial, Data)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.3.4</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 3.3 Input Assistance</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Error Prevention (Legal, Financial, Data)</h1>
+        <p class="sc-header__summary">For pages causing legal commitments or financial transactions, modifying user-controllable data, or submitting test responses, submissions are reversible, checked and correctable, or confirmed before finalising.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with cognitive and motor disabilities, for whom an accidental irreversible action carries real financial or legal cost. A one-click Delete Account with no confirmation is the archetypal failure.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.3.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.3.4 Error Prevention (Legal, Financial, Data)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Confirm your order&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: a financial transaction committed in one click, with no review
+     step, no confirmation, and no way to reverse it. The user cannot check
+     what they are about to buy or correct a mistake before it costs money. --&gt;
+&lt;p&gt;Total: £48.97&lt;/p&gt;
+&lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;pay()&quot;&gt;Pay now&lt;/button&gt;
+
+&lt;!-- FAILURE 2: an irreversible data deletion with no confirmation. --&gt;
+&lt;h2&gt;Account&lt;/h2&gt;
+&lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;wipe()&quot;&gt;Delete all my order history&lt;/button&gt;
+
+&lt;!-- FAILURE 3: a legal commitment accepted implicitly, with the terms not
+     shown and no explicit act of agreement. --&gt;
+&lt;p&gt;&lt;small&gt;By pressing Pay now you agree to our terms of sale.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p id=&quot;log&quot; role=&quot;status&quot;&gt;&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.3.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.3.4 Error Prevention (Legal, Financial, Data)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Confirm your order&lt;/h1&gt;
+
+&lt;!-- FIX 1 — CHECKED AND CORRECTABLE: everything the user is committing to is
+     shown, itemised, with a way to change each part before paying. --&gt;
+&lt;div class=&quot;review&quot;&gt;
+  &lt;h2&gt;What you are ordering&lt;/h2&gt;
+  &lt;table&gt;
+    &lt;caption&gt;Order summary&lt;/caption&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Item&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Qty&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Price&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Tidal Flats&lt;/th&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;£12.99&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;The Long Field&lt;/th&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;£35.98&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;p&gt;&lt;strong&gt;Total: £48.97&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;#basket&quot;&gt;Change your basket&lt;/a&gt; · &lt;a href=&quot;#addr&quot;&gt;Change delivery address&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- FIX 2 — CONFIRMED: an explicit act of agreement, with the terms reachable
+     before agreeing rather than referenced after the fact. --&gt;
+&lt;p class=&quot;field&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;agree&quot;&gt;
+  &lt;label for=&quot;agree&quot;&gt;I agree to the &lt;a href=&quot;#terms&quot;&gt;terms of sale&lt;/a&gt;&lt;/label&gt;
+&lt;/p&gt;
+&lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;review()&quot;&gt;Review and pay&lt;/button&gt;
+
+&lt;!-- FIX 3 — REVERSIBLE, and confirmed before the fact. Destructive actions get
+     a confirmation naming exactly what will be lost. --&gt;
+&lt;h2&gt;Account&lt;/h2&gt;
+&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; onclick=&quot;askWipe()&quot;&gt;Delete all my order history&lt;/button&gt;
+&lt;div id=&quot;confirm&quot; hidden&gt;
+  &lt;p&gt;&lt;strong&gt;Delete 14 orders going back to 2019?&lt;/strong&gt;
+     You will not be able to recover them, and you will lose your purchase history
+     for warranty claims.&lt;/p&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;doWipe()&quot;&gt;Yes, delete 14 orders&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; onclick=&quot;cancelWipe()&quot;&gt;Keep my order history&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;p id=&quot;log&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;basket&quot;&gt;Your basket&lt;/h2&gt;
+&lt;p&gt;2 titles, 3 items.&lt;/p&gt;
+&lt;h2 id=&quot;addr&quot;&gt;Delivery address&lt;/h2&gt;
+&lt;p&gt;12 River Street, Riverside.&lt;/p&gt;
+
+&lt;h2 id=&quot;terms&quot;&gt;Terms of sale&lt;/h2&gt;
+&lt;p&gt;Goods are sold subject to availability. Returns accepted within 30 days.&lt;/p&gt;
+
+&lt;!-- 3.3.4 is satisfied by ANY ONE of three routes:
+       REVERSIBLE   - the submission can be undone (a cancellation window)
+       CHECKED      - data is validated and the user can correct it
+       CONFIRMED    - a review step with an explicit opportunity to confirm
+
+     It applies to pages that create a legal commitment, take a financial
+     transaction, modify or delete user-controllable data, or submit test
+     responses. At AAA, 3.3.6 extends the same protection to EVERY form. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Identify consequential actions — purchases, contract acceptance, account deletion, data overwrites. Each needs at least one of: reversibility, validation with a chance to correct, or a review-and-confirm step.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires walking the transactional flows to the point of commitment.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.3.6-error-prevention-all/index.html">3.3.6 Error Prevention (All) (Level AAA)</a></li>
+          <li><a href="../2.5.2-pointer-cancellation/index.html">2.5.2 Pointer Cancellation (Level A)</a></li>
+          <li><a href="../3.3.3-error-suggestion/index.html">3.3.3 Error Suggestion (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html">Understanding 3.3.4 Error Prevention (Legal, Financial, Data)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#error-prevention-legal-financial-data">3.3.4 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.3.3-error-suggestion/index.html"><span class="sc-pager__dir">Previous criterion</span>3.3.3 Error Suggestion</a>
+        <a href="../3.3.5-help/index.html"><span class="sc-pager__dir">Next criterion</span>3.3.5 Help</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

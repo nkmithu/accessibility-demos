@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.13 Focus Appearance</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FIX: one rule, applied to everything focusable.
+         - 3px thick, which exceeds the 2px-perimeter minimum
+         - #0a4f9e against white is 8:1, far over the 3:1 required between the
+           focused and unfocused states
+         - outline-offset: 2px separates it from the control's own border so it
+           reads as an indicator rather than as part of the component
+       A single :focus-visible rule in your reset satisfies 2.4.7, 2.4.13 and
+       1.4.11 for the whole site. */
+    :focus-visible {
+      outline: 3px solid #0a4f9e;
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+    /* On a dark control, a two-tone outline guarantees contrast against BOTH the
+       control and the page behind it, whatever colour either happens to be. */
+    .dark { background:#14171c; color:#fff; border:0; padding:.6rem 1.2rem;
+            border-radius:6px; min-height:44px; font:inherit; }
+    .dark:focus-visible { outline: 3px solid #ffd54a; outline-offset: 2px;
+                          box-shadow: 0 0 0 6px #14171c; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.13 Focus Appearance.
+     Tab through — every indicator is unmistakable.</p>
+
+  <!-- excerpt:start -->
+  <h1>Checkout</h1>
+
+  <p><a href="#a">A link with a 3px, 8:1 focus ring</a></p>
+  <p><button type="button" class="button">A button with the same ring</button></p>
+  <p><button type="button" class="dark">A dark button with a two-tone ring</button></p>
+  <p class="field"><label for="p">Promotion code</label><input type="text" id="p"></p>
+
+  <!-- What 2.4.13 actually requires:
+         AREA     - the indicator is at least as large as the area of a 2 CSS
+                    pixel thick perimeter of the unfocused control
+         CONTRAST - at least 3:1 between the focused and unfocused states of
+                    those changed pixels
+         and the indicator must not be obscured (which is 2.4.11 and 2.4.12).
+
+       Practical shortcut: a 2px or thicker solid outline, in a colour at 3:1 or
+       better against its surroundings, with a small offset, passes every time.
+       You do not need to compute perimeter areas if you simply use an outline.
+
+       Never write `outline: none` without replacing it. If you dislike the ring
+       on mouse click, :focus-visible already solves that - it shows the ring for
+       keyboard users and hides it for pointer users. -->
+
+  <p id="a">Target.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

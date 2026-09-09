@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.1.4 Abbreviations</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>abbr[title]{text-decoration:underline dotted;cursor:help}</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.1.4 Abbreviations.</p>
+
+  <!-- excerpt:start -->
+  <h1>Trade terms</h1>
+
+  <!-- FIX 1: expand at first use, with the abbreviation in brackets after the
+       full form. This is the most reliable technique, because it works for every
+       user and every technology - it is just text. -->
+  <p>All prices are recommended retail price (<abbr title="recommended retail price">RRP</abbr>)
+     excluding value added tax (<abbr title="value added tax">VAT</abbr>).
+     Delivery is price on application (<abbr title="price on application">POA</abbr>)
+     for orders outside the United Kingdom.</p>
+
+  <!-- FIX 2: after first use, the abbr element with a title carries the
+       expansion. A caution worth teaching: the title attribute is NOT reliable
+       on its own. It is not shown on touch devices, is not announced by every
+       screen reader by default, and cannot be reached by keyboard. Use abbr as a
+       supplement to expanding in text, never as a replacement. -->
+  <p>Quote the <abbr title="International Standard Book Number">ISBN</abbr> and our
+     reference number when you write to Dr Ellis at our head office.</p>
+
+  <!-- FIX 3: domain abbreviations expanded and collected in a glossary, so a
+       reader arriving mid-page can still resolve them. -->
+  <p>Condition: very good (<abbr title="very good">VG</abbr>) in a
+     good-plus (<abbr title="good plus">G+</abbr>) dust jacket.
+     See our <a href="#grades">condition grades</a>.</p>
+
+  <h2 id="grades">Condition grades</h2>
+  <dl>
+    <dt>VG — very good</dt><dd>Clean and sound, with only minor shelf wear.</dd>
+    <dt>G+ — good plus</dt><dd>Complete and readable, with visible wear or small tears.</dd>
+  </dl>
+
+  <!-- Practical rules:
+       - expand in text at first use on EVERY page, not just once across the site;
+         users arrive mid-site from search
+       - do not mark up abbreviations everyone already knows in context, such as
+         BBC or DVD - over-marking makes a page tiring to listen to
+       - never rely on title alone -->
+  <!-- excerpt:end -->
+</body>
+</html>

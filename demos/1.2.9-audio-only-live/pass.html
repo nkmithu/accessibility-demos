@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.2.9 Audio-only (Live)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .stage{background:#14171c;color:#fff;border-radius:6px;padding:2rem 1rem;text-align:center}
+    .cc{border:2px solid var(--border-strong);border-radius:6px;padding:.75rem 1rem;
+        margin-top:.75rem;min-height:5rem;line-height:1.6}
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.2.9 Audio-only (Live).</p>
+
+  <!-- excerpt:start -->
+  <h1>Live: Riverline Radio book club</h1>
+
+  <div class="stage">
+    <p><strong>LIVE</strong> — audio stream</p>
+    <p>This month's book club discussion, broadcasting now</p>
+  </div>
+
+  <!-- FIX: a real-time text alternative, delivered live. In production this pane
+       is fed by a CART captioner or a live speech-to-text service.
+
+       role="log" with aria-live="polite" and aria-atomic="false" means each new
+       line is announced as it arrives, rather than the whole pane being re-read
+       every time - which is what makes a live text pane usable with a screen
+       reader rather than maddening. -->
+  <h2 id="lt-h">Live transcript</h2>
+  <div class="cc" role="log" aria-live="polite" aria-atomic="false" aria-labelledby="lt-h" id="lt">
+    <p>PRESENTER: Welcome to the Riverline Radio book club.</p>
+    <p>PRESENTER: This month we are reading Tidal Flats.</p>
+  </div>
+
+  <h2>Access at this broadcast</h2>
+  <ul>
+    <li>A live transcript runs throughout, produced by a human captioner.</li>
+    <li>A corrected transcript is published with the recording within 48 hours.</li>
+    <li>Questions can be sent by text message as well as by phone.</li>
+  </ul>
+
+  <!-- Note the criteria this sits between:
+         1.2.4 (AA)  live synchronised media  -> captions
+         1.2.9 (AAA) live audio-only          -> a text alternative
+       And afterwards, the RECORDING is prerecorded media, so it needs its own
+       transcript under 1.2.1. Live provision does not exempt the archive. -->
+  <!-- excerpt:end -->
+
+  <script>
+    var lines = ['LISTENER: I found the ending very abrupt.',
+                 'PRESENTER: That is a common reaction.',
+                 'LISTENER: But the descriptions of the estuary were wonderful.'];
+    var i = 0;
+    var t = setInterval(function () {
+      if (i >= lines.length) { clearInterval(t); return; }
+      var p = document.createElement('p');
+      p.textContent = lines[i++];
+      document.getElementById('lt').appendChild(p);
+    }, 3500);
+  </script>
+</body>
+</html>

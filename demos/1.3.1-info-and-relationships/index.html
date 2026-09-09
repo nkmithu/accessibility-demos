@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.3.1 Info and Relationships (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Structure and relationships conveyed visually are also available programmatically. Headings are headings, lists are lists, tables have header cells, and form fields have real labels.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.3.1 Info and Relationships</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.3.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 1.3 Adaptable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Info and Relationships</h1>
+        <p class="sc-header__summary">Structure and relationships conveyed visually are also available programmatically. Headings are headings, lists are lists, tables have header cells, and form fields have real labels.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users navigate by structure — jumping heading to heading, listing landmarks, reading a table cell with its row and column headers. Bold text styled to look like a heading provides none of that.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.3.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.3.1 Info and Relationships"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;!-- FAILURE 1: styled to look like a heading, but it is a plain div.
+     A screen reader user pressing H to jump between headings finds nothing. --&gt;
+&lt;div class=&quot;looks-like-heading&quot;&gt;Opening hours&lt;/div&gt;
+
+&lt;!-- FAILURE 2: a list to the eye, unrelated divs to assistive technology.
+     Screen readers announce &quot;list with 3 items&quot; - here they announce nothing. --&gt;
+&lt;div class=&quot;looks-like-list&quot;&gt;
+  &lt;div&gt;Monday to Friday, 9am to 6pm&lt;/div&gt;
+  &lt;div&gt;Saturday, 10am to 4pm&lt;/div&gt;
+  &lt;div&gt;Sunday, closed&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;looks-like-heading&quot;&gt;Stock by branch&lt;/div&gt;
+
+&lt;!-- FAILURE 3: a data table with no header cells. Every cell is a td, so a
+     screen reader cannot say which column or row a value belongs to.
+     Reading cell &quot;12&quot; tells the user nothing at all. --&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;Branch&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;Hardback&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;strong&gt;Paperback&lt;/strong&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Riverside&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;34&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Old Town&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;19&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;looks-like-heading&quot;&gt;Join the mailing list&lt;/div&gt;
+
+&lt;form&gt;
+  &lt;!-- FAILURE 4: the label is just text sitting next to the input. There is no
+       programmatic association, so the field announces as &quot;edit, blank&quot;. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    Email address
+    &lt;input type=&quot;email&quot; name=&quot;email&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FAILURE 5: a radio group with no fieldset and no legend. Each option
+       announces its own label, but the question they answer is invisible to
+       assistive technology. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;div class=&quot;looks-like-heading&quot;&gt;How often?&lt;/div&gt;
+    &lt;input type=&quot;radio&quot; id=&quot;f-weekly&quot; name=&quot;freq&quot; value=&quot;weekly&quot;&gt;
+    &lt;label for=&quot;f-weekly&quot;&gt;Weekly&lt;/label&gt;
+    &lt;input type=&quot;radio&quot; id=&quot;f-monthly&quot; name=&quot;freq&quot; value=&quot;monthly&quot;&gt;
+    &lt;label for=&quot;f-monthly&quot;&gt;Monthly&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;button&quot; class=&quot;button&quot;&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.3.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.3.1 Info and Relationships"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;!-- FIX 1: a real heading. It looks the same, and now it is in the heading
+     outline, reachable with the H key and listed in the rotor. --&gt;
+&lt;h2&gt;Opening hours&lt;/h2&gt;
+
+&lt;!-- FIX 2: a real list. Assistive technology announces &quot;list with 3 items&quot;,
+     which tells the user how much there is before they commit to reading it. --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Monday to Friday, 9am to 6pm&lt;/li&gt;
+  &lt;li&gt;Saturday, 10am to 4pm&lt;/li&gt;
+  &lt;li&gt;Sunday, closed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Stock by branch&lt;/h2&gt;
+
+&lt;!-- FIX 3: real header cells with an explicit scope. Now a screen reader reads
+     &quot;Old Town, Paperback, 19&quot; instead of a bare &quot;19&quot;. The caption names the
+     table so it can be found in a list of tables. --&gt;
+&lt;table&gt;
+  &lt;caption&gt;Copies in stock by branch and format&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;Branch&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Hardback&lt;/th&gt;
+      &lt;th scope=&quot;col&quot;&gt;Paperback&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Riverside&lt;/th&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;34&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;Old Town&lt;/th&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;19&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2&gt;Join the mailing list&lt;/h2&gt;
+
+&lt;form&gt;
+  &lt;!-- FIX 4: label's &quot;for&quot; matches the input's &quot;id&quot;, so the field announces as
+       &quot;Email address, edit&quot;. Clicking the label also focuses the field. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;email&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; autocomplete=&quot;email&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FIX 5: fieldset and legend bind the question to its options, so each
+       radio announces as &quot;How often? Weekly, radio button, 1 of 2&quot;. --&gt;
+  &lt;fieldset class=&quot;field&quot;&gt;
+    &lt;legend&gt;How often?&lt;/legend&gt;
+    &lt;div&gt;
+      &lt;input type=&quot;radio&quot; id=&quot;p-weekly&quot; name=&quot;freq&quot; value=&quot;weekly&quot;&gt;
+      &lt;label for=&quot;p-weekly&quot;&gt;Weekly&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;input type=&quot;radio&quot; id=&quot;p-monthly&quot; name=&quot;freq&quot; value=&quot;monthly&quot;&gt;
+      &lt;label for=&quot;p-monthly&quot;&gt;Monthly&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Turn off CSS, or view the accessibility tree. Every visual grouping, heading level, list, and table relationship should still be expressed in the markup. Check label/for pairings, th with scope, fieldset/legend for radio groups.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners catch missing form labels, empty headings, and layout tables with headers. They cannot detect a div styled to look like an h2, or a heading hierarchy that is technically valid but semantically wrong.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>label</code></li>
+              <li><code>form-field-multiple-labels</code></li>
+              <li><code>th-has-data-cells</code></li>
+              <li><code>td-headers-attr</code></li>
+              <li><code>empty-heading</code></li>
+              <li><code>definition-list</code></li>
+              <li><code>list</code></li>
+              <li><code>listitem</code></li>
+              <li><code>aria-required-children</code></li>
+              <li><code>aria-required-parent</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.3.2-meaningful-sequence/index.html">1.3.2 Meaningful Sequence (Level A)</a></li>
+          <li><a href="../2.4.6-headings-and-labels/index.html">2.4.6 Headings and Labels (Level AA)</a></li>
+          <li><a href="../2.4.10-section-headings/index.html">2.4.10 Section Headings (Level AAA)</a></li>
+          <li><a href="../4.1.2-name-role-value/index.html">4.1.2 Name, Role, Value (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">Understanding 1.3.1 Info and Relationships</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#info-and-relationships">1.3.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.2.9-audio-only-live/index.html"><span class="sc-pager__dir">Previous criterion</span>1.2.9 Audio-only (Live)</a>
+        <a href="../1.3.2-meaningful-sequence/index.html"><span class="sc-pager__dir">Next criterion</span>1.3.2 Meaningful Sequence</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

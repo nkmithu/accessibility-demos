@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.5.1 Pointer Gestures</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .carousel { border:1px solid var(--border); border-radius:6px; padding:1rem; }
+    .slide { font-size:1.1rem; font-weight:600; }
+    .cover { transition: none; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.5.1 Pointer Gestures.</p>
+
+  <!-- excerpt:start -->
+  <h1>Staff picks</h1>
+
+  <!-- FIX 1: the swipe still works for people who like it, but it is now an
+       ENHANCEMENT. Previous and Next are real buttons, operable with a single
+       tap, a keyboard, a switch or a voice command.
+
+       2.5.1 does not ask you to remove the gesture. It asks you to make sure the
+       gesture is not the only way. -->
+  <div class="carousel" id="car">
+    <p class="slide" id="slide" role="status">Tidal Flats, by A. Marsh</p>
+    <p>
+      <button type="button" class="button button--secondary" id="prev">Previous pick</button>
+      <button type="button" class="button button--secondary" id="next">Next pick</button>
+    </p>
+    <p>You can also swipe left or right.</p>
+  </div>
+
+  <!-- FIX 2: zoom controls alongside pinch. Note that the buttons are at least
+       44 x 44 CSS pixels, which also satisfies 2.5.8 Target Size. -->
+  <h2>Cover</h2>
+  <p>
+    <button type="button" class="button button--secondary" id="zin">Zoom in</button>
+    <button type="button" class="button button--secondary" id="zout">Zoom out</button>
+  </p>
+  <img class="cover" id="cover" src="../../assets/media/book-cover.svg"
+       alt="Cover of Tidal Flats" width="120" height="170">
+
+  <!-- The essential-gesture exception is narrow: it covers things like a
+       signature pad or a drawing canvas, where the path IS the content.
+       A carousel, a map and a slider are never essential gestures. -->
+  <!-- excerpt:end -->
+
+  <script>
+    var picks = ['Tidal Flats, by A. Marsh', 'The Long Field, by R. Owen', 'Salt, by J. Nandi'];
+    var i = 0;
+    function show() { document.getElementById('slide').textContent = picks[i]; }
+    document.getElementById('next').addEventListener('click', function () { i = (i + 1) % picks.length; show(); });
+    document.getElementById('prev').addEventListener('click', function () { i = (i + picks.length - 1) % picks.length; show(); });
+
+    var scale = 1, cover = document.getElementById('cover');
+    function zoom(by) {
+      scale = Math.min(3, Math.max(1, scale + by));
+      cover.width = 120 * scale; cover.height = 170 * scale;
+    }
+    document.getElementById('zin').addEventListener('click', function () { zoom(0.5); });
+    document.getElementById('zout').addEventListener('click', function () { zoom(-0.5); });
+
+    // The swipe is kept, purely as an extra way in.
+    var x0 = null, car = document.getElementById('car');
+    car.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+    car.addEventListener('pointerup', function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0;
+      if (Math.abs(dx) > 40) { i = (i + (dx < 0 ? 1 : picks.length - 1)) % picks.length; show(); }
+      x0 = null;
+    });
+  </script>
+</body>
+</html>

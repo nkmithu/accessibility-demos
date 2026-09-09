@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.3.2 Meaningful Sequence</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .steps { display: flex; flex-direction: column; }
+    /* FAILURE: CSS order reverses what the eye sees, but the DOM order - which
+       is what a screen reader, a linearised view and the tab order all follow -
+       is unchanged. Visual order and reading order now disagree. */
+    .steps .s1 { order: 3; }
+    .steps .s2 { order: 2; }
+    .steps .s3 { order: 1; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .two-col .sidebar { grid-column: 1; grid-row: 1; }
+    .two-col .body { grid-column: 2; grid-row: 1; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.3.2 Meaningful Sequence.
+     Disable CSS, or tab through, and the order changes.</p>
+
+  <!-- excerpt:start -->
+  <h1>How to reserve a book</h1>
+
+  <!-- The visual order reads 1, 2, 3. The DOM order is 3, 2, 1, so a screen
+       reader reads the instructions backwards and the tab order runs backwards
+       too. Anyone following along by ear is told to collect the book before
+       they have been told to reserve it. -->
+  <div class="steps">
+    <p class="s1"><strong>Step 3.</strong> Collect it from the front desk within seven days.</p>
+    <p class="s2"><strong>Step 2.</strong> We email you when it is ready.</p>
+    <p class="s3"><strong>Step 1.</strong> Search the catalogue and choose Reserve.</p>
+  </div>
+
+  <!-- Same problem with grid placement: the article body appears on the right
+       visually but comes second in the DOM, so the sidebar is read first. Here
+       the sidebar is minor content being forced ahead of the main article. -->
+  <div class="two-col">
+    <div class="body">
+      <h2>About the scheme</h2>
+      <p>Reservations are free for members.</p>
+    </div>
+    <div class="sidebar">
+      <h2>Advert</h2>
+      <p>Buy a tote bag.</p>
+    </div>
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

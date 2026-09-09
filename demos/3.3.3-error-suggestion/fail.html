@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.3 Error Suggestion</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.err { color:#94101c; font-weight:600; margin:.25rem 0 0; }</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.3.3 Error Suggestion.
+     Submit it and read the messages.</p>
+
+  <!-- excerpt:start -->
+  <h1>Book an event ticket</h1>
+
+  <form id="f" novalidate>
+    <div class="field">
+      <label for="em">Email address</label>
+      <input type="email" id="em" aria-describedby="em-e" value="anna.example.org">
+      <!-- FAILURE 1: identifies the error (so 3.3.1 passes) but suggests nothing.
+           The user knows something is wrong and not what would be right. -->
+      <p class="err" id="em-e" hidden>Invalid.</p>
+    </div>
+
+    <div class="field">
+      <label for="dt">Event date</label>
+      <input type="text" id="dt" aria-describedby="dt-e" value="3rd March">
+      <!-- FAILURE 2: the required format is never stated, before or after. -->
+      <p class="err" id="dt-e" hidden>Error in field.</p>
+    </div>
+
+    <div class="field">
+      <label for="pw">Choose a password</label>
+      <input type="password" id="pw" aria-describedby="pw-e" value="abc">
+      <!-- FAILURE 3: the rules are known to the system and withheld from the
+           user, who now has to guess. -->
+      <p class="err" id="pw-e" hidden>Password not accepted.</p>
+    </div>
+
+    <button type="submit" class="button">Book ticket</button>
+  </form>
+  <!-- excerpt:end -->
+
+  <script>
+    document.getElementById('f').addEventListener('submit', function (e) {
+      e.preventDefault();
+      ['em','dt','pw'].forEach(function (id) { document.getElementById(id + '-e').hidden = false; });
+    });
+  </script>
+</body>
+</html>

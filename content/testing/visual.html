@@ -1,0 +1,91 @@
+<!--page
+title: Visual and zoom testing — WCAG 2.2 Demo Suite
+description: Procedures for contrast, 200% zoom, 320px reflow, text spacing, and colour independence.
+nav: testing
+section: Testing
+sectionHref: testing/index.html
+crumb: Visual testing
+-->
+      <h1>Visual and zoom testing</h1>
+      <p class="sc-header__summary">Five procedures, each taking a couple of minutes, that between
+         them cover the criteria most likely to affect users with low vision — and the ones automated
+         tools are worst at.</p>
+
+      <h2>1. Contrast <span class="tag">1.4.3</span> <span class="tag">1.4.6</span> <span class="tag">1.4.11</span></h2>
+      <ol class="prose">
+        <li>Pick foreground and background with a colour picker — the browser devtools contrast panel,
+            the Colour Contrast Analyser, or a browser extension.</li>
+        <li>Check text against the thresholds: <strong>4.5:1</strong> normal, <strong>3:1</strong> large
+            (18pt / 24px, or 14pt / 18.66px bold). At AAA, 7:1 and 4.5:1.</li>
+        <li>Check non-text too: input borders, focus indicators, icons that carry meaning, chart
+            elements. <strong>3:1</strong> against adjacent colours.</li>
+        <li>Test <em>every state</em>: default, hover, focus, visited, and disabled controls that still
+            convey information.</li>
+        <li>For text over an image or gradient, measure at the <em>worst</em> point, not the average.</li>
+      </ol>
+      <p class="prose">This repository checks its own palette:
+         <code>node tools/check-contrast.mjs</code> verifies every design token pair in both light and
+         dark themes and fails if any drops below threshold.</p>
+
+      <h2>2. Colour independence <span class="tag">1.4.1</span></h2>
+      <ol class="prose">
+        <li>View the page in greyscale — devtools rendering panel, or an OS colour filter.</li>
+        <li>Ask whether any information has disappeared: required fields, error states, chart series,
+            links inside body text, status indicators.</li>
+        <li>Print it, or preview the print. Anything colour-only vanishes on paper too.</li>
+      </ol>
+
+      <h2>3. Zoom to 200% <span class="tag">1.4.4</span></h2>
+      <ol class="prose">
+        <li>Press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> and <kbd>+</kbd> until the browser reads 200%.</li>
+        <li>Look for clipped text, overlapping elements, controls pushed off screen, and fixed-height
+            boxes hiding overflow.</li>
+        <li>Check the viewport meta tag has no <code>user-scalable=no</code> or
+            <code>maximum-scale</code>.</li>
+      </ol>
+
+      <h2>4. Reflow to 320 CSS pixels <span class="tag">1.4.10</span></h2>
+      <ol class="prose">
+        <li>Set the browser window to 1280&nbsp;px wide and zoom to 400% — or use device emulation at
+            320 × 256.</li>
+        <li>The page must not scroll horizontally, and nothing may be lost or cut off.</li>
+        <li>Data tables, maps, diagrams and code blocks are exempt — but their scroll container must
+            be keyboard reachable.</li>
+        <li>Check that menus collapse rather than overflow, and that sticky bars do not eat the
+            viewport.</li>
+      </ol>
+
+      <h2>5. Text spacing overrides <span class="tag">1.4.12</span></h2>
+      <p class="prose">Paste this into the devtools console, or save it as a bookmarklet. It applies
+         exactly the values WCAG requires a page to survive:</p>
+      <pre tabindex="0"><code>document.head.insertAdjacentHTML('beforeend', `&lt;style&gt;
+  * {
+    line-height: 1.5 !important;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+  }
+  p, li, dd, blockquote { margin-bottom: 2em !important; }
+&lt;/style&gt;`);</code></pre>
+      <ol class="prose">
+        <li>Apply it and look for clipped text, overlapping elements, and text escaping its container.</li>
+        <li>The usual cause is a fixed <code>height</code> on something containing text. Use
+            <code>min-height</code> instead.</li>
+      </ol>
+
+      <h2>6. Orientation and motion <span class="tag">1.3.4</span> <span class="tag">2.3.3</span></h2>
+      <ol class="prose">
+        <li>Rotate a device, or make the window wider than it is tall. Content must work in both.</li>
+        <li>Turn on the operating system's reduce-motion setting and reload. Large movement,
+            parallax and long smooth scrolls should be gone — not merely faster.</li>
+      </ol>
+
+      <h2>Practise on these demos</h2>
+      <ul class="related-list">
+        <li><a href="../demos/1.4.1-use-of-color/index.html">1.4.1 Use of Color</a></li>
+        <li><a href="../demos/1.4.3-contrast-minimum/index.html">1.4.3 Contrast</a></li>
+        <li><a href="../demos/1.4.4-resize-text/index.html">1.4.4 Resize Text</a></li>
+        <li><a href="../demos/1.4.10-reflow/index.html">1.4.10 Reflow</a></li>
+        <li><a href="../demos/1.4.11-non-text-contrast/index.html">1.4.11 Non-text Contrast</a></li>
+        <li><a href="../demos/1.4.12-text-spacing/index.html">1.4.12 Text Spacing</a></li>
+        <li><a href="../demos/2.3.3-animation-from-interactions/index.html">2.3.3 Animation from Interactions</a></li>
+      </ul>

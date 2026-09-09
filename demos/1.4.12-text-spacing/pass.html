@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.12 Text Spacing</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* The same user overrides, applied to a layout that can take them. */
+    .spaced { line-height: 1.5 !important; letter-spacing: .12em !important;
+              word-spacing: .16em !important; }
+    .spaced p { margin-bottom: 2em !important; }
+
+    /* FIX 1: min-height instead of height. The box grows; nothing is clipped. */
+    .card { min-height: 6rem; border:1px solid var(--border);
+            border-radius:6px; padding:.75rem; margin-bottom:1rem; }
+    /* FIX 2: padding instead of a fixed width and a hardcoded line-height, so
+       the control is sized by its content. */
+    .pill { display:inline-block; padding:.6rem 1.2rem; min-height:44px;
+            background:#0a4f9e; color:#fff; border-radius:999px; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.12 Text Spacing.
+     The same overrides are applied and nothing is lost.</p>
+
+  <!-- excerpt:start -->
+  <div class="spaced">
+    <h1>Delivery</h1>
+
+    <div class="card">
+      <p>We deliver across the county on Tuesdays and Fridays. Orders placed
+         before noon are usually dispatched the same week.</p>
+    </div>
+
+    <p><span class="pill">Track your delivery</span></p>
+  </div>
+
+  <!-- The four values a page must survive, set by the USER through a browser
+       extension or user stylesheet:
+         line-height:    at least 1.5 x the font size
+         paragraph gap:  at least 2 x the font size
+         letter-spacing: at least 0.12 x the font size
+         word-spacing:   at least 0.16 x the font size
+
+       You do not have to PROVIDE these controls. You have to not break when
+       someone else applies them.
+
+       The rule of thumb that prevents almost every failure: never put a fixed
+       height on anything that contains text. Use min-height, or let the content
+       size the box. -->
+  <!-- excerpt:end -->
+</body>
+</html>

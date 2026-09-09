@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.8 Visual Presentation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .article {
+      max-width: none;          /* FAILURE 1: lines run to ~140 characters */
+      text-align: justify;      /* FAILURE 2: full justification */
+      line-height: 1.25;        /* FAILURE 3: under the 1.5 minimum */
+      hyphens: none;
+    }
+    .article p { margin-bottom: .4em; }  /* FAILURE 4: paragraph gap under 1.5x line height */
+    .article p { max-width: none; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.8 Visual Presentation.</p>
+
+  <!-- excerpt:start -->
+  <h1>About the shop</h1>
+
+  <div class="article">
+    <!-- FAILURE 1 — line length: with no max-width, lines run far past the
+         80-character limit on a wide screen. The eye loses the start of the next
+         line, which is exhausting for readers with dyslexia and low vision.
+         FAILURE 2 — justification: forcing both edges flush creates rivers of
+         white space running down the paragraph, which disrupt tracking.
+         FAILURE 3 — line height 1.25, under the 1.5 the criterion requires.
+         FAILURE 4 — paragraph spacing smaller than the line spacing, so the
+         paragraphs run together into a single block.
+         FAILURE 5 — no mechanism for the user to set foreground and background
+         colours, and the layout would break if they tried. -->
+    <p>Riverline Books opened in 1998 in a narrow shop by the river, with about four
+       thousand second-hand books and a single armchair. We have grown into three
+       shops across the county, but the armchair is still there, and so is the habit
+       of letting people sit and read for as long as they like.</p>
+    <p>We buy books as well as sell them. If you have a collection you are thinking of
+       parting with, our buyers visit on Tuesdays and Thursdays, and we will always
+       give you an honest valuation even when the answer is that the books are worth
+       more to you than to us.</p>
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

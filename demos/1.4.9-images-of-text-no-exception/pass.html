@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.9 Images of Text (No Exception)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .panel { border:1px solid var(--border); border-radius:6px; padding:1rem; margin-bottom:1rem; }
+    .promo-heading { font-size: clamp(1.4rem, 1rem + 2.2vw, 2.1rem); font-weight:800;
+                     color:#0a4f9e; margin:0; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.9 Images of Text (No Exception).</p>
+
+  <!-- excerpt:start -->
+  <h1>Spring festival</h1>
+
+  <div class="panel">
+    <h2>Real text, styled with CSS</h2>
+    <!-- No image, so no exception is needed. The text scales, reflows, respects
+         the user's font and spacing overrides, can be selected and searched, and
+         is translatable. -->
+    <p class="promo-heading">Three days of events, 12 to 14 April</p>
+    <p>Tickets are non-refundable. Members save 20%.
+       Under 16s go free with a paying adult.</p>
+  </div>
+
+  <div class="panel">
+    <h2>The exceptions that survive at AAA</h2>
+    <!-- 1. A LOGOTYPE. A brand's wordmark is text that is part of a logo, and it
+            is exempt at every level. -->
+    <p><img src="../../assets/media/award-badge.svg" width="72" height="72"
+            alt="Winner of the 2026 Riverline Prize"></p>
+
+    <!-- 2. ESSENTIAL presentation: where the exact visual rendering IS the
+            information. A scanned historical document, a font specimen, or an
+            image showing what a particular typeface looks like. -->
+    <figure>
+      <img src="../../assets/media/promo-heading.svg" width="420" height="70"
+           alt="The festival wordmark set in Georgia Bold, showing the tight letter spacing used in the 2026 identity.">
+      <figcaption>The 2026 festival wordmark. This image is showing you the
+        <em>typography itself</em>, so the specific rendering is essential and the
+        image is permitted.</figcaption>
+    </figure>
+  </div>
+
+  <!-- The whole difference between 1.4.5 and 1.4.9 in one line: at AA you may
+       ship an image of text if the user can customise it; at AAA you may not
+       ship one at all unless it is a logotype or the rendering is the point.
+
+       In practice, teams that adopt 1.4.9 do so because it forces a discipline
+       that pays off everywhere - no more re-exporting banner artwork every time
+       a price changes, and marketing copy that is searchable and translatable. -->
+  <!-- excerpt:end -->
+</body>
+</html>

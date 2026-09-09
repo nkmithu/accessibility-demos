@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.2 Labels or Instructions</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.3.2 Labels or Instructions.</p>
+
+  <!-- excerpt:start -->
+  <h1>Delivery details</h1>
+
+  <form>
+    <!-- FAILURE 1: placeholder used as the label. The moment the user types, the
+         label is gone - so anyone who is interrupted cannot check what the field
+         was for. Placeholder text is also low contrast by default and is not a
+         reliable accessible name. -->
+    <div class="field"><input type="text" name="name" placeholder="Full name"></div>
+    <div class="field"><input type="text" name="post" placeholder="Postcode"></div>
+
+    <!-- FAILURE 2: no label at all, only a visual asterisk whose meaning is
+         never explained, and no indication of the format expected. -->
+    <div class="field">* <input type="text" name="phone"></div>
+
+    <!-- FAILURE 3: a date with a strict format that is never stated. The user
+         only finds out the rule by getting it wrong. -->
+    <div class="field"><input type="text" name="deliver" placeholder="Preferred date"></div>
+
+    <button type="submit" class="button">Continue</button>
+  </form>
+  <!-- excerpt:end -->
+</body>
+</html>

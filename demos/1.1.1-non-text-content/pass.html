@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.1.1 Non-text Content</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.1.1 Non-text Content.</p>
+
+  <!-- excerpt:start -->
+  <h1>Riverline Books — this week</h1>
+
+  <!-- FIX 1: the alt text serves the same purpose as the image. The adjacent
+       heading already gives the title, so the alt describes what only the image
+       shows, without repeating the caption or starting "image of". -->
+  <img src="../../assets/media/book-cover.svg" alt="Book cover: a pale estuary at low tide under a wide grey sky."
+       width="120" height="170">
+
+  <h2>Tidal Flats</h2>
+  <p>Our staff pick for this week.</p>
+
+  <!-- FIX 2: purely decorative, so alt="" removes it from the accessibility tree.
+       Note this is an EMPTY alt, not a missing one - the attribute must be present. -->
+  <img src="../../assets/media/divider.svg" alt="" width="320" height="8">
+
+  <!-- FIX 3: the button gets a name from visually hidden text, and the icon is
+       marked aria-hidden so it is not announced twice. A visible label would be
+       better still; this pattern is for when the design demands icon-only. -->
+  <button type="button" class="button button--secondary">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M10 3a7 7 0 0 1 6.3 10.05l-.3.55 3 3-1.4 1.4-3-3A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10A5 5 0 0 0 10 5Z"/>
+    </svg>
+    <span class="visually-hidden">Search the catalogue</span>
+  </button>
+
+  <!-- FIX 4: a chart carries data, so the short alt states the conclusion and a
+       full text equivalent follows. A complex image needs both: the summary for
+       someone skimming, the detail for someone who needs the numbers. -->
+  <figure>
+    <img src="../../assets/media/sales-chart.svg"
+         alt="Bar chart: weekly sales rose from 40 in week 1 to 115 in week 5."
+         width="360" height="200">
+    <figcaption>
+      Weekly sales, weeks 1 to 5.
+      <details>
+        <summary>Chart data as a table</summary>
+        <table>
+          <caption>Books sold per week</caption>
+          <thead><tr><th scope="col">Week</th><th scope="col">Books sold</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1</th><td>40</td></tr>
+            <tr><th scope="row">2</th><td>55</td></tr>
+            <tr><th scope="row">3</th><td>70</td></tr>
+            <tr><th scope="row">4</th><td>95</td></tr>
+            <tr><th scope="row">5</th><td>115</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </figcaption>
+  </figure>
+
+  <!-- FIX 5: the award badge carries meaning, so it becomes a real img element
+       with real alt text. If a CSS background is unavoidable, give the element
+       role="img" and an aria-label instead. -->
+  <img src="../../assets/media/award-badge.svg" alt="Winner of the 2026 Riverline Prize"
+       width="96" height="96">
+  <!-- excerpt:end -->
+</body>
+</html>

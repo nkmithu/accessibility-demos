@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.2.4 Consistent Identification</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .mini { border:1px solid var(--border); border-radius:6px; padding:.75rem; }
+    .pages { display:grid; gap:1rem; }
+    @media (min-width:44rem) { .pages { grid-template-columns:1fr 1fr 1fr; } }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.2.4 Consistent Identification.</p>
+
+  <!-- excerpt:start -->
+  <h1>The same action, named three ways</h1>
+
+  <div class="pages">
+    <!-- All three buttons do exactly the same thing: add the item to the basket.
+         Each is named differently. A screen reader user who has learned
+         "Add to basket" now has to work out, on every page, which control is the
+         one they already know. -->
+    <div class="mini">
+      <h2>Product page</h2>
+      <button type="button" class="button">Add to basket</button>
+    </div>
+
+    <!-- FAILURE 1: same function, different name. -->
+    <div class="mini">
+      <h2>Search results</h2>
+      <button type="button" class="button">Buy now</button>
+    </div>
+
+    <!-- FAILURE 2: same function, different name AND a different icon, with the
+         accessible name different again. -->
+    <div class="mini">
+      <h2>Wish list</h2>
+      <button type="button" class="button" aria-label="Purchase">
+        <span aria-hidden="true">🛍</span> Get it
+      </button>
+    </div>
+  </div>
+
+  <!-- The mirror-image failure is just as bad: using the SAME name for two
+       different functions - a "Download" button that downloads a PDF on one page
+       and opens a signup form on another. -->
+  <!-- excerpt:end -->
+</body>
+</html>

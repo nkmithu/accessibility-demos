@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.3.1 Three Flashes or Below Threshold</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .pulse { width:100%; max-width:30rem; padding:1.25rem; border-radius:6px;
+             border:2px solid var(--accent); background: var(--surface); }
+    /* A slow, low-contrast pulse: about 0.5 cycles per second, far below the
+       three-per-second threshold, and a small luminance change. */
+    .pulse { animation: gentle 2s ease-in-out infinite; }
+    @keyframes gentle { 50% { background: #e4ecf5; } }
+    @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.3.1.</p>
+
+  <!-- excerpt:start -->
+  <h1>Flash sale</h1>
+
+  <!-- FIX: draw attention without flashing.
+       This block pulses at about 0.5 cycles per second - six times slower than
+       the three-per-second threshold - with a small luminance change, and it
+       stops entirely for anyone who has asked their system to reduce motion.
+
+       The thresholds you are testing against:
+         - more than 3 flashes in any one second is a failure, UNLESS
+         - the flashing area is small (below about 25% of 10 degrees of visual
+           field - roughly a 341 x 256 px area on a standard display), AND
+         - the flash does not involve a transition to or from saturated red,
+           which has its own, stricter threshold.
+
+       Saturated red is called out separately because red flashes provoke
+       seizures at intensities other colours do not. -->
+  <div class="pulse">
+    <h2>Ends Sunday</h2>
+    <p>20% off all paperbacks this weekend.</p>
+  </div>
+
+  <!-- Testing note: no general-purpose accessibility scanner tests for flashing.
+       Use the free Photosensitive Epilepsy Analysis Tool (PEAT) from the Trace
+       Center on any video or animation, and be especially careful with
+       autoplaying video, rapid scene cuts, explosions and strobe effects. -->
+  <!-- excerpt:end -->
+</body>
+</html>

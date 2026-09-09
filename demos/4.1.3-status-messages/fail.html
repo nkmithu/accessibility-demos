@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 4.1.3 Status Messages</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.result { border:1px solid var(--border); border-radius:6px; padding:.75rem; margin-top:.75rem; }</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 4.1.3 Status Messages.
+     Use it with a screen reader — nothing is announced.</p>
+
+  <!-- excerpt:start -->
+  <h1>Search the catalogue</h1>
+
+  <form id="f">
+    <div class="field">
+      <label for="q">Search</label>
+      <input type="search" id="q" value="tide">
+    </div>
+    <button type="submit" class="button">Search</button>
+  </form>
+
+  <!-- FAILURE 1: the result count appears on screen and is never announced.
+       A screen reader user presses Search and hears silence. They have no idea
+       whether the search ran, found nothing, or is still loading. -->
+  <p id="count"></p>
+
+  <!-- FAILURE 2: the same for add-to-basket confirmation. -->
+  <div class="result">
+    <p>Tidal Flats, by A. Marsh</p>
+    <button type="button" class="button button--secondary" onclick="add()">Add to basket</button>
+  </div>
+  <p id="basket"></p>
+
+  <!-- FAILURE 3: a live region created at the same moment the message is put
+       into it. This is the subtle one, and it is everywhere: a live region must
+       already exist in the DOM, and be being observed, BEFORE the text changes.
+       Injecting <p role="status">Saved</p> announces nothing in most screen
+       readers. -->
+  <div id="late"></div>
+  <p><button type="button" class="button button--secondary" onclick="saveLate()">Save for later</button></p>
+  <!-- excerpt:end -->
+
+  <script>
+    document.getElementById('f').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('count').textContent = '3 results found for "tide".';
+    });
+    function add() { document.getElementById('basket').textContent = 'Added to your basket. 1 item.'; }
+    function saveLate() {
+      // The region and its content arrive together — too late to be announced.
+      document.getElementById('late').innerHTML = '<p role="status">Saved for later.</p>';
+    }
+  </script>
+</body>
+</html>

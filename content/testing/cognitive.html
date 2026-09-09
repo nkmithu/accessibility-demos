@@ -1,0 +1,86 @@
+<!--page
+title: Cognitive and content testing — WCAG 2.2 Demo Suite
+description: How to test the criteria no tool touches: language, instructions, timing, consistency and error recovery.
+nav: testing
+section: Testing
+sectionHref: testing/index.html
+crumb: Cognitive testing
+-->
+      <h1>Cognitive and content testing</h1>
+      <p class="sc-header__summary">These criteria have no automated rules, need no assistive
+         technology, and are skipped by most audits — which is unfortunate, because cognitive and
+         learning disabilities are the largest category of disability there is, and these failures
+         affect every user under stress.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Why this is the neglected half</p>
+        <p>Nothing here can be checked by a scanner, and none of it shows up in a screen reader pass.
+           It requires someone to read the content and use the process with attention. That makes it
+           easy to leave out of a schedule — and it is where a great deal of real exclusion lives.</p>
+      </div>
+
+      <h2>Language and content</h2>
+      <ol class="prose">
+        <li><strong>Read the page aloud.</strong> Sentences you stumble over are sentences your readers
+            will too. <span class="tag">3.1.5</span></li>
+        <li><strong>List every abbreviation and piece of jargon.</strong> Is each one expanded or defined at
+            or near first use? <span class="tag">3.1.3</span> <span class="tag">3.1.4</span></li>
+        <li><strong>Search for idioms.</strong> "Ballpark figure", "beat around the bush", "on the fly" —
+            all read literally by some users. <span class="tag">3.1.3</span></li>
+        <li><strong>Check instructions for sensory-only references.</strong> Search the text for "click the
+            green button", "on the right", "the box below", "the large text". Each needs a name.
+            <span class="tag">1.3.3</span></li>
+        <li><strong>Read the headings alone as an outline.</strong> Does it work as a table of contents?
+            <span class="tag">2.4.6</span> <span class="tag">2.4.10</span></li>
+        <li><strong>Check the language attributes.</strong> Is <code>lang</code> on <code>&lt;html&gt;</code>
+            correct, and does every foreign passage carry its own?
+            <span class="tag">3.1.1</span> <span class="tag">3.1.2</span></li>
+      </ol>
+
+      <h2>Forms and error recovery</h2>
+      <ol class="prose">
+        <li><strong>Submit the form empty.</strong> Is every error described in text, tied to its field, and
+            announced? <span class="tag">3.3.1</span></li>
+        <li><strong>Submit deliberately wrong values.</strong> Does the message say how to fix it, or only
+            that it is wrong? <span class="tag">3.3.3</span></li>
+        <li><strong>Look for format rules stated only in errors.</strong> The expected format must appear
+            <em>before</em> submission. <span class="tag">3.3.2</span></li>
+        <li><strong>Walk a multi-step process and note anything asked twice.</strong>
+            <span class="tag">3.3.7</span></li>
+        <li><strong>Try to do something irreversible.</strong> Is there a confirmation, a review step, or an
+            undo? <span class="tag">3.3.4</span> <span class="tag">3.3.6</span></li>
+        <li><strong>Check the authentication flow.</strong> Can you paste a password? Do the fields carry
+            autocomplete tokens? Is there a CAPTCHA? <span class="tag">3.3.8</span></li>
+      </ol>
+
+      <h2>Timing and interruptions</h2>
+      <ol class="prose">
+        <li><strong>Start a form and walk away for the length of the timeout.</strong> Are you warned? Can
+            you extend? Is your work kept?
+            <span class="tag">2.2.1</span> <span class="tag">2.2.5</span></li>
+        <li><strong>Is the timeout duration disclosed before you start?</strong> <span class="tag">2.2.6</span></li>
+        <li><strong>Sit on the page and do nothing for two minutes.</strong> Note every pop-up, chat
+            prompt, banner and auto-update that appears uninvited.
+            <span class="tag">2.2.4</span> <span class="tag">3.2.5</span></li>
+        <li><strong>Find moving content.</strong> Can it be paused, stopped or hidden?
+            <span class="tag">2.2.2</span></li>
+      </ol>
+
+      <h2>Consistency across pages</h2>
+      <p class="prose">These three cannot be evaluated on a single page. You need a sample — which is
+         one of the reasons <a href="../evaluation/step3-select-sample.html">choosing a sample</a>
+         matters so much.</p>
+      <ol class="prose">
+        <li><strong>Compare the navigation across five pages.</strong> Same items, same relative order?
+            <span class="tag">3.2.3</span></li>
+        <li><strong>List the accessible name of every control that does the same job across pages.</strong>
+            Same function, same name? <span class="tag">3.2.4</span></li>
+        <li><strong>Find every help mechanism.</strong> Is it in the same relative place wherever it
+            appears? <span class="tag">3.2.6</span></li>
+      </ol>
+
+      <h2>The five-minute sanity check</h2>
+      <p class="prose">Give the page to someone who has never seen it and ask them to complete the
+         main task while thinking aloud. Do not help. Every hesitation is data, and most of what you
+         learn will not correspond to any success criterion — which is the point. Conformance is the
+         floor.</p>

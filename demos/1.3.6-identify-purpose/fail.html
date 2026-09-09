@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.3.6 Identify Purpose</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.bar{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem}</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.3.6 Identify Purpose.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your account</h1>
+
+  <!-- 1.3.6 extends 1.3.5 from form fields to the WHOLE interface: regions,
+       controls and icons must all have a programmatically determinable purpose,
+       so that personalisation tools can act on them - swapping in symbols a user
+       recognises, simplifying the layout, or hiding non-essential regions.
+
+       FAILURE 1: the page is built entirely from divs. There are no landmarks,
+       so a personalisation tool cannot tell the navigation from the main content
+       from the advertising, and cannot hide the parts the user does not need. -->
+  <div class="bar">
+    <div><a href="#a">Home</a></div>
+    <div><a href="#a">Orders</a></div>
+    <div><a href="#a">Settings</a></div>
+  </div>
+
+  <!-- FAILURE 2: icon-only controls whose purpose exists only as a glyph. There
+       is no name and no role beyond "button", so nothing can substitute a
+       symbol the user finds easier to recognise. -->
+  <div class="bar">
+    <button type="button" class="button button--secondary">🏠</button>
+    <button type="button" class="button button--secondary">🔍</button>
+    <button type="button" class="button button--secondary">🗑</button>
+    <button type="button" class="button button--secondary">⚙</button>
+  </div>
+
+  <div>
+    <div style="font-size:1.2rem;font-weight:700">Recent orders</div>
+    <div>Order #1041 — 3 March</div>
+  </div>
+
+  <div>Advertisement: buy a tote bag.</div>
+
+  <p id="a">Section.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

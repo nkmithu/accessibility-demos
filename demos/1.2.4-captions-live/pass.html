@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.2.4 Captions (Live)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .stage { background:#14171c; color:#fff; border-radius:6px; padding:2rem 1rem; text-align:center; }
+    .live-dot { display:inline-block; width:.6rem; height:.6rem; border-radius:50%;
+                background:#ff6b6b; vertical-align:middle; margin-right:.4rem; }
+    .cc { border:2px solid var(--border-strong); border-radius:6px; padding:.75rem 1rem;
+          margin-top:.75rem; min-height:5rem; font-size:1.05rem; line-height:1.6; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.2.4 Captions (Live).</p>
+
+  <!-- excerpt:start -->
+  <h1>Live: Spring festival opening</h1>
+
+  <div class="stage">
+    <p><span class="live-dot" aria-hidden="true"></span><strong>LIVE</strong> — streaming now</p>
+    <p>Opening remarks from the festival director</p>
+  </div>
+
+  <!-- FIX 1: real-time captions, delivered during the broadcast. In production
+       this pane is fed by a live captioning service (CART) or by the streaming
+       platform's live caption track.
+
+       aria-live="polite" so new text is announced without interrupting, and
+       aria-atomic="false" so only the newly added line is read rather than the
+       whole pane each time - which is what makes a live caption pane bearable
+       to listen to. -->
+  <h2 id="cc-h">Live captions</h2>
+  <div class="cc" role="log" aria-live="polite" aria-atomic="false" aria-labelledby="cc-h" id="cc">
+    <p>[applause]</p>
+    <p>DIRECTOR: Good evening, and welcome to the Spring festival.</p>
+  </div>
+
+  <!-- FIX 2: tell people what access provision exists BEFORE the event, so they
+       can decide whether to attend. This is not required by the criterion, but
+       it is what makes it usable in practice. -->
+  <h2>Access at this event</h2>
+  <ul>
+    <li>Live captions are provided throughout by a human captioner.</li>
+    <li>A British Sign Language interpreter is on the stream from 7pm.</li>
+    <li>A corrected transcript will be published within 48 hours.</li>
+  </ul>
+
+  <!-- Practical notes:
+       - Automatic live captions are better than nothing, but their accuracy on
+         names, place names and technical terms is poor. For an event that
+         matters, budget for a human captioner.
+       - The recording you publish afterwards is PRERECORDED media, so it falls
+         under 1.2.2 and needs its own corrected captions. Live captions being
+         provided does not exempt the recording. -->
+  <!-- excerpt:end -->
+
+  <script>
+    // Simulated incoming captions, to show the live region behaving correctly.
+    var lines = [
+      'DIRECTOR: We have three days of events across both shops.',
+      'DIRECTOR: Everything is free for members.',
+      '[audience laughter]',
+      'DIRECTOR: And the doors open at ten tomorrow morning.'
+    ];
+    var i = 0;
+    var timer = setInterval(function () {
+      if (i >= lines.length) { clearInterval(timer); return; }
+      var p = document.createElement('p');
+      p.textContent = lines[i++];
+      document.getElementById('cc').appendChild(p);
+    }, 3500);
+  </script>
+</body>
+</html>

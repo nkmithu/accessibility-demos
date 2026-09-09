@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.2.2 Pause, Stop, Hide</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .ticker { overflow:hidden; border:1px solid var(--border); border-radius:6px; padding:.5rem; }
+    .ticker span { display:inline-block; white-space:nowrap; animation: slide 6s linear infinite; }
+    @keyframes slide { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+    .blinker { font-weight:700; color:#94101c; animation: blink 1s steps(2) infinite; }
+    @keyframes blink { 50% { visibility: hidden; } }
+    .carousel { border:1px solid var(--border); border-radius:6px; padding:1rem; margin-top:1rem; }
+    /* FAILURE: no prefers-reduced-motion block anywhere in this stylesheet, so a
+       user who has asked their operating system to reduce motion still gets all
+       of it. */
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.2.2 Pause, Stop, Hide.</p>
+
+  <!-- excerpt:start -->
+  <h1>Riverline Books</h1>
+
+  <!-- FAILURE 1: a scrolling ticker that runs forever with no pause control. -->
+  <div class="ticker"><span>Spring festival tickets on sale now — members save 20% — free delivery over £25 —</span></div>
+
+  <!-- FAILURE 2: blinking text. Impossible to ignore, impossible to stop. -->
+  <p><span class="blinker">Offer ends soon!</span></p>
+
+  <!-- FAILURE 3: an auto-advancing carousel with no pause, stop or hide control.
+       It also moves while the user is trying to read the text beside it, and a
+       screen reader user loses their place each time the content swaps. -->
+  <div class="carousel">
+    <h2>Staff picks</h2>
+    <p id="slide">Tidal Flats, by A. Marsh</p>
+  </div>
+
+  <!-- FAILURE 4: an auto-updating region with no way to freeze it. -->
+  <p>Baskets checked out in the last hour: <span id="count" role="status">14</span></p>
+  <!-- excerpt:end -->
+
+  <script>
+    var picks = ['Tidal Flats, by A. Marsh', 'The Long Field, by R. Owen', 'Salt, by J. Nandi'];
+    var i = 0;
+    setInterval(function () { i = (i + 1) % picks.length; document.getElementById('slide').textContent = picks[i]; }, 2500);
+    setInterval(function () { document.getElementById('count').textContent = 14 + Math.floor(Math.random() * 9); }, 3000);
+  </script>
+</body>
+</html>

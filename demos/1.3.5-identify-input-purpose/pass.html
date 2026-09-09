@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.3.5 Identify Input Purpose</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.3.5 Identify Input Purpose.</p>
+
+  <!-- excerpt:start -->
+  <h1>Delivery details</h1>
+
+  <form>
+    <!-- FIX: each field carries the correct token from the WCAG list of input
+         purposes. Two things follow:
+           1. the browser or password manager can fill the form, which matters
+              enormously for users with motor and cognitive disabilities
+           2. personalisation tools can identify the field's purpose and add a
+              familiar icon or simplified prompt -->
+    <div class="field"><label for="fn">First name</label>
+      <input type="text" id="fn" name="fname" autocomplete="given-name"></div>
+    <div class="field"><label for="ln">Last name</label>
+      <input type="text" id="ln" name="lname" autocomplete="family-name"></div>
+
+    <div class="field"><label for="em">Email address</label>
+      <input type="email" id="em" autocomplete="email"></div>
+
+    <div class="field"><label for="ph">Mobile number</label>
+      <input type="tel" id="ph" autocomplete="tel"></div>
+
+    <div class="field"><label for="a1">Address line 1</label>
+      <input type="text" id="a1" autocomplete="address-line1"></div>
+    <div class="field"><label for="ct">Town or city</label>
+      <input type="text" id="ct" autocomplete="address-level2"></div>
+    <div class="field"><label for="pc">Postcode</label>
+      <input type="text" id="pc" autocomplete="postal-code"></div>
+
+    <!-- Tokens can be qualified for a section of a form:
+         autocomplete="billing street-address" or "shipping postal-code". -->
+    <div class="field"><label for="cc">Card number</label>
+      <input type="text" id="cc" inputmode="numeric" autocomplete="cc-number"></div>
+
+    <button type="submit" class="button">Continue</button>
+  </form>
+
+  <!-- Scope: 1.3.5 applies only to fields collecting information ABOUT THE USER.
+       A search box, a book title, or a message to customer services are all out
+       of scope - there is no token for them and none is needed.
+
+       autocomplete="off" is legitimate on a one-time code or a field where
+       filling would be wrong. It is a failure on a field asking for the user's
+       own name, address, phone or email. -->
+  <!-- excerpt:end -->
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Screen reader testing — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Cheat sheets for NVDA, JAWS, VoiceOver and TalkBack, plus a test script and the mistakes sighted testers make.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../index.html"><img src="../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../demos/index.html">Criteria</a></li>
+        <li><a href="../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../testing/index.html" aria-current="page">Testing</a></li>
+        <li><a href="../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../testing/index.html">Testing</a></li>
+        <li><span aria-current="page">Screen reader testing</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Screen reader testing</h1>
+      <p class="sc-header__summary">A screen reader tells you what your markup actually
+         communicates, which is regularly not what you meant it to. It is the only way to verify
+         names, roles, states, structure and announcements — the substance of 1.3.1, 2.4.4, 4.1.2
+         and 4.1.3.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> You are not simulating a blind user</p>
+        <p>You are inspecting your markup through the same interface a blind user has. A daily
+           screen reader user runs at speech rates you would find unintelligible, knows dozens of
+           shortcuts, and will navigate your page in ways you never try. Use the tool to find
+           <em>defects</em>; do not use your experience of it to judge whether the page is
+           <em>usable</em>. That judgement needs actual users.</p>
+      </div>
+
+      <h2>Which one to test with</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="sr-cap">
+        <table>
+          <caption id="sr-cap">Screen readers, platforms and cost</caption>
+          <thead><tr><th scope="col">Screen reader</th><th scope="col">Platform</th><th scope="col">Cost</th><th scope="col">Pair it with</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">NVDA</th><td>Windows</td><td>Free</td><td>Firefox or Chrome</td></tr>
+            <tr><th scope="row">JAWS</th><td>Windows</td><td>Commercial</td><td>Chrome</td></tr>
+            <tr><th scope="row">VoiceOver</th><td>macOS, iOS</td><td>Built in</td><td>Safari</td></tr>
+            <tr><th scope="row">TalkBack</th><td>Android</td><td>Built in</td><td>Chrome</td></tr>
+            <tr><th scope="row">Narrator</th><td>Windows</td><td>Built in</td><td>Edge</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">If you test with one, make it <strong>NVDA with Firefox</strong> on Windows or
+         <strong>VoiceOver with Safari</strong> on macOS. Screen reader and browser behave as a pair —
+         a bug in one combination may not appear in another, which is why real audits sample more
+         than one.</p>
+
+      <h2>NVDA (Windows)</h2>
+      <p class="prose">The NVDA key is <kbd>Insert</kbd> (or <kbd>Caps Lock</kbd> in laptop layout).
+         Start and stop with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>N</kbd>. Silence it instantly with
+         <kbd>Ctrl</kbd>.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="nvda-cap">
+        <table>
+          <caption id="nvda-cap">NVDA commands you will use constantly</caption>
+          <thead><tr><th scope="col">Keys</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><kbd>Ctrl</kbd></th><td>Stop speaking. Learn this first.</td></tr>
+            <tr><th scope="row"><kbd>NVDA</kbd>+<kbd>&darr;</kbd></th><td>Read continuously from here</td></tr>
+            <tr><th scope="row"><kbd>H</kbd> / <kbd>Shift</kbd>+<kbd>H</kbd></th><td>Next / previous heading</td></tr>
+            <tr><th scope="row"><kbd>1</kbd>–<kbd>6</kbd></th><td>Next heading at that level</td></tr>
+            <tr><th scope="row"><kbd>D</kbd></th><td>Next landmark</td></tr>
+            <tr><th scope="row"><kbd>F</kbd></th><td>Next form field</td></tr>
+            <tr><th scope="row"><kbd>T</kbd></th><td>Next table</td></tr>
+            <tr><th scope="row"><kbd>G</kbd></th><td>Next graphic</td></tr>
+            <tr><th scope="row"><kbd>K</kbd></th><td>Next link</td></tr>
+            <tr><th scope="row"><kbd>NVDA</kbd>+<kbd>F7</kbd></th><td><strong>Elements list</strong> — every link, heading and landmark. The single most useful command for auditing.</td></tr>
+            <tr><th scope="row"><kbd>NVDA</kbd>+<kbd>Tab</kbd></th><td>Announce the currently focused control</td></tr>
+            <tr><th scope="row"><kbd>NVDA</kbd>+<kbd>T</kbd></th><td>Read the page title</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>VoiceOver (macOS)</h2>
+      <p class="prose">Toggle with <kbd>Cmd</kbd>+<kbd>F5</kbd>. The VO keys are
+         <kbd>Ctrl</kbd>+<kbd>Option</kbd>. Turn on keyboard navigation in System Settings first, or
+         Tab will skip links.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="vo-cap">
+        <table>
+          <caption id="vo-cap">VoiceOver commands</caption>
+          <thead><tr><th scope="col">Keys</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><kbd>Ctrl</kbd></th><td>Stop speaking</td></tr>
+            <tr><th scope="row"><kbd>VO</kbd>+<kbd>A</kbd></th><td>Read from here</td></tr>
+            <tr><th scope="row"><kbd>VO</kbd>+<kbd>&rarr;</kbd> / <kbd>&larr;</kbd></th><td>Next / previous item</td></tr>
+            <tr><th scope="row"><kbd>VO</kbd>+<kbd>U</kbd></th><td><strong>Rotor</strong> — lists headings, links, landmarks, form controls. The equivalent of NVDA's elements list.</td></tr>
+            <tr><th scope="row"><kbd>VO</kbd>+<kbd>Cmd</kbd>+<kbd>H</kbd></th><td>Next heading</td></tr>
+            <tr><th scope="row"><kbd>VO</kbd>+<kbd>Cmd</kbd>+<kbd>L</kbd></th><td>Next link</td></tr>
+            <tr><th scope="row"><kbd>VO</kbd>+<kbd>Space</kbd></th><td>Activate the current item</td></tr>
+            <tr><th scope="row"><kbd>VO</kbd>+<kbd>Shift</kbd>+<kbd>&darr;</kbd></th><td>Interact with a group (tables, custom widgets)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Mobile: VoiceOver on iOS and TalkBack on Android</h2>
+      <ul class="prose">
+        <li><strong>Swipe right / left</strong> — next / previous element</li>
+        <li><strong>Double tap</strong> — activate the current element</li>
+        <li><strong>Two-finger swipe down</strong> — read from the top</li>
+        <li><strong>Rotor (iOS)</strong>: twist two fingers on the screen. <strong>Reading controls
+            (Android)</strong>: swipe up then right.</li>
+        <li><strong>Explore by touch</strong> — drag a finger across the screen to hear what is under it</li>
+      </ul>
+      <p class="prose">Test mobile separately. Touch targets (2.5.8), gestures (2.5.1), dragging
+         (2.5.7) and orientation (1.3.4) can only be judged on a real device.</p>
+
+      <h2>The test script</h2>
+      <ol class="prose">
+        <li><strong>Load the page and listen to the first thing announced.</strong> It should be a
+            descriptive page title. <span class="tag">2.4.2</span></li>
+        <li><strong>Open the elements list or rotor and read the HEADINGS alone.</strong> They should
+            work as a table of contents. <span class="tag">1.3.1</span> <span class="tag">2.4.6</span></li>
+        <li><strong>Read the LINKS alone.</strong> Every entry should make sense out of context. Look for
+            repeated "Read more" and bare URLs. <span class="tag">2.4.4</span> <span class="tag">2.4.9</span></li>
+        <li><strong>Read the LANDMARKS.</strong> There should be a main, and the page should be navigable
+            by region. <span class="tag">1.3.1</span> <span class="tag">2.4.1</span></li>
+        <li><strong>Read the whole page top to bottom.</strong> Does the order make sense? Are images
+            described usefully, or is a file name read out? <span class="tag">1.1.1</span> <span class="tag">1.3.2</span></li>
+        <li><strong>Tab through every control and listen to name, role and state.</strong> "Marketing
+            emails, toggle button, pressed" is right; "button" is not. <span class="tag">4.1.2</span></li>
+        <li><strong>Operate every custom widget.</strong> Does the announced state change when the visual
+            state does? <span class="tag">4.1.2</span></li>
+        <li><strong>Trigger every status message</strong> — search results, add to basket, save
+            confirmations, loading states. If you hear nothing, there is no live region.
+            <span class="tag">4.1.3</span></li>
+        <li><strong>Submit a form with errors</strong> and listen. The error must be announced and tied to
+            its field. <span class="tag">3.3.1</span></li>
+        <li><strong>Read a data table.</strong> Each cell should be announced with its row and column
+            headers. <span class="tag">1.3.1</span></li>
+      </ol>
+
+      <h2>Mistakes sighted testers make</h2>
+      <ul class="prose">
+        <li><strong>Looking at the screen.</strong> Turn the monitor off, or close your eyes, for at least
+            part of the pass. You cannot hear the gaps while your eyes are filling them in.</li>
+        <li><strong>Only using Tab.</strong> Screen reader users navigate by heading, landmark and link
+            list far more than by Tab. Test the way they browse.</li>
+        <li><strong>Testing only the happy path.</strong> Errors, empty states, loading states and dialogs
+            are where the failures are.</li>
+        <li><strong>Assuming one screen reader speaks for all.</strong> Behaviour differs between NVDA,
+            JAWS and VoiceOver, especially around ARIA.</li>
+        <li><strong>Reporting verbosity as a bug.</strong> What sounds excessive to you is often normal at
+            the speeds real users run.</li>
+      </ul>
+
+      <h2>Practise on these demos</h2>
+      <ul class="related-list">
+        <li><a href="../demos/1.1.1-non-text-content/index.html">1.1.1 Non-text Content</a></li>
+        <li><a href="../demos/1.3.1-info-and-relationships/index.html">1.3.1 Info and Relationships</a></li>
+        <li><a href="../demos/2.4.4-link-purpose-in-context/index.html">2.4.4 Link Purpose</a></li>
+        <li><a href="../demos/3.1.1-language-of-page/index.html">3.1.1 Language of Page</a></li>
+        <li><a href="../demos/4.1.2-name-role-value/index.html">4.1.2 Name, Role, Value</a></li>
+        <li><a href="../demos/4.1.3-status-messages/index.html">4.1.3 Status Messages</a></li>
+      </ul>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

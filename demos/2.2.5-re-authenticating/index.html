@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.2.5 Re-authenticating (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="When an authenticated session expires, the user can continue the activity after re-authenticating without losing any data.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.2.5 Re-authenticating</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.2.5</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 2.2 Enough Time</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Re-authenticating</h1>
+        <p class="sc-header__summary">When an authenticated session expires, the user can continue the activity after re-authenticating without losing any data.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Anyone who takes longer than the session window — disproportionately users with disabilities. Losing a long application form to a timeout is a common and avoidable harm.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.2.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.2.5 Re-authenticating"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Apply for a library card&lt;/h1&gt;
+
+&lt;!-- FAILURE: when the session expires the user is sent back to sign in, and
+     everything they typed is thrown away.
+
+     This is one of the most damaging failures in real systems, and it falls
+     hardest on the people least able to absorb it: anyone who types slowly,
+     reads slowly, navigates by screen reader, or has to stop and find a
+     document. They are the most likely to hit the timeout AND the most costly
+     to make start again. --&gt;
+&lt;form id=&quot;f&quot;&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;n&quot;&gt;Full name&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;n&quot; autocomplete=&quot;name&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;a&quot;&gt;Address&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;a&quot; autocomplete=&quot;street-address&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;w&quot;&gt;Why would you like a card?&lt;/label&gt;
+    &lt;textarea id=&quot;w&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Submit application&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; onclick=&quot;expire()&quot;&gt;Simulate session expiry&lt;/button&gt;&lt;/p&gt;
+&lt;div id=&quot;out&quot; role=&quot;status&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.2.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.2.5 Re-authenticating"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Apply for a library card&lt;/h1&gt;
+
+&lt;!-- FIX: the session can still expire - that is a legitimate security
+     requirement - but NOTHING THE USER TYPED IS LOST. They re-authenticate in
+     place and continue exactly where they were.
+
+     Implementation patterns that achieve this:
+       - keep the form data client-side and re-post it after re-authentication
+       - save a draft server-side on a timer, keyed to the user
+       - re-authenticate in a dialog over the page rather than navigating away --&gt;
+&lt;form id=&quot;f&quot;&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;n&quot;&gt;Full name&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;n&quot; autocomplete=&quot;name&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;a&quot;&gt;Address&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;a&quot; autocomplete=&quot;street-address&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;w&quot;&gt;Why would you like a card?&lt;/label&gt;
+    &lt;textarea id=&quot;w&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Submit application&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;div class=&quot;reauth&quot; id=&quot;reauth&quot; role=&quot;alert&quot; hidden&gt;
+  &lt;h2 id=&quot;reauth-h&quot; tabindex=&quot;-1&quot;&gt;Please sign in again&lt;/h2&gt;
+  &lt;p&gt;Your session timed out. &lt;strong&gt;Your application has been kept&lt;/strong&gt; and will
+     be exactly as you left it.&lt;/p&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;pw&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;pw&quot; autocomplete=&quot;current-password&quot;&gt;&lt;/div&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;resume()&quot;&gt;Sign in and continue&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; onclick=&quot;expire()&quot;&gt;Simulate session expiry&lt;/button&gt;&lt;/p&gt;
+&lt;p id=&quot;out&quot; role=&quot;status&quot;&gt;&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Fill a long form, let the session expire, re-authenticate, and confirm every entered value is preserved.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires an end-to-end session-expiry test.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.2.1-timing-adjustable/index.html">2.2.1 Timing Adjustable (Level A)</a></li>
+          <li><a href="../3.3.7-redundant-entry/index.html">3.3.7 Redundant Entry (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/re-authenticating.html">Understanding 2.2.5 Re-authenticating</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#re-authenticating">2.2.5 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.2.4-interruptions/index.html"><span class="sc-pager__dir">Previous criterion</span>2.2.4 Interruptions</a>
+        <a href="../2.2.6-timeouts/index.html"><span class="sc-pager__dir">Next criterion</span>2.2.6 Timeouts</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercises — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Ten graded exercises, from fixing alt text to auditing a whole site and writing the report.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../index.html"><img src="../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../demos/index.html">Criteria</a></li>
+        <li><a href="../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../testing/index.html">Testing</a></li>
+        <li><a href="../exercises/index.html" aria-current="page">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><span aria-current="page">Exercises</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Exercises</h1>
+      <p class="sc-header__summary">Ten graded exercises. The first eight are broken pages to fix;
+         the last two are audits to perform and report on. Each has explicit acceptance criteria, so
+         you can tell when you are finished rather than guessing.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> How to work</p>
+        <p>Each exercise is a folder containing a <code>README.md</code> with the task and its
+           acceptance criteria, and (for exercises 1–8) an <code>index.html</code> to fix. Edit the
+           HTML directly. Test with a keyboard and a screen reader before you check it off —
+           <code>npm run test:a11y</code> will not catch most of what these exercises are about.</p>
+      </div>
+
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="ex-cap">
+        <table>
+          <caption id="ex-cap">The ten exercises, in order of difficulty</caption>
+          <thead>
+            <tr>
+              <th scope="col">#</th><th scope="col">Exercise</th><th scope="col">Difficulty</th>
+              <th scope="col">Main criteria</th><th scope="col">Files</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td><a href="ex-01-image-gallery/index.html">Image gallery</a></td>
+              <td>●○○○○</td><td>1.1.1, 4.1.2</td>
+              <td><a href="ex-01-image-gallery/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td><a href="ex-02-signup-form/index.html">Sign-up form</a></td>
+              <td>●●○○○</td><td>1.3.1, 3.3.2, 1.3.5, 1.4.1</td>
+              <td><a href="ex-02-signup-form/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td><a href="ex-03-navigation/index.html">Page structure and navigation</a></td>
+              <td>●●○○○</td><td>2.4.1, 1.3.1, 2.4.6</td>
+              <td><a href="ex-03-navigation/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td><a href="ex-04-modal-dialog/index.html">Modal dialog</a></td>
+              <td>●●●○○</td><td>2.4.3, 2.1.2, 4.1.2</td>
+              <td><a href="ex-04-modal-dialog/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td><a href="ex-05-data-table/index.html">Data table</a></td>
+              <td>●●○○○</td><td>1.3.1, 1.4.10</td>
+              <td><a href="ex-05-data-table/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td><a href="ex-06-carousel/index.html">Carousel</a></td>
+              <td>●●●○○</td><td>2.2.2, 4.1.2, 4.1.3, 2.3.3</td>
+              <td><a href="ex-06-carousel/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td><a href="ex-07-custom-dropdown/index.html">Custom dropdown</a></td>
+              <td>●●●●○</td><td>2.1.1, 4.1.2, 2.4.7</td>
+              <td><a href="ex-07-custom-dropdown/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td><a href="ex-08-checkout-errors/index.html">Checkout errors</a></td>
+              <td>●●●●○</td><td>3.3.1, 3.3.3, 3.3.4, 1.4.1</td>
+              <td><a href="ex-08-checkout-errors/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">9</th>
+              <td>Audit a single page</td>
+              <td>●●●●○</td><td>WCAG-EM Step 4</td>
+              <td><a href="ex-09-audit-a-page/README.md">README</a></td>
+            </tr>
+            <tr>
+              <th scope="row">10</th>
+              <td>Audit a process and write the report</td>
+              <td>●●●●●</td><td>All five WCAG-EM steps</td>
+              <td><a href="ex-10-audit-a-process/README.md">README</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Exercise 7 is the important one</h2>
+      <p class="prose">It asks you to solve the same problem twice: once with a native
+         <code>&lt;select&gt;</code>, and once by rebuilding the custom widget properly with ARIA.
+         Part A is about ten lines. Part B is about a hundred and you will still be finding edge
+         cases afterwards. That comparison is the most useful thing in this whole section — the first
+         question to ask about any custom widget is whether HTML already has one.</p>
+
+      <div class="callout callout--fail">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#10007;</span> These pages are broken on purpose</p>
+        <p>Every <code>index.html</code> under <code>exercises/</code> contains deliberate defects.
+           Do not copy from them. The corrected patterns live in each criterion's
+           <code>pass.html</code>.</p>
+      </div>
+
+      <h2>For instructors</h2>
+      <p class="prose">Worked solutions are in <code>exercises/SOLUTIONS.md</code>, and the seeded
+         defect register for the audit exercises is in
+         <code>evaluation/sample-site/INSTRUCTOR-ANSWER-KEY.md</code>. Both are in the repository but
+         are not linked from the student-facing navigation.</p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

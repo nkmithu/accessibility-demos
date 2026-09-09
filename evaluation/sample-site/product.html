@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidal Flats — Riverline Books</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .stars span{font-size:1.3rem;cursor:pointer;color:#c9c4b8}
+  .stars span.on{color:#c08a2e}
+  .qty button{width:18px;height:18px;padding:0;font-size:11px;border:1px solid var(--rule);
+              background:#fff;cursor:pointer}
+  .qty input{width:2.5rem;text-align:center;display:inline-block}
+  .instock{color:#2f8f4e;font-weight:bold}
+  .outstock{color:#cc2222;font-weight:bold}
+  .layout{display:grid;gap:1.5rem;grid-template-columns:200px 1fr}
+</style>
+</head>
+<body>
+<p class="audit-banner">Audit material — deliberate accessibility defects.
+   <a href="../index.html">Back to the walkthrough</a></p>
+<div class="topbar"><div class="wrap">Free delivery on orders over £25</div></div>
+<div class="masthead"><div class="wrap">
+  <a class="logo" href="index.html">Riverline Books</a>
+  <div class="nav"><ul>
+    <li><a href="index.html">Home</a></li><li><a href="catalogue.html">Books</a></li>
+    <li><a href="contact.html">Contact</a></li><li><a href="login.html">Sign in</a></li>
+    <li><a href="cart.html">Basket</a></li>
+  </ul></div>
+</div></div>
+
+<div class="content"><div class="wrap">
+  <div class="layout">
+    <div>
+      <!-- DEFECT 1.1.1: alt text that exists but conveys nothing. Passes every
+           automated scanner and fails every user. -->
+      <img src="assets/cover-3.svg" width="200" height="280" alt="image">
+    </div>
+    <div>
+      <h1>Tidal Flats</h1>
+      <p>by A. Marsh</p>
+      <p class="price">£12.99</p>
+
+      <!-- DEFECT 1.4.1: stock status conveyed by colour alone. In greyscale
+           "In stock" and "Out of stock" are indistinguishable. -->
+      <p><span class="instock">●</span> Riverside branch
+         &nbsp; <span class="outstock">●</span> Old Town branch</p>
+      <p class="muted">Coloured dots show branch availability.</p>
+
+      <!-- DEFECT 4.1.2: a custom rating widget built from spans. No role, no
+           accessible name, no state, not focusable, not keyboard operable. -->
+      <p>Rate this book:</p>
+      <p class="stars" id="stars">
+        <span onclick="rate(1)">★</span><span onclick="rate(2)">★</span>
+        <span onclick="rate(3)">★</span><span onclick="rate(4)">★</span>
+        <span onclick="rate(5)">★</span>
+      </p>
+
+      <!-- DEFECT 2.5.8: 18x18 stepper controls, well under 24x24.
+           DEFECT 3.3.2: the quantity input has no label. -->
+      <p class="qty">
+        <button type="button" onclick="step(-1)">−</button>
+        <input type="text" id="qty" value="1">
+        <button type="button" onclick="step(1)">+</button>
+      </p>
+
+      <!-- DEFECT 3.2.4: the same action, named a third way. -->
+      <p><button type="button" class="btn" onclick="location.href='cart.html'">Get it</button></p>
+    </div>
+  </div>
+
+  <h2>About this book</h2>
+  <p>A quiet novel about an estuary town and the people who stayed. Marsh writes the
+     tideline as a character in its own right.</p>
+</div></div>
+
+<div class="footer"><div class="wrap"><ul>
+  <li><a href="help.html">Help</a></li><li><a href="contact.html">Contact us</a></li>
+  <li><a href="help.html">Accessibility</a></li>
+</ul></div></div>
+
+<script>
+  function rate(n) {
+    var s = document.querySelectorAll('#stars span');
+    for (var i = 0; i < s.length; i++) { s[i].className = i < n ? 'on' : ''; }
+  }
+  function step(d) {
+    var q = document.getElementById('qty');
+    q.value = Math.max(1, (parseInt(q.value, 10) || 1) + d);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.7 Focus Visible</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FIX: a deliberate, high-contrast focus indicator.
+       3px clears the 2px perimeter minimum of 2.4.13 Focus Appearance (AAA),
+       the offset separates it from the control's own border, and the colour
+       holds well over 3:1 against the page for 1.4.11 Non-text Contrast. */
+    :focus-visible {
+      outline: 3px solid #0a4f9e;
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+    /* :focus-visible means a mouse click does not leave a ring behind, which is
+       the actual thing designers object to - so there is no reason to remove it. */
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.7 Focus Visible.
+     Press Tab repeatedly — the focused control is always obvious.</p>
+
+  <!-- excerpt:start -->
+  <h1>Checkout</h1>
+
+  <p><a href="#basket">Back to basket</a></p>
+
+  <div class="field">
+    <label for="promo">Promotion code</label>
+    <input type="text" id="promo">
+  </div>
+
+  <p>
+    <button type="button" class="button button--secondary">Apply code</button>
+    <button type="button" class="button">Pay now</button>
+  </p>
+
+  <p id="basket">Your basket: 2 items.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

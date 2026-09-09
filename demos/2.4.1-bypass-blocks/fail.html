@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.1 Bypass Blocks</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.navbar ul { list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:.75rem; }</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.1 Bypass Blocks.
+     Press Tab and count how many times before you reach the content.</p>
+
+  <!-- excerpt:start -->
+  <!-- FAILURE 1: no skip link. A keyboard user must Tab through all 12 navigation
+       links on every single page before reaching the content.
+       FAILURE 2: no landmarks - everything is a div, so a screen reader user
+       cannot jump to "main" either.
+       FAILURE 3: no headings structure to navigate by.
+       All three bypass mechanisms are absent, so there is no way past the block. -->
+  <div class="navbar">
+    <ul>
+      <li><a href="#">Fiction</a></li><li><a href="#">Non-fiction</a></li>
+      <li><a href="#">Poetry</a></li><li><a href="#">Children's</a></li>
+      <li><a href="#">Rare books</a></li><li><a href="#">Second hand</a></li>
+      <li><a href="#">Events</a></li><li><a href="#">Book clubs</a></li>
+      <li><a href="#">Gift cards</a></li><li><a href="#">Our shops</a></li>
+      <li><a href="#">Contact</a></li><li><a href="#">Account</a></li>
+    </ul>
+  </div>
+
+  <div>
+    <div style="font-size:1.5rem;font-weight:700">This week's staff pick</div>
+    <p>Tidal Flats, by A. Marsh.</p>
+    <p><a href="#">Read the review</a></p>
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

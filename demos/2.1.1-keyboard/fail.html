@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.1.1 Keyboard</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .fake-button { display:inline-block; padding:.6rem 1rem; background:#0a4f9e; color:#fff;
+                   border-radius:6px; cursor:pointer; user-select:none; }
+    .fake-check { display:inline-block; width:20px; height:20px; border:2px solid #6d7883;
+                  border-radius:3px; vertical-align:middle; cursor:pointer; }
+    .fake-check[data-checked="true"]::after { content:"✓"; display:block; text-align:center; line-height:16px; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.1.1 Keyboard. Try it with Tab only.</p>
+
+  <!-- excerpt:start -->
+  <h1>Reserve a copy</h1>
+
+  <!-- FAILURE 1: a div with a click handler. It is not focusable, has no role,
+       and responds to no key. A mouse user sees a button; a keyboard user cannot
+       reach it at all. Adding CSS :hover does not make it operable. -->
+  <div class="fake-button" onclick="reserve()">Reserve now</div>
+
+  <!-- FAILURE 2: a custom checkbox built from a div. Same problem: no tab stop,
+       no Space key handling, no state exposed to assistive technology. -->
+  <p>
+    <span class="fake-check" data-checked="false" onclick="toggle(this)"></span>
+    Email me when it arrives
+  </p>
+
+  <!-- FAILURE 3: a link with no href. Without href an anchor is not focusable,
+       so this drops out of the tab order entirely. -->
+  <p><a onclick="showTerms()">Reservation terms</a></p>
+
+  <p id="out" role="status"></p>
+  <!-- excerpt:end -->
+
+  <script>
+    function reserve() { document.getElementById('out').textContent = 'Reserved (mouse only).'; }
+    function toggle(el) {
+      var on = el.dataset.checked === 'true';
+      el.dataset.checked = on ? 'false' : 'true';
+    }
+    function showTerms() { document.getElementById('out').textContent = 'Terms shown (mouse only).'; }
+  </script>
+</body>
+</html>

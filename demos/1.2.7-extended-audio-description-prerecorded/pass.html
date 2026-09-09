@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.2.7 Extended Audio Description (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.note{border:1px solid var(--border);border-radius:6px;padding:1rem}</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.2.7 Extended Audio Description.</p>
+
+  <!-- excerpt:start -->
+  <h1>How to reserve a book — screen recording</h1>
+
+  <!-- FIX: an extended-description version, offered as a choice. It PAUSES the
+       video at each dense moment so the description has room to be complete,
+       then resumes. The clip runs longer than the original, which is the whole
+       point: time is what was missing. -->
+  <p>
+    <button type="button" class="button button--secondary" id="ext" aria-pressed="false">
+      Play the extended audio described version</button>
+  </p>
+
+  <video controls width="640" id="player">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+    <track kind="descriptions" src="../../assets/media/shop-tour-descriptions.vtt"
+           srclang="en" label="Audio description">
+  </video>
+  <p id="mode" role="status">Playing the standard version.</p>
+
+  <div class="note">
+    <h2>How to tell whether you need 1.2.7</h2>
+    <ol>
+      <li>Write the description you would need for 1.2.5.</li>
+      <li>Read it aloud against the video, using only the existing gaps in the audio.</li>
+      <li>If you cannot finish a description before the next thing happens, the pauses
+          are too short and you need an extended version.</li>
+    </ol>
+    <p>Software demos, screen recordings, lab procedures and anything with dense
+       on-screen text are the usual candidates. A talking-head interview almost never is.</p>
+    <p><strong>The cheapest fix remains the script.</strong> If the narration says what
+       the screen shows, the pauses never need to carry the load and no extended version
+       is required.</p>
+  </div>
+  <!-- excerpt:end -->
+
+  <script>
+    var b = document.getElementById('ext');
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', String(on));
+      b.textContent = on ? 'Play the standard version' : 'Play the extended audio described version';
+      document.getElementById('mode').textContent = on
+        ? 'Playing the extended audio described version. The video pauses during longer descriptions.'
+        : 'Playing the standard version.';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WCAG-EM evaluation walkthrough — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="The five steps of the Website Accessibility Conformance Evaluation Methodology, applied to a deliberately broken sample site.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../index.html"><img src="../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../demos/index.html">Criteria</a></li>
+        <li><a href="../evaluation/index.html" aria-current="page">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../testing/index.html">Testing</a></li>
+        <li><a href="../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><span aria-current="page">Evaluation (WCAG-EM)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Evaluating a whole website</h1>
+      <p class="sc-header__summary">Knowing all 86 success criteria does not tell you how to audit a
+         site. A site has thousands of pages; you will look at a dozen. Which dozen you choose
+         decides whether your report is worth anything — and that choice is the part almost nobody
+         teaches.</p>
+
+      <p class="prose"><strong>WCAG-EM</strong> is the W3C's
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">Website Accessibility
+         Conformance Evaluation Methodology</a>. It does not add requirements to WCAG. It tells you
+         how to apply WCAG to a whole website in a way that is repeatable, defensible, and honest
+         about its own limits.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Why a method is needed at all</p>
+        <p>WCAG conformance is defined <em>per page</em>, and it is all-or-nothing: one failed
+           Level&nbsp;A criterion means that page does not conform at any level. There is no
+           percentage and no partial credit.</p>
+        <p>So a claim about a <em>site</em> is always an inference from a sample. Two auditors who
+           pick different samples reach different conclusions about the same site. WCAG-EM exists to
+           make that sampling deliberate and reproducible instead of arbitrary.</p>
+      </div>
+
+      <h2>The five steps</h2>
+      <ul class="card-grid">
+        <li class="card">
+          <h3><a href="step1-define-scope.html">Step 1 — Define the scope</a></h3>
+          <p>What counts as "the website"? Which conformance level? Which browsers and assistive
+             technologies? Get this wrong and everything downstream is disputed.</p>
+        </li>
+        <li class="card">
+          <h3><a href="step2-explore.html">Step 2 — Explore the website</a></h3>
+          <p>Find the common pages, the essential functionality, the page types, the technologies,
+             and anything unusual. You cannot sample what you have not seen.</p>
+        </li>
+        <li class="card">
+          <h3><a href="step3-select-sample.html">Step 3 — Select a representative sample</a></h3>
+          <p>A structured sample plus a random sample. This is the step that determines whether your
+             audit finds the real problems, and the step most often skipped.</p>
+        </li>
+        <li class="card">
+          <h3><a href="step4-audit.html">Step 4 — Audit the selected sample</a></h3>
+          <p>Check every page in the sample against every criterion in scope. Record pass, fail or
+             not applicable, with evidence for each.</p>
+        </li>
+        <li class="card">
+          <h3><a href="step5-report.html">Step 5 — Report the findings</a></h3>
+          <p>Document what you evaluated, how, and what you found — including your sample, so someone
+             else can check your work.</p>
+        </li>
+        <li class="card">
+          <h3><a href="sample-site/index.html">The sample site: Riverline Books</a></h3>
+          <p>Eight pages of a plausible bookshop, seeded with real accessibility defects. This is
+             what you will audit.</p>
+          <p><a class="button" href="sample-site/index.html">Open the sample site</a></p>
+        </li>
+      </ul>
+
+      <h2>Worksheets and templates</h2>
+      <p class="prose">Each step has a worksheet you fill in as you go. Together they become your
+         report.</p>
+      <ul class="related-list">
+        <li><a href="templates/scope-worksheet.html">Scope worksheet</a></li>
+        <li><a href="templates/sample-selection.html">Sample selection record</a></li>
+        <li><a href="templates/audit-record.html">Audit record</a></li>
+        <li><a href="templates/wcagem-report.html">Evaluation report</a></li>
+        <li><a href="templates/vpat-acr.html">VPAT / ACR skeleton</a></li>
+      </ul>
+
+      <h2>How long this takes</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="time-cap">
+        <table>
+          <caption id="time-cap">Rough effort for a small site audit, as a teaching exercise</caption>
+          <thead><tr><th scope="col">Step</th><th scope="col">Effort</th><th scope="col">Output</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1. Scope</th><td>30 min</td><td>A scope statement everyone has agreed</td></tr>
+            <tr><th scope="row">2. Explore</th><td>1–2 hours</td><td>An inventory of page types and functionality</td></tr>
+            <tr><th scope="row">3. Sample</th><td>30 min</td><td>A justified list of pages</td></tr>
+            <tr><th scope="row">4. Audit</th><td>1–2 hours per page</td><td>A defect register with evidence</td></tr>
+            <tr><th scope="row">5. Report</th><td>2–3 hours</td><td>The evaluation report</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">The audit step dominates, and it is almost entirely manual. This is the
+         arithmetic that makes <a href="../testing/automated.html">the limits of automated
+         testing</a> concrete: a scanner will finish your whole sample in under a minute and leave
+         you the other 95% of the work.</p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

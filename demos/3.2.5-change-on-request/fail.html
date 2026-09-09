@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.2.5 Change on Request</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.2.5 Change on Request.
+     Wait a few seconds and watch it move under you.</p>
+
+  <!-- excerpt:start -->
+  <h1>Events</h1>
+
+  <!-- FAILURE 1: a link that opens a new window with no warning. The back button
+       stops working, which disorients users who navigate by it. -->
+  <p><a href="#a" target="_blank" rel="noopener">Festival programme</a></p>
+
+  <!-- FAILURE 2: content that reorders itself on a timer. A user who has moved
+       toward a link finds something else there when they arrive - a particular
+       problem for anyone using a switch, a head pointer or magnification, all of
+       which make targeting slow. -->
+  <ul id="list" class="plain">
+    <li>Friday: opening readings</li>
+    <li>Saturday: workshops</li>
+    <li>Sunday: signings</li>
+  </ul>
+
+  <!-- FAILURE 3: an automatic redirect after a delay, with no way to stop it. -->
+  <p id="redir" role="status"></p>
+
+  <p id="a">Programme.</p>
+  <!-- excerpt:end -->
+
+  <script>
+    var list = document.getElementById('list');
+    setInterval(function () { list.insertBefore(list.lastElementChild, list.firstElementChild); }, 2500);
+    var n = 5;
+    var t = setInterval(function () {
+      n--;
+      document.getElementById('redir').textContent = 'Taking you to the new events page in ' + n + '…';
+      if (n <= 0) { clearInterval(t); document.getElementById('redir').textContent = 'Redirected.'; }
+    }, 1000);
+  </script>
+</body>
+</html>

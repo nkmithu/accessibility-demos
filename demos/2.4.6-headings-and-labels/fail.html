@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.6 Headings and Labels</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.6 Headings and Labels.</p>
+
+  <!-- excerpt:start -->
+  <!-- FAILURE 1: headings that describe nothing. Pulled into a screen reader's
+       heading list they read: "Information, More, Details, Other" - which tells
+       a user nothing about where to go.
+
+       Note that all of these ARE real heading elements, so 1.3.1 passes. 2.4.6
+       is about whether the text is any good. -->
+  <h1>Information</h1>
+
+  <h2>More</h2>
+  <p>We deliver across the county on Tuesdays and Fridays.</p>
+
+  <h2>Details</h2>
+  <p>Reservations are held for seven days.</p>
+
+  <h2>Other</h2>
+  <p>Our Riverside shop has step-free access and a hearing loop.</p>
+
+  <!-- FAILURE 2: labels that do not say what to enter. "Field 1" and "Value"
+       are labels in the technical sense and useless in the practical one. -->
+  <h2>Form</h2>
+  <form>
+    <div class="field">
+      <label for="a">Field 1</label>
+      <input type="text" id="a">
+    </div>
+    <div class="field">
+      <label for="b">Value</label>
+      <input type="text" id="b">
+    </div>
+    <div class="field">
+      <label for="c">Date</label>
+      <input type="text" id="c">
+    </div>
+    <button type="submit" class="button">Submit</button>
+  </form>
+  <!-- excerpt:end -->
+</body>
+</html>

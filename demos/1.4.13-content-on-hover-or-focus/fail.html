@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.13 Content on Hover or Focus</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .tip-wrap { position: relative; display: inline-block; }
+    .tip { position: absolute; left: 0; top: 1.9rem; width: 17rem; padding: .6rem .75rem;
+           background: #14171c; color: #fff; border-radius: 6px; font-size: .9375rem;
+           display: none; z-index: 3; }
+    /* FAILURE: the popup appears on hover of the TRIGGER ONLY. The gap between
+       the trigger and the popup means moving the pointer toward it closes it -
+       so it can never be read by anyone who needs to move slowly, and it is
+       impossible to reach for a screen magnifier user. */
+    .tip-wrap:hover .tip { display: block; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.13.
+     Try to move your pointer onto the tooltip, or dismiss it with Escape.</p>
+
+  <!-- excerpt:start -->
+  <h1>Membership</h1>
+
+  <!-- FAILURE 1 — not hoverable: there is a gap between the trigger and the
+       popup, and the popup is only shown while the TRIGGER is hovered. Move
+       toward the text and it vanishes. A magnifier user, seeing a small slice of
+       the screen at a time, can never read it.
+       FAILURE 2 — not dismissable: Escape does nothing, so a keyboard user with
+       low vision cannot clear content covering what they were reading.
+       FAILURE 3 — not persistent: it is bound to hover only, so it never appears
+       for a keyboard user at all. -->
+  <p>
+    Members get
+    <span class="tip-wrap" tabindex="0">
+      <u>priority reservations</u>
+      <span class="tip">Members can reserve up to five titles at once and collect
+        them within fourteen days rather than seven.</span>
+    </span>
+    and free delivery.
+  </p>
+
+  <!-- FAILURE 4: a "toast" that covers the page controls and disappears on a
+       timer, giving a slow reader no chance and no way to dismiss it early. -->
+  <p><button type="button" class="button" onclick="toast()">Save preferences</button></p>
+  <div id="toast" style="display:none;position:fixed;left:1rem;bottom:1rem;background:#14171c;
+       color:#fff;padding:.9rem 1.1rem;border-radius:6px;">Preferences saved.</div>
+  <!-- excerpt:end -->
+
+  <script>
+    function toast() {
+      var t = document.getElementById('toast');
+      t.style.display = 'block';
+      setTimeout(function () { t.style.display = 'none'; }, 1500);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VPAT / ACR skeleton — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="The structure of a Voluntary Product Accessibility Template and how its language differs from a WCAG conformance claim.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><a href="../../evaluation/index.html" aria-current="page">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><span aria-current="page">VPAT / ACR</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>VPAT / ACR skeleton</h1>
+      <p class="sc-header__summary">A VPAT is the blank template. Once you fill it in it becomes an
+         ACR — an Accessibility Conformance Report. It is a procurement document: its audience is
+         somebody deciding whether to buy your product.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Do not confuse its language with WCAG's</p>
+        <p>A VPAT uses four conformance levels — <strong>Supports</strong>, <strong>Partially
+           Supports</strong>, <strong>Does Not Support</strong> and <strong>Not Applicable</strong>.
+           "Partially Supports" exists so a procurement reader can see nuance. It is
+           <em>not</em> a WCAG category: in WCAG a criterion either is or is not met on a given page.
+           Never let VPAT wording leak into a conformance claim.</p>
+      </div>
+
+      <h2>Structure of an ACR</h2>
+      <ol class="prose">
+        <li><strong>Product information</strong> — name, version, date, contact, and the report's own
+            version.</li>
+        <li><strong>Report date and evaluation methods</strong> — how the findings were produced, and
+            by whom. State whether the evaluation was internal or independent.</li>
+        <li><strong>Applicable standards</strong> — which of WCAG 2.x, Section 508 and EN 301 549 the
+            report covers.</li>
+        <li><strong>Terms</strong> — the four conformance levels, reproduced so the reader knows what
+            they mean.</li>
+        <li><strong>Tables 1–3</strong>: WCAG Level A, Level AA, and (if claimed) Level AAA — one row
+            per criterion.</li>
+        <li><strong>Chapters 3–7</strong> — the additional EN 301 549 or Section 508 clauses that are
+            not WCAG criteria: hardware, software, documentation, support services.</li>
+        <li><strong>Legal disclaimer</strong>.</li>
+      </ol>
+
+      <h2>What a row looks like</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="vpat-cap">
+        <table>
+          <caption id="vpat-cap">Example rows from Table 1 (Level A)</caption>
+          <thead>
+            <tr><th scope="col">Criteria</th><th scope="col">Conformance level</th><th scope="col">Remarks and explanations</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1.1.1 Non-text Content (Level A)</th>
+              <td>Partially Supports</td>
+              <td>Decorative images are correctly marked. Three product images in the catalogue
+                  carry generic alt text ("image"). Fix scheduled for release 4.2.</td>
+            </tr>
+            <tr>
+              <th scope="row">1.2.1 Audio-only and Video-only (Level A)</th>
+              <td>Not Applicable</td>
+              <td>The product contains no audio-only or video-only content.</td>
+            </tr>
+            <tr>
+              <th scope="row">2.1.2 No Keyboard Trap (Level A)</th>
+              <td>Does Not Support</td>
+              <td>The password reset dialog traps keyboard focus; Escape does not close it and no
+                  close control is present. Users must close the browser tab. Fix in progress.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Writing a defensible ACR</h2>
+      <ul class="prose">
+        <li><strong>Every "Partially Supports" needs a remark saying what fails.</strong> A bare
+            "Partially Supports" tells a buyer nothing and reads as evasion.</li>
+        <li><strong>Every "Not Applicable" needs a reason.</strong> "No video content in the product",
+            not a blank cell.</li>
+        <li><strong>Do not claim "Supports" for something you did not test.</strong> ACRs are relied on in
+            purchasing decisions and are increasingly the subject of legal action when wrong.</li>
+        <li><strong>Say who evaluated it.</strong> A self-assessment and an independent audit carry very
+            different weight, and hiding which one it was is what destroys trust in the document.</li>
+        <li><strong>Date it and version it.</strong> An ACR describes one release at one moment.</li>
+      </ul>
+
+      <h2>Where to get the real template</h2>
+      <p class="prose">Use the current official template from the Information Technology Industry
+         Council rather than a copy from a blog post — the WCAG 2.2 edition is the one you want, and
+         the editions differ. This page is a teaching outline of the structure, not a substitute for it.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Which document do you need?</p>
+        <p><a href="wcagem-report.html">Evaluation report</a> — for the team that will fix it.
+           <strong>Accessibility statement</strong> — published on the site, for its users, saying
+           what is accessible and how to report a problem.
+           <strong>ACR</strong> — for procurement. Three audiences, three documents. Writing one and
+           using it for all three fails all three.</p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

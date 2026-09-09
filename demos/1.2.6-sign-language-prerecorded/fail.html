@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.6 Sign Language (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.6 Sign Language.</p>
+
+  <!-- excerpt:start -->
+  <h1>How to reserve a book</h1>
+
+  <!-- FAILURE: the video is captioned, so it passes 1.2.2 at Level A. There is
+       no sign language interpretation, so it fails 1.2.6 at AAA.
+
+       Why captions are not always enough: for many Deaf people a signed language
+       is their FIRST language, and the written language of the page is a second
+       language, often read at reduced fluency. Someone whose first language is
+       British Sign Language is reading English captions the way a hearing person
+       might read a second language they learned at school - possible, slower,
+       and lossy. BSL, ASL and Auslan are distinct languages with their own
+       grammar; they are not signed English. -->
+  <video controls width="640">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+  </video>
+  <!-- excerpt:end -->
+</body>
+</html>

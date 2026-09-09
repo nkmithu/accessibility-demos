@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.4.2 Audio Control (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="If audio plays automatically for more than three seconds, a mechanism is available to pause, stop, or independently control its volume.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.4.2 Audio Control</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.4.2</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 1.4 Distinguishable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Audio Control</h1>
+        <p class="sc-header__summary">If audio plays automatically for more than three seconds, a mechanism is available to pause, stop, or independently control its volume.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users hear the page audio and their screen reader simultaneously, making both unintelligible. Users with cognitive and attention disabilities are unable to concentrate.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.4.2
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.4.2 Audio Control"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Riverline Books&lt;/h1&gt;
+
+&lt;!-- FAILURE: audio starts automatically, runs longer than three seconds, and
+     has no pause, stop or independent volume control - the controls attribute
+     is missing, so the player renders as nothing at all.
+
+     Why this is worse than annoying: a screen reader user now hears the page
+     audio and their screen reader speaking at the same time, through the same
+     output. Both become unintelligible, and the controls they would use to
+     stop it are exactly what they can no longer hear well enough to find.
+
+     Note that most browsers now block autoplay with sound, which masks this
+     failure during testing. Do not rely on that: it is not universal, it does
+     not apply once the user has interacted with the site, and it is not a
+     reason to ship the pattern. --&gt;
+&lt;audio src=&quot;../../assets/media/shop-doorbell.mp3&quot; autoplay loop&gt;&lt;/audio&gt;
+
+&lt;p&gt;Welcome to our shop. Browse this week's staff picks below.&lt;/p&gt;
+&lt;p&gt;Ambient shop sounds are playing to set the mood.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.4.2
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.4.2 Audio Control"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Riverline Books&lt;/h1&gt;
+
+&lt;!-- FIX 1: nothing plays until the user asks. This is the safest answer and
+     almost always the right one - 1.4.2 only applies to audio that starts
+     AUTOMATICALLY, so user-initiated audio is out of scope entirely. --&gt;
+&lt;h2&gt;Ambient shop sounds&lt;/h2&gt;
+&lt;p&gt;Play the shop's ambient recording if you would like to.&lt;/p&gt;
+&lt;audio controls src=&quot;../../assets/media/shop-doorbell.mp3&quot;&gt;&lt;/audio&gt;
+
+&lt;!-- FIX 2: if a design genuinely requires autoplay, the stop control must come
+     FIRST in the page, before the audio starts, and be reachable by keyboard.
+     A control buried in a footer does not help someone who cannot hear their
+     screen reader well enough to navigate to it.
+
+     Note the three-second rule: audio shorter than three seconds is exempt,
+     which is why a short notification sound is fine. Anything longer needs a
+     control. --&gt;
+
+&lt;p&gt;Welcome to our shop. Browse this week's staff picks below.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Load the page and listen. If anything autoplays beyond three seconds, confirm a pause or stop control exists near the start of the page and is keyboard reachable before the audio becomes disruptive.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Autoplay attributes can be detected; script-triggered playback and the presence of a usable control generally cannot.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>no-autoplay-audio</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.2.2-pause-stop-hide/index.html">2.2.2 Pause, Stop, Hide (Level A)</a></li>
+          <li><a href="../1.4.7-low-or-no-background-audio/index.html">1.4.7 Low or No Background Audio (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html">Understanding 1.4.2 Audio Control</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#audio-control">1.4.2 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.4.1-use-of-color/index.html"><span class="sc-pager__dir">Previous criterion</span>1.4.1 Use of Color</a>
+        <a href="../1.4.3-contrast-minimum/index.html"><span class="sc-pager__dir">Next criterion</span>1.4.3 Contrast (Minimum)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

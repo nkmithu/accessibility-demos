@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.5.5 Target Size (Enhanced)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .row button{min-width:26px;min-height:26px;padding:2px;margin:0 6px 0 0;
+                border:1px solid var(--border-strong);background:#fff;font-size:13px;cursor:pointer}
+    .pager a{display:inline-block;min-width:28px;min-height:28px;line-height:28px;
+             text-align:center;border:1px solid var(--border-strong);border-radius:4px;
+             margin-right:6px;text-decoration:none}
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page passes 2.5.8 at AA but deliberately FAILS
+     2.5.5 at AAA.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your reading list</h1>
+
+  <!-- The difference:
+         2.5.8 (AA)  targets at least 24 x 24 CSS px - OR smaller if the SPACING
+                     exception is met (a 24px circle on each does not overlap).
+         2.5.5 (AAA) targets at least 44 x 44 CSS px, with NO spacing exception.
+
+       Everything below is 26 to 28 pixels with 6px gaps, so it clears the AA
+       threshold comfortably and fails AAA. -->
+  <p class="row">
+    <button type="button" aria-label="Bold">B</button>
+    <button type="button" aria-label="Italic">I</button>
+    <button type="button" aria-label="Underline">U</button>
+  </p>
+
+  <nav class="pager" aria-label="Pagination">
+    <a href="#a">1</a><a href="#a">2</a><a href="#a">3</a><a href="#a">4</a><a href="#a">5</a>
+  </nav>
+
+  <p id="a">Page.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

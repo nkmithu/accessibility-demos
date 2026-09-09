@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.10 Reflow</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FAILURE 1: a fixed pixel width wider than 320px forces horizontal
+       scrolling as soon as the viewport is narrower than the layout. */
+    .fixed-shell { width: 900px; }
+    /* FAILURE 2: columns that never collapse. At 320px each column is ~296px
+       wide, so the row is 900px and the page scrolls sideways. */
+    .cols { display: grid; grid-template-columns: 300px 300px 300px; gap: 1rem; }
+    .col { border: 1px solid var(--border); border-radius: 6px; padding: .75rem; }
+    /* FAILURE 3: a fixed-height text box that clips instead of growing. */
+    .clipped { height: 4.5rem; overflow: hidden; border:1px solid var(--border);
+               border-radius:6px; padding:.5rem; }
+    /* FAILURE 4: nowrap on a long string forces the page wider. */
+    .nowrap { white-space: nowrap; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.10 Reflow.
+     Narrow the window to 320px, or zoom to 400% — you must scroll in two directions.</p>
+
+  <!-- excerpt:start -->
+  <div class="fixed-shell">
+    <h1>Our shops</h1>
+
+    <div class="cols">
+      <div class="col"><h2>Riverside</h2><p>12 River Street</p></div>
+      <div class="col"><h2>Old Town</h2><p>4 Market Row</p></div>
+      <div class="col"><h2>Hillgate</h2><p>88 Hillgate Lane</p></div>
+    </div>
+
+    <h2>Notes</h2>
+    <div class="clipped">
+      <p>Our Riverside shop has step-free access, an accessible toilet, and a hearing
+         loop at the counter. Assistance dogs are welcome in all three shops.</p>
+    </div>
+
+    <p class="nowrap">Email us at hello@riverlinebooks.example for accessibility enquiries.</p>
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

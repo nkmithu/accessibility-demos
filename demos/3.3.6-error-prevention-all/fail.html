@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.6 Error Prevention (All)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.3.6 (though it does
+     not fail 3.3.4 at AA).</p>
+
+  <!-- excerpt:start -->
+  <h1>Leave a review</h1>
+
+  <!-- 3.3.4 at AA applies only to pages with LEGAL, FINANCIAL or DATA
+       consequences, or that submit test responses. A book review is none of
+       those, so 3.3.4 does not apply and this page does not fail it.
+
+       3.3.6 at AAA extends the same protection to EVERY submission. This form
+       submits straight away: no review step, no confirmation, no way to edit or
+       delete afterwards. A user who mis-clicks, or who is not finished writing,
+       has published something under their name permanently. -->
+  <form>
+    <div class="field">
+      <label for="who">Display name</label>
+      <input type="text" id="who">
+    </div>
+    <div class="field">
+      <label for="r">Your review</label>
+      <textarea id="r" rows="5"></textarea>
+    </div>
+    <p><small>Reviews are published immediately and cannot be edited or removed.</small></p>
+    <button type="submit" class="button">Post review</button>
+  </form>
+  <!-- excerpt:end -->
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 2 — Sign-up form</title>
+<link rel="stylesheet" href="../exercise.css">
+</head>
+<body>
+<p class="task"><strong>Exercise 2.</strong> Make this form usable with a screen reader.
+   See <code>README.md</code>.</p>
+
+<h1>Create an account</h1>
+
+<form>
+  <!-- Labels are text sitting next to inputs, with no association. -->
+  <div class="field">
+    Full name
+    <input type="text" name="name">
+  </div>
+
+  <div class="field">
+    <input type="email" name="email" placeholder="Email address">
+  </div>
+
+  <div class="field">
+    <input type="password" name="pw" placeholder="Password">
+  </div>
+
+  <!-- A radio group with no fieldset and no legend. -->
+  <div class="field">
+    <div style="font-weight:700">How did you hear about us?</div>
+    <input type="radio" id="h1" name="how"><label for="h1">A friend</label>
+    <input type="radio" id="h2" name="how"><label for="h2">Search</label>
+    <input type="radio" id="h3" name="how"><label for="h3">In the shop</label>
+  </div>
+
+  <!-- Required fields marked only with a red asterisk, never explained. -->
+  <p style="color:#c00">* required</p>
+
+  <button type="submit" class="btn">Create account</button>
+</form>
+</body>
+</html>

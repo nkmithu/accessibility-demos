@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.1.4 Character Key Shortcuts</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.1.4.</p>
+
+  <!-- excerpt:start -->
+  <h1>Catalogue</h1>
+
+  <!-- FIX: 2.1.4 is satisfied by ANY ONE of three routes:
+         1. let the user turn the shortcuts off, or
+         2. let the user remap them to include a modifier key, or
+         3. make them active only while the relevant component has focus.
+
+       This example uses route 1 (an off switch) and, crucially, also ignores
+       keystrokes while the user is typing in a field - which is the bug that
+       makes most shortcut implementations unusable even for people without
+       disabilities. -->
+  <p class="field">
+    <input type="checkbox" id="enabled" checked>
+    <label for="enabled">Enable single-key shortcuts (<kbd>S</kbd>, <kbd>N</kbd>, <kbd>D</kbd>)</label>
+  </p>
+
+  <div class="field">
+    <label for="note">Notes about this list</label>
+    <textarea id="note"></textarea>
+  </div>
+
+  <p id="log" role="status">No shortcut used yet.</p>
+
+  <!-- Note what 2.1.4 does NOT cover: shortcuts that already require a modifier,
+       such as Ctrl+S or Alt+N, are outside its scope entirely, because speech
+       input and stray keystrokes cannot produce them by accident. -->
+  <!-- excerpt:end -->
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if (!document.getElementById('enabled').checked) return;      // the off switch
+      if (e.ctrlKey || e.altKey || e.metaKey) return;               // leave real shortcuts alone
+
+      // Never steal a keystroke the user meant as text.
+      var el = e.target;
+      var tag = el.tagName.toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || tag === 'select' || el.isContentEditable) return;
+
+      var map = { s: 'Search opened.', n: 'New list created.', d: 'List deleted.' };
+      var action = map[e.key.toLowerCase()];
+      if (action) { document.getElementById('log').textContent = action; }
+    });
+  </script>
+</body>
+</html>

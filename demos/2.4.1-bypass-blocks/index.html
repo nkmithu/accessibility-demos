@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.4.1 Bypass Blocks (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A mechanism is available to bypass blocks of content repeated on multiple pages — typically a skip link, and supported by proper landmarks and headings.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.4.1 Bypass Blocks</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.4.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 2.4 Navigable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Bypass Blocks</h1>
+        <p class="sc-header__summary">A mechanism is available to bypass blocks of content repeated on multiple pages — typically a skip link, and supported by proper landmarks and headings.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Keyboard users who would otherwise Tab through 40 navigation links on every page. Screen reader users who would hear the same menu read out before every page's content.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.4.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.4.1 Bypass Blocks"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;!-- FAILURE 1: no skip link. A keyboard user must Tab through all 12 navigation
+     links on every single page before reaching the content.
+     FAILURE 2: no landmarks - everything is a div, so a screen reader user
+     cannot jump to &quot;main&quot; either.
+     FAILURE 3: no headings structure to navigate by.
+     All three bypass mechanisms are absent, so there is no way past the block. --&gt;
+&lt;div class=&quot;navbar&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Fiction&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Non-fiction&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Poetry&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Children's&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Rare books&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Second hand&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Book clubs&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Gift cards&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Our shops&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Account&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;div style=&quot;font-size:1.5rem;font-weight:700&quot;&gt;This week's staff pick&lt;/div&gt;
+  &lt;p&gt;Tidal Flats, by A. Marsh.&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;#&quot;&gt;Read the review&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.4.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.4.1 Bypass Blocks"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;!-- FIX 1: a skip link as the first focusable element. It is moved off-screen
+     with transform rather than display:none, because display:none and
+     visibility:hidden remove it from the tab order entirely. It becomes
+     visible on focus, which matters: a sighted keyboard user needs to see it. --&gt;
+&lt;a class=&quot;skip&quot; href=&quot;#main&quot;&gt;Skip to main content&lt;/a&gt;
+
+&lt;!-- FIX 2: real landmarks. A screen reader user can jump straight to the main
+     landmark, or list all landmarks, without using the skip link at all. --&gt;
+&lt;header&gt;
+  &lt;nav class=&quot;navbar&quot; aria-label=&quot;Main&quot;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Fiction&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Non-fiction&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Poetry&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Children's&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Rare books&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Second hand&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Book clubs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Gift cards&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Our shops&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Account&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- FIX 3: tabindex=&quot;-1&quot; on the target. Without it, some browsers scroll to
+     the element but leave focus behind in the navigation, so the next Tab
+     press sends the user back to link two. This is the detail most skip-link
+     implementations get wrong. --&gt;
+&lt;main id=&quot;main&quot; tabindex=&quot;-1&quot;&gt;
+  &lt;!-- FIX 4: a real heading, so heading navigation is a third way past the block. --&gt;
+  &lt;h1&gt;This week's staff pick&lt;/h1&gt;
+  &lt;p&gt;Tidal Flats, by A. Marsh.&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;#&quot;&gt;Read the review&lt;/a&gt;&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Load the page and press Tab once. A skip link should appear, be visible when focused, and move focus to the main content so the next Tab lands inside it. Confirm main, nav, and header landmarks exist.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners check for a bypass mechanism and landmark structure, but not whether the skip link actually moves focus correctly.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> axe returns bypass as &quot;needs review&quot; rather than a violation. It can see there is no skip link, no main landmark and no heading, but it will not assert the failure on its own - it hands the decision back to you. An automated report that only counts violations records this page as clean.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>bypass</code></li>
+              <li><code>skip-link</code></li>
+              <li><code>landmark-one-main</code></li>
+              <li><code>region</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.4.5-multiple-ways/index.html">2.4.5 Multiple Ways (Level AA)</a></li>
+          <li><a href="../1.3.1-info-and-relationships/index.html">1.3.1 Info and Relationships (Level A)</a></li>
+          <li><a href="../2.4.10-section-headings/index.html">2.4.10 Section Headings (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html">Understanding 2.4.1 Bypass Blocks</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#bypass-blocks">2.4.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.3.3-animation-from-interactions/index.html"><span class="sc-pager__dir">Previous criterion</span>2.3.3 Animation from Interactions</a>
+        <a href="../2.4.2-page-titled/index.html"><span class="sc-pager__dir">Next criterion</span>2.4.2 Page Titled</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

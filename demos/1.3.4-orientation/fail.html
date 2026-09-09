@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.3.4 Orientation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FAILURE 1: the content is hidden in landscape and replaced with a demand
+       that the user rotate the device. Someone whose phone is mounted to a
+       wheelchair or a stand cannot comply, so the content is simply gone. */
+    .rotate-nag { display: none; }
+    @media (orientation: landscape) {
+      .app { display: none; }
+      .rotate-nag { display: block; border:2px solid var(--fail-border); background:var(--fail-bg);
+                    color:var(--fail); border-radius:6px; padding:1.5rem; text-align:center;
+                    font-weight:700; }
+    }
+    /* FAILURE 2: a CSS transform used to force the page to render sideways.
+       This also breaks the reading order and hit targets for everyone. */
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.3.4 Orientation.
+     Make the window wider than it is tall.</p>
+
+  <!-- excerpt:start -->
+  <div class="rotate-nag">
+    <p>Please rotate your device to portrait to use this page.</p>
+  </div>
+
+  <div class="app">
+    <h1>Reserve a book</h1>
+    <p>Search our catalogue and reserve a copy for collection.</p>
+    <div class="field">
+      <label for="q">Search the catalogue</label>
+      <input type="search" id="q">
+    </div>
+    <button type="button" class="button">Search</button>
+  </div>
+
+  <!-- The failure is the LOCK, not the layout. Content may look different in
+       each orientation - that is normal responsive design. What 1.3.4 prohibits
+       is restricting the content to one orientation when the other is not
+       essential. -->
+  <!-- excerpt:end -->
+</body>
+</html>

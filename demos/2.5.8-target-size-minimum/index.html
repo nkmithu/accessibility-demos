@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.5.8 Target Size (Minimum) (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Targets are at least 24 by 24 CSS pixels, unless spacing, inline position, an equivalent control, or essential presentation applies. Undersized targets can pass if a 24px circle centred on each does not overlap its neighbours.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.5.8 Target Size (Minimum)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.5.8</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 2.5 Input Modalities</span>
+          <span class="tag">Added in WCAG 2.2</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Target Size (Minimum)</h1>
+        <p class="sc-header__summary">Targets are at least 24 by 24 CSS pixels, unless spacing, inline position, an equivalent control, or essential presentation applies. Undersized targets can pass if a 24px circle centred on each does not overlap its neighbours.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with motor impairments and tremor. Unlike 2.5.5 at AAA, this is a realistic AA baseline that most interfaces can meet.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.5.8
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.5.8 Target Size (Minimum)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your basket&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: a toolbar of 16x16 buttons packed 2px apart. Both the size and
+     the spacing exception fail: 24px circles centred on adjacent targets
+     overlap heavily. --&gt;
+&lt;p class=&quot;toolbar&quot;&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Bold&quot;&gt;B&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Italic&quot;&gt;I&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Underline&quot;&gt;U&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Strikethrough&quot;&gt;S&lt;/button&gt;
+&lt;/p&gt;
+
+&lt;!-- FAILURE 2: an 18x18 close button - the single most commonly undersized
+     control on the web, and the one with the worst consequence when missed,
+     because the surrounding area is usually a link. --&gt;
+&lt;div class=&quot;card-ish&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;closer&quot; aria-label=&quot;Remove Tidal Flats from basket&quot;&gt;×&lt;/button&gt;
+  Tidal Flats, by A. Marsh — £12.99
+&lt;/div&gt;
+
+&lt;!-- FAILURE 3: 20x20 quantity steppers, tightly packed. --&gt;
+&lt;p class=&quot;stepper&quot;&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Decrease quantity&quot;&gt;−&lt;/button&gt;
+  &lt;input type=&quot;text&quot; class=&quot;qty&quot; value=&quot;1&quot; aria-label=&quot;Quantity&quot;&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Increase quantity&quot;&gt;+&lt;/button&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.5.8
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.5.8 Target Size (Minimum)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your basket&lt;/h1&gt;
+
+&lt;!-- FIX 1: 24x24 minimum via padding, with 2px of margin. The glyphs are the
+     same size; only the hit area grew. --&gt;
+&lt;p class=&quot;toolbar&quot;&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Bold&quot;&gt;B&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Italic&quot;&gt;I&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Underline&quot;&gt;U&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Strikethrough&quot;&gt;S&lt;/button&gt;
+&lt;/p&gt;
+
+&lt;!-- FIX 2: the close button is 44x44 - above the 24px AA floor and also
+     meeting 2.5.5 Target Size (Enhanced) at AAA. Destructive controls deserve
+     the larger target. --&gt;
+&lt;div class=&quot;card-ish&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;closer&quot; aria-label=&quot;Remove Tidal Flats from basket&quot;&gt;×&lt;/button&gt;
+  Tidal Flats, by A. Marsh — £12.99
+&lt;/div&gt;
+
+&lt;!-- FIX 3: steppers at 44x44. --&gt;
+&lt;p class=&quot;stepper&quot;&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Decrease quantity&quot;&gt;−&lt;/button&gt;
+  &lt;input type=&quot;text&quot; class=&quot;qty&quot; value=&quot;1&quot; aria-label=&quot;Quantity&quot;&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Increase quantity&quot;&gt;+&lt;/button&gt;
+&lt;/p&gt;
+
+&lt;!-- The five exceptions, worth learning because they come up constantly:
+       1. Spacing  - a smaller target passes if a 24px circle centred on it
+                     does not overlap the circle of any adjacent target.
+       2. Equivalent - the same action is available elsewhere at full size.
+       3. Inline   - a link inside a sentence is exempt, because you cannot
+                     resize it without breaking the line. --&gt;
+&lt;p class=&quot;inline-note&quot;&gt;Read our &lt;a href=&quot;#p&quot;&gt;delivery policy&lt;/a&gt; for details —
+   this inline link is exempt under the inline exception.&lt;/p&gt;
+&lt;!--   4. User agent control - you did not style it.
+       5. Essential - the exact size is required, as on an interactive map.
+
+     2.5.8 at AA is 24px; 2.5.5 at AAA is 44px. Note the AA rule counts
+     SPACING as an alternative to size, which the AAA rule does not. --&gt;
+
+&lt;p id=&quot;p&quot;&gt;Delivery policy.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Measure each target. If under 24×24, check the spacing exception by testing whether 24px circles centred on adjacent targets overlap. Tightly packed icon rows and small close buttons are the usual failures.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Size and spacing are computable, and axe covers a good share of cases, but the exceptions still need review.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>target-size</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.5.5-target-size-enhanced/index.html">2.5.5 Target Size (Enhanced) (Level AAA)</a></li>
+          <li><a href="../2.5.7-dragging-movements/index.html">2.5.7 Dragging Movements (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">Understanding 2.5.8 Target Size (Minimum)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#target-size-minimum">2.5.8 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.5.7-dragging-movements/index.html"><span class="sc-pager__dir">Previous criterion</span>2.5.7 Dragging Movements</a>
+        <a href="../3.1.1-language-of-page/index.html"><span class="sc-pager__dir">Next criterion</span>3.1.1 Language of Page</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

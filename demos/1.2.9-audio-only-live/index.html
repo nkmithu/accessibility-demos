@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.2.9 Audio-only (Live) (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A text alternative presenting equivalent information is provided for live audio-only content, such as a live radio broadcast or audio-only conference call.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.2.9 Audio-only (Live)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.2.9</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 1.2 Time-based Media</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Audio-only (Live)</h1>
+        <p class="sc-header__summary">A text alternative presenting equivalent information is provided for live audio-only content, such as a live radio broadcast or audio-only conference call.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Deaf and hard-of-hearing users attending live audio-only events.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.2.9
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.2.9 Audio-only (Live)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Live: Riverline Radio book club&lt;/h1&gt;
+
+&lt;!-- FAILURE: a live audio-only broadcast - no picture, so captions have
+     nowhere to appear and no captions track is offered. There is no live
+     transcript, no CART provision, and nothing to read.
+
+     A deaf or hard-of-hearing listener simply cannot attend. Note that this is
+     AUDIO-ONLY: 1.2.4 covers live synchronised media (audio plus video), while
+     1.2.9 covers live audio on its own - a radio stream, a phone-in, an
+     audio-only conference call. --&gt;
+&lt;div class=&quot;stage&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;LIVE&lt;/strong&gt; — audio stream&lt;/p&gt;
+  &lt;p&gt;This month's book club discussion, broadcasting now&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A recording will be available to members next week.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.2.9
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.2.9 Audio-only (Live)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Live: Riverline Radio book club&lt;/h1&gt;
+
+&lt;div class=&quot;stage&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;LIVE&lt;/strong&gt; — audio stream&lt;/p&gt;
+  &lt;p&gt;This month's book club discussion, broadcasting now&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- FIX: a real-time text alternative, delivered live. In production this pane
+     is fed by a CART captioner or a live speech-to-text service.
+
+     role=&quot;log&quot; with aria-live=&quot;polite&quot; and aria-atomic=&quot;false&quot; means each new
+     line is announced as it arrives, rather than the whole pane being re-read
+     every time - which is what makes a live text pane usable with a screen
+     reader rather than maddening. --&gt;
+&lt;h2 id=&quot;lt-h&quot;&gt;Live transcript&lt;/h2&gt;
+&lt;div class=&quot;cc&quot; role=&quot;log&quot; aria-live=&quot;polite&quot; aria-atomic=&quot;false&quot; aria-labelledby=&quot;lt-h&quot; id=&quot;lt&quot;&gt;
+  &lt;p&gt;PRESENTER: Welcome to the Riverline Radio book club.&lt;/p&gt;
+  &lt;p&gt;PRESENTER: This month we are reading Tidal Flats.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;Access at this broadcast&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;A live transcript runs throughout, produced by a human captioner.&lt;/li&gt;
+  &lt;li&gt;A corrected transcript is published with the recording within 48 hours.&lt;/li&gt;
+  &lt;li&gt;Questions can be sent by text message as well as by phone.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Note the criteria this sits between:
+       1.2.4 (AA)  live synchronised media  -&gt; captions
+       1.2.9 (AAA) live audio-only          -&gt; a text alternative
+     And afterwards, the RECORDING is prerecorded media, so it needs its own
+     transcript under 1.2.1. Live provision does not exempt the archive. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Confirm live captioning or real-time text (CART) is offered during the broadcast.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires observing the live event.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.2.4-captions-live/index.html">1.2.4 Captions (Live) (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live.html">Understanding 1.2.9 Audio-only (Live)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#audio-only-live">1.2.9 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.2.8-media-alternative-prerecorded/index.html"><span class="sc-pager__dir">Previous criterion</span>1.2.8 Media Alternative (Prerecorded)</a>
+        <a href="../1.3.1-info-and-relationships/index.html"><span class="sc-pager__dir">Next criterion</span>1.3.1 Info and Relationships</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

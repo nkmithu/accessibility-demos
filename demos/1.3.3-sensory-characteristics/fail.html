@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.3.3 Sensory Characteristics</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .round { border-radius: 999px; background: #12603a; color: #fff; border: 0;
+             padding: .6rem 1.2rem; font: inherit; min-height: 44px; }
+    .square { background: #a3121f; color: #fff; border: 0; padding: .6rem 1.2rem;
+              font: inherit; min-height: 44px; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.3.3 Sensory Characteristics.</p>
+
+  <!-- excerpt:start -->
+  <h1>Confirm your order</h1>
+
+  <!-- FAILURE 1: instructions by shape and colour only. A blind user has no
+       concept of "round" or "green". A colour-blind user cannot tell them apart.
+       And at 400% zoom the buttons stack, so even a sighted user loses "left". -->
+  <p>Press the round green button on the left to confirm, or the square red
+     button on the right to cancel.</p>
+  <div class="row">
+    <button type="button" class="round"></button>
+    <button type="button" class="square"></button>
+  </div>
+
+  <!-- FAILURE 2: instruction by position. On a narrow viewport the sidebar is
+       not "on the right" any more - it has reflowed below the content. -->
+  <p>Your delivery address is shown in the box on the right.</p>
+
+  <!-- FAILURE 3: instruction by size and visual styling only. -->
+  <p>Read the large text above before continuing.</p>
+
+  <!-- FAILURE 4: instruction by sound alone. -->
+  <p>You will hear a beep when your order is accepted.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

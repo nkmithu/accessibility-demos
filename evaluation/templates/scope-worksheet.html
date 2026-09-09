@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scope worksheet — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Fillable worksheet for WCAG-EM Step 1: defining the website, conformance target, baseline and exclusions.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><a href="../../evaluation/index.html" aria-current="page">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><span aria-current="page">Scope worksheet</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Scope worksheet</h1>
+      <p class="sc-header__summary">WCAG-EM Step 1. Complete this before you look at a single page,
+         and get it agreed. Everything in your report will be argued against this document.</p>
+
+      <div class="callout callout--note no-print">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> How to use this</p>
+        <p>Fill it in on screen and print it (it is styled for print), or copy the headings into your
+           own document. Nothing is saved — this page has no server behind it.</p>
+      </div>
+
+      <form>
+        <h2>1. The website being evaluated</h2>
+        <div class="field">
+          <label for="s-name">Name of the website or service</label>
+          <input type="text" id="s-name" size="50">
+        </div>
+        <div class="field">
+          <label for="s-urls">Domains and URL patterns <strong>included</strong></label>
+          <textarea id="s-urls" rows="3" cols="60"></textarea>
+        </div>
+        <div class="field">
+          <label for="s-excl">Explicitly <strong>excluded</strong>, and why</label>
+          <textarea id="s-excl" rows="3" cols="60"></textarea>
+        </div>
+        <div class="field">
+          <label for="s-auth">Authenticated areas in scope? Whose account will be used?</label>
+          <textarea id="s-auth" rows="2" cols="60"></textarea>
+        </div>
+        <div class="field">
+          <label for="s-third">Third-party embedded content in scope? (payments, maps, chat, video)</label>
+          <textarea id="s-third" rows="2" cols="60"></textarea>
+        </div>
+        <div class="field">
+          <label for="s-docs">Linked documents in scope? (PDF, Word, spreadsheets)</label>
+          <textarea id="s-docs" rows="2" cols="60"></textarea>
+        </div>
+
+        <h2>2. Conformance target</h2>
+        <fieldset>
+          <legend>WCAG version and level</legend>
+          <p class="filters__option"><input type="radio" id="t-22aa" name="target">
+            <label for="t-22aa">WCAG 2.2 Level AA <em>(the normal answer)</em></label></p>
+          <p class="filters__option"><input type="radio" id="t-22a" name="target">
+            <label for="t-22a">WCAG 2.2 Level A</label></p>
+          <p class="filters__option"><input type="radio" id="t-21aa" name="target">
+            <label for="t-21aa">WCAG 2.1 Level AA</label></p>
+          <p class="filters__option"><input type="radio" id="t-other" name="target">
+            <label for="t-other">Other</label></p>
+        </fieldset>
+        <div class="field">
+          <label for="s-aaa">Any individual AAA criteria adopted? Which, and why?</label>
+          <textarea id="s-aaa" rows="2" cols="60"></textarea>
+        </div>
+        <div class="field">
+          <label for="s-legal">Other standards being reported against (EN 301 549, Section 508)</label>
+          <input type="text" id="s-legal" size="50">
+        </div>
+
+        <h2>3. Accessibility support baseline</h2>
+        <p>List the browser and assistive technology combinations the evaluation will treat as
+           required. A technique that fails in any of these is a failure.</p>
+        <div class="table-scroll">
+          <table>
+            <caption>Baseline combinations</caption>
+            <thead><tr><th scope="col">Platform</th><th scope="col">Browser</th><th scope="col">Assistive technology</th></tr></thead>
+            <tbody>
+              <tr><td><input type="text" size="12" aria-label="Platform, baseline row 1"></td><td><input type="text" size="14" aria-label="Browser, baseline row 1"></td><td><input type="text" size="18" aria-label="Assistive technology, baseline row 1"></td></tr>
+              <tr><td><input type="text" size="12" aria-label="Platform, baseline row 2"></td><td><input type="text" size="14" aria-label="Browser, baseline row 2"></td><td><input type="text" size="18" aria-label="Assistive technology, baseline row 2"></td></tr>
+              <tr><td><input type="text" size="12" aria-label="Platform, baseline row 3"></td><td><input type="text" size="14" aria-label="Browser, baseline row 3"></td><td><input type="text" size="18" aria-label="Assistive technology, baseline row 3"></td></tr>
+              <tr><td><input type="text" size="12" aria-label="Platform, baseline row 4"></td><td><input type="text" size="14" aria-label="Browser, baseline row 4"></td><td><input type="text" size="18" aria-label="Assistive technology, baseline row 4"></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="field">
+          <label for="s-nonat">Non-AT conditions to test (keyboard only, 400% zoom, high contrast, reduced motion)</label>
+          <textarea id="s-nonat" rows="2" cols="60"></textarea>
+        </div>
+
+        <h2>4. Additional requirements</h2>
+        <div class="field">
+          <label for="s-extra">Organisational policies, plain-language rules, legal deadlines</label>
+          <textarea id="s-extra" rows="3" cols="60"></textarea>
+        </div>
+
+        <h2>5. Sign-off</h2>
+        <div class="field"><label for="s-by">Evaluated by</label><input type="text" id="s-by" size="35"></div>
+        <div class="field"><label for="s-date">Date</label><input type="text" id="s-date" size="20"></div>
+        <div class="field"><label for="s-agreed">Agreed with (client contact)</label><input type="text" id="s-agreed" size="35"></div>
+      </form>
+
+      <p class="no-print"><button type="button" class="button" onclick="window.print()">Print this worksheet</button></p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

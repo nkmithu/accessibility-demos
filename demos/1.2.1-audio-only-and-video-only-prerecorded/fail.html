@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.1 Audio-only and Video-only (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.1.</p>
+
+  <!-- excerpt:start -->
+  <h1>Media library</h1>
+
+  <!-- FAILURE 1: audio-only content with no transcript. A deaf or hard-of-hearing
+       user gets nothing at all from this file. Note the criterion is not
+       satisfied by a caption track - audio-only content needs a TEXT
+       ALTERNATIVE that can be read. -->
+  <h2>Shop doorbell recording</h2>
+  <audio controls src="../../assets/media/shop-doorbell.mp3"></audio>
+
+  <!-- FAILURE 2: video-only content with no transcript and no described audio.
+       This clip has NO audio track at all, so a blind user gets nothing:
+       silence, and no way to find out what is on screen. All the information -
+       the opening hours, the delivery threshold, the web address - exists only
+       as pixels. -->
+  <h2>A short tour of the shop</h2>
+  <video controls width="640" src="../../assets/media/shop-tour-silent.mp4"></video>
+
+  <!-- Neither piece of media links to any alternative anywhere on the page. -->
+  <!-- excerpt:end -->
+</body>
+</html>

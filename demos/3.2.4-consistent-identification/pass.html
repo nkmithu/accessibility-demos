@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.2.4 Consistent Identification</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .mini { border:1px solid var(--border); border-radius:6px; padding:.75rem; }
+    .pages { display:grid; gap:1rem; }
+    @media (min-width:44rem) { .pages { grid-template-columns:1fr 1fr 1fr; } }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.2.4 Consistent Identification.</p>
+
+  <!-- excerpt:start -->
+  <h1>The same action, named the same way</h1>
+
+  <div class="pages">
+    <!-- FIX: one function, one name, one icon, everywhere. The user learns it
+         once. This costs nothing to implement and is almost always a
+         copywriting and design-system problem rather than a code problem. -->
+    <div class="mini">
+      <h2>Product page</h2>
+      <button type="button" class="button"><span aria-hidden="true">🛒</span> Add to basket</button>
+    </div>
+
+    <div class="mini">
+      <h2>Search results</h2>
+      <button type="button" class="button"><span aria-hidden="true">🛒</span> Add to basket</button>
+    </div>
+
+    <div class="mini">
+      <h2>Wish list</h2>
+      <button type="button" class="button"><span aria-hidden="true">🛒</span> Add to basket</button>
+    </div>
+  </div>
+
+  <!-- Note what "consistent" means here. It is about the ACCESSIBLE NAME and the
+       function, not about pixels. The same action may look different in
+       different contexts - a large primary button on the product page, a compact
+       one in a results list - as long as it is called the same thing.
+
+       Where two things genuinely differ, name them differently: "Download PDF"
+       and "Download spreadsheet" are correctly distinct.
+
+       A practical audit technique: list every control's accessible name across
+       your sample and sort it. Duplicated functions with different names, and
+       identical names doing different jobs, both jump out immediately. -->
+  <!-- excerpt:end -->
+</body>
+</html>

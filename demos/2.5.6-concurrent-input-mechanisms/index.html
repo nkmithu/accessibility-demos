@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.5.6 Concurrent Input Mechanisms (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Content does not restrict use of input modalities available on a platform, except where necessary for security or to respect user settings.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.5.6 Concurrent Input Mechanisms</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.5.6</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 2.5 Input Modalities</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Concurrent Input Mechanisms</h1>
+        <p class="sc-header__summary">Content does not restrict use of input modalities available on a platform, except where necessary for security or to respect user settings.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users who switch between touch, keyboard, and mouse within a single session — common for users with fluctuating conditions and for anyone on a 2-in-1 device.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.5.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.5.6 Concurrent Input Mechanisms"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Reading list&lt;/h1&gt;
+
+&lt;!-- FAILURE: the page sniffs for touch support once, at load, and then binds
+     ONLY touch handlers. On a 2-in-1 laptop, a tablet with a keyboard case, or
+     a touchscreen desktop, the keyboard and mouse stop working.
+
+     Who this breaks: someone with a fluctuating condition who uses touch in
+     the morning and a keyboard when their hands are tired; someone who uses a
+     stylus for precision and a keyboard for text; anyone who plugs a keyboard
+     into a tablet.
+
+     The bug behind it is the assumption that input capability is a fixed
+     property of a DEVICE. It is a property of the MOMENT. --&gt;
+&lt;p id=&quot;mode&quot;&gt;&lt;/p&gt;
+&lt;ul class=&quot;plain&quot; id=&quot;list&quot;&gt;
+  &lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; data-t=&quot;Tidal Flats&quot;&gt;Tidal Flats&lt;/button&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; data-t=&quot;The Long Field&quot;&gt;The Long Field&lt;/button&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p id=&quot;picked&quot; role=&quot;status&quot;&gt;&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.5.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.5.6 Concurrent Input Mechanisms"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Reading list&lt;/h1&gt;
+
+&lt;!-- FIX: no device sniffing at all. A real button plus a click handler works
+     with touch, mouse, stylus, keyboard, switch and voice control
+     simultaneously, because the browser normalises all of them into `click`.
+
+     The rule: bind to `click`, not to `touchstart` or `mousedown`. Use
+     `pointer*` events if you need low-level pointer data, and never remove a
+     control from the tab order because you think the user does not need it. --&gt;
+&lt;ul class=&quot;plain&quot; id=&quot;list&quot;&gt;
+  &lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; data-t=&quot;Tidal Flats&quot;&gt;Tidal Flats&lt;/button&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; data-t=&quot;The Long Field&quot;&gt;The Long Field&lt;/button&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p id=&quot;picked&quot; role=&quot;status&quot;&gt;Nothing selected yet.&lt;/p&gt;
+
+&lt;!-- If you must adapt the INTERFACE to input type - larger targets once a
+     touch has been seen, say - respond to the most recent interaction rather
+     than to a capability check at load, and never disable another path:
+
+       window.addEventListener('pointerdown', function (e) {
+         document.body.dataset.lastInput = e.pointerType;   // touch | mouse | pen
+       });
+       window.addEventListener('keydown', function () {
+         document.body.dataset.lastInput = 'keyboard';
+       });
+
+     That adapts presentation without ever taking an input method away.
+
+     The permitted exceptions are narrow: restricting input where it is
+     necessary for SECURITY, or to respect a setting the user themselves chose. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Switch input methods mid-task. A site that detects touch and disables keyboard handlers, or vice versa, fails.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires testing with multiple input devices on the same session.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.1.1-keyboard/index.html">2.1.1 Keyboard (Level A)</a></li>
+          <li><a href="../2.5.1-pointer-gestures/index.html">2.5.1 Pointer Gestures (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/concurrent-input-mechanisms.html">Understanding 2.5.6 Concurrent Input Mechanisms</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#concurrent-input-mechanisms">2.5.6 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.5.5-target-size-enhanced/index.html"><span class="sc-pager__dir">Previous criterion</span>2.5.5 Target Size (Enhanced)</a>
+        <a href="../2.5.7-dragging-movements/index.html"><span class="sc-pager__dir">Next criterion</span>2.5.7 Dragging Movements</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

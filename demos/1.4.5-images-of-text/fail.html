@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.5 Images of Text</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.5 Images of Text.
+     Zoom to 300% and watch the text turn to mush.</p>
+
+  <!-- excerpt:start -->
+  <h1>Spring festival</h1>
+
+  <!-- FAILURE 1: the headline is a picture of text. Even with correct alt text
+       - so 1.1.1 passes - it pixelates when enlarged, ignores the user's font,
+       colour and spacing preferences, cannot be selected or searched, and cannot
+       be translated. -->
+  <img src="../../assets/media/promo-heading.svg" width="420" height="70"
+       alt="Three days of events, 12 to 14 April">
+
+  <!-- FAILURE 2: a "button" that is really an image. It cannot reflow, cannot
+       grow with the user's text size, and its label is locked into the file. -->
+  <p><a href="#book"><img src="../../assets/media/promo-button.svg" width="200" height="52"
+       alt="Book festival tickets"></a></p>
+
+  <!-- FAILURE 3: a paragraph of terms and conditions rendered as an image,
+       usually because someone wanted a specific typeface. This is the worst
+       case: a wall of unselectable, unsearchable, unzoomable text. -->
+  <img src="../../assets/media/promo-terms.svg" width="420" height="96"
+       alt="Tickets are non-refundable. Members save 20%. Under 16s go free with a paying adult.">
+
+  <p id="book">Booking.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

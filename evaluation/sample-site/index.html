@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riverline Books</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<p class="audit-banner">Audit material — this site contains deliberate accessibility defects.
+   <a href="../index.html">Back to the WCAG-EM walkthrough</a></p>
+
+<!-- DEFECT 2.4.1: no skip link anywhere on the site. -->
+<div class="topbar"><div class="wrap">Free delivery on orders over £25</div></div>
+
+<div class="masthead"><div class="wrap">
+  <a class="logo" href="index.html">Riverline Books</a>
+  <!-- DEFECT 3.2.3: this nav order differs from the order used on other pages. -->
+  <div class="nav"><ul>
+    <li><a href="catalogue.html">Books</a></li>
+    <li><a href="help.html">Help</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="login.html">Sign in</a></li>
+    <li><a href="cart.html">Basket</a></li>
+  </ul></div>
+</div></div>
+
+<!-- DEFECT 2.4.1: no <main> landmark on any page. -->
+<div class="content"><div class="wrap">
+
+  <!-- DEFECT 1.1.1: informative hero image with no alt attribute. -->
+  <img src="assets/hero.svg" width="960" height="220">
+
+  <h1>Riverline Books</h1>
+
+  <!-- DEFECT 2.2.2: the carousel advances on a timer with no pause, stop or hide. -->
+  <h2>This week's staff picks</h2>
+  <div class="card" style="min-height:6rem">
+    <p id="slide-title" style="font-size:1.15rem;font-weight:bold">Tidal Flats, by A. Marsh</p>
+    <p id="slide-text">A quiet novel about an estuary town and the people who stayed.</p>
+  </div>
+
+  <!-- DEFECT 1.4.3: 2.6:1 against white. -->
+  <p class="muted">Staff picks change every Monday. Members see next week's picks early.</p>
+
+  <h2>New arrivals</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/cover-1.svg" width="200" height="280" alt="book">
+      <h3>The Long Field</h3>
+      <p class="price">£15.99</p>
+      <!-- DEFECT 3.2.4: this action is called "Add to basket" here, "Buy now" on the
+           catalogue, and "Get it" on the product page. -->
+      <button type="button" class="btn btn-sm">Add to basket</button>
+    </div>
+    <div class="card">
+      <img src="assets/cover-2.svg" width="200" height="280" alt="book">
+      <h3>Salt</h3>
+      <p class="price">£11.50</p>
+      <button type="button" class="btn btn-sm">Add to basket</button>
+    </div>
+    <div class="card">
+      <img src="assets/cover-3.svg" width="200" height="280" alt="book">
+      <h3>Tidal Flats</h3>
+      <p class="price">£12.99</p>
+      <button type="button" class="btn btn-sm">Add to basket</button>
+    </div>
+  </div>
+
+  <div class="notice">
+    <p>Spring festival tickets are on sale.
+       <!-- DEFECT 2.4.4: link purpose not determinable from the link text. -->
+       <a href="help.html">Read more</a></p>
+  </div>
+
+</div></div>
+
+<div class="footer"><div class="wrap">
+  <ul>
+    <li><a href="help.html">Help</a></li>
+    <li><a href="contact.html">Contact us</a></li>
+    <li><a href="help.html">Accessibility</a></li>
+  </ul>
+</div></div>
+
+<script>
+  // DEFECT 2.2.2: no pause control, and it starts automatically.
+  var picks = [
+    ['Tidal Flats, by A. Marsh', 'A quiet novel about an estuary town and the people who stayed.'],
+    ['The Long Field, by R. Owen', 'Thirty years of one hillside, told season by season.'],
+    ['Salt, by J. Nandi', 'Essays on food, migration and memory.']
+  ];
+  var i = 0;
+  setInterval(function () {
+    i = (i + 1) % picks.length;
+    document.getElementById('slide-title').textContent = picks[i][0];
+    document.getElementById('slide-text').textContent = picks[i][1];
+  }, 3000);
+</script>
+</body>
+</html>

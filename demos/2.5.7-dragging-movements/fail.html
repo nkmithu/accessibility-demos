@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.5.7 Dragging Movements</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .list { list-style:none; padding:0; max-width:24rem; }
+    .list li { border:1px solid var(--border); border-radius:6px; padding:.6rem .75rem;
+               margin-bottom:.4rem; background:#fff; cursor:grab; user-select:none; }
+    .list li.dragging { opacity:.5; }
+    .slider-track { height:8px; background:var(--border); border-radius:999px; position:relative;
+                    max-width:24rem; margin:1.5rem 0; }
+    .slider-knob { position:absolute; top:-8px; width:24px; height:24px; border-radius:50%;
+                   background:#0a4f9e; cursor:grab; left:0; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.5.7 Dragging Movements.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your reading list</h1>
+
+  <!-- FAILURE 1: reordering is drag-only. There are no move up / move down
+       buttons and no keyboard route.
+
+       Who this excludes: anyone with tremor who cannot hold a pointer down and
+       move it accurately; anyone using a head pointer or eye tracker, which
+       cannot express "press and hold along a path"; and every keyboard user.
+       Note this is a superset of 2.1.1 - it also fails for people who CAN use a
+       pointer but cannot drag. -->
+  <p>Drag the titles to reorder your list.</p>
+  <ul class="list" id="list">
+    <li draggable="true">Tidal Flats</li>
+    <li draggable="true">The Long Field</li>
+    <li draggable="true">Salt</li>
+  </ul>
+
+  <!-- FAILURE 2: a custom slider that can only be dragged. No arrow keys, no
+       text input, no stepper buttons. -->
+  <h2>Maximum price</h2>
+  <div class="slider-track" id="track">
+    <div class="slider-knob" id="knob" role="img" aria-label="Price slider, drag to set"></div>
+  </div>
+  <p id="price">£0</p>
+  <!-- excerpt:end -->
+
+  <script>
+    var list = document.getElementById('list'), dragged = null;
+    list.addEventListener('dragstart', function (e) { dragged = e.target; e.target.classList.add('dragging'); });
+    list.addEventListener('dragend', function (e) { e.target.classList.remove('dragging'); });
+    list.addEventListener('dragover', function (e) { e.preventDefault(); });
+    list.addEventListener('drop', function (e) {
+      e.preventDefault();
+      var target = e.target.closest('li');
+      if (target && dragged && target !== dragged) { list.insertBefore(dragged, target); }
+    });
+
+    var track = document.getElementById('track'), knob = document.getElementById('knob'), down = false;
+    knob.addEventListener('pointerdown', function () { down = true; });
+    document.addEventListener('pointerup', function () { down = false; });
+    document.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var r = track.getBoundingClientRect();
+      var x = Math.min(Math.max(0, e.clientX - r.left), r.width);
+      knob.style.left = x + 'px';
+      document.getElementById('price').textContent = '£' + Math.round((x / r.width) * 50);
+    });
+  </script>
+</body>
+</html>

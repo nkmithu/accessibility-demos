@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.2.3 No Timing</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.2.3 No Timing.</p>
+
+  <!-- excerpt:start -->
+  <h1>Membership quiz</h1>
+
+  <!-- FIX: there is no timer. Nothing counts down, nothing expires, and the
+       user's answers are saved as they go, so leaving and coming back later
+       loses nothing.
+
+       Ask what the time limit was actually FOR. Most of them exist for one of
+       three reasons, and none survives scrutiny:
+         - "to stop cheating"      -> a timer does not stop cheating
+         - "to free up inventory"  -> hold stock differently, or extend generously
+         - "the framework does it" -> configure the framework -->
+  <p>Take as long as you like. Your answers are saved automatically.</p>
+
+  <form>
+    <fieldset>
+      <legend>Which year did Riverline Books open?</legend>
+      <p><input type="radio" id="y1" name="y"><label for="y1">1988</label></p>
+      <p><input type="radio" id="y2" name="y"><label for="y2">1998</label></p>
+      <p><input type="radio" id="y3" name="y"><label for="y3">2008</label></p>
+    </fieldset>
+    <button type="submit" class="button">Submit answer</button>
+  </form>
+  <p id="saved" role="status"></p>
+
+  <!-- The exceptions 2.2.3 allows:
+         - real-time events, such as a live auction or a live broadcast
+         - non-interactive synchronised media: a video is allowed to have a
+           duration
+       Everything else must have no essential timing.
+
+       Where timing genuinely IS essential - a timed exam, an auction - you
+       cannot meet 2.2.3, and that is expected. AAA is not meant to be achievable
+       for all content; W3C says so explicitly. Meet 2.2.1 at Level A properly
+       and document why 2.2.3 does not apply. -->
+  <!-- excerpt:end -->
+
+  <script>
+    document.querySelectorAll('input[name="y"]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        document.getElementById('saved').textContent = 'Answer saved. You can come back to this at any time.';
+      });
+    });
+  </script>
+</body>
+</html>

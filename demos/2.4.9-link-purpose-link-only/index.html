@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.4.9 Link Purpose (Link Only) (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A mechanism is available to identify the purpose of each link from the link text alone, except where the purpose is ambiguous to all users.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.4.9 Link Purpose (Link Only)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.4.9</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 2.4 Navigable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Link Purpose (Link Only)</h1>
+        <p class="sc-header__summary">A mechanism is available to identify the purpose of each link from the link text alone, except where the purpose is ambiguous to all users.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users navigating by link list, without needing to inspect surrounding context to work out where each link goes.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.4.9
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.4.9 Link Purpose (Link Only)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Support&lt;/h1&gt;
+
+&lt;!-- This page PASSES 2.4.4 Link Purpose (In Context) at Level A: each &quot;Read
+     more&quot; sits inside its own list item with a heading, so its purpose can be
+     worked out from the programmatically determined context.
+
+     It FAILS 2.4.9 at AAA, which drops the &quot;in context&quot; allowance. The link
+     text ALONE must identify the purpose - because that is how a screen reader
+     user navigating by link list actually encounters it: stripped of all
+     surrounding content. --&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2&gt;Delivery and collection&lt;/h2&gt;
+    &lt;p&gt;How long orders take and where to collect them.&lt;/p&gt;
+    &lt;a href=&quot;#a&quot;&gt;Read more&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2&gt;Returns&lt;/h2&gt;
+    &lt;p&gt;Our 30-day returns policy.&lt;/p&gt;
+    &lt;a href=&quot;#b&quot;&gt;Read more&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2&gt;Accessibility&lt;/h2&gt;
+    &lt;p&gt;Step-free access and hearing loops at our shops.&lt;/p&gt;
+    &lt;a href=&quot;#c&quot;&gt;Read more&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p id=&quot;a&quot;&gt;Delivery.&lt;/p&gt;&lt;p id=&quot;b&quot;&gt;Returns.&lt;/p&gt;&lt;p id=&quot;c&quot;&gt;Accessibility.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.4.9
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.4.9 Link Purpose (Link Only)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Support&lt;/h1&gt;
+
+&lt;!-- FIX 1: the heading is the link. The link text alone says where it goes,
+     and the target is larger for everyone (2.5.8). --&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2&gt;&lt;a href=&quot;#a&quot;&gt;Delivery and collection&lt;/a&gt;&lt;/h2&gt;
+    &lt;p&gt;How long orders take and where to collect them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2&gt;&lt;a href=&quot;#b&quot;&gt;Returns policy&lt;/a&gt;&lt;/h2&gt;
+    &lt;p&gt;Our 30-day returns policy.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2&gt;&lt;a href=&quot;#c&quot;&gt;Accessibility at our shops&lt;/a&gt;&lt;/h2&gt;
+    &lt;p&gt;Step-free access and hearing loops.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- FIX 2: where a design insists on a repeated call to action, extend the
+     accessible name with visually hidden text. The visible words must remain
+     inside the name so speech-input users can still say them (2.5.3). --&gt;
+&lt;p&gt;&lt;a href=&quot;#a&quot;&gt;Read more&lt;span class=&quot;visually-hidden&quot;&gt; about delivery and collection&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- Test it the way a screen reader user experiences it: open the rotor or
+     press Insert+F7 in NVDA to list every link on the page, and read the list
+     with the page hidden. Every entry should make sense on its own.
+
+     The exception: links whose purpose is ambiguous TO ALL USERS are allowed -
+     a &quot;random article&quot; link is genuinely unpredictable for everyone, so it
+     does not fail. --&gt;
+
+&lt;p id=&quot;a&quot;&gt;Delivery.&lt;/p&gt;&lt;p id=&quot;b&quot;&gt;Returns.&lt;/p&gt;&lt;p id=&quot;c&quot;&gt;Accessibility.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Read every link's accessible name in isolation. Each must be self-explanatory. &quot;Read more about our refund policy&quot; passes where &quot;Read more&quot; fails.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Generic link text can be pattern-matched, but the judgement of self-sufficiency is human.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> Every link on the failing page has text, so axe's link-name rule is satisfied. Deciding that &quot;Read more&quot; fails to identify its destination requires reading the page and understanding what each link points at - which is judgement, not pattern matching.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>link-name</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.4.4-link-purpose-in-context/index.html">2.4.4 Link Purpose (In Context) (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only.html">Understanding 2.4.9 Link Purpose (Link Only)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#link-purpose-link-only">2.4.9 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.4.8-location/index.html"><span class="sc-pager__dir">Previous criterion</span>2.4.8 Location</a>
+        <a href="../2.4.10-section-headings/index.html"><span class="sc-pager__dir">Next criterion</span>2.4.10 Section Headings</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

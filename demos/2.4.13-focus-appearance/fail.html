@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.13 Focus Appearance</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FAILURE 1: a 1px indicator. It EXISTS, so 2.4.7 Focus Visible passes -
+       but it is thinner than the 2px perimeter 2.4.13 requires. */
+    .thin:focus-visible { outline: 1px solid #0a4f9e; outline-offset: 0; }
+    /* FAILURE 2: thick enough, but only 1.6:1 against the background, so it
+       cannot be seen. Also fails 1.4.11 Non-text Contrast. */
+    .faint:focus-visible { outline: 3px solid #c9d6e5; outline-offset: 2px; }
+    /* FAILURE 3: the "indicator" is a small colour shift of the button itself.
+       The change between focused and unfocused states is about 1.2:1 - well
+       under the 3:1 the criterion requires between the two states. */
+    .shift { background:#0a4f9e; color:#fff; border:0; padding:.6rem 1.2rem;
+             border-radius:6px; min-height:44px; font:inherit; }
+    .shift:focus-visible { outline: none; background:#0d5aad; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.13 Focus Appearance.
+     Tab through — each indicator technically exists but is inadequate.</p>
+
+  <!-- excerpt:start -->
+  <h1>Checkout</h1>
+
+  <p><a class="thin" href="#a">Too thin: a 1px outline</a></p>
+  <p><a class="faint" href="#a">Too faint: 3px but only 1.6:1 against the page</a></p>
+  <p><button type="button" class="shift">Too subtle: a slight fill change only</button></p>
+
+  <!-- All three satisfy 2.4.7 at AA, which only asks that SOME visible indicator
+       exists. 2.4.13 at AAA is what puts numbers on "visible": a minimum area
+       and a minimum contrast change. -->
+
+  <p id="a">Target.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

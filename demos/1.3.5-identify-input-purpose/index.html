@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.3.5 Identify Input Purpose (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="The purpose of each input field collecting information about the user can be determined programmatically, using the HTML autocomplete attribute with the standard token list.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.3.5 Identify Input Purpose</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.3.5</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 1.3 Adaptable</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Identify Input Purpose</h1>
+        <p class="sc-header__summary">The purpose of each input field collecting information about the user can be determined programmatically, using the HTML autocomplete attribute with the standard token list.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with motor disabilities benefit from autofill instead of typing. Users with cognitive disabilities benefit from tools that add familiar icons to fields. Everyone benefits from fewer keystrokes.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.3.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.3.5 Identify Input Purpose"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Delivery details&lt;/h1&gt;
+
+&lt;form&gt;
+  &lt;!-- FAILURE 1: no autocomplete attribute. The fields are properly labelled,
+       so 1.3.1 and 3.3.2 pass - but nothing tells the browser that &quot;fname&quot;
+       means the user's own given name, so autofill cannot help. --&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;fn&quot;&gt;First name&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;fn&quot; name=&quot;fname&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;ln&quot;&gt;Last name&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;ln&quot; name=&quot;lname&quot;&gt;&lt;/div&gt;
+
+  &lt;!-- FAILURE 2: autocomplete=&quot;off&quot; actively switches off the help. This is
+       often added by habit; on fields asking for the user's own information
+       it is a conformance failure. --&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;em&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;em&quot; autocomplete=&quot;off&quot;&gt;&lt;/div&gt;
+
+  &lt;!-- FAILURE 3: autocomplete=&quot;on&quot; is not enough. 1.3.5 requires a token from
+       the specific list in the specification, so that the PURPOSE is
+       machine-readable - not merely that autofill is permitted. --&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;ph&quot;&gt;Mobile number&lt;/label&gt;
+    &lt;input type=&quot;tel&quot; id=&quot;ph&quot; autocomplete=&quot;on&quot;&gt;&lt;/div&gt;
+
+  &lt;!-- FAILURE 4: an invented token. Not in the list, so it means nothing. --&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;pc&quot;&gt;Postcode&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;pc&quot; autocomplete=&quot;zip-code&quot;&gt;&lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Continue&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.3.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.3.5 Identify Input Purpose"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Delivery details&lt;/h1&gt;
+
+&lt;form&gt;
+  &lt;!-- FIX: each field carries the correct token from the WCAG list of input
+       purposes. Two things follow:
+         1. the browser or password manager can fill the form, which matters
+            enormously for users with motor and cognitive disabilities
+         2. personalisation tools can identify the field's purpose and add a
+            familiar icon or simplified prompt --&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;fn&quot;&gt;First name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;fn&quot; name=&quot;fname&quot; autocomplete=&quot;given-name&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;ln&quot;&gt;Last name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;ln&quot; name=&quot;lname&quot; autocomplete=&quot;family-name&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;em&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;em&quot; autocomplete=&quot;email&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;ph&quot;&gt;Mobile number&lt;/label&gt;
+    &lt;input type=&quot;tel&quot; id=&quot;ph&quot; autocomplete=&quot;tel&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;a1&quot;&gt;Address line 1&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;a1&quot; autocomplete=&quot;address-line1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;ct&quot;&gt;Town or city&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;ct&quot; autocomplete=&quot;address-level2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;pc&quot;&gt;Postcode&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;pc&quot; autocomplete=&quot;postal-code&quot;&gt;&lt;/div&gt;
+
+  &lt;!-- Tokens can be qualified for a section of a form:
+       autocomplete=&quot;billing street-address&quot; or &quot;shipping postal-code&quot;. --&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;cc&quot;&gt;Card number&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;cc&quot; inputmode=&quot;numeric&quot; autocomplete=&quot;cc-number&quot;&gt;&lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Continue&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Scope: 1.3.5 applies only to fields collecting information ABOUT THE USER.
+     A search box, a book title, or a message to customer services are all out
+     of scope - there is no token for them and none is needed.
+
+     autocomplete=&quot;off&quot; is legitimate on a one-time code or a field where
+     filling would be wrong. It is a failure on a field asking for the user's
+     own name, address, phone or email. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>For each field asking for the user's own information (name, email, address, phone, credit card), confirm a correct autocomplete token. Note the token must come from the WCAG-defined list — autocomplete=&quot;on&quot; is not sufficient.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners validate that an autocomplete value is a recognised token. They cannot confirm the token is the right one for the field.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>autocomplete-valid</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.3.6-identify-purpose/index.html">1.3.6 Identify Purpose (Level AAA)</a></li>
+          <li><a href="../3.3.2-labels-or-instructions/index.html">3.3.2 Labels or Instructions (Level A)</a></li>
+          <li><a href="../3.3.7-redundant-entry/index.html">3.3.7 Redundant Entry (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html">Understanding 1.3.5 Identify Input Purpose</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#identify-input-purpose">1.3.5 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.3.4-orientation/index.html"><span class="sc-pager__dir">Previous criterion</span>1.3.4 Orientation</a>
+        <a href="../1.3.6-identify-purpose/index.html"><span class="sc-pager__dir">Next criterion</span>1.3.6 Identify Purpose</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 3 — Page structure and navigation</title>
+<link rel="stylesheet" href="../exercise.css">
+<style>
+  .nav{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:1rem}
+  .fake-h{font-size:1.2rem;font-weight:700;margin:1.4rem 0 .5rem}
+</style>
+</head>
+<body>
+<p class="task"><strong>Exercise 3.</strong> Give this page real structure.
+   See <code>README.md</code>.</p>
+
+<!-- No skip link. -->
+<div class="nav">
+  <a href="#x">Fiction</a><a href="#x">Non-fiction</a><a href="#x">Poetry</a>
+  <a href="#x">Children's</a><a href="#x">Rare books</a><a href="#x">Events</a>
+  <a href="#x">Book clubs</a><a href="#x">Gift cards</a><a href="#x">Our shops</a>
+  <a href="#x">Contact</a><a href="#x">Account</a><a href="#x">Basket</a>
+</div>
+
+<!-- Everything is a div. No landmarks, no headings, no lists. -->
+<div>
+  <div class="fake-h">Events this month</div>
+  <div>
+    <div>• 12 April — Spring festival opening</div>
+    <div>• 19 April — Poetry evening</div>
+    <div>• 26 April — Children's story hour</div>
+  </div>
+
+  <div class="fake-h">Getting here</div>
+  <div>We are five minutes from the station.</div>
+</div>
+
+<div>
+  <div>© Riverline Books</div>
+</div>
+
+<p id="x">Target.</p>
+</body>
+</html>

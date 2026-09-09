@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.5.4 Motion Actuation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.5.4 Motion Actuation.</p>
+
+  <!-- excerpt:start -->
+  <h1>Random book picker</h1>
+
+  <!-- FIX 1: a conventional control does the same job. It works on every device,
+       with a keyboard, a switch, or a voice command. -->
+  <p>
+    <button type="button" class="button" id="pickBtn">Suggest a book</button>
+  </p>
+
+  <!-- FIX 2: motion actuation is available as an extra, and can be switched off.
+       Note it is off by DEFAULT here: motion triggering surprises people, and
+       opt-in is kinder than opt-out for a feature that fires accidentally. -->
+  <p class="field">
+    <input type="checkbox" id="shake">
+    <label for="shake">Also let me shake the device to get a suggestion</label>
+  </p>
+
+  <p id="pick" role="status">No suggestion yet.</p>
+
+  <!-- The exception: motion actuation may be the only mechanism where the motion
+       is ESSENTIAL to the function - a pedometer, or an app that measures how
+       level a surface is. "It felt fun in the design review" is not essential. -->
+  <!-- excerpt:end -->
+
+  <script>
+    var picks = ['Tidal Flats, by A. Marsh', 'The Long Field, by R. Owen', 'Salt, by J. Nandi'];
+    function suggest() {
+      document.getElementById('pick').textContent = picks[Math.floor(Math.random() * picks.length)];
+    }
+    document.getElementById('pickBtn').addEventListener('click', suggest);
+
+    var last = 0;
+    window.addEventListener('devicemotion', function (e) {
+      if (!document.getElementById('shake').checked) return;   // the off switch
+      var a = e.accelerationIncludingGravity;
+      if (!a) return;
+      var force = Math.abs(a.x || 0) + Math.abs(a.y || 0) + Math.abs(a.z || 0);
+      if (force > 30 && Date.now() - last > 1000) { last = Date.now(); suggest(); }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4.1.1 Parsing (Level OBSOLETE) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Removed from WCAG 2.2. This criterion required elements to have complete start and end tags, be nested correctly, avoid duplicate attributes, and have unique IDs. It is retained here as an explainer, not as a demo, and does not count toward conformance.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">4.1.1 Parsing</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">4.1.1</span>
+          <span class="level level--OBSOLETE">Level OBSOLETE</span>
+          <span class="tag">Guideline 4.1 Compatible</span>
+          <span class="tag">Removed in WCAG 2.2</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Parsing</h1>
+        <p class="sc-header__summary">Removed from WCAG 2.2. This criterion required elements to have complete start and end tags, be nested correctly, avoid duplicate attributes, and have unique IDs. It is retained here as an explainer, not as a demo, and does not count toward conformance.</p>
+      </div>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9888;</span> Removed from WCAG 2.2</p>
+        <p>This criterion is <strong>obsolete</strong>. It does not count toward conformance and
+           must not be evaluated in a WCAG 2.2 audit. It is documented here so you recognise it in
+           older reports and older tooling output.</p>
+      </div>
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Historically, screen reader users on browsers that could not recover from malformed HTML. Modern browsers and assistive technologies all use the same standardised HTML parsing and error-recovery algorithm, so the criterion no longer described a real barrier.</p>
+      </section>
+
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Not applicable — do not evaluate this criterion in a WCAG 2.2 audit. Note that genuine parsing problems that do cause harm, such as duplicate IDs breaking a label association, are already failures of 1.3.1 or 4.1.2.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Validators still report these issues, and they remain worth fixing as code quality. They are simply no longer a WCAG conformance requirement in their own right.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>duplicate-id-aria</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.3.1-info-and-relationships/index.html">1.3.1 Info and Relationships (Level A)</a></li>
+          <li><a href="../4.1.2-name-role-value/index.html">4.1.2 Name, Role, Value (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/parsing.html">Understanding 4.1.1 Parsing</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#parsing">4.1.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.3.9-accessible-authentication-enhanced/index.html"><span class="sc-pager__dir">Previous criterion</span>3.3.9 Accessible Authentication (Enhanced)</a>
+        <a href="../4.1.2-name-role-value/index.html"><span class="sc-pager__dir">Next criterion</span>4.1.2 Name, Role, Value</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

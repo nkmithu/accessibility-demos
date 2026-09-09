@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.1.1 Non-text Content (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="All non-text content has a text alternative that serves the equivalent purpose. Decorative images are given an empty alt attribute so assistive technology ignores them.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.1.1 Non-text Content</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.1.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 1.1 Text Alternatives</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Non-text Content</h1>
+        <p class="sc-header__summary">All non-text content has a text alternative that serves the equivalent purpose. Decorative images are given an empty alt attribute so assistive technology ignores them.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users get nothing at all from an unlabelled image. Users who disable images, are on slow connections, or use text-only browsers lose the content entirely. Search indexing and translation tools also depend on it.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.1.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.1.1 Non-text Content"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Riverline Books — this week&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: informative image with no alt attribute at all.
+     A screen reader falls back to announcing the file name:
+     &quot;graphic, cover-tidal-flats-9781234567890.png&quot; --&gt;
+&lt;img src=&quot;../../assets/media/book-cover.svg&quot; width=&quot;120&quot; height=&quot;170&quot;&gt;
+
+&lt;h2&gt;Tidal Flats&lt;/h2&gt;
+&lt;p&gt;Our staff pick for this week.&lt;/p&gt;
+
+&lt;!-- FAILURE 2: decorative flourish given descriptive alt text.
+     Nothing is communicated, but every screen reader user must listen to it. --&gt;
+&lt;img src=&quot;../../assets/media/divider.svg&quot; alt=&quot;decorative horizontal line divider graphic&quot;
+     width=&quot;320&quot; height=&quot;8&quot;&gt;
+
+&lt;!-- FAILURE 3: icon-only button with no accessible name.
+     Announced as &quot;button&quot; - the user is told nothing about what it does. --&gt;
+&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;
+  &lt;svg width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 20 20&quot; fill=&quot;currentColor&quot;&gt;
+    &lt;path d=&quot;M10 3a7 7 0 0 1 6.3 10.05l-.3.55 3 3-1.4 1.4-3-3A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10A5 5 0 0 0 10 5Z&quot;/&gt;
+  &lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- FAILURE 4: alt text that exists but conveys nothing the image conveys.
+     This passes every automated scanner and fails every actual user. --&gt;
+&lt;img src=&quot;../../assets/media/sales-chart.svg&quot; alt=&quot;chart&quot; width=&quot;360&quot; height=&quot;200&quot;&gt;
+
+&lt;!-- FAILURE 5: meaningful image implemented as a CSS background with no text
+     equivalent anywhere. There is no alt attribute to forget - which is why
+     this one is so easy to miss in review. --&gt;
+&lt;div class=&quot;badge-award&quot; role=&quot;presentation&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.1.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.1.1 Non-text Content"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Riverline Books — this week&lt;/h1&gt;
+
+&lt;!-- FIX 1: the alt text serves the same purpose as the image. The adjacent
+     heading already gives the title, so the alt describes what only the image
+     shows, without repeating the caption or starting &quot;image of&quot;. --&gt;
+&lt;img src=&quot;../../assets/media/book-cover.svg&quot; alt=&quot;Book cover: a pale estuary at low tide under a wide grey sky.&quot;
+     width=&quot;120&quot; height=&quot;170&quot;&gt;
+
+&lt;h2&gt;Tidal Flats&lt;/h2&gt;
+&lt;p&gt;Our staff pick for this week.&lt;/p&gt;
+
+&lt;!-- FIX 2: purely decorative, so alt=&quot;&quot; removes it from the accessibility tree.
+     Note this is an EMPTY alt, not a missing one - the attribute must be present. --&gt;
+&lt;img src=&quot;../../assets/media/divider.svg&quot; alt=&quot;&quot; width=&quot;320&quot; height=&quot;8&quot;&gt;
+
+&lt;!-- FIX 3: the button gets a name from visually hidden text, and the icon is
+     marked aria-hidden so it is not announced twice. A visible label would be
+     better still; this pattern is for when the design demands icon-only. --&gt;
+&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;
+  &lt;svg width=&quot;20&quot; height=&quot;20&quot; viewBox=&quot;0 0 20 20&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;
+    &lt;path d=&quot;M10 3a7 7 0 0 1 6.3 10.05l-.3.55 3 3-1.4 1.4-3-3A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10A5 5 0 0 0 10 5Z&quot;/&gt;
+  &lt;/svg&gt;
+  &lt;span class=&quot;visually-hidden&quot;&gt;Search the catalogue&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- FIX 4: a chart carries data, so the short alt states the conclusion and a
+     full text equivalent follows. A complex image needs both: the summary for
+     someone skimming, the detail for someone who needs the numbers. --&gt;
+&lt;figure&gt;
+  &lt;img src=&quot;../../assets/media/sales-chart.svg&quot;
+       alt=&quot;Bar chart: weekly sales rose from 40 in week 1 to 115 in week 5.&quot;
+       width=&quot;360&quot; height=&quot;200&quot;&gt;
+  &lt;figcaption&gt;
+    Weekly sales, weeks 1 to 5.
+    &lt;details&gt;
+      &lt;summary&gt;Chart data as a table&lt;/summary&gt;
+      &lt;table&gt;
+        &lt;caption&gt;Books sold per week&lt;/caption&gt;
+        &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Week&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Books sold&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;&lt;td&gt;40&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;&lt;td&gt;55&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;3&lt;/th&gt;&lt;td&gt;70&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;4&lt;/th&gt;&lt;td&gt;95&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;5&lt;/th&gt;&lt;td&gt;115&lt;/td&gt;&lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/details&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- FIX 5: the award badge carries meaning, so it becomes a real img element
+     with real alt text. If a CSS background is unavoidable, give the element
+     role=&quot;img&quot; and an aria-label instead. --&gt;
+&lt;img src=&quot;../../assets/media/award-badge.svg&quot; alt=&quot;Winner of the 2026 Riverline Prize&quot;
+     width=&quot;96&quot; height=&quot;96&quot;&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="decide-h">
+        <h2 id="decide-h">Choosing the right text alternative</h2>
+        <p>Most alt-text mistakes come from asking "what is in this picture?" instead of
+           <strong>"why is this picture here?"</strong> The same photograph needs different alt text
+           depending on the job it is doing on the page.</p>
+
+        <div class="table-scroll" tabindex="0" role="region" aria-labelledby="alt-decision-caption">
+          <table>
+            <caption id="alt-decision-caption">Deciding what alt text an image needs</caption>
+            <thead>
+              <tr>
+                <th scope="col">If the image…</th>
+                <th scope="col">Then…</th>
+                <th scope="col">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">is purely decorative</th>
+                <td>Use <code>alt=""</code>. The attribute must be present and empty. Better still, move it to CSS.</td>
+                <td><code>&lt;img src="flourish.svg" alt=""&gt;</code></td>
+              </tr>
+              <tr>
+                <th scope="row">carries information</th>
+                <td>Describe the information, not the picture. Skip "image of" — the screen reader already says "graphic".</td>
+                <td><code>alt="Estuary at low tide under a grey sky"</code></td>
+              </tr>
+              <tr>
+                <th scope="row">is the only content of a link or button</th>
+                <td>The alt text must describe <em>the destination or action</em>, not the artwork.</td>
+                <td><code>alt="Riverline Books home"</code>, not <code>alt="logo"</code></td>
+              </tr>
+              <tr>
+                <th scope="row">is complex — a chart, map or diagram</th>
+                <td>Short alt stating the conclusion, plus a full text equivalent nearby.</td>
+                <td>See the chart in the passing example</td>
+              </tr>
+              <tr>
+                <th scope="row">repeats adjacent text exactly</th>
+                <td>Use <code>alt=""</code>. Duplicating the caption makes a screen reader say it twice.</td>
+                <td>A thumbnail beside a headline that already links</td>
+              </tr>
+              <tr>
+                <th scope="row">contains text</th>
+                <td>The alt must contain that same text — and consider whether it should be real text instead
+                    (see <a href="../1.4.5-images-of-text/index.html">1.4.5 Images of Text</a>).</td>
+                <td><code>alt="Free delivery over £25"</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout--note">
+          <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Why the empty alt matters</p>
+          <p><code>alt=""</code> and a missing <code>alt</code> are not the same thing.
+             An empty alt tells assistive technology "this image carries nothing, skip it".
+             A <em>missing</em> alt tells it "I do not know what this is" — so screen readers
+             fall back to announcing the file name, which is usually worse than silence.
+             This one-character difference is the most common finding in any real audit.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="try-h">
+        <h2 id="try-h">Try it yourself</h2>
+        <ol>
+          <li>Open the failing example and run your screen reader's "list all images" command
+              (<kbd>Insert</kbd>+<kbd>Ctrl</kbd>+<kbd>G</kbd> in NVDA, the Rotor in VoiceOver).
+              Count how many tell you something useful.</li>
+          <li>Tab to the icon-only button in each example and listen to the difference.</li>
+          <li>Run <code>npm run test:a11y</code> and note that the scanner catches failures 1 and 3,
+              but is completely blind to failures 2, 4 and 5 — the alt text that exists but is useless.</li>
+        </ol>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Inspect every img, svg, canvas, area, input[type=image], and CSS background that carries meaning. Ask: if this image vanished and were replaced by its alt text, would the page still make sense? Decorative images must have alt=&quot;&quot; (not a missing alt, and not alt=&quot;decorative image&quot;).</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners detect a missing alt attribute reliably. They cannot judge whether the alt text is accurate or meaningful — alt=&quot;image&quot; passes every automated tool and fails every real user.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>image-alt</code></li>
+              <li><code>input-image-alt</code></li>
+              <li><code>area-alt</code></li>
+              <li><code>role-img-alt</code></li>
+              <li><code>svg-img-alt</code></li>
+              <li><code>object-alt</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.4.5-images-of-text/index.html">1.4.5 Images of Text (Level AA)</a></li>
+          <li><a href="../1.4.9-images-of-text-no-exception/index.html">1.4.9 Images of Text (No Exception) (Level AAA)</a></li>
+          <li><a href="../2.4.4-link-purpose-in-context/index.html">2.4.4 Link Purpose (In Context) (Level A)</a></li>
+          <li><a href="../4.1.2-name-role-value/index.html">4.1.2 Name, Role, Value (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">Understanding 1.1.1 Non-text Content</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#non-text-content">1.1.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <span></span>
+        <a href="../1.2.1-audio-only-and-video-only-prerecorded/index.html"><span class="sc-pager__dir">Next criterion</span>1.2.1 Audio-only and Video-only (Prerecorded)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

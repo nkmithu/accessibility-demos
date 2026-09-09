@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audit record — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A per-page conformance record covering all 86 WCAG 2.2 success criteria, for WCAG-EM Step 4.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+  <style>
+    .audit-table th, .audit-table td { padding: .35rem .5rem; font-size: .9375rem; }
+    .audit-table .principle-row th { background: var(--surface); font-size: 1rem; }
+    .rb { display: inline-flex; align-items: center; gap: .2rem; margin-right: .5rem; white-space: nowrap; }
+    .rb input { width: 20px; height: 20px; min-height: 20px; }
+    .rb label { font-weight: 400; margin: 0; font-size: .875rem; }
+    .audit-table input[type="text"] { min-height: 32px; padding: .2rem .35rem; }
+  </style>
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><a href="../../evaluation/index.html" aria-current="page">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><span aria-current="page">Audit record</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <h1>Audit record</h1>
+      <p class="sc-header__summary">WCAG-EM Step 4. One of these per page in your sample. Record an
+         outcome for every criterion in scope — and when you record "not applicable", write down
+         <em>why</em>, because an unexplained N/A is indistinguishable from a criterion you forgot.</p>
+
+      <div class="callout callout--note no-print">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Reading the "auto" column</p>
+        <p>It tells you which criteria a scanner might help with. Of the 86 criteria,
+           <strong>48 are marked "manual only"</strong> —
+           no automated rule exists for them at all. Those rows are the ones a rushed audit skips,
+           and they are where the barriers usually are.</p>
+      </div>
+
+      <form>
+        <h2>Page under evaluation</h2>
+        <div class="field"><label for="a-page">Page name</label><input type="text" id="a-page" size="35"></div>
+        <div class="field"><label for="a-url">URL</label><input type="text" id="a-url" size="50"></div>
+        <div class="field"><label for="a-date">Date evaluated</label><input type="text" id="a-date" size="20"></div>
+        <div class="field"><label for="a-by">Evaluated by</label><input type="text" id="a-by" size="30"></div>
+        <div class="field"><label for="a-env">Browser, assistive technology and tools used</label>
+          <textarea id="a-env" rows="2" cols="60"></textarea></div>
+
+        <h2>Results by criterion</h2>
+        <p class="prose">Target: WCAG 2.2 Level AA means the 31 Level&nbsp;A criteria
+           <em>plus</em> the 24 Level&nbsp;AA criteria —
+           55 rows. AAA rows are included for completeness; skip
+           them unless they are in your scope.</p>
+
+        <div class="table-scroll" tabindex="0" role="region" aria-labelledby="rec-cap">
+          <table class="audit-table">
+            <caption id="rec-cap">Conformance record for this page — all 86 WCAG 2.2 success criteria</caption>
+            <thead>
+              <tr>
+                <th scope="col">SC</th><th scope="col">Title</th><th scope="col">Level</th>
+                <th scope="col">Testable by</th><th scope="col">Result</th><th scope="col">Evidence / reason</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr class="principle-row">
+          <th colspan="6" scope="colgroup">Principle 1: Perceivable</th>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.1.1-non-text-content/index.html">1.1.1</a></th>
+          <td>Non-text Content</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.1.1" id="p-1.1.1"><label for="p-1.1.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.1.1" id="f-1.1.1"><label for="f-1.1.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.1.1" id="n-1.1.1"><label for="n-1.1.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.1.1 Non-text Content"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.1-audio-only-and-video-only-prerecorded/index.html">1.2.1</a></th>
+          <td>Audio-only and Video-only (Prerecorded)</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.1" id="p-1.2.1"><label for="p-1.2.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.1" id="f-1.2.1"><label for="f-1.2.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.1" id="n-1.2.1"><label for="n-1.2.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.1 Audio-only and Video-only (Prerecorded)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.2-captions-prerecorded/index.html">1.2.2</a></th>
+          <td>Captions (Prerecorded)</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.2" id="p-1.2.2"><label for="p-1.2.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.2" id="f-1.2.2"><label for="f-1.2.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.2" id="n-1.2.2"><label for="n-1.2.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.2 Captions (Prerecorded)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.3-audio-description-or-media-alternative-prerecorded/index.html">1.2.3</a></th>
+          <td>Audio Description or Media Alternative (Prerecorded)</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.3" id="p-1.2.3"><label for="p-1.2.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.3" id="f-1.2.3"><label for="f-1.2.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.3" id="n-1.2.3"><label for="n-1.2.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.3 Audio Description or Media Alternative (Prerecorded)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.4-captions-live/index.html">1.2.4</a></th>
+          <td>Captions (Live)</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.4" id="p-1.2.4"><label for="p-1.2.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.4" id="f-1.2.4"><label for="f-1.2.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.4" id="n-1.2.4"><label for="n-1.2.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.4 Captions (Live)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.5-audio-description-prerecorded/index.html">1.2.5</a></th>
+          <td>Audio Description (Prerecorded)</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.5" id="p-1.2.5"><label for="p-1.2.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.5" id="f-1.2.5"><label for="f-1.2.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.5" id="n-1.2.5"><label for="n-1.2.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.5 Audio Description (Prerecorded)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.6-sign-language-prerecorded/index.html">1.2.6</a></th>
+          <td>Sign Language (Prerecorded)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.6" id="p-1.2.6"><label for="p-1.2.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.6" id="f-1.2.6"><label for="f-1.2.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.6" id="n-1.2.6"><label for="n-1.2.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.6 Sign Language (Prerecorded)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.7-extended-audio-description-prerecorded/index.html">1.2.7</a></th>
+          <td>Extended Audio Description (Prerecorded)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.7" id="p-1.2.7"><label for="p-1.2.7">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.7" id="f-1.2.7"><label for="f-1.2.7">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.7" id="n-1.2.7"><label for="n-1.2.7">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.7 Extended Audio Description (Prerecorded)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.8-media-alternative-prerecorded/index.html">1.2.8</a></th>
+          <td>Media Alternative (Prerecorded)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.8" id="p-1.2.8"><label for="p-1.2.8">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.8" id="f-1.2.8"><label for="f-1.2.8">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.8" id="n-1.2.8"><label for="n-1.2.8">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.8 Media Alternative (Prerecorded)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.2.9-audio-only-live/index.html">1.2.9</a></th>
+          <td>Audio-only (Live)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.2.9" id="p-1.2.9"><label for="p-1.2.9">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.9" id="f-1.2.9"><label for="f-1.2.9">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.2.9" id="n-1.2.9"><label for="n-1.2.9">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.2.9 Audio-only (Live)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.3.1-info-and-relationships/index.html">1.3.1</a></th>
+          <td>Info and Relationships</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.3.1" id="p-1.3.1"><label for="p-1.3.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.1" id="f-1.3.1"><label for="f-1.3.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.1" id="n-1.3.1"><label for="n-1.3.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.3.1 Info and Relationships"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.3.2-meaningful-sequence/index.html">1.3.2</a></th>
+          <td>Meaningful Sequence</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.3.2" id="p-1.3.2"><label for="p-1.3.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.2" id="f-1.3.2"><label for="f-1.3.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.2" id="n-1.3.2"><label for="n-1.3.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.3.2 Meaningful Sequence"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.3.3-sensory-characteristics/index.html">1.3.3</a></th>
+          <td>Sensory Characteristics</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.3.3" id="p-1.3.3"><label for="p-1.3.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.3" id="f-1.3.3"><label for="f-1.3.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.3" id="n-1.3.3"><label for="n-1.3.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.3.3 Sensory Characteristics"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.3.4-orientation/index.html">1.3.4</a></th>
+          <td>Orientation</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.3.4" id="p-1.3.4"><label for="p-1.3.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.4" id="f-1.3.4"><label for="f-1.3.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.4" id="n-1.3.4"><label for="n-1.3.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.3.4 Orientation"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.3.5-identify-input-purpose/index.html">1.3.5</a></th>
+          <td>Identify Input Purpose</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.3.5" id="p-1.3.5"><label for="p-1.3.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.5" id="f-1.3.5"><label for="f-1.3.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.5" id="n-1.3.5"><label for="n-1.3.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.3.5 Identify Input Purpose"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.3.6-identify-purpose/index.html">1.3.6</a></th>
+          <td>Identify Purpose</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.3.6" id="p-1.3.6"><label for="p-1.3.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.6" id="f-1.3.6"><label for="f-1.3.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.3.6" id="n-1.3.6"><label for="n-1.3.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.3.6 Identify Purpose"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.1-use-of-color/index.html">1.4.1</a></th>
+          <td>Use of Color</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.1" id="p-1.4.1"><label for="p-1.4.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.1" id="f-1.4.1"><label for="f-1.4.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.1" id="n-1.4.1"><label for="n-1.4.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.1 Use of Color"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.2-audio-control/index.html">1.4.2</a></th>
+          <td>Audio Control</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.2" id="p-1.4.2"><label for="p-1.4.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.2" id="f-1.4.2"><label for="f-1.4.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.2" id="n-1.4.2"><label for="n-1.4.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.2 Audio Control"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.3-contrast-minimum/index.html">1.4.3</a></th>
+          <td>Contrast (Minimum)</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.3" id="p-1.4.3"><label for="p-1.4.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.3" id="f-1.4.3"><label for="f-1.4.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.3" id="n-1.4.3"><label for="n-1.4.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.3 Contrast (Minimum)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.4-resize-text/index.html">1.4.4</a></th>
+          <td>Resize Text</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.4" id="p-1.4.4"><label for="p-1.4.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.4" id="f-1.4.4"><label for="f-1.4.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.4" id="n-1.4.4"><label for="n-1.4.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.4 Resize Text"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.5-images-of-text/index.html">1.4.5</a></th>
+          <td>Images of Text</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.5" id="p-1.4.5"><label for="p-1.4.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.5" id="f-1.4.5"><label for="f-1.4.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.5" id="n-1.4.5"><label for="n-1.4.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.5 Images of Text"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.6-contrast-enhanced/index.html">1.4.6</a></th>
+          <td>Contrast (Enhanced)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.6" id="p-1.4.6"><label for="p-1.4.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.6" id="f-1.4.6"><label for="f-1.4.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.6" id="n-1.4.6"><label for="n-1.4.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.6 Contrast (Enhanced)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.7-low-or-no-background-audio/index.html">1.4.7</a></th>
+          <td>Low or No Background Audio</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.7" id="p-1.4.7"><label for="p-1.4.7">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.7" id="f-1.4.7"><label for="f-1.4.7">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.7" id="n-1.4.7"><label for="n-1.4.7">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.7 Low or No Background Audio"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.8-visual-presentation/index.html">1.4.8</a></th>
+          <td>Visual Presentation</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.8" id="p-1.4.8"><label for="p-1.4.8">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.8" id="f-1.4.8"><label for="f-1.4.8">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.8" id="n-1.4.8"><label for="n-1.4.8">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.8 Visual Presentation"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.9-images-of-text-no-exception/index.html">1.4.9</a></th>
+          <td>Images of Text (No Exception)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.9" id="p-1.4.9"><label for="p-1.4.9">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.9" id="f-1.4.9"><label for="f-1.4.9">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.9" id="n-1.4.9"><label for="n-1.4.9">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.9 Images of Text (No Exception)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.10-reflow/index.html">1.4.10</a></th>
+          <td>Reflow</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.10" id="p-1.4.10"><label for="p-1.4.10">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.10" id="f-1.4.10"><label for="f-1.4.10">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.10" id="n-1.4.10"><label for="n-1.4.10">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.10 Reflow"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.11-non-text-contrast/index.html">1.4.11</a></th>
+          <td>Non-text Contrast</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.11" id="p-1.4.11"><label for="p-1.4.11">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.11" id="f-1.4.11"><label for="f-1.4.11">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.11" id="n-1.4.11"><label for="n-1.4.11">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.11 Non-text Contrast"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.12-text-spacing/index.html">1.4.12</a></th>
+          <td>Text Spacing</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.12" id="p-1.4.12"><label for="p-1.4.12">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.12" id="f-1.4.12"><label for="f-1.4.12">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.12" id="n-1.4.12"><label for="n-1.4.12">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.12 Text Spacing"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/1.4.13-content-on-hover-or-focus/index.html">1.4.13</a></th>
+          <td>Content on Hover or Focus</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-1.4.13" id="p-1.4.13"><label for="p-1.4.13">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.13" id="f-1.4.13"><label for="f-1.4.13">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-1.4.13" id="n-1.4.13"><label for="n-1.4.13">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 1.4.13 Content on Hover or Focus"></td>
+        </tr>
+        <tr class="principle-row">
+          <th colspan="6" scope="colgroup">Principle 2: Operable</th>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.1.1-keyboard/index.html">2.1.1</a></th>
+          <td>Keyboard</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.1.1" id="p-2.1.1"><label for="p-2.1.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.1.1" id="f-2.1.1"><label for="f-2.1.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.1.1" id="n-2.1.1"><label for="n-2.1.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.1.1 Keyboard"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.1.2-no-keyboard-trap/index.html">2.1.2</a></th>
+          <td>No Keyboard Trap</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.1.2" id="p-2.1.2"><label for="p-2.1.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.1.2" id="f-2.1.2"><label for="f-2.1.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.1.2" id="n-2.1.2"><label for="n-2.1.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.1.2 No Keyboard Trap"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.1.3-keyboard-no-exception/index.html">2.1.3</a></th>
+          <td>Keyboard (No Exception)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.1.3" id="p-2.1.3"><label for="p-2.1.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.1.3" id="f-2.1.3"><label for="f-2.1.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.1.3" id="n-2.1.3"><label for="n-2.1.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.1.3 Keyboard (No Exception)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.1.4-character-key-shortcuts/index.html">2.1.4</a></th>
+          <td>Character Key Shortcuts</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.1.4" id="p-2.1.4"><label for="p-2.1.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.1.4" id="f-2.1.4"><label for="f-2.1.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.1.4" id="n-2.1.4"><label for="n-2.1.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.1.4 Character Key Shortcuts"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.2.1-timing-adjustable/index.html">2.2.1</a></th>
+          <td>Timing Adjustable</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.2.1" id="p-2.2.1"><label for="p-2.2.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.1" id="f-2.2.1"><label for="f-2.2.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.1" id="n-2.2.1"><label for="n-2.2.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.2.1 Timing Adjustable"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.2.2-pause-stop-hide/index.html">2.2.2</a></th>
+          <td>Pause, Stop, Hide</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.2.2" id="p-2.2.2"><label for="p-2.2.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.2" id="f-2.2.2"><label for="f-2.2.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.2" id="n-2.2.2"><label for="n-2.2.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.2.2 Pause, Stop, Hide"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.2.3-no-timing/index.html">2.2.3</a></th>
+          <td>No Timing</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.2.3" id="p-2.2.3"><label for="p-2.2.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.3" id="f-2.2.3"><label for="f-2.2.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.3" id="n-2.2.3"><label for="n-2.2.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.2.3 No Timing"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.2.4-interruptions/index.html">2.2.4</a></th>
+          <td>Interruptions</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.2.4" id="p-2.2.4"><label for="p-2.2.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.4" id="f-2.2.4"><label for="f-2.2.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.4" id="n-2.2.4"><label for="n-2.2.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.2.4 Interruptions"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.2.5-re-authenticating/index.html">2.2.5</a></th>
+          <td>Re-authenticating</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.2.5" id="p-2.2.5"><label for="p-2.2.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.5" id="f-2.2.5"><label for="f-2.2.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.5" id="n-2.2.5"><label for="n-2.2.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.2.5 Re-authenticating"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.2.6-timeouts/index.html">2.2.6</a></th>
+          <td>Timeouts</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.2.6" id="p-2.2.6"><label for="p-2.2.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.6" id="f-2.2.6"><label for="f-2.2.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.2.6" id="n-2.2.6"><label for="n-2.2.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.2.6 Timeouts"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.3.1-three-flashes-or-below-threshold/index.html">2.3.1</a></th>
+          <td>Three Flashes or Below Threshold</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.3.1" id="p-2.3.1"><label for="p-2.3.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.3.1" id="f-2.3.1"><label for="f-2.3.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.3.1" id="n-2.3.1"><label for="n-2.3.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.3.1 Three Flashes or Below Threshold"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.3.2-three-flashes/index.html">2.3.2</a></th>
+          <td>Three Flashes</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.3.2" id="p-2.3.2"><label for="p-2.3.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.3.2" id="f-2.3.2"><label for="f-2.3.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.3.2" id="n-2.3.2"><label for="n-2.3.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.3.2 Three Flashes"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.3.3-animation-from-interactions/index.html">2.3.3</a></th>
+          <td>Animation from Interactions</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.3.3" id="p-2.3.3"><label for="p-2.3.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.3.3" id="f-2.3.3"><label for="f-2.3.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.3.3" id="n-2.3.3"><label for="n-2.3.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.3.3 Animation from Interactions"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.1-bypass-blocks/index.html">2.4.1</a></th>
+          <td>Bypass Blocks</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.1" id="p-2.4.1"><label for="p-2.4.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.1" id="f-2.4.1"><label for="f-2.4.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.1" id="n-2.4.1"><label for="n-2.4.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.1 Bypass Blocks"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.2-page-titled/index.html">2.4.2</a></th>
+          <td>Page Titled</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.2" id="p-2.4.2"><label for="p-2.4.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.2" id="f-2.4.2"><label for="f-2.4.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.2" id="n-2.4.2"><label for="n-2.4.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.2 Page Titled"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.3-focus-order/index.html">2.4.3</a></th>
+          <td>Focus Order</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.3" id="p-2.4.3"><label for="p-2.4.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.3" id="f-2.4.3"><label for="f-2.4.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.3" id="n-2.4.3"><label for="n-2.4.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.3 Focus Order"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.4-link-purpose-in-context/index.html">2.4.4</a></th>
+          <td>Link Purpose (In Context)</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.4" id="p-2.4.4"><label for="p-2.4.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.4" id="f-2.4.4"><label for="f-2.4.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.4" id="n-2.4.4"><label for="n-2.4.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.4 Link Purpose (In Context)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.5-multiple-ways/index.html">2.4.5</a></th>
+          <td>Multiple Ways</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.5" id="p-2.4.5"><label for="p-2.4.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.5" id="f-2.4.5"><label for="f-2.4.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.5" id="n-2.4.5"><label for="n-2.4.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.5 Multiple Ways"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.6-headings-and-labels/index.html">2.4.6</a></th>
+          <td>Headings and Labels</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.6" id="p-2.4.6"><label for="p-2.4.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.6" id="f-2.4.6"><label for="f-2.4.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.6" id="n-2.4.6"><label for="n-2.4.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.6 Headings and Labels"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.7-focus-visible/index.html">2.4.7</a></th>
+          <td>Focus Visible</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.7" id="p-2.4.7"><label for="p-2.4.7">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.7" id="f-2.4.7"><label for="f-2.4.7">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.7" id="n-2.4.7"><label for="n-2.4.7">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.7 Focus Visible"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.8-location/index.html">2.4.8</a></th>
+          <td>Location</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.8" id="p-2.4.8"><label for="p-2.4.8">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.8" id="f-2.4.8"><label for="f-2.4.8">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.8" id="n-2.4.8"><label for="n-2.4.8">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.8 Location"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.9-link-purpose-link-only/index.html">2.4.9</a></th>
+          <td>Link Purpose (Link Only)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.9" id="p-2.4.9"><label for="p-2.4.9">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.9" id="f-2.4.9"><label for="f-2.4.9">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.9" id="n-2.4.9"><label for="n-2.4.9">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.9 Link Purpose (Link Only)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.10-section-headings/index.html">2.4.10</a></th>
+          <td>Section Headings</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.10" id="p-2.4.10"><label for="p-2.4.10">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.10" id="f-2.4.10"><label for="f-2.4.10">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.10" id="n-2.4.10"><label for="n-2.4.10">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.10 Section Headings"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.11-focus-not-obscured-minimum/index.html">2.4.11</a></th>
+          <td>Focus Not Obscured (Minimum)</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.11" id="p-2.4.11"><label for="p-2.4.11">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.11" id="f-2.4.11"><label for="f-2.4.11">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.11" id="n-2.4.11"><label for="n-2.4.11">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.11 Focus Not Obscured (Minimum)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.12-focus-not-obscured-enhanced/index.html">2.4.12</a></th>
+          <td>Focus Not Obscured (Enhanced)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.12" id="p-2.4.12"><label for="p-2.4.12">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.12" id="f-2.4.12"><label for="f-2.4.12">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.12" id="n-2.4.12"><label for="n-2.4.12">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.12 Focus Not Obscured (Enhanced)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.4.13-focus-appearance/index.html">2.4.13</a></th>
+          <td>Focus Appearance</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.4.13" id="p-2.4.13"><label for="p-2.4.13">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.13" id="f-2.4.13"><label for="f-2.4.13">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.4.13" id="n-2.4.13"><label for="n-2.4.13">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.4.13 Focus Appearance"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.5.1-pointer-gestures/index.html">2.5.1</a></th>
+          <td>Pointer Gestures</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.5.1" id="p-2.5.1"><label for="p-2.5.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.1" id="f-2.5.1"><label for="f-2.5.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.1" id="n-2.5.1"><label for="n-2.5.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.5.1 Pointer Gestures"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.5.2-pointer-cancellation/index.html">2.5.2</a></th>
+          <td>Pointer Cancellation</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.5.2" id="p-2.5.2"><label for="p-2.5.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.2" id="f-2.5.2"><label for="f-2.5.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.2" id="n-2.5.2"><label for="n-2.5.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.5.2 Pointer Cancellation"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.5.3-label-in-name/index.html">2.5.3</a></th>
+          <td>Label in Name</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.5.3" id="p-2.5.3"><label for="p-2.5.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.3" id="f-2.5.3"><label for="f-2.5.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.3" id="n-2.5.3"><label for="n-2.5.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.5.3 Label in Name"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.5.4-motion-actuation/index.html">2.5.4</a></th>
+          <td>Motion Actuation</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.5.4" id="p-2.5.4"><label for="p-2.5.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.4" id="f-2.5.4"><label for="f-2.5.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.4" id="n-2.5.4"><label for="n-2.5.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.5.4 Motion Actuation"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.5.5-target-size-enhanced/index.html">2.5.5</a></th>
+          <td>Target Size (Enhanced)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.5.5" id="p-2.5.5"><label for="p-2.5.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.5" id="f-2.5.5"><label for="f-2.5.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.5" id="n-2.5.5"><label for="n-2.5.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.5.5 Target Size (Enhanced)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.5.6-concurrent-input-mechanisms/index.html">2.5.6</a></th>
+          <td>Concurrent Input Mechanisms</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.5.6" id="p-2.5.6"><label for="p-2.5.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.6" id="f-2.5.6"><label for="f-2.5.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.6" id="n-2.5.6"><label for="n-2.5.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.5.6 Concurrent Input Mechanisms"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.5.7-dragging-movements/index.html">2.5.7</a></th>
+          <td>Dragging Movements</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.5.7" id="p-2.5.7"><label for="p-2.5.7">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.7" id="f-2.5.7"><label for="f-2.5.7">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.7" id="n-2.5.7"><label for="n-2.5.7">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.5.7 Dragging Movements"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/2.5.8-target-size-minimum/index.html">2.5.8</a></th>
+          <td>Target Size (Minimum)</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-2.5.8" id="p-2.5.8"><label for="p-2.5.8">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.8" id="f-2.5.8"><label for="f-2.5.8">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-2.5.8" id="n-2.5.8"><label for="n-2.5.8">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 2.5.8 Target Size (Minimum)"></td>
+        </tr>
+        <tr class="principle-row">
+          <th colspan="6" scope="colgroup">Principle 3: Understandable</th>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.1.1-language-of-page/index.html">3.1.1</a></th>
+          <td>Language of Page</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.1.1" id="p-3.1.1"><label for="p-3.1.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.1" id="f-3.1.1"><label for="f-3.1.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.1" id="n-3.1.1"><label for="n-3.1.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.1.1 Language of Page"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.1.2-language-of-parts/index.html">3.1.2</a></th>
+          <td>Language of Parts</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.1.2" id="p-3.1.2"><label for="p-3.1.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.2" id="f-3.1.2"><label for="f-3.1.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.2" id="n-3.1.2"><label for="n-3.1.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.1.2 Language of Parts"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.1.3-unusual-words/index.html">3.1.3</a></th>
+          <td>Unusual Words</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.1.3" id="p-3.1.3"><label for="p-3.1.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.3" id="f-3.1.3"><label for="f-3.1.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.3" id="n-3.1.3"><label for="n-3.1.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.1.3 Unusual Words"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.1.4-abbreviations/index.html">3.1.4</a></th>
+          <td>Abbreviations</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.1.4" id="p-3.1.4"><label for="p-3.1.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.4" id="f-3.1.4"><label for="f-3.1.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.4" id="n-3.1.4"><label for="n-3.1.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.1.4 Abbreviations"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.1.5-reading-level/index.html">3.1.5</a></th>
+          <td>Reading Level</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.1.5" id="p-3.1.5"><label for="p-3.1.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.5" id="f-3.1.5"><label for="f-3.1.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.5" id="n-3.1.5"><label for="n-3.1.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.1.5 Reading Level"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.1.6-pronunciation/index.html">3.1.6</a></th>
+          <td>Pronunciation</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.1.6" id="p-3.1.6"><label for="p-3.1.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.6" id="f-3.1.6"><label for="f-3.1.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.1.6" id="n-3.1.6"><label for="n-3.1.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.1.6 Pronunciation"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.2.1-on-focus/index.html">3.2.1</a></th>
+          <td>On Focus</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.2.1" id="p-3.2.1"><label for="p-3.2.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.1" id="f-3.2.1"><label for="f-3.2.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.1" id="n-3.2.1"><label for="n-3.2.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.2.1 On Focus"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.2.2-on-input/index.html">3.2.2</a></th>
+          <td>On Input</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.2.2" id="p-3.2.2"><label for="p-3.2.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.2" id="f-3.2.2"><label for="f-3.2.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.2" id="n-3.2.2"><label for="n-3.2.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.2.2 On Input"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.2.3-consistent-navigation/index.html">3.2.3</a></th>
+          <td>Consistent Navigation</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.2.3" id="p-3.2.3"><label for="p-3.2.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.3" id="f-3.2.3"><label for="f-3.2.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.3" id="n-3.2.3"><label for="n-3.2.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.2.3 Consistent Navigation"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.2.4-consistent-identification/index.html">3.2.4</a></th>
+          <td>Consistent Identification</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.2.4" id="p-3.2.4"><label for="p-3.2.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.4" id="f-3.2.4"><label for="f-3.2.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.4" id="n-3.2.4"><label for="n-3.2.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.2.4 Consistent Identification"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.2.5-change-on-request/index.html">3.2.5</a></th>
+          <td>Change on Request</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.2.5" id="p-3.2.5"><label for="p-3.2.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.5" id="f-3.2.5"><label for="f-3.2.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.5" id="n-3.2.5"><label for="n-3.2.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.2.5 Change on Request"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.2.6-consistent-help/index.html">3.2.6</a></th>
+          <td>Consistent Help</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.2.6" id="p-3.2.6"><label for="p-3.2.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.6" id="f-3.2.6"><label for="f-3.2.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.2.6" id="n-3.2.6"><label for="n-3.2.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.2.6 Consistent Help"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.1-error-identification/index.html">3.3.1</a></th>
+          <td>Error Identification</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.1" id="p-3.3.1"><label for="p-3.3.1">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.1" id="f-3.3.1"><label for="f-3.3.1">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.1" id="n-3.3.1"><label for="n-3.3.1">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.1 Error Identification"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.2-labels-or-instructions/index.html">3.3.2</a></th>
+          <td>Labels or Instructions</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.2" id="p-3.3.2"><label for="p-3.3.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.2" id="f-3.3.2"><label for="f-3.3.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.2" id="n-3.3.2"><label for="n-3.3.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.2 Labels or Instructions"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.3-error-suggestion/index.html">3.3.3</a></th>
+          <td>Error Suggestion</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.3" id="p-3.3.3"><label for="p-3.3.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.3" id="f-3.3.3"><label for="f-3.3.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.3" id="n-3.3.3"><label for="n-3.3.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.3 Error Suggestion"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.4-error-prevention-legal-financial-data/index.html">3.3.4</a></th>
+          <td>Error Prevention (Legal, Financial, Data)</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.4" id="p-3.3.4"><label for="p-3.3.4">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.4" id="f-3.3.4"><label for="f-3.3.4">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.4" id="n-3.3.4"><label for="n-3.3.4">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.4 Error Prevention (Legal, Financial, Data)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.5-help/index.html">3.3.5</a></th>
+          <td>Help</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.5" id="p-3.3.5"><label for="p-3.3.5">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.5" id="f-3.3.5"><label for="f-3.3.5">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.5" id="n-3.3.5"><label for="n-3.3.5">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.5 Help"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.6-error-prevention-all/index.html">3.3.6</a></th>
+          <td>Error Prevention (All)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.6" id="p-3.3.6"><label for="p-3.3.6">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.6" id="f-3.3.6"><label for="f-3.3.6">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.6" id="n-3.3.6"><label for="n-3.3.6">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.6 Error Prevention (All)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.7-redundant-entry/index.html">3.3.7</a></th>
+          <td>Redundant Entry</td>
+          <td><span class="level level--A">A</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.7" id="p-3.3.7"><label for="p-3.3.7">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.7" id="f-3.3.7"><label for="f-3.3.7">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.7" id="n-3.3.7"><label for="n-3.3.7">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.7 Redundant Entry"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.8-accessible-authentication-minimum/index.html">3.3.8</a></th>
+          <td>Accessible Authentication (Minimum)</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.8" id="p-3.3.8"><label for="p-3.3.8">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.8" id="f-3.3.8"><label for="f-3.3.8">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.8" id="n-3.3.8"><label for="n-3.3.8">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.8 Accessible Authentication (Minimum)"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/3.3.9-accessible-authentication-enhanced/index.html">3.3.9</a></th>
+          <td>Accessible Authentication (Enhanced)</td>
+          <td><span class="level level--AAA">AAA</span></td>
+          <td>manual only</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-3.3.9" id="p-3.3.9"><label for="p-3.3.9">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.9" id="f-3.3.9"><label for="f-3.3.9">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-3.3.9" id="n-3.3.9"><label for="n-3.3.9">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 3.3.9 Accessible Authentication (Enhanced)"></td>
+        </tr>
+        <tr class="principle-row">
+          <th colspan="6" scope="colgroup">Principle 4: Robust</th>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/4.1.2-name-role-value/index.html">4.1.2</a></th>
+          <td>Name, Role, Value</td>
+          <td><span class="level level--A">A</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-4.1.2" id="p-4.1.2"><label for="p-4.1.2">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-4.1.2" id="f-4.1.2"><label for="f-4.1.2">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-4.1.2" id="n-4.1.2"><label for="n-4.1.2">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 4.1.2 Name, Role, Value"></td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="../../demos/4.1.3-status-messages/index.html">4.1.3</a></th>
+          <td>Status Messages</td>
+          <td><span class="level level--AA">AA</span></td>
+          <td>partly auto</td>
+          <td>
+            <span class="rb"><input type="radio" name="r-4.1.3" id="p-4.1.3"><label for="p-4.1.3">Pass</label></span>
+            <span class="rb"><input type="radio" name="r-4.1.3" id="f-4.1.3"><label for="f-4.1.3">Fail</label></span>
+            <span class="rb"><input type="radio" name="r-4.1.3" id="n-4.1.3"><label for="n-4.1.3">N/A</label></span>
+          </td>
+          <td><input type="text" size="24" aria-label="Evidence or reason for 4.1.3 Status Messages"></td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+
+      <p class="no-print"><button type="button" class="button" onclick="window.print()">Print this record</button></p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.3.3 Animation from Interactions</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    html{scroll-behavior:smooth}
+    .hero{height:180px;border-radius:6px;background:linear-gradient(120deg,#0a4f9e,#8fa6b8);
+          color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+          font-weight:700;transition:transform .5s ease}
+    .hero:hover{transform:scale(1.12) rotate(-1.5deg)}
+    .panel{border:1px solid var(--border);border-radius:6px;padding:1rem;margin:1rem 0;
+           transition:transform .45s cubic-bezier(.2,1.4,.4,1)}
+    .panel:hover{transform:translateX(28px) scale(1.05)}
+    .spacer{height:520px}
+    /* FAILURE: no prefers-reduced-motion block anywhere. A user who has asked
+       their operating system to reduce motion gets every one of these. */
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.3.3.
+     Hover the panels and use the jump link.</p>
+
+  <!-- excerpt:start -->
+  <h1>Spring festival</h1>
+
+  <!-- FAILURE 1: a large hero that scales and rotates on hover.
+       FAILURE 2: panels that slide and scale on hover.
+       FAILURE 3: smooth scrolling on every in-page jump, which sends the whole
+       viewport sliding hundreds of pixels.
+
+       Who this affects: people with vestibular disorders. Large movement in the
+       peripheral field creates a mismatch between what the eyes report and what
+       the inner ear reports, and the result is dizziness, nausea and migraine
+       that can last for hours. It is a physical response, not a preference. -->
+  <div class="hero">Three days of events</div>
+
+  <p><a href="#end">Jump to the programme</a></p>
+
+  <div class="panel"><h2>Friday</h2><p>Opening night readings.</p></div>
+  <div class="panel"><h2>Saturday</h2><p>Workshops and signings.</p></div>
+
+  <div class="spacer"></div>
+  <h2 id="end">Programme</h2>
+  <p>The full programme.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

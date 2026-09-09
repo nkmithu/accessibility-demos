@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.4 Captions (Live)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .stage { background:#14171c; color:#fff; border-radius:6px; padding:2rem 1rem; text-align:center; }
+    .live-dot { display:inline-block; width:.6rem; height:.6rem; border-radius:50%;
+                background:#ff6b6b; vertical-align:middle; margin-right:.4rem; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.4 Captions (Live).</p>
+
+  <!-- excerpt:start -->
+  <h1>Live: Spring festival opening</h1>
+
+  <!-- FAILURE: a live stream with no real-time captions.
+       There is no captions track, no CART operator, and no live transcript pane.
+       A deaf or hard-of-hearing attendee is excluded from the event AS IT
+       HAPPENS - which is the whole point of attending something live. -->
+  <div class="stage">
+    <p><span class="live-dot" aria-hidden="true"></span><strong>LIVE</strong> — streaming now</p>
+    <p>Opening remarks from the festival director</p>
+  </div>
+
+  <!-- FAILURE 2: the common excuse, stated openly. Publishing a transcript
+       afterwards does NOT satisfy 1.2.4. The criterion is about access at the
+       time of broadcast: a recording posted tomorrow means a deaf attendee could
+       not ask a question, could not react with everyone else, and could not
+       participate. -->
+  <p>A full transcript will be published within 48 hours of the event.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

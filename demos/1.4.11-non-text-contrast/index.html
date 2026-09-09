@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.4.11 Non-text Contrast (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="User interface components and meaningful graphical objects have a contrast ratio of at least 3:1 against adjacent colours — input borders, focus indicators, icons, and chart elements.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.4.11 Non-text Contrast</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.4.11</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 1.4 Distinguishable</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Non-text Contrast</h1>
+        <p class="sc-header__summary">User interface components and meaningful graphical objects have a contrast ratio of at least 3:1 against adjacent colours — input borders, focus indicators, icons, and chart elements.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Low-vision users who can read the label but cannot see where the input box ends, whether a checkbox is ticked, or which element has focus.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.4.11
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.4.11 Non-text Contrast"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Preferences&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: the input border is 1.1:1 against the page. The LABEL is
+     perfectly readable, so 1.4.3 passes - but a low-vision user cannot see
+     where the box begins or ends, or that there is a box at all.
+     1.4.11 exists precisely because 1.4.3 only covers text. --&gt;
+&lt;div class=&quot;field&quot;&gt;
+  &lt;label for=&quot;nm&quot;&gt;Display name&lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;nm&quot; class=&quot;ghost-input ghost-focus&quot;&gt;
+&lt;/div&gt;
+
+&lt;!-- FAILURE 2: the focus indicator is 1.4:1 against the background.
+     It technically exists, so 2.4.7 Focus Visible is arguably met - but you
+     cannot see it, so 1.4.11 fails. --&gt;
+&lt;p&gt;Tab to the field above and look for the focus ring.&lt;/p&gt;
+
+&lt;!-- FAILURE 3: a toggle whose track and knob are both near-white. Nothing
+     communicates on or off except a shade change nobody can perceive. --&gt;
+&lt;p&gt;&lt;span class=&quot;toggle&quot; role=&quot;img&quot; aria-label=&quot;Toggle, currently off&quot;&gt;&lt;/span&gt; Email me about events&lt;/p&gt;
+
+&lt;!-- FAILURE 4: a meaningful icon at 1.2:1. Icons that convey information are
+     &quot;graphical objects&quot; and are in scope. --&gt;
+&lt;p&gt;&lt;span class=&quot;icon-faint&quot; aria-hidden=&quot;true&quot;&gt;★★★★☆&lt;/span&gt; Rated 4 out of 5&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.4.11
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.4.11 Non-text Contrast"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Preferences&lt;/h1&gt;
+
+&lt;!-- FIX 1: the input boundary is 4.5:1 against the page - comfortably over the
+     3:1 the criterion requires. The threshold is 3:1, not 4.5:1, because
+     shapes are easier to perceive than letterforms. --&gt;
+&lt;div class=&quot;field&quot;&gt;
+  &lt;label for=&quot;nm&quot;&gt;Display name&lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;nm&quot; class=&quot;solid-input&quot;&gt;
+&lt;/div&gt;
+
+&lt;!-- FIX 2: a focus indicator at 8:1 and 3px thick. It clears 1.4.11 for
+     contrast, 2.4.7 for visibility, and 2.4.13 at AAA for size. --&gt;
+&lt;p&gt;Tab to the field above — the focus ring is unmistakable.&lt;/p&gt;
+
+&lt;!-- FIX 3: the toggle's track has a visible border and its knob contrasts with
+     the track, so both the control's boundary and its state are perceivable. --&gt;
+&lt;p&gt;&lt;span class=&quot;toggle&quot; role=&quot;img&quot; aria-label=&quot;Toggle, currently off&quot;&gt;&lt;/span&gt; Email me about events&lt;/p&gt;
+
+&lt;!-- FIX 4: a meaningful icon at 6.9:1, with the rating also given in text -
+     which is 1.4.1 Use of Color doing its job alongside this criterion. --&gt;
+&lt;p&gt;&lt;span class=&quot;icon-strong&quot; aria-hidden=&quot;true&quot;&gt;★★★★☆&lt;/span&gt; Rated 4 out of 5&lt;/p&gt;
+
+&lt;!-- What is in scope for 1.4.11:
+       - the boundary of any control you need to see to use it
+       - the visual state of a control (checked, selected, current)
+       - the parts of a graphic you need to understand it: chart bars,
+         map pins, meaningful icons
+     What is NOT: decorative graphics, inactive controls, logotypes, and
+     anything where a particular presentation is essential.
+
+     Automated coverage here is very thin. Expect to measure most of this by
+     hand with a colour picker. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Check the boundary of every control against its background, in every state. Check icons that convey meaning and the parts of charts needed to understand them. Pure-white input fields on a white page are the most common failure.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Very limited automated coverage. Most non-text contrast must be measured by hand with a colour picker.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.4.3-contrast-minimum/index.html">1.4.3 Contrast (Minimum) (Level AA)</a></li>
+          <li><a href="../2.4.7-focus-visible/index.html">2.4.7 Focus Visible (Level AA)</a></li>
+          <li><a href="../2.4.13-focus-appearance/index.html">2.4.13 Focus Appearance (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html">Understanding 1.4.11 Non-text Contrast</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#non-text-contrast">1.4.11 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.4.10-reflow/index.html"><span class="sc-pager__dir">Previous criterion</span>1.4.10 Reflow</a>
+        <a href="../1.4.12-text-spacing/index.html"><span class="sc-pager__dir">Next criterion</span>1.4.12 Text Spacing</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

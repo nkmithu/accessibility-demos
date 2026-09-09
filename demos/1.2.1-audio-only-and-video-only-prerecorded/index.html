@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.2.1 Audio-only and Video-only (Prerecorded) (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Prerecorded audio-only content has a text transcript. Prerecorded video-only content has either a transcript or an audio track describing what is shown.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.2.1 Audio-only and Video-only (Prerecorded)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.2.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 1.2 Time-based Media</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Audio-only and Video-only (Prerecorded)</h1>
+        <p class="sc-header__summary">Prerecorded audio-only content has a text transcript. Prerecorded video-only content has either a transcript or an audio track describing what is shown.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Deaf and hard-of-hearing users cannot access audio-only content such as a podcast. Blind users cannot access silent video such as an animated explainer or a screen recording with no narration.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.2.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.2.1 Audio-only and Video-only (Prerecorded)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Media library&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: audio-only content with no transcript. A deaf or hard-of-hearing
+     user gets nothing at all from this file. Note the criterion is not
+     satisfied by a caption track - audio-only content needs a TEXT
+     ALTERNATIVE that can be read. --&gt;
+&lt;h2&gt;Shop doorbell recording&lt;/h2&gt;
+&lt;audio controls src=&quot;../../assets/media/shop-doorbell.mp3&quot;&gt;&lt;/audio&gt;
+
+&lt;!-- FAILURE 2: video-only content with no transcript and no described audio.
+     This clip has NO audio track at all, so a blind user gets nothing:
+     silence, and no way to find out what is on screen. All the information -
+     the opening hours, the delivery threshold, the web address - exists only
+     as pixels. --&gt;
+&lt;h2&gt;A short tour of the shop&lt;/h2&gt;
+&lt;video controls width=&quot;640&quot; src=&quot;../../assets/media/shop-tour-silent.mp4&quot;&gt;&lt;/video&gt;
+
+&lt;!-- Neither piece of media links to any alternative anywhere on the page. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.2.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.2.1 Audio-only and Video-only (Prerecorded)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Media library&lt;/h1&gt;
+
+&lt;!-- FIX 1: audio-only gets a full text transcript, on the same page, right
+     next to the player. Putting it behind a &lt;details&gt; keeps the page tidy
+     without hiding it from assistive technology - the summary is a real
+     control, announced as &quot;Transcript, button, collapsed&quot;. --&gt;
+&lt;h2&gt;Shop doorbell recording&lt;/h2&gt;
+&lt;audio controls src=&quot;../../assets/media/shop-doorbell.mp3&quot;&gt;&lt;/audio&gt;
+&lt;details class=&quot;transcript&quot;&gt;
+  &lt;summary&gt;Transcript of &quot;Shop doorbell&quot; (audio only, 20 seconds)&lt;/summary&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;00:00&lt;/dt&gt;&lt;dd&gt;A shop doorbell chimes twice, high then low, as a customer enters.&lt;/dd&gt;
+    &lt;dt&gt;00:09&lt;/dt&gt;&lt;dd&gt;A small counter bell rings once.&lt;/dd&gt;
+    &lt;dt&gt;00:13&lt;/dt&gt;&lt;dd&gt;A telephone rings four times and is not answered.&lt;/dd&gt;
+    &lt;dt&gt;00:18&lt;/dt&gt;&lt;dd&gt;The doorbell chimes again, low then high, as the door closes.&lt;/dd&gt;
+  &lt;/dl&gt;
+  &lt;p&gt;There is no speech in this recording.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;!-- FIX 2: video-only gets a text alternative describing everything shown.
+     1.2.1 offers a choice for video-only: a text alternative OR an audio track
+     that describes the visuals. The text version is used here because it also
+     serves deafblind users reading with a braille display. --&gt;
+&lt;h2&gt;A short tour of the shop&lt;/h2&gt;
+&lt;video controls width=&quot;640&quot; src=&quot;../../assets/media/shop-tour-silent.mp4&quot;&gt;&lt;/video&gt;
+&lt;details class=&quot;transcript&quot;&gt;
+  &lt;summary&gt;Text alternative for &quot;A short tour of the shop&quot; (video only, 20 seconds)&lt;/summary&gt;
+  &lt;p&gt;A sequence of five title cards. There is no sound.&lt;/p&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;00:00&lt;/dt&gt;&lt;dd&gt;Riverline Books. A short tour.&lt;/dd&gt;
+    &lt;dt&gt;00:04&lt;/dt&gt;&lt;dd&gt;Opening hours. Monday to Friday, 9am to 6pm. Saturday, 10am to 4pm. Sunday, closed.&lt;/dd&gt;
+    &lt;dt&gt;00:08&lt;/dt&gt;&lt;dd&gt;Reserve online. Collect in store within seven days.&lt;/dd&gt;
+    &lt;dt&gt;00:12&lt;/dt&gt;&lt;dd&gt;Free delivery on orders over 25 pounds.&lt;/dd&gt;
+    &lt;dt&gt;00:16&lt;/dt&gt;&lt;dd&gt;riverlinebooks.example. Thanks for visiting.&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/details&gt;
+
+&lt;!-- A transcript is often the cheapest accessibility win there is: it serves
+     deaf users, blind users, deafblind users, people on a train with no
+     headphones, and anyone who would rather skim than watch - and it makes the
+     content searchable, which nothing else on this list does. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Find every audio-only and video-only file. Confirm a transcript exists, is reachable from the same page, and conveys the same information — including who is speaking and any meaningful sound.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>No tool can tell whether a transcript exists elsewhere on the page or whether it matches the media. This is entirely a human judgement.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.2.2-captions-prerecorded/index.html">1.2.2 Captions (Prerecorded) (Level A)</a></li>
+          <li><a href="../1.2.3-audio-description-or-media-alternative-prerecorded/index.html">1.2.3 Audio Description or Media Alternative (Prerecorded) (Level A)</a></li>
+          <li><a href="../1.2.8-media-alternative-prerecorded/index.html">1.2.8 Media Alternative (Prerecorded) (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html">Understanding 1.2.1 Audio-only and Video-only (Prerecorded)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#audio-only-and-video-only-prerecorded">1.2.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.1.1-non-text-content/index.html"><span class="sc-pager__dir">Previous criterion</span>1.1.1 Non-text Content</a>
+        <a href="../1.2.2-captions-prerecorded/index.html"><span class="sc-pager__dir">Next criterion</span>1.2.2 Captions (Prerecorded)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

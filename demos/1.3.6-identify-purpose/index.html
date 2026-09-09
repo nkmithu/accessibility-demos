@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.3.6 Identify Purpose (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="The purpose of user interface components, icons, and regions can be determined programmatically — extending 1.3.5 beyond form fields to the whole interface.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.3.6 Identify Purpose</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.3.6</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 1.3 Adaptable</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Identify Purpose</h1>
+        <p class="sc-header__summary">The purpose of user interface components, icons, and regions can be determined programmatically — extending 1.3.5 beyond form fields to the whole interface.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with cognitive disabilities who rely on personalisation tools that swap in familiar symbols, simplify layouts, or hide non-essential regions.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.3.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.3.6 Identify Purpose"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your account&lt;/h1&gt;
+
+&lt;!-- 1.3.6 extends 1.3.5 from form fields to the WHOLE interface: regions,
+     controls and icons must all have a programmatically determinable purpose,
+     so that personalisation tools can act on them - swapping in symbols a user
+     recognises, simplifying the layout, or hiding non-essential regions.
+
+     FAILURE 1: the page is built entirely from divs. There are no landmarks,
+     so a personalisation tool cannot tell the navigation from the main content
+     from the advertising, and cannot hide the parts the user does not need. --&gt;
+&lt;div class=&quot;bar&quot;&gt;
+  &lt;div&gt;&lt;a href=&quot;#a&quot;&gt;Home&lt;/a&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;a href=&quot;#a&quot;&gt;Orders&lt;/a&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;a href=&quot;#a&quot;&gt;Settings&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- FAILURE 2: icon-only controls whose purpose exists only as a glyph. There
+     is no name and no role beyond &quot;button&quot;, so nothing can substitute a
+     symbol the user finds easier to recognise. --&gt;
+&lt;div class=&quot;bar&quot;&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;🏠&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;🔍&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;🗑&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;⚙&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;div style=&quot;font-size:1.2rem;font-weight:700&quot;&gt;Recent orders&lt;/div&gt;
+  &lt;div&gt;Order #1041 — 3 March&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div&gt;Advertisement: buy a tote bag.&lt;/div&gt;
+
+&lt;p id=&quot;a&quot;&gt;Section.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.3.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.3.6 Identify Purpose"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;!-- FIX 1: real landmarks. A personalisation tool can now distinguish
+     navigation from main content from complementary material, and can hide or
+     reorder them on the user's behalf. --&gt;
+&lt;header&gt;
+  &lt;nav aria-label=&quot;Main&quot;&gt;
+    &lt;ul class=&quot;bar&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Orders&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Settings&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;h1&gt;Your account&lt;/h1&gt;
+
+  &lt;!-- FIX 2: every icon control has a text name, and the icon is hidden from
+       assistive technology. The purpose is now in the accessibility tree, so a
+       tool can replace the glyph with a symbol set the user recognises -
+       Bliss, Widgit, or simply larger plain words. --&gt;
+  &lt;ul class=&quot;bar&quot;&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;
+      &lt;span aria-hidden=&quot;true&quot;&gt;🏠&lt;/span&gt;&lt;span class=&quot;visually-hidden&quot;&gt;Home&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;
+      &lt;span aria-hidden=&quot;true&quot;&gt;🔍&lt;/span&gt;&lt;span class=&quot;visually-hidden&quot;&gt;Search&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;
+      &lt;span aria-hidden=&quot;true&quot;&gt;🗑&lt;/span&gt;&lt;span class=&quot;visually-hidden&quot;&gt;Delete&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;
+      &lt;span aria-hidden=&quot;true&quot;&gt;⚙&lt;/span&gt;&lt;span class=&quot;visually-hidden&quot;&gt;Settings&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;section aria-labelledby=&quot;orders-h&quot;&gt;
+    &lt;h2 id=&quot;orders-h&quot;&gt;Recent orders&lt;/h2&gt;
+    &lt;p&gt;Order #1041 — 3 March&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;!-- FIX 3: non-essential content is in a complementary landmark, clearly
+     labelled, so it can be identified and suppressed. --&gt;
+&lt;aside aria-labelledby=&quot;ad-h&quot;&gt;
+  &lt;h2 id=&quot;ad-h&quot;&gt;Advertisement&lt;/h2&gt;
+  &lt;p&gt;Buy a tote bag.&lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;footer&gt;
+  &lt;p id=&quot;a&quot;&gt;Riverline Books&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;!-- Honest note: 1.3.6 was written with a &quot;personalisation semantics&quot;
+     specification in mind that has not been widely implemented, so there are
+     few tools today that consume this metadata. It is still worth doing, for
+     two reasons: the landmark and naming work benefits screen reader users
+     immediately under 1.3.1 and 4.1.2, and it costs almost nothing once you
+     are writing semantic HTML anyway. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Check that landmarks, controls, and icons carry semantics or ARIA that identify their purpose, so a personalisation layer can act on them.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Landmark presence can be checked automatically; semantic correctness of every component's declared purpose cannot.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> axe's landmark-one-main and region rules would catch the missing landmarks here, but both are tagged best-practice rather than as WCAG rules, so a scan scoped to conformance never runs them. And the deeper requirement - that a personalisation tool could identify each control's purpose - is not something any rule evaluates.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>landmark-one-main</code></li>
+              <li><code>region</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.3.5-identify-input-purpose/index.html">1.3.5 Identify Input Purpose (Level AA)</a></li>
+          <li><a href="../3.2.4-consistent-identification/index.html">3.2.4 Consistent Identification (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-purpose.html">Understanding 1.3.6 Identify Purpose</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#identify-purpose">1.3.6 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.3.5-identify-input-purpose/index.html"><span class="sc-pager__dir">Previous criterion</span>1.3.5 Identify Input Purpose</a>
+        <a href="../1.4.1-use-of-color/index.html"><span class="sc-pager__dir">Next criterion</span>1.4.1 Use of Color</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

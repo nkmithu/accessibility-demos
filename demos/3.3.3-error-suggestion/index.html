@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.3.3 Error Suggestion (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="If an input error is detected and a correction is known, the suggestion is provided to the user, unless it would jeopardise security or the purpose of the content.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.3.3 Error Suggestion</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.3.3</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 3.3 Input Assistance</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Error Suggestion</h1>
+        <p class="sc-header__summary">If an input error is detected and a correction is known, the suggestion is provided to the user, unless it would jeopardise security or the purpose of the content.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with cognitive disabilities, who may not deduce the fix from a bare rejection. Everyone benefits from being told what a valid value looks like rather than being told only that theirs is not.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.3.3
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.3.3 Error Suggestion"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Book an event ticket&lt;/h1&gt;
+
+&lt;form id=&quot;f&quot; novalidate&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;em&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;em&quot; aria-describedby=&quot;em-e&quot; value=&quot;anna.example.org&quot;&gt;
+    &lt;!-- FAILURE 1: identifies the error (so 3.3.1 passes) but suggests nothing.
+         The user knows something is wrong and not what would be right. --&gt;
+    &lt;p class=&quot;err&quot; id=&quot;em-e&quot; hidden&gt;Invalid.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;dt&quot;&gt;Event date&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;dt&quot; aria-describedby=&quot;dt-e&quot; value=&quot;3rd March&quot;&gt;
+    &lt;!-- FAILURE 2: the required format is never stated, before or after. --&gt;
+    &lt;p class=&quot;err&quot; id=&quot;dt-e&quot; hidden&gt;Error in field.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;pw&quot;&gt;Choose a password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;pw&quot; aria-describedby=&quot;pw-e&quot; value=&quot;abc&quot;&gt;
+    &lt;!-- FAILURE 3: the rules are known to the system and withheld from the
+         user, who now has to guess. --&gt;
+    &lt;p class=&quot;err&quot; id=&quot;pw-e&quot; hidden&gt;Password not accepted.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Book ticket&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.3.3
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.3.3 Error Suggestion"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Book an event ticket&lt;/h1&gt;
+
+&lt;form id=&quot;f&quot; novalidate&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;em&quot;&gt;Email address&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;em&quot; autocomplete=&quot;email&quot; aria-describedby=&quot;em-e&quot; value=&quot;anna.example.org&quot;&gt;
+    &lt;!-- FIX 1: says what is wrong AND offers the correction. Where the system
+         can work out what the user probably meant, offer it. --&gt;
+    &lt;p class=&quot;err&quot; id=&quot;em-e&quot; hidden&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;dt&quot;&gt;Event date&lt;/label&gt;
+    &lt;!-- FIX 2: the format is stated BEFORE the user types, which prevents most
+         of these errors happening at all. 3.3.3 handles the ones that slip
+         through; 3.3.2 stops them being made. --&gt;
+    &lt;p class=&quot;hint&quot; id=&quot;dt-h&quot;&gt;Use the format DD/MM/YYYY, for example 03/03/2026.&lt;/p&gt;
+    &lt;input type=&quot;text&quot; id=&quot;dt&quot; aria-describedby=&quot;dt-h dt-e&quot; value=&quot;3rd March&quot;&gt;
+    &lt;p class=&quot;err&quot; id=&quot;dt-e&quot; hidden&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;pw&quot;&gt;Choose a password&lt;/label&gt;
+    &lt;p class=&quot;hint&quot; id=&quot;pw-h&quot;&gt;At least 8 characters, including one number.&lt;/p&gt;
+    &lt;input type=&quot;password&quot; id=&quot;pw&quot; autocomplete=&quot;new-password&quot; aria-describedby=&quot;pw-h pw-e&quot; value=&quot;abc&quot;&gt;
+    &lt;!-- FIX 3: the message says which rule failed, not just that one did. --&gt;
+    &lt;p class=&quot;err&quot; id=&quot;pw-e&quot; hidden&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Book ticket&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- The exception: you may withhold the suggestion where giving it would
+     jeopardise security or defeat the purpose of the content - &quot;your password
+     is wrong&quot; must not become &quot;your password should have been hunter2&quot;, and a
+     quiz must not suggest the right answer. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Trigger each validation error. &quot;Invalid date&quot; fails; &quot;Enter the date as DD/MM/YYYY, for example 05/09/2026&quot; passes. Where a value is close to a valid one, suggest it.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires reading each error message and judging whether it is actionable.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.3.1-error-identification/index.html">3.3.1 Error Identification (Level A)</a></li>
+          <li><a href="../3.3.2-labels-or-instructions/index.html">3.3.2 Labels or Instructions (Level A)</a></li>
+          <li><a href="../3.3.6-error-prevention-all/index.html">3.3.6 Error Prevention (All) (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html">Understanding 3.3.3 Error Suggestion</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#error-suggestion">3.3.3 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.3.2-labels-or-instructions/index.html"><span class="sc-pager__dir">Previous criterion</span>3.3.2 Labels or Instructions</a>
+        <a href="../3.3.4-error-prevention-legal-financial-data/index.html"><span class="sc-pager__dir">Next criterion</span>3.3.4 Error Prevention (Legal, Financial, Data)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

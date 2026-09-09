@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" width="420" height="96" role="presentation">
+  <rect width="420" height="96" fill="#ffffff"/>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#444c55">
+    <text x="0" y="20">Tickets are non-refundable.</text>
+    <text x="0" y="44">Members save 20%.</text>
+    <text x="0" y="68">Under 16s go free with a paying adult.</text>
+  </g>
+</svg>

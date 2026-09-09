@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 4.1.2 Name, Role, Value</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .switch { display:inline-block; width:52px; height:28px; background:#8a95a1; border-radius:999px;
+              position:relative; cursor:pointer; vertical-align:middle; }
+    .switch::after { content:""; position:absolute; top:3px; left:3px; width:22px; height:22px;
+                     background:#fff; border-radius:50%; }
+    .switch[data-on="true"] { background:#0a4f9e; }
+    .switch[data-on="true"]::after { left:27px; }
+    .acc-head { font-weight:700; cursor:pointer; padding:.5rem 0; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 4.1.2 Name, Role, Value.</p>
+
+  <!-- excerpt:start -->
+  <h1>Account settings</h1>
+
+  <!-- FAILURE 1: a toggle switch with no name, no role and no state.
+       A screen reader announces absolutely nothing here. Even sighted keyboard
+       users cannot reach it. The visual state lives only in a data attribute
+       and a CSS rule, neither of which assistive technology can read. -->
+  <p>
+    <span class="switch" data-on="false" onclick="this.dataset.on = this.dataset.on === 'true' ? 'false' : 'true'"></span>
+    Marketing emails
+  </p>
+
+  <!-- FAILURE 2: an icon-only button whose accessible name is empty.
+       Announced as just "button". The title attribute is unreliable: it is not
+       announced by every screen reader and never appears for touch users. -->
+  <button type="button" class="button button--secondary" title="Delete account">
+    <span aria-hidden="true">🗑</span>
+  </button>
+
+  <!-- FAILURE 3: a custom accordion. The header is a div, so it is neither
+       focusable nor announced as a button, and nothing exposes whether the
+       section is currently open or closed. -->
+  <div class="acc-head" onclick="togglePanel()">Privacy options</div>
+  <div id="panel" hidden>
+    <p>Your data is never sold.</p>
+  </div>
+
+  <!-- FAILURE 4: an ARIA role applied without the states it requires.
+       role="checkbox" promises aria-checked; without it, assistive technology
+       reports a checkbox in an undefined state. A role is a contract. -->
+  <p>
+    <span role="checkbox" tabindex="0">Show my reviews publicly</span>
+  </p>
+  <!-- excerpt:end -->
+
+  <script>
+    function togglePanel() {
+      var p = document.getElementById('panel');
+      p.hidden = !p.hidden;
+    }
+  </script>
+</body>
+</html>

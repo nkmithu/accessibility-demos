@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.5.5 Target Size (Enhanced) (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="The size of the target for pointer inputs is at least 44 by 44 CSS pixels, with exceptions for inline targets, equivalents available elsewhere, and essential presentations.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.5.5 Target Size (Enhanced)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.5.5</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 2.5 Input Modalities</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Target Size (Enhanced)</h1>
+        <p class="sc-header__summary">The size of the target for pointer inputs is at least 44 by 44 CSS pixels, with exceptions for inline targets, equivalents available elsewhere, and essential presentations.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with motor impairments and tremor, and anyone on a touchscreen. Small targets mean repeated mis-taps and, in a checkout, costly mistakes.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.5.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.5.5 Target Size (Enhanced)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your reading list&lt;/h1&gt;
+
+&lt;!-- The difference:
+       2.5.8 (AA)  targets at least 24 x 24 CSS px - OR smaller if the SPACING
+                   exception is met (a 24px circle on each does not overlap).
+       2.5.5 (AAA) targets at least 44 x 44 CSS px, with NO spacing exception.
+
+     Everything below is 26 to 28 pixels with 6px gaps, so it clears the AA
+     threshold comfortably and fails AAA. --&gt;
+&lt;p class=&quot;row&quot;&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Bold&quot;&gt;B&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Italic&quot;&gt;I&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Underline&quot;&gt;U&lt;/button&gt;
+&lt;/p&gt;
+
+&lt;nav class=&quot;pager&quot; aria-label=&quot;Pagination&quot;&gt;
+  &lt;a href=&quot;#a&quot;&gt;1&lt;/a&gt;&lt;a href=&quot;#a&quot;&gt;2&lt;/a&gt;&lt;a href=&quot;#a&quot;&gt;3&lt;/a&gt;&lt;a href=&quot;#a&quot;&gt;4&lt;/a&gt;&lt;a href=&quot;#a&quot;&gt;5&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;p id=&quot;a&quot;&gt;Page.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.5.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.5.5 Target Size (Enhanced)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your reading list&lt;/h1&gt;
+
+&lt;!-- FIX: every target is at least 44 x 44 CSS pixels. Note that the GLYPHS are
+     barely larger than before - the growth is almost all padding, so the design
+     does not have to look clumsy to conform.
+
+     44px is not arbitrary. It is roughly the width of an adult fingertip
+     contact patch, and it is the figure both Apple and Google use in their own
+     platform guidelines - so meeting 2.5.5 usually means simply following the
+     mobile design guidance you were already given. --&gt;
+&lt;p class=&quot;row&quot;&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Bold&quot;&gt;B&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Italic&quot;&gt;I&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Underline&quot;&gt;U&lt;/button&gt;
+&lt;/p&gt;
+
+&lt;nav class=&quot;pager&quot; aria-label=&quot;Pagination&quot;&gt;
+  &lt;a href=&quot;#a&quot;&gt;1&lt;/a&gt;&lt;a href=&quot;#a&quot;&gt;2&lt;/a&gt;&lt;a href=&quot;#a&quot;&gt;3&lt;/a&gt;&lt;a href=&quot;#a&quot;&gt;4&lt;/a&gt;&lt;a href=&quot;#a&quot;&gt;5&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;p id=&quot;a&quot;&gt;Page.&lt;/p&gt;
+
+&lt;!-- The AAA exceptions, which are fewer than at AA:
+       - INLINE targets, such as a link inside a sentence
+       - an EQUIVALENT control of full size elsewhere on the page
+       - a target whose presentation is ESSENTIAL, or is legally required
+       - controls styled entirely by the user agent
+     Crucially, the SPACING exception that 2.5.8 offers does not exist here:
+     at AAA a small target with generous spacing around it still fails. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Measure every interactive target. Icon-only buttons, close buttons, and dense toolbars are the usual failures. Padding counts toward the target, so a small icon in a large button passes.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Target dimensions are measurable from the rendered layout, but the exceptions require human judgement.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> axe's target-size rule is written against the Level AA threshold of 24 x 24 CSS pixels (2.5.8). The targets on the failing page are 26 to 28 pixels, so the rule passes them. There is no rule for the AAA 44-pixel threshold at all, so a scan can never tell you whether 2.5.5 is met.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>target-size</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.5.8-target-size-minimum/index.html">2.5.8 Target Size (Minimum) (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html">Understanding 2.5.5 Target Size (Enhanced)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#target-size-enhanced">2.5.5 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.5.4-motion-actuation/index.html"><span class="sc-pager__dir">Previous criterion</span>2.5.4 Motion Actuation</a>
+        <a href="../2.5.6-concurrent-input-mechanisms/index.html"><span class="sc-pager__dir">Next criterion</span>2.5.6 Concurrent Input Mechanisms</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

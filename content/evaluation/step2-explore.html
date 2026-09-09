@@ -1,0 +1,91 @@
+<!--page
+title: Step 2 — Explore the website — WCAG 2.2 Demo Suite
+description: Identifying common pages, essential functionality, page types, technologies and variations before sampling.
+nav: evaluation
+section: Evaluation (WCAG-EM)
+sectionHref: evaluation/index.html
+crumb: Step 2 — Explore the website
+-->
+      <h1>Step 2 — Explore the website</h1>
+      <p class="sc-header__summary">You cannot sample what you have not seen. This step is
+         reconnaissance: build an inventory of what the site is made of, so that Step 3 is a decision
+         rather than a guess.</p>
+
+      <p class="prose">Explore as a user, not as an auditor. Do the things the site exists for. You
+         are looking for five things.</p>
+
+      <h2>2a. Common web pages</h2>
+      <p class="prose">Pages that appear throughout, or that every user meets: the home page, the
+         contact page, the sitemap, the accessibility statement, the login, the search results,
+         the error pages. Also the ones nobody thinks of — the 404 page, the print stylesheet, the
+         cookie banner, the session-timeout screen.</p>
+
+      <h2>2b. Essential functionality</h2>
+      <p class="prose">The tasks the site exists to enable. For a bookshop: search for a book, add it
+         to a basket, check out, create an account, contact support. Every one of these must be
+         represented in your sample, because a failure inside a task is worse than the same failure
+         on a static page — it stops the user completing something.</p>
+
+      <h2>2c. Types of web pages</h2>
+      <p class="prose">Group pages by <em>structure</em>, not by topic. Twenty product pages built
+         from one template are one page type. A page type is a distinct layout, template or
+         component set. Typical types:</p>
+      <ul class="prose">
+        <li>Home / landing</li>
+        <li>Listing with filters and pagination</li>
+        <li>Detail page (product, article)</li>
+        <li>Form-heavy page (checkout, application, contact)</li>
+        <li>Authentication (login, registration, password reset)</li>
+        <li>Data-heavy page (tables, dashboards, reports)</li>
+        <li>Rich media page (video, audio, interactive)</li>
+        <li>Documentation or long-form content</li>
+      </ul>
+
+      <h2>2d. Web technologies relied upon</h2>
+      <p class="prose">Record what the site is built with, because it changes how you test:</p>
+      <ul class="prose">
+        <li>HTML, CSS, JavaScript — and which framework, if any</li>
+        <li>WAI-ARIA, and how heavily it is used</li>
+        <li>Whether it is a single-page application. If so, route changes, focus management and
+            title updates need specific attention.</li>
+        <li>Embedded third-party components: payment providers, maps, chat, video players,
+            CAPTCHA, analytics overlays, cookie consent</li>
+        <li>Documents: PDF, Word, spreadsheets</li>
+      </ul>
+
+      <h2>2e. Other relevant pages</h2>
+      <p class="prose">The exceptions and the awkward corners — the pages that do not fit any type:</p>
+      <ul class="prose">
+        <li>Anything with an unusual interaction: a drag-and-drop board, a seat picker, a map, a
+            configurator, a signature pad</li>
+        <li>Anything with a time limit</li>
+        <li>Anything behind a login that differs from the public equivalent</li>
+        <li>Pages built or edited by a different team, or by a content management system with a
+            different template set</li>
+        <li>Old pages that predate the current design system — these are frequently the worst, and
+            frequently excluded by accident</li>
+      </ul>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Where the defects concentrate</p>
+        <p>In practice, most serious findings cluster in three places: <strong>forms and
+           checkouts</strong>, <strong>custom widgets</strong> that replace native controls, and
+           <strong>anything embedded from a third party</strong>. If your exploration has not found
+           those, keep looking.</p>
+      </div>
+
+      <h2>Techniques for exploring quickly</h2>
+      <ul class="prose">
+        <li>Read the sitemap and the main navigation, then ignore both and use the search — users do.</li>
+        <li>Complete each essential task end to end, writing down every page you pass through.</li>
+        <li>Check the page source of two pages of the same type. If the markup differs, they are
+            different types.</li>
+        <li>Look at analytics if you have access: the most-visited pages must be in the sample.</li>
+        <li>Ask the team what they are worried about. They usually know.</li>
+      </ul>
+
+      <h2>Now explore the sample site</h2>
+      <p class="prose">Work through <a href="sample-site/index.html">Riverline Books</a> and build
+         your inventory before reading Step 3. Do not audit yet — just map what is there.</p>
+
+      <p class="prose"><a href="step3-select-sample.html">Next: Step 3 — Select a representative sample</a></p>

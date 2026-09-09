@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evaluation report template — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A fillable WCAG-EM evaluation report, print-styled, covering scope, sample, results and findings.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><a href="../../evaluation/index.html" aria-current="page">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><span aria-current="page">Evaluation report</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Accessibility evaluation report</h1>
+      <p class="sc-header__summary no-print">WCAG-EM Step 5. Fill this in and print it. Every section
+         below is required by the methodology — the one people leave out is the sample, and it is the
+         one that makes the report checkable.</p>
+
+      <form>
+        <h2>1. Summary</h2>
+        <div class="field"><label for="r-site">Website evaluated</label><input type="text" id="r-site" size="45"></div>
+        <div class="field"><label for="r-by">Evaluated by</label><input type="text" id="r-by" size="35"></div>
+        <div class="field"><label for="r-date">Date of evaluation</label><input type="text" id="r-date" size="22"></div>
+        <div class="field"><label for="r-target">Conformance target</label><input type="text" id="r-target" size="35" value="WCAG 2.2 Level AA"></div>
+        <div class="field">
+          <label for="r-result">Result</label>
+          <p class="hint" style="color:var(--text-muted);font-size:.9375rem;margin:.15rem 0 .35rem">
+            State it literally. "The 8 pages evaluated on 9 September 2026 did not meet WCAG 2.2
+            Level AA; 15 criteria failed." Never a percentage.</p>
+          <textarea id="r-result" rows="3" cols="60"></textarea>
+        </div>
+        <div class="field">
+          <label for="r-exec">Executive summary — the three things a decision-maker must know</label>
+          <textarea id="r-exec" rows="4" cols="60"></textarea>
+        </div>
+
+        <h2 class="page-break">2. Scope</h2>
+        <div class="field"><label for="r-scope">Website definition, including domains and URL patterns</label>
+          <textarea id="r-scope" rows="3" cols="60"></textarea></div>
+        <div class="field"><label for="r-excl">Exclusions, and why</label>
+          <textarea id="r-excl" rows="2" cols="60"></textarea></div>
+        <div class="field"><label for="r-base">Accessibility support baseline</label>
+          <textarea id="r-base" rows="3" cols="60"></textarea></div>
+
+        <h2>3. Sample evaluated</h2>
+        <p class="prose">List every page, with the reason it was chosen. This is what allows another
+           auditor to reproduce your work.</p>
+        <div class="table-scroll">
+          <table>
+            <caption>Pages evaluated</caption>
+            <thead><tr><th scope="col">#</th><th scope="col">Page</th><th scope="col">URL</th><th scope="col">Why chosen</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1</th><td><input type="text" size="16" aria-label="Page, sample row 1"></td><td><input type="text" size="24" aria-label="URL, sample row 1"></td><td><input type="text" size="26" aria-label="Reason chosen, sample row 1"></td></tr>
+              <tr><th scope="row">2</th><td><input type="text" size="16" aria-label="Page, sample row 2"></td><td><input type="text" size="24" aria-label="URL, sample row 2"></td><td><input type="text" size="26" aria-label="Reason chosen, sample row 2"></td></tr>
+              <tr><th scope="row">3</th><td><input type="text" size="16" aria-label="Page, sample row 3"></td><td><input type="text" size="24" aria-label="URL, sample row 3"></td><td><input type="text" size="26" aria-label="Reason chosen, sample row 3"></td></tr>
+              <tr><th scope="row">4</th><td><input type="text" size="16" aria-label="Page, sample row 4"></td><td><input type="text" size="24" aria-label="URL, sample row 4"></td><td><input type="text" size="26" aria-label="Reason chosen, sample row 4"></td></tr>
+              <tr><th scope="row">5</th><td><input type="text" size="16" aria-label="Page, sample row 5"></td><td><input type="text" size="24" aria-label="URL, sample row 5"></td><td><input type="text" size="26" aria-label="Reason chosen, sample row 5"></td></tr>
+              <tr><th scope="row">6</th><td><input type="text" size="16" aria-label="Page, sample row 6"></td><td><input type="text" size="24" aria-label="URL, sample row 6"></td><td><input type="text" size="26" aria-label="Reason chosen, sample row 6"></td></tr>
+              <tr><th scope="row">7</th><td><input type="text" size="16" aria-label="Page, sample row 7"></td><td><input type="text" size="24" aria-label="URL, sample row 7"></td><td><input type="text" size="26" aria-label="Reason chosen, sample row 7"></td></tr>
+              <tr><th scope="row">8</th><td><input type="text" size="16" aria-label="Page, sample row 8"></td><td><input type="text" size="24" aria-label="URL, sample row 8"></td><td><input type="text" size="26" aria-label="Reason chosen, sample row 8"></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>4. Method and tools</h2>
+        <div class="field"><label for="r-method">Automated tools, browsers, assistive technology, and manual procedures used</label>
+          <textarea id="r-method" rows="4" cols="60"></textarea></div>
+
+        <h2 class="page-break">5. Findings</h2>
+        <p class="prose">One row per <em>defect</em>, not per instance. If one component fails on six
+           pages, that is one finding affecting six pages.</p>
+        <div class="table-scroll">
+          <table>
+            <caption>Detailed findings</caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th><th scope="col">SC</th><th scope="col">Severity</th>
+                <th scope="col">Where</th><th scope="col">What happens</th><th scope="col">Recommended fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">1</th><td><input type="text" size="7" aria-label="Success criterion, finding 1"></td><td><input type="text" size="9" aria-label="Severity, finding 1"></td><td><input type="text" size="16" aria-label="Where, finding 1"></td><td><input type="text" size="24" aria-label="What happens, finding 1"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 1"></td></tr>
+              <tr><th scope="row">2</th><td><input type="text" size="7" aria-label="Success criterion, finding 2"></td><td><input type="text" size="9" aria-label="Severity, finding 2"></td><td><input type="text" size="16" aria-label="Where, finding 2"></td><td><input type="text" size="24" aria-label="What happens, finding 2"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 2"></td></tr>
+              <tr><th scope="row">3</th><td><input type="text" size="7" aria-label="Success criterion, finding 3"></td><td><input type="text" size="9" aria-label="Severity, finding 3"></td><td><input type="text" size="16" aria-label="Where, finding 3"></td><td><input type="text" size="24" aria-label="What happens, finding 3"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 3"></td></tr>
+              <tr><th scope="row">4</th><td><input type="text" size="7" aria-label="Success criterion, finding 4"></td><td><input type="text" size="9" aria-label="Severity, finding 4"></td><td><input type="text" size="16" aria-label="Where, finding 4"></td><td><input type="text" size="24" aria-label="What happens, finding 4"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 4"></td></tr>
+              <tr><th scope="row">5</th><td><input type="text" size="7" aria-label="Success criterion, finding 5"></td><td><input type="text" size="9" aria-label="Severity, finding 5"></td><td><input type="text" size="16" aria-label="Where, finding 5"></td><td><input type="text" size="24" aria-label="What happens, finding 5"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 5"></td></tr>
+              <tr><th scope="row">6</th><td><input type="text" size="7" aria-label="Success criterion, finding 6"></td><td><input type="text" size="9" aria-label="Severity, finding 6"></td><td><input type="text" size="16" aria-label="Where, finding 6"></td><td><input type="text" size="24" aria-label="What happens, finding 6"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 6"></td></tr>
+              <tr><th scope="row">7</th><td><input type="text" size="7" aria-label="Success criterion, finding 7"></td><td><input type="text" size="9" aria-label="Severity, finding 7"></td><td><input type="text" size="16" aria-label="Where, finding 7"></td><td><input type="text" size="24" aria-label="What happens, finding 7"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 7"></td></tr>
+              <tr><th scope="row">8</th><td><input type="text" size="7" aria-label="Success criterion, finding 8"></td><td><input type="text" size="9" aria-label="Severity, finding 8"></td><td><input type="text" size="16" aria-label="Where, finding 8"></td><td><input type="text" size="24" aria-label="What happens, finding 8"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 8"></td></tr>
+              <tr><th scope="row">9</th><td><input type="text" size="7" aria-label="Success criterion, finding 9"></td><td><input type="text" size="9" aria-label="Severity, finding 9"></td><td><input type="text" size="16" aria-label="Where, finding 9"></td><td><input type="text" size="24" aria-label="What happens, finding 9"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 9"></td></tr>
+              <tr><th scope="row">10</th><td><input type="text" size="7" aria-label="Success criterion, finding 10"></td><td><input type="text" size="9" aria-label="Severity, finding 10"></td><td><input type="text" size="16" aria-label="Where, finding 10"></td><td><input type="text" size="24" aria-label="What happens, finding 10"></td><td><input type="text" size="24" aria-label="Recommended fix, finding 10"></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>6. What is working well</h2>
+        <div class="field"><label for="r-good">Practices worth keeping and building on</label>
+          <textarea id="r-good" rows="3" cols="60"></textarea></div>
+
+        <h2>7. Recommended priority</h2>
+        <div class="field"><label for="r-prio">In order. Blockers first, then anything on an essential task.</label>
+          <textarea id="r-prio" rows="4" cols="60"></textarea></div>
+
+        <h2>8. Limitations of this evaluation</h2>
+        <div class="field">
+          <label for="r-limits">What this report does not tell you</label>
+          <p style="color:var(--text-muted);font-size:.9375rem;margin:.15rem 0 .35rem">
+            Always include this. A sample can disprove conformance but never prove it, and no audit
+            substitutes for testing with disabled users.</p>
+          <textarea id="r-limits" rows="3" cols="60"></textarea>
+        </div>
+      </form>
+
+      <p class="no-print"><button type="button" class="button" onclick="window.print()">Print this report</button></p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

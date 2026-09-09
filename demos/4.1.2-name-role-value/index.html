@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4.1.2 Name, Role, Value (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="For all user interface components, the name and role can be determined programmatically; states, properties, and values can be set by the user and programmatically determined; and changes to them are notified to user agents.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">4.1.2 Name, Role, Value</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">4.1.2</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 4.1 Compatible</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Name, Role, Value</h1>
+        <p class="sc-header__summary">For all user interface components, the name and role can be determined programmatically; states, properties, and values can be set by the user and programmatically determined; and changes to them are notified to user agents.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users, who are told what a control is, what it is called, and what state it is in entirely through this information. A custom toggle built from a div announces as nothing at all.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 4.1.2
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 4.1.2 Name, Role, Value"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Account settings&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: a toggle switch with no name, no role and no state.
+     A screen reader announces absolutely nothing here. Even sighted keyboard
+     users cannot reach it. The visual state lives only in a data attribute
+     and a CSS rule, neither of which assistive technology can read. --&gt;
+&lt;p&gt;
+  &lt;span class=&quot;switch&quot; data-on=&quot;false&quot; onclick=&quot;this.dataset.on = this.dataset.on === 'true' ? 'false' : 'true'&quot;&gt;&lt;/span&gt;
+  Marketing emails
+&lt;/p&gt;
+
+&lt;!-- FAILURE 2: an icon-only button whose accessible name is empty.
+     Announced as just &quot;button&quot;. The title attribute is unreliable: it is not
+     announced by every screen reader and never appears for touch users. --&gt;
+&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; title=&quot;Delete account&quot;&gt;
+  &lt;span aria-hidden=&quot;true&quot;&gt;🗑&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- FAILURE 3: a custom accordion. The header is a div, so it is neither
+     focusable nor announced as a button, and nothing exposes whether the
+     section is currently open or closed. --&gt;
+&lt;div class=&quot;acc-head&quot; onclick=&quot;togglePanel()&quot;&gt;Privacy options&lt;/div&gt;
+&lt;div id=&quot;panel&quot; hidden&gt;
+  &lt;p&gt;Your data is never sold.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- FAILURE 4: an ARIA role applied without the states it requires.
+     role=&quot;checkbox&quot; promises aria-checked; without it, assistive technology
+     reports a checkbox in an undefined state. A role is a contract. --&gt;
+&lt;p&gt;
+  &lt;span role=&quot;checkbox&quot; tabindex=&quot;0&quot;&gt;Show my reviews publicly&lt;/span&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 4.1.2
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 4.1.2 Name, Role, Value"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Account settings&lt;/h1&gt;
+
+&lt;!-- FIX 1: a real button carries the role. aria-pressed carries the state and
+     is kept in sync in script, so the switch announces as
+     &quot;Marketing emails, toggle button, pressed&quot;. The visual state and the
+     programmatic state are driven by the same attribute, so they cannot drift. --&gt;
+&lt;p&gt;
+  &lt;button type=&quot;button&quot; class=&quot;switch-btn&quot; aria-pressed=&quot;false&quot; onclick=&quot;toggleSwitch(this)&quot;&gt;
+    &lt;span class=&quot;switch-track&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+    &lt;span&gt;Marketing emails&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/p&gt;
+
+&lt;!-- FIX 2: the icon is hidden from assistive technology and the name comes
+     from visually hidden text, so it announces as &quot;Delete account, button&quot;. --&gt;
+&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot;&gt;
+  &lt;span aria-hidden=&quot;true&quot;&gt;🗑&lt;/span&gt;
+  &lt;span class=&quot;visually-hidden&quot;&gt;Delete account&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- FIX 3: the accordion header is a real button. aria-expanded exposes open
+     or closed state, and aria-controls points at the region it governs. --&gt;
+&lt;h2&gt;
+  &lt;button type=&quot;button&quot; class=&quot;acc-btn&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;panel&quot; onclick=&quot;togglePanel(this)&quot;&gt;
+    Privacy options
+  &lt;/button&gt;
+&lt;/h2&gt;
+&lt;div id=&quot;panel&quot; hidden&gt;
+  &lt;p&gt;Your data is never sold.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- FIX 4: use the native checkbox. It supplies role, state and keyboard
+     behaviour with no script at all. Reach for ARIA only when HTML has no
+     element that already does the job. --&gt;
+&lt;p class=&quot;field&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;public-reviews&quot;&gt;
+  &lt;label for=&quot;public-reviews&quot;&gt;Show my reviews publicly&lt;/label&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>For every control, inspect the accessibility tree for an accessible name, a correct role, and accurate state. Custom widgets — dropdowns, tabs, accordions, toggles, modals — are where this fails. Using a native button or input passes for free.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners catch missing accessible names, invalid ARIA roles and attributes, and forbidden role and attribute combinations. They cannot confirm that state stays accurate as the user interacts, which is the harder half.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>button-name</code></li>
+              <li><code>link-name</code></li>
+              <li><code>aria-roles</code></li>
+              <li><code>aria-valid-attr</code></li>
+              <li><code>aria-valid-attr-value</code></li>
+              <li><code>aria-required-attr</code></li>
+              <li><code>aria-allowed-attr</code></li>
+              <li><code>aria-allowed-role</code></li>
+              <li><code>aria-hidden-focus</code></li>
+              <li><code>aria-toggle-field-name</code></li>
+              <li><code>aria-command-name</code></li>
+              <li><code>aria-input-field-name</code></li>
+              <li><code>aria-meter-name</code></li>
+              <li><code>aria-progressbar-name</code></li>
+              <li><code>aria-tooltip-name</code></li>
+              <li><code>aria-dialog-name</code></li>
+              <li><code>frame-title</code></li>
+              <li><code>nested-interactive</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.3.1-info-and-relationships/index.html">1.3.1 Info and Relationships (Level A)</a></li>
+          <li><a href="../2.5.3-label-in-name/index.html">2.5.3 Label in Name (Level A)</a></li>
+          <li><a href="../4.1.3-status-messages/index.html">4.1.3 Status Messages (Level AA)</a></li>
+          <li><a href="../2.1.1-keyboard/index.html">2.1.1 Keyboard (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">Understanding 4.1.2 Name, Role, Value</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#name-role-value">4.1.2 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../4.1.1-parsing/index.html"><span class="sc-pager__dir">Previous criterion</span>4.1.1 Parsing</a>
+        <a href="../4.1.3-status-messages/index.html"><span class="sc-pager__dir">Next criterion</span>4.1.3 Status Messages</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

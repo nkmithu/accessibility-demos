@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.2.3 Audio Description or Media Alternative (Prerecorded) (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Prerecorded video in synchronised media has either an audio description of the visual information or a full text alternative for the whole presentation.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.2.3 Audio Description or Media Alternative (Prerecorded)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.2.3</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 1.2 Time-based Media</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Audio Description or Media Alternative (Prerecorded)</h1>
+        <p class="sc-header__summary">Prerecorded video in synchronised media has either an audio description of the visual information or a full text alternative for the whole presentation.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Blind and low-vision users, who miss any information shown but never spoken — on-screen text, a demonstrated action, a chart, a facial reaction.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.2.3
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.2.3 Audio Description or Media Alternative (Prerecorded)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;A short tour of the shop&lt;/h1&gt;
+
+&lt;!-- FAILURE: the video is captioned, so it passes 1.2.2 - and teams often stop
+     there, believing the video is now accessible. It is not.
+
+     Every piece of actual INFORMATION in this clip is on screen and never
+     spoken: the opening hours, the reservation policy, the delivery threshold,
+     the web address. Played with the screen off, a blind user hears a doorbell,
+     a bell and a telephone, and learns nothing else.
+
+     There is no described audio track and no text alternative. --&gt;
+&lt;video controls width=&quot;640&quot;&gt;
+  &lt;source src=&quot;../../assets/media/shop-tour.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;track kind=&quot;captions&quot; src=&quot;../../assets/media/shop-tour-captions.vtt&quot;
+         srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
+&lt;/video&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.2.3
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.2.3 Audio Description or Media Alternative (Prerecorded)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;A short tour of the shop&lt;/h1&gt;
+
+&lt;video controls width=&quot;640&quot;&gt;
+  &lt;source src=&quot;../../assets/media/shop-tour.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;track kind=&quot;captions&quot; src=&quot;../../assets/media/shop-tour-captions.vtt&quot;
+         srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
+  &lt;!-- A descriptions track is the correct markup and is machine-readable.
+       Be warned: no major browser currently speaks these cues aloud, so on its
+       own it is NOT enough to claim conformance. It is included here so you can
+       see the syntax and because it costs nothing. --&gt;
+  &lt;track kind=&quot;descriptions&quot; src=&quot;../../assets/media/shop-tour-descriptions.vtt&quot;
+         srclang=&quot;en&quot; label=&quot;Audio description&quot;&gt;
+&lt;/video&gt;
+
+&lt;!-- FIX: 1.2.3 lets you satisfy it EITHER with audio description OR with a
+     full text alternative for the whole presentation. The text alternative is
+     used here because it is the option a small team can actually deliver, and
+     it is what the descriptions track would say.
+
+     Note the difference from a caption file: this covers BOTH what is heard
+     and what is seen, and reads as a document in its own right. --&gt;
+&lt;details class=&quot;transcript&quot; open&gt;
+  &lt;summary&gt;Text alternative for the whole presentation&lt;/summary&gt;
+  &lt;p&gt;A sequence of five title cards, with sound effects.&lt;/p&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;00:00&lt;/dt&gt;&lt;dd&gt;Title card: &lt;strong&gt;Riverline Books — A short tour&lt;/strong&gt;.
+      [A shop doorbell chimes twice.]&lt;/dd&gt;
+    &lt;dt&gt;00:04&lt;/dt&gt;&lt;dd&gt;Card: &lt;strong&gt;Opening hours&lt;/strong&gt; — Monday to Friday, 9am to 6pm;
+      Saturday, 10am to 4pm; Sunday, closed.&lt;/dd&gt;
+    &lt;dt&gt;00:08&lt;/dt&gt;&lt;dd&gt;Card: &lt;strong&gt;Reserve online&lt;/strong&gt; — collect in store within seven days.
+      [A counter bell rings.]&lt;/dd&gt;
+    &lt;dt&gt;00:12&lt;/dt&gt;&lt;dd&gt;Card: &lt;strong&gt;Free delivery&lt;/strong&gt; on orders over 25 pounds.
+      [A telephone rings four times, unanswered.]&lt;/dd&gt;
+    &lt;dt&gt;00:16&lt;/dt&gt;&lt;dd&gt;Card: &lt;strong&gt;riverlinebooks.example&lt;/strong&gt; — Thanks for visiting.
+      [The doorbell chimes as the door closes.]&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/details&gt;
+
+&lt;!-- Cheapest fix of all, and the one most people miss: if the narration simply
+     SAID the information that is on screen, no description would be needed at
+     all. Writing the script so the audio is self-sufficient removes the problem
+     instead of remediating it. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Watch the video with the screen off. If you lose information, the visual content is not described. Confirm either a described audio track or a text alternative covering both dialogue and visuals.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires watching the media and judging whether the visuals carry information the audio does not.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.2.5-audio-description-prerecorded/index.html">1.2.5 Audio Description (Prerecorded) (Level AA)</a></li>
+          <li><a href="../1.2.7-extended-audio-description-prerecorded/index.html">1.2.7 Extended Audio Description (Prerecorded) (Level AAA)</a></li>
+          <li><a href="../1.2.8-media-alternative-prerecorded/index.html">1.2.8 Media Alternative (Prerecorded) (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded.html">Understanding 1.2.3 Audio Description or Media Alternative (Prerecorded)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#audio-description-or-media-alternative-prerecorded">1.2.3 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.2.2-captions-prerecorded/index.html"><span class="sc-pager__dir">Previous criterion</span>1.2.2 Captions (Prerecorded)</a>
+        <a href="../1.2.4-captions-live/index.html"><span class="sc-pager__dir">Next criterion</span>1.2.4 Captions (Live)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

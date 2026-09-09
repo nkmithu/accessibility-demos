@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.2.3 Audio Description or Media Alternative</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.transcript { border:1px solid var(--border); border-radius:6px; padding:1rem; margin:.75rem 0; }
+         .transcript dt { font-weight:700; font-family:var(--font-mono); }
+         .transcript dd { margin:0 0 .6rem; }</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.2.3.</p>
+
+  <!-- excerpt:start -->
+  <h1>A short tour of the shop</h1>
+
+  <video controls width="640">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+    <!-- A descriptions track is the correct markup and is machine-readable.
+         Be warned: no major browser currently speaks these cues aloud, so on its
+         own it is NOT enough to claim conformance. It is included here so you can
+         see the syntax and because it costs nothing. -->
+    <track kind="descriptions" src="../../assets/media/shop-tour-descriptions.vtt"
+           srclang="en" label="Audio description">
+  </video>
+
+  <!-- FIX: 1.2.3 lets you satisfy it EITHER with audio description OR with a
+       full text alternative for the whole presentation. The text alternative is
+       used here because it is the option a small team can actually deliver, and
+       it is what the descriptions track would say.
+
+       Note the difference from a caption file: this covers BOTH what is heard
+       and what is seen, and reads as a document in its own right. -->
+  <details class="transcript" open>
+    <summary>Text alternative for the whole presentation</summary>
+    <p>A sequence of five title cards, with sound effects.</p>
+    <dl>
+      <dt>00:00</dt><dd>Title card: <strong>Riverline Books — A short tour</strong>.
+        [A shop doorbell chimes twice.]</dd>
+      <dt>00:04</dt><dd>Card: <strong>Opening hours</strong> — Monday to Friday, 9am to 6pm;
+        Saturday, 10am to 4pm; Sunday, closed.</dd>
+      <dt>00:08</dt><dd>Card: <strong>Reserve online</strong> — collect in store within seven days.
+        [A counter bell rings.]</dd>
+      <dt>00:12</dt><dd>Card: <strong>Free delivery</strong> on orders over 25 pounds.
+        [A telephone rings four times, unanswered.]</dd>
+      <dt>00:16</dt><dd>Card: <strong>riverlinebooks.example</strong> — Thanks for visiting.
+        [The doorbell chimes as the door closes.]</dd>
+    </dl>
+  </details>
+
+  <!-- Cheapest fix of all, and the one most people miss: if the narration simply
+       SAID the information that is on screen, no description would be needed at
+       all. Writing the script so the audio is self-sufficient removes the problem
+       instead of remediating it. -->
+  <!-- excerpt:end -->
+</body>
+</html>

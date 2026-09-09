@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.3.3 Animation from Interactions</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    html{scroll-behavior:smooth}
+    .hero{height:180px;border-radius:6px;background:linear-gradient(120deg,#0a4f9e,#8fa6b8);
+          color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+          font-weight:700;transition:transform .5s ease}
+    .hero:hover{transform:scale(1.12) rotate(-1.5deg)}
+    .panel{border:1px solid var(--border);border-radius:6px;padding:1rem;margin:1rem 0;
+           transition:transform .45s cubic-bezier(.2,1.4,.4,1)}
+    .panel:hover{transform:translateX(28px) scale(1.05)}
+    .spacer{height:520px}
+
+    /* FIX: honour the operating system setting. Note that the motion is REMOVED,
+       not merely shortened - a fast lurch can be worse than a slow slide. The
+       hover feedback is replaced with a non-moving cue (a border and a
+       background change) so the affordance is not lost. */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero, .panel { transition: none; }
+      .hero:hover, .panel:hover { transform: none; }
+      .panel:hover { background: var(--surface); border-color: var(--border-strong); }
+      .hero:hover { outline: 3px solid #fff; outline-offset: -6px; }
+    }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.3.3.
+     Turn on "reduce motion" in your operating system and reload — the movement is gone.</p>
+
+  <!-- excerpt:start -->
+  <h1>Spring festival</h1>
+
+  <div class="hero">Three days of events</div>
+
+  <p><a href="#end">Jump to the programme</a></p>
+
+  <div class="panel"><h2>Friday</h2><p>Opening night readings.</p></div>
+  <div class="panel"><h2>Saturday</h2><p>Workshops and signings.</p></div>
+
+  <div class="spacer"></div>
+  <h2 id="end">Programme</h2>
+  <p>The full programme.</p>
+
+  <!-- Where to find the setting, so you can actually test this:
+         macOS    System Settings > Accessibility > Display > Reduce motion
+         Windows  Settings > Accessibility > Visual effects > Animation effects
+         iOS      Settings > Accessibility > Motion > Reduce Motion
+         Android  Settings > Accessibility > Remove animations
+         Firefox  about:config > ui.prefersReducedMotion = 1
+
+       What counts as motion animation for 2.3.3: parallax scrolling, large
+       scaling and rotation, elements flying in, page transitions that slide the
+       whole viewport, and smooth scrolling over long distances.
+
+       What does not: a fade, a colour change, or a small movement that does not
+       imply motion through space. Fades are the safe substitute.
+
+       The exception is narrow - animation ESSENTIAL to the functionality, such
+       as a progress indicator or an animation that is itself the content. -->
+  <!-- excerpt:end -->
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.3 Audio Description or Media Alternative</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.3.
+     Close your eyes and play it.</p>
+
+  <!-- excerpt:start -->
+  <h1>A short tour of the shop</h1>
+
+  <!-- FAILURE: the video is captioned, so it passes 1.2.2 - and teams often stop
+       there, believing the video is now accessible. It is not.
+
+       Every piece of actual INFORMATION in this clip is on screen and never
+       spoken: the opening hours, the reservation policy, the delivery threshold,
+       the web address. Played with the screen off, a blind user hears a doorbell,
+       a bell and a telephone, and learns nothing else.
+
+       There is no described audio track and no text alternative. -->
+  <video controls width="640">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+  </video>
+  <!-- excerpt:end -->
+</body>
+</html>

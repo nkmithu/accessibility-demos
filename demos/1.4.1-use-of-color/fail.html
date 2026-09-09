@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.1 Use of Color</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .order td.late { color: #b00020; }
+    .order td.ontime { color: #1a7f37; }
+    /* FAILURE: links in body text are distinguished from surrounding text by
+       colour alone, with the underline removed. */
+    .prose-fail a { color: #0a4f9e; text-decoration: none; }
+    .req-star { color: #b00020; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.1 Use of Color.
+     View it in greyscale and the meaning disappears.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your orders</h1>
+
+  <!-- FAILURE 1: status is conveyed by text colour alone. In greyscale, or to a
+       colour-blind user, "Delayed" and "On time" are indistinguishable. -->
+  <table class="order">
+    <caption>Recent orders</caption>
+    <thead><tr><th scope="col">Order</th><th scope="col">Status</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">#1041</th><td class="late">3 March</td></tr>
+      <tr><th scope="row">#1042</th><td class="ontime">5 March</td></tr>
+    </tbody>
+  </table>
+  <p>Dates shown in red are delayed.</p>
+
+  <!-- FAILURE 2: links identified only by colour, with no underline and no other
+       visual difference from the text around them. -->
+  <div class="prose-fail">
+    <p>See our <a href="#delivery">delivery information</a> or read the
+       <a href="#returns">returns policy</a> before contacting us.</p>
+  </div>
+
+  <!-- FAILURE 3: required fields marked with a red asterisk whose meaning is
+       explained only by colour ("fields in red are required"). -->
+  <form>
+    <div class="field">
+      <label for="email"><span class="req-star">*</span> Email address</label>
+      <input type="email" id="email">
+    </div>
+    <p>Fields marked in red are required.</p>
+    <button type="submit" class="button">Save</button>
+  </form>
+
+  <p id="delivery">Delivery information.</p>
+  <p id="returns">Returns policy.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

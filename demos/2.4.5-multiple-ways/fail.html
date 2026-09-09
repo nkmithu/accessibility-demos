@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.5 Multiple Ways</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.nav ul { list-style:none; padding:0; display:flex; gap:1rem; flex-wrap:wrap; }</style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.5 Multiple Ways.</p>
+
+  <!-- excerpt:start -->
+  <!-- FAILURE: exactly one route to any page - a single hierarchical menu.
+       No search, no site map, no breadcrumb trail, no related links, no A-to-Z.
+
+       If the user's mental model does not match the one the menu was built
+       around, they are stuck. That falls hardest on users with cognitive
+       disabilities, who often cannot reconstruct someone else's category
+       scheme, and on anyone who knows the exact title they want and simply
+       wants to type it. -->
+  <nav class="nav" aria-label="Main">
+    <ul>
+      <li><a href="#a">Fiction</a></li>
+      <li><a href="#a">Non-fiction</a></li>
+      <li><a href="#a">Children's</a></li>
+      <li><a href="#a">Events</a></li>
+    </ul>
+  </nav>
+
+  <h1>Non-fiction</h1>
+  <p>Browse our non-fiction shelves.</p>
+  <p id="a">Section.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

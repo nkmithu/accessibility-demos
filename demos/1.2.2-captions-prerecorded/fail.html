@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.2.2 Captions (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.2.2 Captions.
+     Mute the video and see what you lose.</p>
+
+  <!-- excerpt:start -->
+  <h1>A short tour of the shop</h1>
+
+  <!-- FAILURE: synchronised media - it has both picture and sound - with no
+       captions track at all.
+
+       Watch it with the sound off. The doorbell, the counter bell and the
+       unanswered telephone are all gone, and nothing on screen replaces them.
+       That soundtrack is information, and a deaf viewer never receives it. -->
+  <video controls width="640" src="../../assets/media/shop-tour.mp4"></video>
+
+  <!-- A second common failure: relying on the platform's automatic captions and
+       never correcting them. Auto-captions routinely mangle names, technical
+       terms and punctuation, and they almost never mark non-speech sound at all -
+       so a clip like this one comes out completely blank. Uncorrected
+       auto-captions do not meet 1.2.2. -->
+  <!-- excerpt:end -->
+</body>
+</html>

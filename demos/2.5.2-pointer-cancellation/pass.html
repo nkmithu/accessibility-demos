@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.5.2 Pointer Cancellation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.5.2 Pointer Cancellation.
+     Press down, drag away, release — nothing happens.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your account</h1>
+
+  <!-- FIX: use click. The browser's click event only fires when the pointer goes
+       down AND comes back up on the same element, so sliding off to cancel works
+       for free. This is another case where the platform default is already
+       correct and the failure comes from replacing it.
+
+       2.5.2 offers four ways to conform - no down-event activation, or the
+       action can be aborted, or it can be undone, or the down-event is essential
+       (a piano key, a game control). Plain click gives you the first. -->
+  <button type="button" class="button" id="del">Delete my account</button>
+
+  <p id="log" role="status"></p>
+
+  <!-- Belt and braces: because deleting an account is irreversible, it also gets
+       a confirmation step. That is 3.3.4 Error Prevention, a different criterion
+       - but the two work together, and consequential actions want both. -->
+  <div id="confirm" hidden>
+    <p><strong>Delete your account permanently?</strong> This cannot be undone.</p>
+    <button type="button" class="button" id="yes">Yes, delete my account</button>
+    <button type="button" class="button button--secondary" id="no">Cancel</button>
+  </div>
+  <!-- excerpt:end -->
+
+  <script>
+    var log = document.getElementById('log');
+    document.getElementById('del').addEventListener('click', function () {
+      document.getElementById('confirm').hidden = false;
+      document.getElementById('yes').focus();
+    });
+    document.getElementById('yes').addEventListener('click', function () {
+      document.getElementById('confirm').hidden = true;
+      log.textContent = 'Account deleted.';
+    });
+    document.getElementById('no').addEventListener('click', function () {
+      document.getElementById('confirm').hidden = true;
+      log.textContent = 'Cancelled. Your account is safe.';
+      document.getElementById('del').focus();
+    });
+  </script>
+</body>
+</html>

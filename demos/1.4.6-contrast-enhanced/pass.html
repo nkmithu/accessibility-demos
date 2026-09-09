@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.6 Contrast (Enhanced)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .body-text { color: #2b3138; }   /* 12.0:1 */
+    .link      { color: #0a4f9e; }   /* 8.0:1  */
+    .cta       { background:#0a4f9e; color:#fff; border:0; padding:.6rem 1.2rem;
+                 border-radius:6px; min-height:44px; font:inherit; }   /* 8.0:1 */
+    .big       { font-size: 1.6rem; color: #3a424b; }  /* 9.6:1 */
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.6 Contrast (Enhanced).</p>
+
+  <!-- excerpt:start -->
+  <h1>Your membership</h1>
+
+  <p class="body-text">Your membership renews on 1 April. Members get free delivery
+     and priority booking for all events.</p>
+
+  <p class="body-text">See our <a class="link" href="#t">membership terms</a>.</p>
+
+  <button type="button" class="cta">Renew membership</button>
+
+  <p class="big">Renewing saves you £12 a year</p>
+
+  <!-- The thresholds:
+         normal text   7:1    (AA asks 4.5:1)
+         large text    4.5:1  (AA asks 3:1)
+       Large text is still 18pt / 24px, or 14pt / 18.66px bold.
+
+       Why it matters: the AA 4.5:1 figure is calibrated to roughly 20/40 vision.
+       7:1 extends that to about 20/80 - which covers a large population of older
+       users and people with low vision who do not use any assistive technology
+       and would never describe themselves as disabled.
+
+       Is AAA realistic here? For text contrast, unusually, yes. Most palettes
+       can reach 7:1 by darkening a few tokens, and it costs nothing at runtime.
+       This is one of the AAA criteria genuinely worth adopting site-wide - which
+       is why the teaching pages of this suite hold themselves to it. -->
+
+  <p id="t">Terms.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

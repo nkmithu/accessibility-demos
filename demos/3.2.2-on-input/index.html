@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.2.2 On Input (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Changing the setting of a component does not automatically cause a change of context unless the user has been advised of the behaviour beforehand.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.2.2 On Input</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.2.2</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 3.2 Predictable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>On Input</h1>
+        <p class="sc-header__summary">Changing the setting of a component does not automatically cause a change of context unless the user has been advised of the behaviour beforehand.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users who arrow through a select to hear the options — if each option navigates immediately, they cannot reach the one they want. Users with cognitive disabilities disoriented by unannounced jumps.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.2.2
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.2.2 On Input"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your account&lt;/h1&gt;
+
+&lt;form&gt;
+  &lt;!-- FAILURE 1: the classic &quot;jump menu&quot;. Changing the selection navigates
+       immediately. With a keyboard, arrowing down through a select changes the
+       selection on every key press - so the user is thrown to &quot;Orders&quot; while
+       trying to reach &quot;Addresses&quot;, and can never get past the first option. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;section&quot;&gt;Go to section&lt;/label&gt;
+    &lt;select id=&quot;section&quot; onchange=&quot;navigate(this.value)&quot;&gt;
+      &lt;option value=&quot;&quot;&gt;Choose…&lt;/option&gt;
+      &lt;option value=&quot;orders&quot;&gt;Orders&lt;/option&gt;
+      &lt;option value=&quot;addresses&quot;&gt;Addresses&lt;/option&gt;
+      &lt;option value=&quot;payment&quot;&gt;Payment methods&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FAILURE 2: ticking a checkbox submits the whole form and reloads the
+       page, with no warning that it would. --&gt;
+  &lt;p class=&quot;field&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;gift&quot; onchange=&quot;submitNow()&quot;&gt;
+    &lt;label for=&quot;gift&quot;&gt;This is a gift&lt;/label&gt;
+  &lt;/p&gt;
+
+  &lt;!-- FAILURE 3: filling the last character of a field auto-advances focus to
+       the next one. Users who type slowly, use speech input, or need to review
+       what they typed lose their place - and correcting a typo becomes a
+       fight with the interface. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;pc1&quot;&gt;Postcode (first part)&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;pc1&quot; maxlength=&quot;4&quot; oninput=&quot;if(this.value.length===4) document.getElementById('pc2').focus()&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;pc2&quot;&gt;Postcode (second part)&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;pc2&quot; maxlength=&quot;3&quot;&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;p id=&quot;log&quot; role=&quot;status&quot;&gt;&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.2.2
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.2.2 On Input"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your account&lt;/h1&gt;
+
+&lt;form&gt;
+  &lt;!-- FIX 1: the selection changes nothing on its own. An explicit Go button
+       performs the navigation, so the user can browse the options freely and
+       commit when they are ready. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;section&quot;&gt;Go to section&lt;/label&gt;
+    &lt;select id=&quot;section&quot;&gt;
+      &lt;option value=&quot;&quot;&gt;Choose…&lt;/option&gt;
+      &lt;option value=&quot;orders&quot;&gt;Orders&lt;/option&gt;
+      &lt;option value=&quot;addresses&quot;&gt;Addresses&lt;/option&gt;
+      &lt;option value=&quot;payment&quot;&gt;Payment methods&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;navigate()&quot;&gt;Go&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FIX 2: the checkbox only changes state. Nothing is submitted until the
+       user submits. --&gt;
+  &lt;p class=&quot;field&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; id=&quot;gift&quot;&gt;
+    &lt;label for=&quot;gift&quot;&gt;This is a gift&lt;/label&gt;
+  &lt;/p&gt;
+
+  &lt;!-- FIX 3: one field, no auto-advance. If the design really requires split
+       fields, the user must still control focus themselves.
+
+       3.2.2 also permits a change of context on input IF the user is warned
+       BEFORE using the control - so a note like &quot;choosing a country reloads
+       the page&quot; placed before the select would make that pattern conform.
+       Not warning afterwards: warning first. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;pc&quot;&gt;Postcode&lt;/label&gt;
+    &lt;p class=&quot;hint&quot; id=&quot;pc-hint&quot;&gt;For example, SW1A 1AA.&lt;/p&gt;
+    &lt;input type=&quot;text&quot; id=&quot;pc&quot; autocomplete=&quot;postal-code&quot; aria-describedby=&quot;pc-hint&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Save changes&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;p id=&quot;log&quot; role=&quot;status&quot;&gt;&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Change every select, checkbox, and radio without pressing a submit button. If the page navigates or reloads, either add an explicit Go button or warn the user in advance.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires interacting with each control and observing the result.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.2.1-on-focus/index.html">3.2.1 On Focus (Level A)</a></li>
+          <li><a href="../3.2.5-change-on-request/index.html">3.2.5 Change on Request (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input.html">Understanding 3.2.2 On Input</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#on-input">3.2.2 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.2.1-on-focus/index.html"><span class="sc-pager__dir">Previous criterion</span>3.2.1 On Focus</a>
+        <a href="../3.2.3-consistent-navigation/index.html"><span class="sc-pager__dir">Next criterion</span>3.2.3 Consistent Navigation</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

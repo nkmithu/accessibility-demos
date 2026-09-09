@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.2.1 On Focus</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.hint { color: var(--text-muted); font-size:.9375rem; margin:.15rem 0 .35rem; }</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.2.1 On Focus.
+     Tab through it — nothing happens until you ask for it.</p>
+
+  <!-- excerpt:start -->
+  <h1>Find a branch</h1>
+
+  <form>
+    <!-- FIX 1: focus does nothing. The user chooses, then activates an explicit
+         Search button. Receiving focus is how a keyboard user READS a page - it
+         must never be treated as an instruction. -->
+    <div class="field">
+      <label for="branch">Branch</label>
+      <select id="branch">
+        <option>Riverside</option>
+        <option>Old Town</option>
+        <option>Hillgate</option>
+      </select>
+    </div>
+
+    <!-- FIX 2: help is available on demand, from a control the user activates.
+         Hint text that is always visible is better still - it needs no
+         interaction at all. -->
+    <div class="field">
+      <label for="date">Visit date</label>
+      <p class="hint" id="date-hint">Use the format DD/MM/YYYY.</p>
+      <input type="text" id="date" aria-describedby="date-hint">
+    </div>
+
+    <div class="field">
+      <label for="post">Postcode</label>
+      <input type="text" id="post" autocomplete="postal-code">
+    </div>
+
+    <button type="submit" class="button">Search</button>
+  </form>
+
+  <!-- Note the boundary: 3.2.1 forbids a CHANGE OF CONTEXT on focus - submitting
+       a form, navigating, opening a new window, or moving focus elsewhere.
+       It does not forbid every visible change. Showing a hint, highlighting the
+       field, or expanding help text next to it are all fine, because the user
+       stays where they are and keeps control. -->
+
+  <p><a href="#x" id="end">Last link on the page</a></p>
+  <p id="x">Target.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.4.7 Low or No Background Audio (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="For prerecorded audio that is primarily speech, background sound is either absent, switchable off, or at least 20 dB below the foreground speech.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.4.7 Low or No Background Audio</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.4.7</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 1.4 Distinguishable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Low or No Background Audio</h1>
+        <p class="sc-header__summary">For prerecorded audio that is primarily speech, background sound is either absent, switchable off, or at least 20 dB below the foreground speech.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Hard-of-hearing users, for whom background music competes with speech and destroys intelligibility. Hearing aids amplify everything, not just the voice.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.4.7
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.4.7 Low or No Background Audio"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Author interview: A. Marsh&lt;/h1&gt;
+
+&lt;!-- FAILURE: a speech recording mixed with a music bed that sits only a few
+     decibels below the voice, and there is no way to turn the music off.
+
+     Why this matters more than it sounds: a hearing aid or cochlear implant
+     amplifies everything in the signal, not just the voice. Background music
+     that a hearing listener filters out effortlessly arrives at the same
+     volume as the speech, and the words become unrecoverable. Many people who
+     would never call themselves disabled cannot follow speech over music
+     either.
+
+     There is one mixed file, no speech-only version, and no music control. --&gt;
+&lt;audio controls src=&quot;../../assets/media/shop-doorbell.mp3&quot;&gt;&lt;/audio&gt;
+&lt;p&gt;Recorded live in the Riverside shop, with our usual background music playing.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.4.7
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.4.7 Low or No Background Audio"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Author interview: A. Marsh&lt;/h1&gt;
+
+&lt;!-- FIX: a speech-only version is offered. The criterion is satisfied by ANY
+     ONE of three routes:
+       1. no background sound at all, or
+       2. the background can be turned off by the user, or
+       3. the background is at least 20 dB below the speech. --&gt;
+&lt;p&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; id=&quot;clean&quot; aria-pressed=&quot;true&quot;&gt;
+    Music is off&lt;/button&gt;
+&lt;/p&gt;
+&lt;audio controls src=&quot;../../assets/media/shop-doorbell.mp3&quot;&gt;&lt;/audio&gt;
+&lt;p id=&quot;mode&quot; role=&quot;status&quot;&gt;Playing the speech-only version.&lt;/p&gt;
+
+&lt;div class=&quot;note&quot;&gt;
+  &lt;h2&gt;What &quot;20 dB below&quot; means in practice&lt;/h2&gt;
+  &lt;p&gt;20 decibels is a ratio of ten to one in amplitude, and sounds roughly
+     &lt;strong&gt;four times quieter&lt;/strong&gt; to a listener. It is much further down than
+     most people expect: if you can comfortably hear the tune, the mix is almost
+     certainly too loud to conform.&lt;/p&gt;
+  &lt;p&gt;Measure it rather than guessing. In any audio editor, compare the loudness of a
+     speech passage against a passage of background alone.&lt;/p&gt;
+  &lt;h2&gt;Scope&lt;/h2&gt;
+  &lt;p&gt;1.4.7 applies to prerecorded &lt;strong&gt;audio-only&lt;/strong&gt; content that is
+     &lt;strong&gt;primarily speech&lt;/strong&gt; — a podcast, an interview, an audio guide.
+     It does not apply to music, to singing, or to audio logos shorter than the
+     threshold, and it does not apply to the soundtrack of a video (that is 1.2.x
+     territory).&lt;/p&gt;
+  &lt;p&gt;The simplest way to conform is route 1: do not put music under speech at all.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Listen for background music or ambience under narration. Confirm it is at least 20 dB quieter (roughly four times quieter in perceived loudness) or that a speech-only track is offered.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires audio analysis and listening.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.4.2-audio-control/index.html">1.4.2 Audio Control (Level A)</a></li>
+          <li><a href="../1.2.2-captions-prerecorded/index.html">1.2.2 Captions (Prerecorded) (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/low-or-no-background-audio.html">Understanding 1.4.7 Low or No Background Audio</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#low-or-no-background-audio">1.4.7 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.4.6-contrast-enhanced/index.html"><span class="sc-pager__dir">Previous criterion</span>1.4.6 Contrast (Enhanced)</a>
+        <a href="../1.4.8-visual-presentation/index.html"><span class="sc-pager__dir">Next criterion</span>1.4.8 Visual Presentation</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.4.6 Contrast (Enhanced) (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Text and images of text have a contrast ratio of at least 7:1, or 4.5:1 for large text.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.4.6 Contrast (Enhanced)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.4.6</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 1.4 Distinguishable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Contrast (Enhanced)</h1>
+        <p class="sc-header__summary">Text and images of text have a contrast ratio of at least 7:1, or 4.5:1 for large text.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with moderately low vision (roughly 20/80) who do not use assistive technology. The AA 4.5:1 threshold approximates 20/40 vision; 7:1 extends coverage further.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.4.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.4.6 Contrast (Enhanced)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your membership&lt;/h1&gt;
+
+&lt;!-- 4.6:1. Comfortably over the 4.5:1 AA minimum, comfortably under 7:1. --&gt;
+&lt;p class=&quot;body-text&quot;&gt;Your membership renews on 1 April. Members get free delivery
+   and priority booking for all events.&lt;/p&gt;
+
+&lt;p class=&quot;body-text&quot;&gt;See our &lt;a class=&quot;link&quot; href=&quot;#t&quot;&gt;membership terms&lt;/a&gt;.&lt;/p&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;cta&quot;&gt;Renew membership&lt;/button&gt;
+
+&lt;!-- Large text: 3.1:1 passes AA (where large text only needs 3:1) but fails
+     AAA (where large text needs 4.5:1). --&gt;
+&lt;p class=&quot;big&quot;&gt;Renewing saves you £12 a year&lt;/p&gt;
+
+&lt;p id=&quot;t&quot;&gt;Terms.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.4.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.4.6 Contrast (Enhanced)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Your membership&lt;/h1&gt;
+
+&lt;p class=&quot;body-text&quot;&gt;Your membership renews on 1 April. Members get free delivery
+   and priority booking for all events.&lt;/p&gt;
+
+&lt;p class=&quot;body-text&quot;&gt;See our &lt;a class=&quot;link&quot; href=&quot;#t&quot;&gt;membership terms&lt;/a&gt;.&lt;/p&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;cta&quot;&gt;Renew membership&lt;/button&gt;
+
+&lt;p class=&quot;big&quot;&gt;Renewing saves you £12 a year&lt;/p&gt;
+
+&lt;!-- The thresholds:
+       normal text   7:1    (AA asks 4.5:1)
+       large text    4.5:1  (AA asks 3:1)
+     Large text is still 18pt / 24px, or 14pt / 18.66px bold.
+
+     Why it matters: the AA 4.5:1 figure is calibrated to roughly 20/40 vision.
+     7:1 extends that to about 20/80 - which covers a large population of older
+     users and people with low vision who do not use any assistive technology
+     and would never describe themselves as disabled.
+
+     Is AAA realistic here? For text contrast, unusually, yes. Most palettes
+     can reach 7:1 by darkening a few tokens, and it costs nothing at runtime.
+     This is one of the AAA criteria genuinely worth adopting site-wide - which
+     is why the teaching pages of this suite hold themselves to it. --&gt;
+
+&lt;p id=&quot;t&quot;&gt;Terms.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Same procedure as 1.4.3 with the higher thresholds. Check whether the palette can meet 7:1 without becoming pure black on white.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Same tooling as 1.4.3, configured to the AAA threshold; same blind spots.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>color-contrast-enhanced</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.4.3-contrast-minimum/index.html">1.4.3 Contrast (Minimum) (Level AA)</a></li>
+          <li><a href="../1.4.11-non-text-contrast/index.html">1.4.11 Non-text Contrast (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html">Understanding 1.4.6 Contrast (Enhanced)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#contrast-enhanced">1.4.6 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.4.5-images-of-text/index.html"><span class="sc-pager__dir">Previous criterion</span>1.4.5 Images of Text</a>
+        <a href="../1.4.7-low-or-no-background-audio/index.html"><span class="sc-pager__dir">Next criterion</span>1.4.7 Low or No Background Audio</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 170" width="120" height="170" role="presentation">
+  <rect width="120" height="170" fill="#8fa6b8"/>
+  <rect y="105" width="120" height="65" fill="#c8d4dd"/>
+  <rect y="100" width="120" height="8" fill="#dfe7ec"/>
+  <circle cx="88" cy="34" r="14" fill="#e8eef2" opacity="0.75"/>
+  <path d="M0 118c20-6 34 4 56 2s38-10 64-4v54H0z" fill="#a9bcc9"/>
+  <rect x="10" y="132" width="100" height="2" fill="#7d919f" opacity="0.5"/>
+  <text x="60" y="76" font-family="Georgia, serif" font-size="15" fill="#1d2b36"
+        text-anchor="middle">Tidal Flats</text>
+  <text x="60" y="94" font-family="Georgia, serif" font-size="8.5" fill="#33465a"
+        text-anchor="middle">A NOVEL</text>
+</svg>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.1.1 Non-text Content</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.1.1 Non-text Content.</p>
+
+  <!-- excerpt:start -->
+  <h1>Riverline Books — this week</h1>
+
+  <!-- FAILURE 1: informative image with no alt attribute at all.
+       A screen reader falls back to announcing the file name:
+       "graphic, cover-tidal-flats-9781234567890.png" -->
+  <img src="../../assets/media/book-cover.svg" width="120" height="170">
+
+  <h2>Tidal Flats</h2>
+  <p>Our staff pick for this week.</p>
+
+  <!-- FAILURE 2: decorative flourish given descriptive alt text.
+       Nothing is communicated, but every screen reader user must listen to it. -->
+  <img src="../../assets/media/divider.svg" alt="decorative horizontal line divider graphic"
+       width="320" height="8">
+
+  <!-- FAILURE 3: icon-only button with no accessible name.
+       Announced as "button" - the user is told nothing about what it does. -->
+  <button type="button" class="button button--secondary">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M10 3a7 7 0 0 1 6.3 10.05l-.3.55 3 3-1.4 1.4-3-3A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10A5 5 0 0 0 10 5Z"/>
+    </svg>
+  </button>
+
+  <!-- FAILURE 4: alt text that exists but conveys nothing the image conveys.
+       This passes every automated scanner and fails every actual user. -->
+  <img src="../../assets/media/sales-chart.svg" alt="chart" width="360" height="200">
+
+  <!-- FAILURE 5: meaningful image implemented as a CSS background with no text
+       equivalent anywhere. There is no alt attribute to forget - which is why
+       this one is so easy to miss in review. -->
+  <div class="badge-award" role="presentation"></div>
+  <!-- excerpt:end -->
+
+  <style>
+    .badge-award {
+      width: 96px; height: 96px; margin-top: 1rem;
+      background: url("../../assets/media/award-badge.svg") no-repeat center / contain;
+    }
+  </style>
+</body>
+</html>

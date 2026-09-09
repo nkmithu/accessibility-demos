@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.12 Focus Not Obscured (Enhanced)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .sticky-bar{position:sticky;top:0;z-index:5;background:#0a4f9e;color:#fff;
+                padding:.8rem 1rem;font-weight:700}
+    .long{margin-bottom:.9rem}
+    /* FIX: scroll-margin generous enough to clear the sticky bar completely,
+       PLUS the focus ring and its offset. Measure the bar, then add at least
+       the outline width plus the outline offset on top. */
+    .long a { scroll-margin-top: 5rem; scroll-margin-bottom: 2rem; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.12 at AAA.
+     Tab down the list — every focused link is fully clear of the header.</p>
+
+  <!-- excerpt:start -->
+  <div class="sticky-bar">Riverline Books — free delivery over £25</div>
+
+  <h1>Browse by subject</h1>
+  <p class="long"><a href="#a">Archaeology</a></p>
+  <p class="long"><a href="#a">Biography</a></p>
+  <p class="long"><a href="#a">Cookery</a></p>
+  <p class="long"><a href="#a">Drama</a></p>
+  <p class="long"><a href="#a">Economics</a></p>
+  <p class="long"><a href="#a">Fiction</a></p>
+  <p class="long"><a href="#a">Geography</a></p>
+  <p class="long"><a href="#a">History</a></p>
+  <p class="long"><a href="#a">Illustration</a></p>
+  <p class="long"><a href="#a">Journalism</a></p>
+  <p class="long"><a href="#a">Linguistics</a></p>
+  <p class="long" id="a">Music</p>
+
+  <!-- Practical guidance:
+       - the cheapest way to pass both 2.4.11 and 2.4.12 is to have no sticky
+         overlays at all. The second cheapest is to make them small.
+       - if you keep them, set scroll-margin-top to the sticky element's height
+         plus the focus indicator's outline width and offset.
+       - re-test at 200% and 400% zoom. A bar that occupies 10% of the viewport
+         at 100% zoom can occupy half of it at 400%, and a scroll-margin in rem
+         will scale with the text while a bar sized in px will not.
+       - dismissible banners are better than permanent ones: once dismissed they
+         cannot obscure anything. -->
+  <!-- excerpt:end -->
+</body>
+</html>

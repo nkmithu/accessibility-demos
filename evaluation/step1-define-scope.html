@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Step 1 — Define the scope — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Defining the website, the conformance target, the baseline of browsers and assistive technologies, and what is excluded.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../index.html"><img src="../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../demos/index.html">Criteria</a></li>
+        <li><a href="../evaluation/index.html" aria-current="page">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../testing/index.html">Testing</a></li>
+        <li><a href="../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><span aria-current="page">Step 1 — Define the scope</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Step 1 — Define the scope of the evaluation</h1>
+      <p class="sc-header__summary">Everything in an audit is disputed later on the basis of this
+         step. Write it down before you look at a single page, and get the client to agree it.</p>
+
+      <h2>1a. Define the website</h2>
+      <p class="prose">"The website" sounds obvious and never is. Decide, in writing:</p>
+      <ul class="prose">
+        <li>Which domains and subdomains are included. Does <code>shop.example.org</code> count?
+            <code>blog.example.org</code>?</li>
+        <li>Whether authenticated areas are in scope — and if so, whose account you will use.</li>
+        <li>Whether third-party embedded content is in scope: payment iframes, maps, chat widgets,
+            embedded video. You usually cannot fix these, but they still affect the user, so they
+            must be <em>reported</em> even when they are excluded from the conformance claim.</li>
+        <li>Whether documents (PDF, Word, spreadsheets) are included. They are part of the web page's
+            content if you link to them.</li>
+        <li>Whether the mobile app is included. It is not a website, and WCAG-EM does not cover it.</li>
+      </ul>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Partial scope is allowed, but must be honest</p>
+        <p>You may evaluate part of a site — "the checkout process" or "the public help centre" — as
+           long as the boundary is defined by a URL structure and stated clearly. What you may not do
+           is evaluate a convenient subset and then describe the result as being about the site.</p>
+      </div>
+
+      <h2>1b. Define the conformance target</h2>
+      <p class="prose">State the level and the version: <strong>WCAG 2.2 Level AA</strong> is the
+         normal answer, and what most legislation and procurement policy requires.</p>
+      <ul class="prose">
+        <li><strong>Level A</strong> alone is rarely an acceptable target for a public service.</li>
+        <li><strong>Level AAA</strong> should not be a blanket target. W3C says explicitly that it is
+            not possible to satisfy all AAA criteria for some content. Adopt individual AAA criteria
+            where they fit — <a href="../demos/1.4.6-contrast-enhanced/index.html">1.4.6 Contrast
+            (Enhanced)</a> is usually affordable — and say which ones.</li>
+        <li>Note whether you are additionally reporting against <strong>EN 301 549</strong> or
+            <strong>Section 508</strong>, which wrap WCAG with extra clauses.</li>
+      </ul>
+
+      <h2>1c. Define the accessibility support baseline</h2>
+      <p class="prose">WCAG requires that the techniques you rely on are "accessibility supported" —
+         which the standard deliberately does not define, because support changes constantly. So you
+         define it, and you list it.</p>
+      <p class="prose">A typical baseline:</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="base-cap">
+        <table>
+          <caption id="base-cap">Example accessibility support baseline</caption>
+          <thead><tr><th scope="col">Platform</th><th scope="col">Browser</th><th scope="col">Assistive technology</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Windows</th><td>Chrome (latest)</td><td>NVDA (latest), JAWS (latest)</td></tr>
+            <tr><th scope="row">Windows</th><td>Firefox (latest)</td><td>NVDA (latest)</td></tr>
+            <tr><th scope="row">macOS</th><td>Safari (latest)</td><td>VoiceOver</td></tr>
+            <tr><th scope="row">iOS</th><td>Safari</td><td>VoiceOver</td></tr>
+            <tr><th scope="row">Android</th><td>Chrome</td><td>TalkBack</td></tr>
+            <tr><th scope="row">Any</th><td>Any</td><td>Keyboard only; 400% zoom; Windows High Contrast</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">This matters practically: a technique that works in JAWS and fails in NVDA is a
+         failure if NVDA is in your baseline, and a footnote if it is not.</p>
+
+      <h2>1d. Additional requirements</h2>
+      <p class="prose">Record anything beyond WCAG that the evaluation must consider — an
+         organisational style guide, a plain-language policy, a legal deadline, a procurement clause.</p>
+
+      <h2>Common mistakes at this step</h2>
+      <ul class="prose">
+        <li>Leaving "the website" undefined and discovering mid-audit that the client meant something
+            different.</li>
+        <li>Not agreeing whether third-party content is in scope, then arguing about it in the report.</li>
+        <li>Omitting the baseline, so every finding can be answered with "it works in my browser".</li>
+        <li>Accepting "make it accessible" as a target instead of a named level.</li>
+      </ul>
+
+      <p class="prose"><a class="button" href="templates/scope-worksheet.html">Fill in the scope worksheet</a></p>
+      <p class="prose"><a href="step2-explore.html">Next: Step 2 — Explore the website</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.3.6 Error Prevention (All) (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="For any page requiring the user to submit information, submissions are reversible, checked and correctable, or confirmed before finalising — extending 3.3.4 to all submissions, not only consequential ones.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.3.6 Error Prevention (All)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.3.6</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 3.3 Input Assistance</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Error Prevention (All)</h1>
+        <p class="sc-header__summary">For any page requiring the user to submit information, submissions are reversible, checked and correctable, or confirmed before finalising — extending 3.3.4 to all submissions, not only consequential ones.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>All users who make mistakes, and particularly users with cognitive and motor disabilities, on every form rather than only high-stakes ones.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.3.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.3.6 Error Prevention (All)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Leave a review&lt;/h1&gt;
+
+&lt;!-- 3.3.4 at AA applies only to pages with LEGAL, FINANCIAL or DATA
+     consequences, or that submit test responses. A book review is none of
+     those, so 3.3.4 does not apply and this page does not fail it.
+
+     3.3.6 at AAA extends the same protection to EVERY submission. This form
+     submits straight away: no review step, no confirmation, no way to edit or
+     delete afterwards. A user who mis-clicks, or who is not finished writing,
+     has published something under their name permanently. --&gt;
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;who&quot;&gt;Display name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;who&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;r&quot;&gt;Your review&lt;/label&gt;
+    &lt;textarea id=&quot;r&quot; rows=&quot;5&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;p&gt;&lt;small&gt;Reviews are published immediately and cannot be edited or removed.&lt;/small&gt;&lt;/p&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Post review&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.3.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.3.6 Error Prevention (All)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Leave a review&lt;/h1&gt;
+
+&lt;form id=&quot;f&quot;&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;who&quot;&gt;Display name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;who&quot; autocomplete=&quot;nickname&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;r&quot;&gt;Your review&lt;/label&gt;
+    &lt;textarea id=&quot;r&quot; rows=&quot;5&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FIX — CHECKED AND CORRECTABLE: a preview step, so nothing is published
+       without the user seeing exactly what will appear. --&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button&quot; id=&quot;preview&quot;&gt;Preview your review&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;div class=&quot;preview&quot; id=&quot;out&quot; hidden&gt;
+  &lt;h2 id=&quot;out-h&quot; tabindex=&quot;-1&quot;&gt;Check your review before posting&lt;/h2&gt;
+  &lt;p&gt;&lt;strong id=&quot;p-who&quot;&gt;&lt;/strong&gt; wrote:&lt;/p&gt;
+  &lt;p id=&quot;p-r&quot;&gt;&lt;/p&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button&quot; id=&quot;post&quot;&gt;Post this review&lt;/button&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; id=&quot;edit&quot;&gt;Go back and edit&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;p id=&quot;done&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+
+&lt;!-- FIX — REVERSIBLE: and afterwards, it can be undone. Saying so up front is
+     what lets a nervous user proceed at all. --&gt;
+&lt;p&gt;You can edit or delete your review at any time from your account.&lt;/p&gt;
+
+&lt;!-- 3.3.6 is satisfied by ANY ONE of the same three routes as 3.3.4 -
+     reversible, checked and correctable, or confirmed - applied to every form
+     rather than only consequential ones.
+
+     Is this realistic site-wide? For most sites, largely yes, and cheaply:
+     a preview step on anything published, an undo window on anything
+     destructive, and inline validation everywhere else covers almost all of it.
+     The place it gets expensive is high-volume interactions where an extra
+     confirmation would itself become a barrier - which is a legitimate reason
+     to meet 3.3.4 at AA and document why 3.3.6 is not claimed. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Confirm every form offers reversibility, validation with correction, or a confirmation step.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires walking every submission flow.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.3.4-error-prevention-legal-financial-data/index.html">3.3.4 Error Prevention (Legal, Financial, Data) (Level AA)</a></li>
+          <li><a href="../3.3.3-error-suggestion/index.html">3.3.3 Error Suggestion (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-all.html">Understanding 3.3.6 Error Prevention (All)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#error-prevention-all">3.3.6 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.3.5-help/index.html"><span class="sc-pager__dir">Previous criterion</span>3.3.5 Help</a>
+        <a href="../3.3.7-redundant-entry/index.html"><span class="sc-pager__dir">Next criterion</span>3.3.7 Redundant Entry</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

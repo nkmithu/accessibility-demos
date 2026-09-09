@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.1.2 No Keyboard Trap</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .modal { border:2px solid #a3121f; border-radius:8px; padding:1rem; background:#fff; max-width:24rem; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.1.2 No Keyboard Trap.
+     Tab into the dialog and you cannot get out without a mouse.</p>
+
+  <!-- excerpt:start -->
+  <h1>Newsletter</h1>
+  <p><a href="#before">A link before the dialog</a></p>
+
+  <!-- FAILURE: this focus trap has no exit. It cycles focus inside the dialog
+       forever: Escape is not handled, there is no close button, and the trap
+       runs even though the dialog is meant to be dismissible.
+
+       A trap is the most severe keyboard failure there is. The user's only
+       remaining option is to close the browser tab and lose their work. -->
+  <div class="modal" id="dlg">
+    <h2>Before you go…</h2>
+    <div class="field">
+      <label for="em">Email address</label>
+      <input type="email" id="em">
+    </div>
+    <button type="button" class="button" id="sub">Subscribe</button>
+  </div>
+
+  <p><a href="#after">A link after the dialog</a></p>
+  <p id="before">Before.</p><p id="after">After.</p>
+  <!-- excerpt:end -->
+
+  <script>
+    var dlg = document.getElementById('dlg');
+    var stops = dlg.querySelectorAll('input, button');
+    var first = stops[0], last = stops[stops.length - 1];
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  </script>
+</body>
+</html>

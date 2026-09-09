@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220" width="960" height="220" role="presentation">
+  <rect width="960" height="220" fill="#dfe6e3"/>
+  <path d="M0 150c120-24 210 16 330 8s210-40 330-28 180 34 300 22v68H0z" fill="#a9c2b8"/>
+  <path d="M0 178c140-18 240 14 380 8s230-26 340-16 160 20 240 12v38H0z" fill="#7fa294"/>
+  <circle cx="800" cy="60" r="30" fill="#f2efe6"/>
+  <text x="60" y="80" font-family="Georgia, serif" font-size="34" fill="#24483f">Riverline Books</text>
+  <text x="60" y="112" font-family="Georgia, serif" font-size="17" fill="#2f5d50">New and second-hand, by the river since 1998</text>
+</svg>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.3.5 Help (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Context-sensitive help is available for functions requiring user input.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.3.5 Help</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.3.5</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 3.3 Input Assistance</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Help</h1>
+        <p class="sc-header__summary">Context-sensitive help is available for functions requiring user input.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with cognitive and learning disabilities who need explanation at the point of difficulty rather than in a separate manual.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.3.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.3.5 Help"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Apply for a trade account&lt;/h1&gt;
+
+&lt;!-- FAILURE: the fields are correctly labelled - so 3.3.2 passes at Level A -
+     but several of them ask for things a first-time applicant will not
+     understand, and there is no help at the point of need. The only help is a
+     general &quot;Contact us&quot; link in the footer, which requires the user to
+     abandon the form to use it. --&gt;
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;vat&quot;&gt;VAT registration number&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;vat&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;sic&quot;&gt;SIC code&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;sic&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;terms&quot;&gt;Requested payment terms&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;terms&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;credit&quot;&gt;Estimated monthly credit requirement&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;credit&quot;&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Submit application&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;hr&gt;
+&lt;p&gt;&lt;a href=&quot;#c&quot;&gt;Contact us&lt;/a&gt;&lt;/p&gt;
+&lt;p id=&quot;c&quot;&gt;Contact page.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.3.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.3.5 Help"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Apply for a trade account&lt;/h1&gt;
+
+&lt;form&gt;
+  &lt;!-- FIX 1: always-visible hint text is the best kind of help - it needs no
+       interaction at all, so nobody has to discover that help exists. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;vat&quot;&gt;VAT registration number&lt;/label&gt;
+    &lt;p class=&quot;hint&quot; id=&quot;vat-h&quot;&gt;Nine digits, for example 123456789. Leave blank if you
+       are not VAT registered.&lt;/p&gt;
+    &lt;input type=&quot;text&quot; id=&quot;vat&quot; aria-describedby=&quot;vat-h&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FIX 2: where the explanation is longer, a disclosure keeps the form
+       scannable while keeping the help one keystroke away and IN PLACE - the
+       user never leaves the form. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;sic&quot;&gt;SIC code&lt;/label&gt;
+    &lt;p class=&quot;hint&quot; id=&quot;sic-h&quot;&gt;The five-digit code describing your main business activity.&lt;/p&gt;
+    &lt;details&gt;
+      &lt;summary&gt;What is a SIC code and where do I find mine?&lt;/summary&gt;
+      &lt;p&gt;SIC stands for Standard Industrial Classification. It is the code you gave
+         when you registered your company — you can find it on your incorporation
+         documents, or look it up on the Companies House website.&lt;/p&gt;
+      &lt;p&gt;Booksellers are usually 47610. If you are unsure, give your best guess and
+         we will check it.&lt;/p&gt;
+    &lt;/details&gt;
+    &lt;input type=&quot;text&quot; id=&quot;sic&quot; aria-describedby=&quot;sic-h&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FIX 3: define the jargon in the hint rather than assuming it. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;terms&quot;&gt;Requested payment terms&lt;/label&gt;
+    &lt;p class=&quot;hint&quot; id=&quot;terms-h&quot;&gt;How long you would like to pay us in, in days.
+       Most new accounts start at 30 days.&lt;/p&gt;
+    &lt;input type=&quot;text&quot; id=&quot;terms&quot; aria-describedby=&quot;terms-h&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;credit&quot;&gt;Estimated monthly credit requirement&lt;/label&gt;
+    &lt;p class=&quot;hint&quot; id=&quot;credit-h&quot;&gt;Roughly how much you expect to order each month,
+       in pounds. An estimate is fine — we will review it with you.&lt;/p&gt;
+    &lt;input type=&quot;text&quot; id=&quot;credit&quot; aria-describedby=&quot;credit-h&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Submit application&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- FIX 4: human help, offered beside the form rather than only in the footer. --&gt;
+&lt;h2&gt;If you get stuck&lt;/h2&gt;
+&lt;p&gt;Call our trade desk on 01234 567890, Monday to Friday, or
+   &lt;a href=&quot;#c&quot;&gt;email the trade team&lt;/a&gt;. We can fill the form in with you over the phone.&lt;/p&gt;
+
+&lt;p id=&quot;c&quot;&gt;Contact page.&lt;/p&gt;
+
+&lt;!-- 3.3.5 asks for CONTEXT-SENSITIVE help - help at the point of difficulty,
+     not a manual somewhere else. Note how it differs from its neighbours:
+       3.3.2 (A)    every field must have a label or instruction
+       3.3.5 (AAA)  fields that need explaining must have help available
+       3.2.6 (A)    if help exists across pages, it must be in a consistent place --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Confirm each non-obvious field offers help at the point of need — inline hint text, an accessible help toggle, or spelled-out examples.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires evaluating whether help is present and genuinely useful.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.3.2-labels-or-instructions/index.html">3.3.2 Labels or Instructions (Level A)</a></li>
+          <li><a href="../3.2.6-consistent-help/index.html">3.2.6 Consistent Help (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/help.html">Understanding 3.3.5 Help</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#help">3.3.5 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.3.4-error-prevention-legal-financial-data/index.html"><span class="sc-pager__dir">Previous criterion</span>3.3.4 Error Prevention (Legal, Financial, Data)</a>
+        <a href="../3.3.6-error-prevention-all/index.html"><span class="sc-pager__dir">Next criterion</span>3.3.6 Error Prevention (All)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

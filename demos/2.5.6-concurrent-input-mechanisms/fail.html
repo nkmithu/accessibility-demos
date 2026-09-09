@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.5.6 Concurrent Input Mechanisms</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.5.6.</p>
+
+  <!-- excerpt:start -->
+  <h1>Reading list</h1>
+
+  <!-- FAILURE: the page sniffs for touch support once, at load, and then binds
+       ONLY touch handlers. On a 2-in-1 laptop, a tablet with a keyboard case, or
+       a touchscreen desktop, the keyboard and mouse stop working.
+
+       Who this breaks: someone with a fluctuating condition who uses touch in
+       the morning and a keyboard when their hands are tired; someone who uses a
+       stylus for precision and a keyboard for text; anyone who plugs a keyboard
+       into a tablet.
+
+       The bug behind it is the assumption that input capability is a fixed
+       property of a DEVICE. It is a property of the MOMENT. -->
+  <p id="mode"></p>
+  <ul class="plain" id="list">
+    <li><button type="button" class="button button--secondary" data-t="Tidal Flats">Tidal Flats</button></li>
+    <li><button type="button" class="button button--secondary" data-t="The Long Field">The Long Field</button></li>
+  </ul>
+  <p id="picked" role="status"></p>
+  <!-- excerpt:end -->
+
+  <script>
+    var touch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+    document.getElementById('mode').textContent = touch
+      ? 'Touch device detected — keyboard and mouse handlers were not attached.'
+      : 'Pointer device detected — touch handlers were not attached.';
+
+    document.querySelectorAll('#list button').forEach(function (b) {
+      // Exactly one input path is wired up, chosen once and never revisited.
+      var evt = touch ? 'touchstart' : 'click';
+      b.addEventListener(evt, function () {
+        document.getElementById('picked').textContent = 'Selected: ' + b.dataset.t;
+      });
+      if (touch) { b.setAttribute('tabindex', '-1'); }   // and the keyboard is actively removed
+    });
+  </script>
+</body>
+</html>

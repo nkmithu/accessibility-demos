@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.2 Audio Control</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.2 Audio Control.
+     Sound starts by itself with no way to stop it.</p>
+
+  <!-- excerpt:start -->
+  <h1>Riverline Books</h1>
+
+  <!-- FAILURE: audio starts automatically, runs longer than three seconds, and
+       has no pause, stop or independent volume control - the controls attribute
+       is missing, so the player renders as nothing at all.
+
+       Why this is worse than annoying: a screen reader user now hears the page
+       audio and their screen reader speaking at the same time, through the same
+       output. Both become unintelligible, and the controls they would use to
+       stop it are exactly what they can no longer hear well enough to find.
+
+       Note that most browsers now block autoplay with sound, which masks this
+       failure during testing. Do not rely on that: it is not universal, it does
+       not apply once the user has interacted with the site, and it is not a
+       reason to ship the pattern. -->
+  <audio src="../../assets/media/shop-doorbell.mp3" autoplay loop></audio>
+
+  <p>Welcome to our shop. Browse this week's staff picks below.</p>
+  <p>Ambient shop sounds are playing to set the mood.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

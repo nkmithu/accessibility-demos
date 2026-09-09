@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — Riverline Books</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .captcha{border:1px solid var(--rule);border-radius:4px;padding:.9rem;margin:1rem 0;max-width:24rem}
+  .distorted{font-family:monospace;font-size:1.7rem;letter-spacing:.35em;font-style:italic;
+             transform:skewX(-14deg);display:inline-block;text-decoration:line-through;color:#555}
+  .modal{border:2px solid var(--brand);border-radius:4px;padding:1rem;background:#fff;
+         max-width:24rem;margin-top:1rem}
+</style>
+</head>
+<body>
+<p class="audit-banner">Audit material — deliberate accessibility defects.
+   <a href="../index.html">Back to the walkthrough</a></p>
+<div class="topbar"><div class="wrap">Free delivery on orders over £25</div></div>
+<div class="masthead"><div class="wrap">
+  <a class="logo" href="index.html">Riverline Books</a>
+  <div class="nav"><ul>
+    <li><a href="index.html">Home</a></li><li><a href="catalogue.html">Books</a></li>
+    <li><a href="contact.html">Contact</a></li><li><a href="login.html">Sign in</a></li>
+    <li><a href="cart.html">Basket</a></li>
+  </ul></div>
+</div></div>
+
+<div class="content"><div class="wrap">
+  <h1>Sign in</h1>
+
+  <form>
+    <!-- DEFECT 1.3.1 / 3.3.2: the visible text is a plain div sitting next to the
+         input. There is no label element and no association, so the field
+         announces as "edit, blank". -->
+    <div class="field">
+      <div>Email address</div>
+      <input type="email" id="u">
+    </div>
+
+    <!-- DEFECT 3.3.8: paste is blocked and autocomplete is switched off, so no
+         password manager can work. Combined with the CAPTCHA below, the account
+         is effectively unreachable for a user with a memory impairment. -->
+    <div class="field">
+      <div>Password</div>
+      <input type="password" id="p" autocomplete="off" onpaste="return false">
+    </div>
+
+    <!-- DEFECT 3.3.8: a transcription CAPTCHA — a cognitive function test with no
+         alternative offered. Also 1.1.1: the distorted string is presented
+         visually with no text alternative for a non-visual user. -->
+    <div class="captcha">
+      <p>Type the characters you see:</p>
+      <p><span class="distorted">x7Kp9m</span></p>
+      <div class="field"><div>Characters</div><input type="text" id="c"></div>
+    </div>
+
+    <p><button type="submit" class="btn">Sign in</button></p>
+  </form>
+
+  <p><button type="button" class="btn btn-sm" onclick="openReset()">Forgotten your password?</button></p>
+
+  <!-- DEFECT 2.1.2: a keyboard trap. Focus cycles inside this dialog forever —
+       Escape is not handled and there is no close control. The only escape is to
+       close the browser tab. This is the most severe defect in the sample site.
+       DEFECT 2.4.3: focus is never moved into the dialog when it opens, either. -->
+  <div class="modal" id="reset" hidden>
+    <div style="font-size:1.1rem;font-weight:bold">Reset your password</div>
+    <div class="field"><div>Email address</div><input type="email" id="r-email"></div>
+    <button type="button" class="btn" id="r-send">Send reset link</button>
+  </div>
+</div></div>
+
+<div class="footer"><div class="wrap"><ul>
+  <li><a href="help.html">Help</a></li><li><a href="contact.html">Contact us</a></li>
+  <li><a href="help.html">Accessibility</a></li>
+</ul></div></div>
+
+<script>
+  function openReset() { document.getElementById('reset').hidden = false; }
+  var dlg = document.getElementById('reset');
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var stops = dlg.querySelectorAll('input, button');
+    var first = stops[0], last = stops[stops.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+</script>
+</body>
+</html>

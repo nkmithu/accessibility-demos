@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.1.4 Character Key Shortcuts</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.1.4.
+     Click on the page background, then press S, N or D.</p>
+
+  <!-- excerpt:start -->
+  <h1>Catalogue</h1>
+
+  <!-- FAILURE: single-character shortcuts bound to the whole document, always
+       active, with no way to switch them off or remap them.
+
+       Who this breaks: a speech-input user dictating "send this to Sam" fires
+       S, then N, then D as commands. A user with tremor brushing the keyboard
+       triggers them at random. Neither can turn them off.
+
+       There is no setting to disable them and no modifier key required. -->
+  <p>Keyboard shortcuts: <kbd>S</kbd> search, <kbd>N</kbd> new list, <kbd>D</kbd> delete list.</p>
+
+  <div class="field">
+    <label for="note">Notes about this list</label>
+    <textarea id="note"></textarea>
+  </div>
+
+  <p id="log" role="status">No shortcut used yet.</p>
+  <!-- excerpt:end -->
+
+  <script>
+    document.addEventListener('keydown', function (e) {
+      // Not even scoped to "no modifier held", and not scoped to any component.
+      var map = { s: 'Search opened.', n: 'New list created.', d: 'List deleted.' };
+      var action = map[e.key.toLowerCase()];
+      if (action) { document.getElementById('log').textContent = action; }
+    });
+  </script>
+</body>
+</html>

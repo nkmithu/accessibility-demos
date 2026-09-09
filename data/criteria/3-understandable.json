@@ -1,0 +1,551 @@
+{
+  "principle": "3",
+  "principleTitle": "Understandable",
+  "principleIntent": "Information and the operation of the user interface must be understandable. Content a user can perceive and operate is still inaccessible if they cannot comprehend it or recover from their mistakes.",
+  "guidelines": {
+    "3.1": "Readable",
+    "3.2": "Predictable",
+    "3.3": "Input Assistance"
+  },
+  "criteria": [
+    {
+      "id": "3.1.1",
+      "slug": "language-of-page",
+      "title": "Language of Page",
+      "level": "A",
+      "guideline": "3.1",
+      "version": "2.0",
+      "summary": "The default human language of each page can be determined programmatically, using the lang attribute on the html element with a valid BCP 47 language tag.",
+      "whoItAffects": "Screen reader users hear the page read with the wrong pronunciation rules when the language is missing or wrong — English phonetics applied to Bangla text produce noise, not words. Braille translation, hyphenation, and machine translation all depend on it.",
+      "howToTest": "Check the html element has a lang attribute whose value is a valid, correct language subtag matching the page's actual primary language. lang=\"en\" on a Bangla page fails just as surely as no lang at all.",
+      "automatable": "partial",
+      "automationNote": "Scanners verify that lang is present and is a syntactically valid tag. They cannot tell whether the declared language matches the text actually on the page.",
+      "axeRules": [
+        "html-has-lang",
+        "html-lang-valid",
+        "valid-lang"
+      ],
+      "related": [
+        "3.1.2",
+        "2.4.2"
+      ],
+      "tags": [
+        "language",
+        "screen-reader",
+        "i18n",
+        "bilingual"
+      ],
+      "bilingual": true,
+      "bilingualNote": "This demo is presented in Bangla to show a correctly declared non-English page (lang=\"bn\")."
+    },
+    {
+      "id": "3.1.2",
+      "slug": "language-of-parts",
+      "title": "Language of Parts",
+      "level": "AA",
+      "guideline": "3.1",
+      "version": "2.0",
+      "summary": "The human language of each passage or phrase in the content can be determined programmatically, except for proper names, technical terms, and words that have become part of the surrounding language.",
+      "whoItAffects": "Screen reader users hearing a foreign phrase mangled by the wrong pronunciation engine. A Bangla quotation inside an English page read with English phonetics is unintelligible.",
+      "howToTest": "Find every passage in a language other than the page default and confirm it carries its own lang attribute. Check quotations, names of foreign works, and multilingual navigation such as a language switcher.",
+      "automatable": "partial",
+      "automationNote": "Scanners validate the syntax of any lang attribute they find. They cannot detect a foreign-language passage that has no lang attribute at all — the actual failure.",
+      "axeRules": [
+        "valid-lang"
+      ],
+      "related": [
+        "3.1.1"
+      ],
+      "tags": [
+        "language",
+        "screen-reader",
+        "i18n",
+        "bilingual"
+      ],
+      "bilingual": true,
+      "bilingualNote": "This demo is an English page containing Bangla passages, each marked with lang=\"bn\".",
+      "demoAxeRules": [],
+      "demoAxeNote": "axe's valid-lang rule validates lang attributes that are present. The failure here is that the Bangla passages have NO lang attribute, and no scanner can detect a language change it was never told about - that would require language identification of the text itself."
+    },
+    {
+      "id": "3.1.3",
+      "slug": "unusual-words",
+      "title": "Unusual Words",
+      "level": "AAA",
+      "guideline": "3.1",
+      "version": "2.0",
+      "summary": "A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.",
+      "whoItAffects": "Users with cognitive and learning disabilities, for whom idioms are often read literally. Users reading in a second language. Anyone new to the domain's jargon.",
+      "howToTest": "Identify jargon, idioms, and domain terms. Confirm a glossary, inline definition, or dfn element gives the meaning at or near first use.",
+      "automatable": "no",
+      "automationNote": "Identifying which words are unusual for the audience requires human reading.",
+      "axeRules": [],
+      "related": [
+        "3.1.4",
+        "3.1.5"
+      ],
+      "tags": [
+        "content",
+        "cognitive",
+        "plain-language"
+      ]
+    },
+    {
+      "id": "3.1.4",
+      "slug": "abbreviations",
+      "title": "Abbreviations",
+      "level": "AAA",
+      "guideline": "3.1",
+      "version": "2.0",
+      "summary": "A mechanism for identifying the expanded form or meaning of abbreviations is available.",
+      "whoItAffects": "Screen reader users, since a screen reader may spell out or mispronounce an abbreviation. Users with cognitive disabilities and readers unfamiliar with the domain.",
+      "howToTest": "Find every abbreviation and acronym. Confirm it is expanded at first use or marked up with abbr and a title, or defined in a glossary.",
+      "automatable": "no",
+      "automationNote": "Detecting abbreviations reliably and judging whether they are explained requires a human.",
+      "axeRules": [],
+      "related": [
+        "3.1.3"
+      ],
+      "tags": [
+        "content",
+        "cognitive",
+        "abbreviations"
+      ]
+    },
+    {
+      "id": "3.1.5",
+      "slug": "reading-level",
+      "title": "Reading Level",
+      "level": "AAA",
+      "guideline": "3.1",
+      "version": "2.0",
+      "summary": "Where text requires reading ability more advanced than the lower secondary education level, supplemental content or a simpler version is available.",
+      "whoItAffects": "Users with cognitive and learning disabilities, users with low literacy, and readers in a second language. Dense legal or medical prose excludes far more people than most authors assume.",
+      "howToTest": "Run a readability measure as a rough indicator, then read critically. Where the text is above roughly a 9-year-schooling level, confirm a plain-language summary, a glossary, or illustrations are provided.",
+      "automatable": "partial",
+      "automationNote": "Readability formulas can be computed automatically, but they measure sentence and word length rather than actual comprehensibility, and the required supplement must be judged by a human.",
+      "axeRules": [],
+      "related": [
+        "3.1.3",
+        "3.1.4",
+        "1.4.8"
+      ],
+      "tags": [
+        "content",
+        "cognitive",
+        "plain-language",
+        "literacy"
+      ]
+    },
+    {
+      "id": "3.1.6",
+      "slug": "pronunciation",
+      "title": "Pronunciation",
+      "level": "AAA",
+      "guideline": "3.1",
+      "version": "2.0",
+      "summary": "A mechanism is available for identifying specific pronunciation of words where meaning is ambiguous without it.",
+      "whoItAffects": "Screen reader users encountering heteronyms — words spelled alike but pronounced differently, where the wrong reading changes the meaning. Also relevant for names and loanwords.",
+      "howToTest": "Find words whose meaning depends on pronunciation and confirm a pronunciation guide, phonetic spelling, or ruby annotation is available.",
+      "automatable": "no",
+      "automationNote": "Requires linguistic judgement about ambiguity.",
+      "axeRules": [],
+      "related": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "tags": [
+        "content",
+        "screen-reader",
+        "pronunciation"
+      ]
+    },
+    {
+      "id": "3.2.1",
+      "slug": "on-focus",
+      "title": "On Focus",
+      "level": "A",
+      "guideline": "3.2",
+      "version": "2.0",
+      "summary": "When any component receives focus, it does not initiate a change of context — no automatic form submission, navigation, new window, or focus move elsewhere.",
+      "whoItAffects": "Keyboard and screen reader users, who move focus in order to read. If merely arriving at a control launches a new page, they can never reach the controls beyond it.",
+      "howToTest": "Tab through every control without activating anything. Nothing should submit, navigate, open a window, or move focus. Select elements that navigate on focus or change are a classic failure.",
+      "automatable": "no",
+      "automationNote": "Requires tabbing through and observing for unexpected context changes.",
+      "axeRules": [],
+      "related": [
+        "3.2.2",
+        "3.2.5",
+        "2.4.3"
+      ],
+      "tags": [
+        "focus",
+        "forms",
+        "keyboard",
+        "predictability"
+      ]
+    },
+    {
+      "id": "3.2.2",
+      "slug": "on-input",
+      "title": "On Input",
+      "level": "A",
+      "guideline": "3.2",
+      "version": "2.0",
+      "summary": "Changing the setting of a component does not automatically cause a change of context unless the user has been advised of the behaviour beforehand.",
+      "whoItAffects": "Screen reader users who arrow through a select to hear the options — if each option navigates immediately, they cannot reach the one they want. Users with cognitive disabilities disoriented by unannounced jumps.",
+      "howToTest": "Change every select, checkbox, and radio without pressing a submit button. If the page navigates or reloads, either add an explicit Go button or warn the user in advance.",
+      "automatable": "no",
+      "automationNote": "Requires interacting with each control and observing the result.",
+      "axeRules": [],
+      "related": [
+        "3.2.1",
+        "3.2.5"
+      ],
+      "tags": [
+        "forms",
+        "predictability",
+        "screen-reader"
+      ]
+    },
+    {
+      "id": "3.2.3",
+      "slug": "consistent-navigation",
+      "title": "Consistent Navigation",
+      "level": "AA",
+      "guideline": "3.2",
+      "version": "2.0",
+      "summary": "Navigational mechanisms repeated across multiple pages occur in the same relative order each time, unless the user changes it.",
+      "whoItAffects": "Users with cognitive disabilities who learn a layout by position. Screen magnifier users who know where to look. Screen reader users who learn how many Tab presses reach the search box.",
+      "howToTest": "Compare the navigation across several pages. The same items should appear in the same relative order. Items may be added or removed, but the surviving items must keep their sequence.",
+      "automatable": "no",
+      "automationNote": "Requires comparing multiple pages against each other — outside the scope of a single-page scan.",
+      "axeRules": [],
+      "related": [
+        "3.2.4",
+        "2.4.5",
+        "2.4.8"
+      ],
+      "tags": [
+        "navigation",
+        "consistency",
+        "cognitive",
+        "multi-page"
+      ]
+    },
+    {
+      "id": "3.2.4",
+      "slug": "consistent-identification",
+      "title": "Consistent Identification",
+      "level": "AA",
+      "guideline": "3.2",
+      "version": "2.0",
+      "summary": "Components with the same functionality within a set of pages are identified consistently — the same label, name, and icon for the same action.",
+      "whoItAffects": "Screen reader users who learn a control by its name. Users with cognitive disabilities who must otherwise relearn the interface on each page. Calling the same action Search, Find, and Go on three pages triples the learning cost.",
+      "howToTest": "List the accessible names and icons for equivalent controls across pages. The same function must carry the same name. Watch for a print icon labelled Print on one page and Export on another.",
+      "automatable": "no",
+      "automationNote": "Requires cross-page comparison and understanding which controls are functionally equivalent.",
+      "axeRules": [],
+      "related": [
+        "3.2.3",
+        "2.4.4",
+        "1.3.6"
+      ],
+      "tags": [
+        "consistency",
+        "labels",
+        "cognitive",
+        "multi-page"
+      ]
+    },
+    {
+      "id": "3.2.5",
+      "slug": "change-on-request",
+      "title": "Change on Request",
+      "level": "AAA",
+      "guideline": "3.2",
+      "version": "2.0",
+      "summary": "Changes of context are initiated only by user request, or a mechanism is available to turn off such changes.",
+      "whoItAffects": "Users with cognitive disabilities and screen reader users, for whom any unrequested change — an auto-redirect, a pop-up, a page that refreshes itself — breaks the mental model of where they are.",
+      "howToTest": "Confirm no automatic redirects, timed refreshes, unrequested new windows, or auto-updating regions that move focus. Links opening new windows must say so.",
+      "automatable": "partial",
+      "automationNote": "A meta refresh is detectable; script-driven context changes generally are not.",
+      "axeRules": [
+        "meta-refresh",
+        "meta-refresh-no-exceptions"
+      ],
+      "related": [
+        "3.2.1",
+        "3.2.2",
+        "2.2.4"
+      ],
+      "tags": [
+        "predictability",
+        "cognitive",
+        "navigation"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "axe's meta-refresh rule catches only the <meta http-equiv=\"refresh\"> technique. The failing page redirects with a JavaScript timer and reorders its own content on an interval - both invisible to a static scan, and both far more common than meta refresh in modern code."
+    },
+    {
+      "id": "3.2.6",
+      "slug": "consistent-help",
+      "title": "Consistent Help",
+      "level": "A",
+      "guideline": "3.2",
+      "version": "2.2",
+      "summary": "If a page includes help mechanisms — contact details, a help link, a chat widget, self-help — they appear in the same relative order on every page that has them.",
+      "whoItAffects": "Users with cognitive disabilities who need help and cannot afford to hunt for it in a different place on every page. Anyone under stress mid-task.",
+      "howToTest": "Identify every help mechanism and check its position relative to other page content across the site. Help does not have to be on every page, but where present it must be in a consistent place.",
+      "automatable": "no",
+      "automationNote": "Requires cross-page comparison of help placement.",
+      "axeRules": [],
+      "related": [
+        "3.2.3",
+        "3.3.5"
+      ],
+      "tags": [
+        "help",
+        "consistency",
+        "cognitive",
+        "multi-page",
+        "wcag22"
+      ]
+    },
+    {
+      "id": "3.3.1",
+      "slug": "error-identification",
+      "title": "Error Identification",
+      "level": "A",
+      "guideline": "3.3",
+      "version": "2.0",
+      "summary": "If an input error is automatically detected, the item in error is identified and the error is described to the user in text.",
+      "whoItAffects": "Screen reader users, who cannot see a red border. Colour-blind users, for whom red-only marking is invisible. Anyone who needs to know which of fifteen fields is wrong and why.",
+      "howToTest": "Submit a form with deliberate errors. Confirm each error is described in text, names the specific field, and is programmatically associated with it via aria-describedby, and that the error is announced.",
+      "automatable": "partial",
+      "automationNote": "Scanners check aria-invalid and aria-describedby wiring when errors are present, but must be driven into the error state first — a static scan of a clean form finds nothing.",
+      "axeRules": [
+        "aria-valid-attr-value"
+      ],
+      "related": [
+        "3.3.3",
+        "3.3.2",
+        "4.1.3",
+        "1.4.1"
+      ],
+      "tags": [
+        "forms",
+        "errors",
+        "validation",
+        "core"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "The errors are signalled with a CSS class and a red border. There is no aria-invalid and no message for axe to validate, so there is nothing for a rule to fire on. A scanner also has to be driven into the error state first: scanning the clean, unsubmitted form finds nothing no matter how broken the error handling is."
+    },
+    {
+      "id": "3.3.2",
+      "slug": "labels-or-instructions",
+      "title": "Labels or Instructions",
+      "level": "A",
+      "guideline": "3.3",
+      "version": "2.0",
+      "summary": "Labels or instructions are provided when content requires user input, including format requirements and which fields are required.",
+      "whoItAffects": "Everyone, but especially screen reader users who cannot infer a field's purpose from position, and users with cognitive disabilities who need format expectations stated rather than discovered by failing.",
+      "howToTest": "Confirm every field has a persistent visible label programmatically associated with it. Check that required fields are marked in text or with required, and that format expectations are stated before submission, not only in an error.",
+      "automatable": "partial",
+      "automationNote": "Missing labels are caught reliably. Whether instructions are adequate — say, that a date must be DD/MM/YYYY — is a human judgement. Placeholder-only labelling often passes scanners while failing users.",
+      "axeRules": [
+        "label",
+        "form-field-multiple-labels",
+        "select-name"
+      ],
+      "related": [
+        "1.3.1",
+        "3.3.1",
+        "2.4.6",
+        "1.3.5"
+      ],
+      "tags": [
+        "forms",
+        "labels",
+        "instructions",
+        "core"
+      ]
+    },
+    {
+      "id": "3.3.3",
+      "slug": "error-suggestion",
+      "title": "Error Suggestion",
+      "level": "AA",
+      "guideline": "3.3",
+      "version": "2.0",
+      "summary": "If an input error is detected and a correction is known, the suggestion is provided to the user, unless it would jeopardise security or the purpose of the content.",
+      "whoItAffects": "Users with cognitive disabilities, who may not deduce the fix from a bare rejection. Everyone benefits from being told what a valid value looks like rather than being told only that theirs is not.",
+      "howToTest": "Trigger each validation error. \"Invalid date\" fails; \"Enter the date as DD/MM/YYYY, for example 05/09/2026\" passes. Where a value is close to a valid one, suggest it.",
+      "automatable": "no",
+      "automationNote": "Requires reading each error message and judging whether it is actionable.",
+      "axeRules": [],
+      "related": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.6"
+      ],
+      "tags": [
+        "forms",
+        "errors",
+        "validation",
+        "cognitive"
+      ]
+    },
+    {
+      "id": "3.3.4",
+      "slug": "error-prevention-legal-financial-data",
+      "title": "Error Prevention (Legal, Financial, Data)",
+      "level": "AA",
+      "guideline": "3.3",
+      "version": "2.0",
+      "summary": "For pages causing legal commitments or financial transactions, modifying user-controllable data, or submitting test responses, submissions are reversible, checked and correctable, or confirmed before finalising.",
+      "whoItAffects": "Users with cognitive and motor disabilities, for whom an accidental irreversible action carries real financial or legal cost. A one-click Delete Account with no confirmation is the archetypal failure.",
+      "howToTest": "Identify consequential actions — purchases, contract acceptance, account deletion, data overwrites. Each needs at least one of: reversibility, validation with a chance to correct, or a review-and-confirm step.",
+      "automatable": "no",
+      "automationNote": "Requires walking the transactional flows to the point of commitment.",
+      "axeRules": [],
+      "related": [
+        "3.3.6",
+        "2.5.2",
+        "3.3.3"
+      ],
+      "tags": [
+        "forms",
+        "errors",
+        "transactions",
+        "checkout"
+      ]
+    },
+    {
+      "id": "3.3.5",
+      "slug": "help",
+      "title": "Help",
+      "level": "AAA",
+      "guideline": "3.3",
+      "version": "2.0",
+      "summary": "Context-sensitive help is available for functions requiring user input.",
+      "whoItAffects": "Users with cognitive and learning disabilities who need explanation at the point of difficulty rather than in a separate manual.",
+      "howToTest": "Confirm each non-obvious field offers help at the point of need — inline hint text, an accessible help toggle, or spelled-out examples.",
+      "automatable": "no",
+      "automationNote": "Requires evaluating whether help is present and genuinely useful.",
+      "axeRules": [],
+      "related": [
+        "3.3.2",
+        "3.2.6"
+      ],
+      "tags": [
+        "forms",
+        "help",
+        "cognitive"
+      ]
+    },
+    {
+      "id": "3.3.6",
+      "slug": "error-prevention-all",
+      "title": "Error Prevention (All)",
+      "level": "AAA",
+      "guideline": "3.3",
+      "version": "2.0",
+      "summary": "For any page requiring the user to submit information, submissions are reversible, checked and correctable, or confirmed before finalising — extending 3.3.4 to all submissions, not only consequential ones.",
+      "whoItAffects": "All users who make mistakes, and particularly users with cognitive and motor disabilities, on every form rather than only high-stakes ones.",
+      "howToTest": "Confirm every form offers reversibility, validation with correction, or a confirmation step.",
+      "automatable": "no",
+      "automationNote": "Requires walking every submission flow.",
+      "axeRules": [],
+      "related": [
+        "3.3.4",
+        "3.3.3"
+      ],
+      "tags": [
+        "forms",
+        "errors",
+        "validation"
+      ]
+    },
+    {
+      "id": "3.3.7",
+      "slug": "redundant-entry",
+      "title": "Redundant Entry",
+      "level": "A",
+      "guideline": "3.3",
+      "version": "2.2",
+      "summary": "Information previously entered by the user in the same process is auto-populated or available to select, unless re-entry is essential, the information is security-sensitive, or the earlier value is no longer valid.",
+      "whoItAffects": "Users with cognitive disabilities who must hold a value in working memory across steps. Users with motor disabilities for whom every keystroke costs effort. Typing an address twice in a checkout is the standard failure.",
+      "howToTest": "Walk a multi-step process and note anything asked for twice. A shipping address repeated as a billing address must offer a Same as shipping option or be pre-filled. Password confirmation is an allowed exception.",
+      "automatable": "no",
+      "automationNote": "Requires walking a multi-step process and tracking what is asked more than once.",
+      "axeRules": [],
+      "related": [
+        "1.3.5",
+        "2.2.5",
+        "3.3.8"
+      ],
+      "tags": [
+        "forms",
+        "checkout",
+        "cognitive",
+        "memory",
+        "wcag22"
+      ]
+    },
+    {
+      "id": "3.3.8",
+      "slug": "accessible-authentication-minimum",
+      "title": "Accessible Authentication (Minimum)",
+      "level": "AA",
+      "guideline": "3.3",
+      "version": "2.2",
+      "summary": "A cognitive function test such as remembering a password or solving a puzzle is not required for any authentication step, unless an alternative method exists, a mechanism assists the user, or the test is object recognition or personal non-text content.",
+      "whoItAffects": "Users with cognitive disabilities affecting memory, reading, or numeracy. Users with dyslexia facing a distorted-text CAPTCHA. Blocking password managers by disabling paste turns a minor barrier into an impassable one.",
+      "howToTest": "Check every authentication step. Confirm paste is permitted in password fields, autocomplete tokens are present so password managers work, and any CAPTCHA offers a non-cognitive alternative. Transcribing a code from another device also fails if it cannot be pasted.",
+      "automatable": "partial",
+      "automationNote": "Missing autocomplete tokens on credential fields are detectable, but whether a cognitive function test is required must be assessed by hand.",
+      "axeRules": [
+        "autocomplete-valid"
+      ],
+      "related": [
+        "3.3.9",
+        "3.3.7",
+        "1.3.5"
+      ],
+      "tags": [
+        "authentication",
+        "login",
+        "cognitive",
+        "captcha",
+        "wcag22"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "autocomplete=\"off\" is a perfectly valid token, so axe's autocomplete-valid rule is satisfied by it. Blocking paste with onpaste=\"return false\", and requiring a transcription CAPTCHA, are both invisible to every scanner - yet they are what actually locks people out of their accounts."
+    },
+    {
+      "id": "3.3.9",
+      "slug": "accessible-authentication-enhanced",
+      "title": "Accessible Authentication (Enhanced)",
+      "level": "AAA",
+      "guideline": "3.3",
+      "version": "2.2",
+      "summary": "A cognitive function test is not required for any authentication step, with the object-recognition and personal-content exceptions of 3.3.8 removed.",
+      "whoItAffects": "Users with cognitive disabilities, held to the strictest standard — even \"select all the images with a bus\" is disallowed.",
+      "howToTest": "Confirm authentication relies on something other than recall or puzzle solving: a passkey, a hardware token, an email or SMS link, or biometrics.",
+      "automatable": "no",
+      "automationNote": "Requires assessing the authentication mechanisms offered.",
+      "axeRules": [],
+      "related": [
+        "3.3.8"
+      ],
+      "tags": [
+        "authentication",
+        "login",
+        "cognitive",
+        "wcag22"
+      ]
+    }
+  ]
+}

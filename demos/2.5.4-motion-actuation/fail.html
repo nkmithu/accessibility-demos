@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.5.4 Motion Actuation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.5.4 Motion Actuation.</p>
+
+  <!-- excerpt:start -->
+  <h1>Random book picker</h1>
+
+  <!-- FAILURE: shaking the device is the ONLY way to get a new suggestion, and
+       there is no way to switch motion detection off.
+
+       Who this excludes: anyone whose device is mounted to a wheelchair, a desk
+       stand or a mobility aid and physically cannot be shaken; anyone without
+       the grip strength or arm movement to shake a phone; and every desktop
+       user, whose machine has no accelerometer at all.
+
+       Users with tremor have the opposite problem - they trigger it constantly
+       and cannot turn it off. -->
+  <p>Shake your phone to get a random recommendation.</p>
+  <p id="pick" role="status">Shake to begin.</p>
+  <!-- excerpt:end -->
+
+  <script>
+    var picks = ['Tidal Flats, by A. Marsh', 'The Long Field, by R. Owen', 'Salt, by J. Nandi'];
+    var last = 0;
+    window.addEventListener('devicemotion', function (e) {
+      var a = e.accelerationIncludingGravity;
+      if (!a) return;
+      var force = Math.abs(a.x || 0) + Math.abs(a.y || 0) + Math.abs(a.z || 0);
+      if (force > 30 && Date.now() - last > 1000) {
+        last = Date.now();
+        document.getElementById('pick').textContent = picks[Math.floor(Math.random() * picks.length)];
+      }
+    });
+  </script>
+</body>
+</html>

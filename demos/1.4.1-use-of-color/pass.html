@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.1 Use of Color</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .status { font-weight: 600; }
+    .status--late { color: #a3121f; }
+    .status--ontime { color: #12603a; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.1 Use of Color.
+     Every meaning survives in greyscale.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your orders</h1>
+
+  <!-- FIX 1: the status is written out in text. Colour still helps people who
+       can see it, but it is now redundant rather than load-bearing. The word
+       and the icon both survive greyscale, a monochrome printout, and
+       Windows High Contrast mode. -->
+  <table>
+    <caption>Recent orders</caption>
+    <thead>
+      <tr><th scope="col">Order</th><th scope="col">Expected</th><th scope="col">Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">#1041</th><td>3 March</td>
+        <td class="status status--late"><span aria-hidden="true">▲</span> Delayed</td>
+      </tr>
+      <tr>
+        <th scope="row">#1042</th><td>5 March</td>
+        <td class="status status--ontime"><span aria-hidden="true">●</span> On time</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- FIX 2: links are underlined, so they are distinguishable from body text by
+       shape as well as colour. If you must remove the underline, you need
+       another non-colour difference of at least 3:1 - a bold weight or a
+       background - and it must reappear on hover and focus. -->
+  <p>See our <a href="#delivery">delivery information</a> or read the
+     <a href="#returns">returns policy</a> before contacting us.</p>
+
+  <!-- FIX 3: "(required)" is in the label as text. The required attribute also
+       exposes the state programmatically. -->
+  <form>
+    <div class="field">
+      <label for="email">Email address (required)</label>
+      <input type="email" id="email" required>
+    </div>
+    <button type="submit" class="button">Save</button>
+  </form>
+
+  <p id="delivery">Delivery information.</p>
+  <p id="returns">Returns policy.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

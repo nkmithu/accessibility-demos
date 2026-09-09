@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keyboard testing — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A step-by-step keyboard-only test script, the keys to use, and the criteria it verifies.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../index.html"><img src="../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../demos/index.html">Criteria</a></li>
+        <li><a href="../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../testing/index.html" aria-current="page">Testing</a></li>
+        <li><a href="../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../testing/index.html">Testing</a></li>
+        <li><span aria-current="page">Keyboard testing</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+<h1>Keyboard testing</h1>
+      <p class="sc-header__summary">The highest-value accessibility test there is. It needs no
+         software, takes five minutes a page, and catches failures that affect blind users, users
+         with motor disabilities, switch users, and everyone driving the page by voice — because
+         voice control and switch devices operate the keyboard interface underneath.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Before you start</p>
+        <p>Physically move the mouse out of reach. Every accessibility professional has caught
+           themselves nudging the pointer out of habit, and it invalidates the test.</p>
+        <p>On macOS, first turn on <strong>System Settings &rarr; Keyboard &rarr; Keyboard navigation</strong>.
+           Without it, Safari and Chrome will not Tab to links and buttons, and you will report
+           failures that are really a system setting.</p>
+      </div>
+
+      <h2>The keys</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="keys-cap">
+        <table>
+          <caption id="keys-cap">Keyboard interactions and what should happen</caption>
+          <thead><tr><th scope="col">Key</th><th scope="col">Expected behaviour</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><kbd>Tab</kbd></th><td>Move to the next focusable control, in reading order</td></tr>
+            <tr><th scope="row"><kbd>Shift</kbd>+<kbd>Tab</kbd></th><td>Move backwards. Must work everywhere Tab does</td></tr>
+            <tr><th scope="row"><kbd>Enter</kbd></th><td>Activate a link or a button; submit a form from a text field</td></tr>
+            <tr><th scope="row"><kbd>Space</kbd></th><td>Activate a button, toggle a checkbox, open a select. Never scrolls while a control has focus</td></tr>
+            <tr><th scope="row">Arrow keys</th><td>Move within a composite widget: radio group, tab list, menu, slider, select</td></tr>
+            <tr><th scope="row"><kbd>Escape</kbd></th><td>Close a dialog, menu, or popover, returning focus to whatever opened it</td></tr>
+            <tr><th scope="row"><kbd>Home</kbd> / <kbd>End</kbd></th><td>Jump to the first or last item in a widget or a slider's range</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>The test script</h2>
+      <ol class="prose">
+        <li><strong>Press Tab once from the top of the page.</strong> A skip link should appear and be
+            visible. Activate it and press Tab again — focus must now be inside the main content, not
+            back at navigation item two. <span class="tag">2.4.1</span></li>
+        <li><strong>Tab through every control on the page.</strong> Say out loud where focus is at each
+            stop. If you cannot tell, that is a failure. <span class="tag">2.4.7</span></li>
+        <li><strong>Compare the focus order with the visual order.</strong> It should move left to right,
+            top to bottom, and never jump unexpectedly. <span class="tag">2.4.3</span></li>
+        <li><strong>Check that you can reach everything you could click.</strong> Anything operable with a
+            mouse but not the keyboard fails outright. <span class="tag">2.1.1</span></li>
+        <li><strong>Open every dialog, menu and popover.</strong> Focus must move into it; Escape must
+            close it; focus must return to the trigger. <span class="tag">2.1.2</span> <span class="tag">2.4.3</span></li>
+        <li><strong>Try to get stuck.</strong> Tab into custom widgets, embedded players and third-party
+            iframes, then try to leave in both directions. <span class="tag">2.1.2</span></li>
+        <li><strong>Watch for focus disappearing under sticky headers or cookie banners.</strong> Do this
+            at 100% and again at 200% zoom. <span class="tag">2.4.11</span></li>
+        <li><strong>Tab past every control without activating anything.</strong> Nothing should submit,
+            navigate, or open. <span class="tag">3.2.1</span></li>
+        <li><strong>Change every select and checkbox.</strong> Nothing should navigate or reload without
+            an explicit submit. <span class="tag">3.2.2</span></li>
+        <li><strong>Submit a form with errors.</strong> Focus should move somewhere useful, and the error
+            must be reachable and readable. <span class="tag">3.3.1</span></li>
+      </ol>
+
+      <h2>What you will find, in order of frequency</h2>
+      <ol class="prose">
+        <li><code>outline: none</code> with no replacement — no visible focus anywhere.</li>
+        <li>A <code>div</code> or <code>span</code> with a click handler, unreachable by Tab.</li>
+        <li>A modal that opens without moving focus, so the keyboard user is left behind it.</li>
+        <li>A modal that does not return focus to its trigger when closed.</li>
+        <li>A custom dropdown that traps focus, or that arrow keys do not drive.</li>
+        <li>Focus scrolling underneath a sticky header.</li>
+        <li>A positive <code>tabindex</code> scrambling the order.</li>
+      </ol>
+
+      <h2>Practise on these demos</h2>
+      <ul class="related-list">
+        <li><a href="../demos/2.1.1-keyboard/index.html">2.1.1 Keyboard</a></li>
+        <li><a href="../demos/2.1.2-no-keyboard-trap/index.html">2.1.2 No Keyboard Trap</a></li>
+        <li><a href="../demos/2.4.3-focus-order/index.html">2.4.3 Focus Order</a></li>
+        <li><a href="../demos/2.4.7-focus-visible/index.html">2.4.7 Focus Visible</a></li>
+        <li><a href="../demos/2.4.11-focus-not-obscured-minimum/index.html">2.4.11 Focus Not Obscured</a></li>
+        <li><a href="../demos/3.2.1-on-focus/index.html">3.2.1 On Focus</a></li>
+      </ul>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

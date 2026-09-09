@@ -1,0 +1,886 @@
+{
+  "principle": "2",
+  "principleTitle": "Operable",
+  "principleIntent": "User interface components and navigation must be operable. Every user must be able to drive the interface, whatever input device they use.",
+  "guidelines": {
+    "2.1": "Keyboard Accessible",
+    "2.2": "Enough Time",
+    "2.3": "Seizures and Physical Reactions",
+    "2.4": "Navigable",
+    "2.5": "Input Modalities"
+  },
+  "criteria": [
+    {
+      "id": "2.1.1",
+      "slug": "keyboard",
+      "title": "Keyboard",
+      "level": "A",
+      "guideline": "2.1",
+      "version": "2.0",
+      "summary": "All functionality is operable through a keyboard interface, without requiring specific timings for individual keystrokes.",
+      "whoItAffects": "Blind users, who cannot aim a mouse they cannot see. Users with motor disabilities using switch devices, sip-and-puff, or voice control — all of which drive the keyboard interface underneath.",
+      "howToTest": "Put the mouse away. Tab through the entire page and operate every control with Enter, Space, and arrow keys. Anything reachable by mouse but not by keyboard fails. Click handlers on div and span elements are the usual cause.",
+      "automatable": "partial",
+      "automationNote": "Scanners flag click handlers on non-interactive elements and positive tabindex, but cannot confirm that every feature is genuinely operable by keyboard.",
+      "axeRules": [
+        "scrollable-region-focusable",
+        "nested-interactive"
+      ],
+      "related": [
+        "2.1.2",
+        "2.1.3",
+        "2.4.3",
+        "2.4.7",
+        "4.1.2"
+      ],
+      "tags": [
+        "keyboard",
+        "motor",
+        "blind",
+        "core"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "The failure this demo shows - a div with a click handler - is the most common keyboard failure on the web, and no automated scanner detects it. The rules listed under axeRules catch other, narrower failures of 2.1.1."
+    },
+    {
+      "id": "2.1.2",
+      "slug": "no-keyboard-trap",
+      "title": "No Keyboard Trap",
+      "level": "A",
+      "guideline": "2.1",
+      "version": "2.0",
+      "summary": "If focus can be moved to a component using the keyboard, it can be moved away again using only the keyboard. If a non-standard key is needed to exit, the user must be told.",
+      "whoItAffects": "Keyboard-only users. A trap is catastrophic rather than merely inconvenient — the only escape is to close the tab and lose all work.",
+      "howToTest": "Tab into every widget — modals, custom media players, embedded editors, third-party iframes — and confirm you can Tab or Escape back out. Test in both directions with Tab and Shift+Tab.",
+      "automatable": "no",
+      "automationNote": "Detecting a trap requires actually driving focus through the page and observing that it cannot leave.",
+      "axeRules": [],
+      "related": [
+        "2.1.1",
+        "2.4.3",
+        "1.4.13"
+      ],
+      "tags": [
+        "keyboard",
+        "modals",
+        "focus",
+        "core"
+      ]
+    },
+    {
+      "id": "2.1.3",
+      "slug": "keyboard-no-exception",
+      "title": "Keyboard (No Exception)",
+      "level": "AAA",
+      "guideline": "2.1",
+      "version": "2.0",
+      "summary": "All functionality is keyboard operable with no exception for functions that require path-dependent input such as freehand drawing.",
+      "whoItAffects": "Keyboard-only users who are excluded from the small set of features 2.1.1 allows to remain mouse-only.",
+      "howToTest": "Identify any path-dependent feature — signature capture, freehand drawing, drag-based map panning — and confirm a keyboard-operable equivalent exists.",
+      "automatable": "no",
+      "automationNote": "Requires identifying path-dependent functionality and testing alternatives by hand.",
+      "axeRules": [],
+      "related": [
+        "2.1.1",
+        "2.5.7"
+      ],
+      "tags": [
+        "keyboard",
+        "motor"
+      ]
+    },
+    {
+      "id": "2.1.4",
+      "slug": "character-key-shortcuts",
+      "title": "Character Key Shortcuts",
+      "level": "A",
+      "guideline": "2.1",
+      "version": "2.1",
+      "summary": "If a shortcut uses only letter, punctuation, number, or symbol characters, it can be turned off, remapped, or is active only when the relevant component has focus.",
+      "whoItAffects": "Speech input users, whose dictated words fire single-key shortcuts at random. Users with tremor who strike keys accidentally.",
+      "howToTest": "Identify all single-character shortcuts. Confirm at least one of: a setting to disable them, a setting to remap them to include a modifier, or activation limited to a focused component.",
+      "automatable": "no",
+      "automationNote": "Shortcut registration happens in script; discovering and testing it requires reading code and manual trial.",
+      "axeRules": [],
+      "related": [
+        "2.5.4",
+        "2.1.1"
+      ],
+      "tags": [
+        "keyboard",
+        "shortcuts",
+        "speech-input"
+      ]
+    },
+    {
+      "id": "2.2.1",
+      "slug": "timing-adjustable",
+      "title": "Timing Adjustable",
+      "level": "A",
+      "guideline": "2.2",
+      "version": "2.0",
+      "summary": "For each time limit, the user can turn it off, adjust it to at least ten times the default, or extend it with a simple action after a warning with at least 20 seconds to respond.",
+      "whoItAffects": "Users who read slowly, type slowly, use a screen reader to review a form, or need to consult someone before submitting. A silent session timeout that discards a half-completed form is a hard failure.",
+      "howToTest": "Find every timer — session timeouts, checkout holds, auto-advancing carousels with forms, quiz timers. Confirm a warning appears with at least 20 seconds to act and a way to extend.",
+      "automatable": "no",
+      "automationNote": "Requires waiting out real timers and observing the warning behaviour.",
+      "axeRules": [],
+      "related": [
+        "2.2.3",
+        "2.2.5",
+        "2.2.6",
+        "3.3.4"
+      ],
+      "tags": [
+        "timing",
+        "forms",
+        "cognitive",
+        "sessions"
+      ]
+    },
+    {
+      "id": "2.2.2",
+      "slug": "pause-stop-hide",
+      "title": "Pause, Stop, Hide",
+      "level": "A",
+      "guideline": "2.2",
+      "version": "2.0",
+      "summary": "Moving, blinking, or scrolling content that starts automatically, lasts more than five seconds, and runs alongside other content can be paused, stopped, or hidden. The same applies to auto-updating content.",
+      "whoItAffects": "Users with attention-related disabilities cannot focus beside constant motion. Screen reader users lose their place when content updates beneath them. Users with vestibular disorders can be made physically ill.",
+      "howToTest": "Look for carousels, animated banners, marquees, auto-refreshing feeds, and background video. Each needs a visible, keyboard-reachable pause control. Also verify prefers-reduced-motion is honoured.",
+      "automatable": "partial",
+      "automationNote": "Some marquee and blink usage is detectable; CSS and script-driven animation and the presence of a working pause control are not.",
+      "axeRules": [
+        "blink",
+        "marquee"
+      ],
+      "related": [
+        "2.3.3",
+        "1.4.2",
+        "2.2.1"
+      ],
+      "tags": [
+        "animation",
+        "carousels",
+        "motion",
+        "vestibular"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "axe's blink and marquee rules only match the obsolete <blink> and <marquee> ELEMENTS. Motion produced with CSS animations, or by JavaScript swapping content on a timer - which is how every carousel and ticker on the modern web is built - is completely invisible to a scanner. Nor can a scanner tell whether a pause control exists and works."
+    },
+    {
+      "id": "2.2.3",
+      "slug": "no-timing",
+      "title": "No Timing",
+      "level": "AAA",
+      "guideline": "2.2",
+      "version": "2.0",
+      "summary": "Timing is not an essential part of the event or activity presented, except for non-interactive synchronised media and real-time events.",
+      "whoItAffects": "Users who need unlimited time. At AAA the standard removes time pressure entirely rather than merely making it adjustable.",
+      "howToTest": "Confirm no time limits exist at all, other than the permitted exceptions.",
+      "automatable": "no",
+      "automationNote": "Requires reviewing the whole flow for time dependencies.",
+      "axeRules": [],
+      "related": [
+        "2.2.1",
+        "2.2.6"
+      ],
+      "tags": [
+        "timing",
+        "cognitive"
+      ]
+    },
+    {
+      "id": "2.2.4",
+      "slug": "interruptions",
+      "title": "Interruptions",
+      "level": "AAA",
+      "guideline": "2.2",
+      "version": "2.0",
+      "summary": "Interruptions can be postponed or suppressed by the user, except those involving an emergency.",
+      "whoItAffects": "Users with attention and cognitive disabilities, for whom a chat pop-up, cookie re-prompt, or promotional modal appearing mid-task destroys their place in it.",
+      "howToTest": "Confirm a setting exists to suppress or defer non-emergency notifications, pop-ups, and auto-updates.",
+      "automatable": "no",
+      "automationNote": "Requires exercising the interface over time and checking preferences.",
+      "axeRules": [],
+      "related": [
+        "2.2.1",
+        "3.2.5"
+      ],
+      "tags": [
+        "notifications",
+        "cognitive",
+        "attention"
+      ]
+    },
+    {
+      "id": "2.2.5",
+      "slug": "re-authenticating",
+      "title": "Re-authenticating",
+      "level": "AAA",
+      "guideline": "2.2",
+      "version": "2.0",
+      "summary": "When an authenticated session expires, the user can continue the activity after re-authenticating without losing any data.",
+      "whoItAffects": "Anyone who takes longer than the session window — disproportionately users with disabilities. Losing a long application form to a timeout is a common and avoidable harm.",
+      "howToTest": "Fill a long form, let the session expire, re-authenticate, and confirm every entered value is preserved.",
+      "automatable": "no",
+      "automationNote": "Requires an end-to-end session-expiry test.",
+      "axeRules": [],
+      "related": [
+        "2.2.1",
+        "3.3.7"
+      ],
+      "tags": [
+        "timing",
+        "sessions",
+        "forms"
+      ]
+    },
+    {
+      "id": "2.2.6",
+      "slug": "timeouts",
+      "title": "Timeouts",
+      "level": "AAA",
+      "guideline": "2.2",
+      "version": "2.1",
+      "summary": "Users are warned about the duration of any inactivity that could cause data loss, unless the data is preserved for more than 20 hours of inactivity.",
+      "whoItAffects": "Users with cognitive disabilities who may step away and return, and who cannot anticipate an undisclosed timeout.",
+      "howToTest": "Confirm the timeout duration is stated up front, at the start of the process — not only in a warning as it expires.",
+      "automatable": "no",
+      "automationNote": "Requires reading the interface for a disclosed duration.",
+      "axeRules": [],
+      "related": [
+        "2.2.1",
+        "2.2.5"
+      ],
+      "tags": [
+        "timing",
+        "cognitive",
+        "sessions"
+      ]
+    },
+    {
+      "id": "2.3.1",
+      "slug": "three-flashes-or-below-threshold",
+      "title": "Three Flashes or Below Threshold",
+      "level": "A",
+      "guideline": "2.3",
+      "version": "2.0",
+      "summary": "Content does not contain anything that flashes more than three times in any one second, unless the flash is below the general flash and red flash thresholds.",
+      "whoItAffects": "Users with photosensitive epilepsy, for whom a flashing sequence can trigger a seizure. This is the one criterion whose failure can cause immediate physical harm.",
+      "howToTest": "Analyse video and animation with a tool such as PEAT (Photosensitive Epilepsy Analysis Tool). Pay attention to rapid cuts, strobe effects, explosions, and large areas of saturated red.",
+      "automatable": "partial",
+      "automationNote": "Specialist tools such as PEAT analyse video frame by frame, but standard accessibility scanners do not test for flashing at all.",
+      "axeRules": [],
+      "related": [
+        "2.3.2",
+        "2.2.2"
+      ],
+      "tags": [
+        "seizures",
+        "video",
+        "animation",
+        "safety"
+      ]
+    },
+    {
+      "id": "2.3.2",
+      "slug": "three-flashes",
+      "title": "Three Flashes",
+      "level": "AAA",
+      "guideline": "2.3",
+      "version": "2.0",
+      "summary": "Content does not contain anything that flashes more than three times in any one second, with no threshold exception at all.",
+      "whoItAffects": "Users with photosensitive epilepsy, protected without relying on size and colour threshold calculations.",
+      "howToTest": "Confirm no content flashes more than three times per second, regardless of area or colour.",
+      "automatable": "partial",
+      "automationNote": "Same specialist tooling as 2.3.1, applied without the threshold allowance.",
+      "axeRules": [],
+      "related": [
+        "2.3.1"
+      ],
+      "tags": [
+        "seizures",
+        "video",
+        "safety"
+      ]
+    },
+    {
+      "id": "2.3.3",
+      "slug": "animation-from-interactions",
+      "title": "Animation from Interactions",
+      "level": "AAA",
+      "guideline": "2.3",
+      "version": "2.1",
+      "summary": "Motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or information.",
+      "whoItAffects": "Users with vestibular disorders, for whom parallax scrolling, zoom transitions, and sliding page changes cause dizziness, nausea, and migraine.",
+      "howToTest": "Set the operating system to reduce motion and confirm the site honours prefers-reduced-motion by removing or replacing large movement, not merely shortening it.",
+      "automatable": "partial",
+      "automationNote": "The presence of a prefers-reduced-motion media query can be detected in CSS; whether it covers every animation cannot.",
+      "axeRules": [],
+      "related": [
+        "2.2.2"
+      ],
+      "tags": [
+        "animation",
+        "motion",
+        "vestibular",
+        "css"
+      ]
+    },
+    {
+      "id": "2.4.1",
+      "slug": "bypass-blocks",
+      "title": "Bypass Blocks",
+      "level": "A",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "A mechanism is available to bypass blocks of content repeated on multiple pages — typically a skip link, and supported by proper landmarks and headings.",
+      "whoItAffects": "Keyboard users who would otherwise Tab through 40 navigation links on every page. Screen reader users who would hear the same menu read out before every page's content.",
+      "howToTest": "Load the page and press Tab once. A skip link should appear, be visible when focused, and move focus to the main content so the next Tab lands inside it. Confirm main, nav, and header landmarks exist.",
+      "automatable": "partial",
+      "automationNote": "Scanners check for a bypass mechanism and landmark structure, but not whether the skip link actually moves focus correctly.",
+      "axeRules": [
+        "bypass",
+        "skip-link",
+        "landmark-one-main",
+        "region"
+      ],
+      "related": [
+        "2.4.5",
+        "1.3.1",
+        "2.4.10"
+      ],
+      "tags": [
+        "navigation",
+        "keyboard",
+        "landmarks",
+        "skip-link"
+      ],
+      "demoAxeRules": [
+        "bypass"
+      ],
+      "demoAxeNote": "axe returns bypass as \"needs review\" rather than a violation. It can see there is no skip link, no main landmark and no heading, but it will not assert the failure on its own - it hands the decision back to you. An automated report that only counts violations records this page as clean."
+    },
+    {
+      "id": "2.4.2",
+      "slug": "page-titled",
+      "title": "Page Titled",
+      "level": "A",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "Web pages have titles that describe their topic or purpose.",
+      "whoItAffects": "Screen reader users hear the title first and use it to confirm they landed in the right place. Anyone with many tabs open relies on it, as do bookmarks and browser history.",
+      "howToTest": "Check every page has a unique, descriptive title, most-specific information first — \"Checkout: Payment — Riverline Books\" rather than \"Untitled\" or \"Home\" on every page.",
+      "automatable": "partial",
+      "automationNote": "Missing or empty titles are caught reliably. Whether the title is descriptive and unique across the site needs a human or a custom check.",
+      "axeRules": [
+        "document-title"
+      ],
+      "related": [
+        "2.4.6",
+        "3.1.1"
+      ],
+      "tags": [
+        "navigation",
+        "structure",
+        "titles"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "axe's document-title rule only checks that a <title> element exists and is non-empty. \"Untitled Document\" satisfies it completely. Whether a title is descriptive or unique across a site is a judgement no scanner makes."
+    },
+    {
+      "id": "2.4.3",
+      "slug": "focus-order",
+      "title": "Focus Order",
+      "level": "A",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "If a page can be navigated sequentially and the order affects meaning or operation, focusable components receive focus in an order that preserves meaning and operability.",
+      "whoItAffects": "Keyboard and screen reader users, who experience the page as a sequence. Focus that jumps from the header to the footer and back is disorienting and easy to get lost in.",
+      "howToTest": "Tab through the page and track where focus goes. It should follow the visual reading order. Watch for positive tabindex values, modals that do not move focus in, and dialogs that do not return focus on close.",
+      "automatable": "partial",
+      "automationNote": "Positive tabindex is detectable. Whether the resulting order is meaningful requires tabbing through and watching.",
+      "axeRules": [
+        "tabindex"
+      ],
+      "related": [
+        "2.1.1",
+        "1.3.2",
+        "2.4.7",
+        "2.4.11"
+      ],
+      "tags": [
+        "keyboard",
+        "focus",
+        "modals",
+        "core"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "axe does have a tabindex rule that catches positive tabindex values, but it is tagged best-practice rather than as a WCAG rule - so a scan scoped to WCAG conformance, which is how most CI pipelines are configured, reports nothing here. Whether a focus order is meaningful also cannot be computed at all."
+    },
+    {
+      "id": "2.4.4",
+      "slug": "link-purpose-in-context",
+      "title": "Link Purpose (In Context)",
+      "level": "A",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "The purpose of each link can be determined from the link text alone, or from the link text together with its programmatically determined context.",
+      "whoItAffects": "Screen reader users who pull up a list of all links on the page to navigate. A list of fifteen entries all reading \"Read more\" is useless.",
+      "howToTest": "Extract every link's accessible name and read the list out of context. Ambiguous entries must at least be disambiguated by their sentence, list item, or table cell. Check that icon-only links have accessible names.",
+      "automatable": "partial",
+      "automationNote": "Empty links and links whose name is only an image filename are caught. Whether \"Read more\" is adequately disambiguated by context requires judgement.",
+      "axeRules": [
+        "link-name",
+        "identical-links-same-purpose"
+      ],
+      "related": [
+        "2.4.9",
+        "1.1.1",
+        "2.5.3"
+      ],
+      "tags": [
+        "links",
+        "navigation",
+        "screen-reader"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "Every link on the failing page has text, so axe's link-name rule is satisfied. Judging that three links reading \"Read more\" are ambiguous requires understanding the content. axe's identical-links-same-purpose rule is experimental and returns \"needs review\" at best."
+    },
+    {
+      "id": "2.4.5",
+      "slug": "multiple-ways",
+      "title": "Multiple Ways",
+      "level": "AA",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "More than one way is available to locate a page within a set of pages, unless the page is a step in a process.",
+      "whoItAffects": "Users with cognitive disabilities who find hierarchical menus hard to navigate and prefer search. Users who think in different organisational models than the site's designers.",
+      "howToTest": "Confirm at least two of: site search, a site map, a navigation menu, a table of contents, or related-page links. Steps within a checkout or wizard are exempt.",
+      "automatable": "no",
+      "automationNote": "Requires evaluating the site's navigation options as a whole.",
+      "axeRules": [],
+      "related": [
+        "2.4.1",
+        "3.2.3"
+      ],
+      "tags": [
+        "navigation",
+        "search",
+        "site-map",
+        "cognitive"
+      ]
+    },
+    {
+      "id": "2.4.6",
+      "slug": "headings-and-labels",
+      "title": "Headings and Labels",
+      "level": "AA",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "Headings and labels describe the topic or purpose of the content they introduce.",
+      "whoItAffects": "Screen reader users navigating by heading. Users with cognitive disabilities scanning for the section they need. A heading reading \"Information\" tells nobody anything.",
+      "howToTest": "Read the headings alone as an outline — it should summarise the page. Read the form labels alone — each should identify what to enter. Look for vague labels and for headings chosen for visual size rather than meaning.",
+      "automatable": "partial",
+      "automationNote": "Empty headings and unlabelled fields are caught. Whether a heading is descriptive is a human judgement.",
+      "axeRules": [
+        "empty-heading",
+        "heading-order",
+        "label"
+      ],
+      "related": [
+        "1.3.1",
+        "2.4.10",
+        "3.3.2"
+      ],
+      "tags": [
+        "headings",
+        "labels",
+        "forms",
+        "structure"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "Every heading on the failing page is a real heading element with real text, and every field has a properly associated label - so axe reports a clean page. Whether \"Information\" and \"Field 1\" actually DESCRIBE anything is a judgement about meaning, and no scanner makes it. This is the clearest example in the suite of a page that is 100% green and unusable."
+    },
+    {
+      "id": "2.4.7",
+      "slug": "focus-visible",
+      "title": "Focus Visible",
+      "level": "AA",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "Any keyboard operable interface has a mode of operation where the keyboard focus indicator is visible.",
+      "whoItAffects": "Every sighted keyboard user. Without a visible indicator you cannot tell which control Enter will activate — the interface becomes guesswork.",
+      "howToTest": "Tab through the page and confirm you can always see where focus is. The single most common cause of failure is a stylesheet containing outline: none with no replacement.",
+      "automatable": "partial",
+      "automationNote": "A blanket outline:none is sometimes detectable, but a focus style's actual visibility must be confirmed by eye.",
+      "axeRules": [],
+      "related": [
+        "2.4.11",
+        "2.4.12",
+        "2.4.13",
+        "1.4.11"
+      ],
+      "tags": [
+        "keyboard",
+        "focus",
+        "css",
+        "core"
+      ]
+    },
+    {
+      "id": "2.4.8",
+      "slug": "location",
+      "title": "Location",
+      "level": "AAA",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "Information about the user's location within a set of pages is available — breadcrumbs, a highlighted current navigation item, or a step indicator.",
+      "whoItAffects": "Users with cognitive disabilities who lose track of where they are in a deep hierarchy, and anyone arriving from search directly onto an inner page.",
+      "howToTest": "Confirm breadcrumbs, a current-page indicator marked with aria-current, or a step counter. The indicator must be programmatic, not colour alone.",
+      "automatable": "no",
+      "automationNote": "Requires evaluating whether location information is present and meaningful.",
+      "axeRules": [],
+      "related": [
+        "2.4.5",
+        "3.2.3",
+        "1.4.1"
+      ],
+      "tags": [
+        "navigation",
+        "breadcrumbs",
+        "cognitive"
+      ]
+    },
+    {
+      "id": "2.4.9",
+      "slug": "link-purpose-link-only",
+      "title": "Link Purpose (Link Only)",
+      "level": "AAA",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "A mechanism is available to identify the purpose of each link from the link text alone, except where the purpose is ambiguous to all users.",
+      "whoItAffects": "Screen reader users navigating by link list, without needing to inspect surrounding context to work out where each link goes.",
+      "howToTest": "Read every link's accessible name in isolation. Each must be self-explanatory. \"Read more about our refund policy\" passes where \"Read more\" fails.",
+      "automatable": "partial",
+      "automationNote": "Generic link text can be pattern-matched, but the judgement of self-sufficiency is human.",
+      "axeRules": [
+        "link-name"
+      ],
+      "related": [
+        "2.4.4"
+      ],
+      "tags": [
+        "links",
+        "screen-reader"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "Every link on the failing page has text, so axe's link-name rule is satisfied. Deciding that \"Read more\" fails to identify its destination requires reading the page and understanding what each link points at - which is judgement, not pattern matching."
+    },
+    {
+      "id": "2.4.10",
+      "slug": "section-headings",
+      "title": "Section Headings",
+      "level": "AAA",
+      "guideline": "2.4",
+      "version": "2.0",
+      "summary": "Section headings are used to organise content. This applies where content divides into sections, not to every paragraph.",
+      "whoItAffects": "Screen reader users navigating by heading, and users with cognitive disabilities who need long content broken into signposted chunks.",
+      "howToTest": "Check that long content is divided by headings at the right level, with no skipped levels, and that the outline is navigable.",
+      "automatable": "partial",
+      "automationNote": "Heading level order is checkable; whether sections that need headings have them is not.",
+      "axeRules": [
+        "heading-order",
+        "page-has-heading-one"
+      ],
+      "related": [
+        "1.3.1",
+        "2.4.6"
+      ],
+      "tags": [
+        "headings",
+        "structure",
+        "cognitive"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "The failing page has a correct h1 and no skipped levels, so heading-order and page-has-heading-one both pass. The failure is that headings are ABSENT where the content needs them, and no rule can tell that a wall of prose contains four distinct topics that each deserve a signpost."
+    },
+    {
+      "id": "2.4.11",
+      "slug": "focus-not-obscured-minimum",
+      "title": "Focus Not Obscured (Minimum)",
+      "level": "AA",
+      "guideline": "2.4",
+      "version": "2.2",
+      "summary": "When a component receives keyboard focus, it is not entirely hidden by author-created content such as a sticky header, footer, or cookie banner.",
+      "whoItAffects": "Keyboard users who Tab to a control that scrolls under a sticky header and disappears. Focus is technically there but invisible, which is equivalent to having no focus indicator.",
+      "howToTest": "Tab through the page slowly with sticky elements present. Confirm the focused control is never completely covered. Test at several zoom levels, since sticky bars take proportionally more space when zoomed.",
+      "automatable": "no",
+      "automationNote": "Requires tabbing through with sticky content rendered and checking overlap geometry.",
+      "axeRules": [],
+      "related": [
+        "2.4.7",
+        "2.4.12",
+        "1.4.13"
+      ],
+      "tags": [
+        "focus",
+        "keyboard",
+        "sticky",
+        "wcag22"
+      ]
+    },
+    {
+      "id": "2.4.12",
+      "slug": "focus-not-obscured-enhanced",
+      "title": "Focus Not Obscured (Enhanced)",
+      "level": "AAA",
+      "guideline": "2.4",
+      "version": "2.2",
+      "summary": "When a component receives keyboard focus, no part of it is hidden by author-created content.",
+      "whoItAffects": "Keyboard users, held to a stricter standard than 2.4.11 — partial obscuring also fails, so the whole focused control stays visible.",
+      "howToTest": "As 2.4.11, but confirm no part of the focused element is covered at any point.",
+      "automatable": "no",
+      "automationNote": "Requires manual observation of overlap geometry.",
+      "axeRules": [],
+      "related": [
+        "2.4.11",
+        "2.4.7"
+      ],
+      "tags": [
+        "focus",
+        "keyboard",
+        "sticky",
+        "wcag22"
+      ]
+    },
+    {
+      "id": "2.4.13",
+      "slug": "focus-appearance",
+      "title": "Focus Appearance",
+      "level": "AAA",
+      "guideline": "2.4",
+      "version": "2.2",
+      "summary": "The focus indicator is at least as large as a 2 CSS pixel perimeter of the focused control, and has a contrast ratio of at least 3:1 between its focused and unfocused states.",
+      "whoItAffects": "Low-vision keyboard users, for whom a thin 1px light-grey outline satisfies 2.4.7 in principle but is invisible in practice.",
+      "howToTest": "Measure the indicator's thickness and its contrast against both the adjacent colours and its own unfocused state. A 2px solid outline with sufficient contrast is the straightforward way to pass.",
+      "automatable": "no",
+      "automationNote": "Requires measuring the rendered indicator's size and contrast.",
+      "axeRules": [],
+      "related": [
+        "2.4.7",
+        "1.4.11"
+      ],
+      "tags": [
+        "focus",
+        "contrast",
+        "low-vision",
+        "wcag22"
+      ]
+    },
+    {
+      "id": "2.5.1",
+      "slug": "pointer-gestures",
+      "title": "Pointer Gestures",
+      "level": "A",
+      "guideline": "2.5",
+      "version": "2.1",
+      "summary": "Functionality using multipoint or path-based gestures can also be operated with a single pointer without a path-based gesture, unless the gesture is essential.",
+      "whoItAffects": "Users with tremor or limited dexterity who cannot perform a pinch or swipe. Users of a head pointer or eye tracker, which produce single points only.",
+      "howToTest": "Find every pinch-zoom, swipe, and multi-finger gesture. Confirm a single-tap alternative exists — buttons beside a carousel, zoom controls on a map.",
+      "automatable": "no",
+      "automationNote": "Gesture handlers live in script and must be discovered and tested by hand.",
+      "axeRules": [],
+      "related": [
+        "2.5.7",
+        "2.1.1",
+        "2.5.2"
+      ],
+      "tags": [
+        "touch",
+        "gestures",
+        "motor",
+        "mobile"
+      ]
+    },
+    {
+      "id": "2.5.2",
+      "slug": "pointer-cancellation",
+      "title": "Pointer Cancellation",
+      "level": "A",
+      "guideline": "2.5",
+      "version": "2.1",
+      "summary": "For functionality operated by a single pointer, the action completes on the up-event, or can be aborted or undone.",
+      "whoItAffects": "Users with tremor or imprecise pointing who land on the wrong control and need to slide off before releasing to cancel. Firing on mousedown removes that safety net.",
+      "howToTest": "Press down on a control, move the pointer away, and release. The action must not fire. Look for handlers bound to mousedown, touchstart, or pointerdown that trigger the action directly.",
+      "automatable": "no",
+      "automationNote": "Requires reading event bindings or performing the press-and-drag-away test.",
+      "axeRules": [],
+      "related": [
+        "2.5.1",
+        "3.3.4"
+      ],
+      "tags": [
+        "touch",
+        "pointer",
+        "motor",
+        "events"
+      ]
+    },
+    {
+      "id": "2.5.3",
+      "slug": "label-in-name",
+      "title": "Label in Name",
+      "level": "A",
+      "guideline": "2.5",
+      "version": "2.1",
+      "summary": "For components with a visible text label, the accessible name contains the visible text.",
+      "whoItAffects": "Speech input users who say \"click Submit order\" — if the accessible name is \"Send\", the command fails. Screen reader users with some sight hear one thing and see another.",
+      "howToTest": "Compare each control's visible text against its accessible name in the accessibility tree. An aria-label that overrides the visible text is the classic failure.",
+      "automatable": "partial",
+      "automationNote": "Scanners compare visible text with the accessible name and catch most mismatches, but cannot always determine the visible label for complex controls.",
+      "axeRules": [
+        "label-content-name-mismatch"
+      ],
+      "related": [
+        "4.1.2",
+        "2.4.4",
+        "3.3.2"
+      ],
+      "tags": [
+        "labels",
+        "speech-input",
+        "aria",
+        "forms"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "axe does have a label-content-name-mismatch rule for exactly this failure, but it is marked EXPERIMENTAL and is therefore switched off in axe's default configuration. A standard scan reports nothing. You have to opt in to experimental rules to see it - and most CI pipelines never do."
+    },
+    {
+      "id": "2.5.4",
+      "slug": "motion-actuation",
+      "title": "Motion Actuation",
+      "level": "A",
+      "guideline": "2.5",
+      "version": "2.1",
+      "summary": "Functionality operated by device motion or user motion can also be operated by interface components, and motion actuation can be disabled.",
+      "whoItAffects": "Users whose device is mounted to a wheelchair and cannot be shaken. Users with tremor who trigger motion actions unintentionally.",
+      "howToTest": "Find features triggered by shaking or tilting. Confirm a conventional control does the same job and that motion triggering can be switched off.",
+      "automatable": "no",
+      "automationNote": "Requires identifying motion event listeners and testing on a device.",
+      "axeRules": [],
+      "related": [
+        "2.1.4",
+        "2.5.1"
+      ],
+      "tags": [
+        "motion",
+        "mobile",
+        "motor"
+      ]
+    },
+    {
+      "id": "2.5.5",
+      "slug": "target-size-enhanced",
+      "title": "Target Size (Enhanced)",
+      "level": "AAA",
+      "guideline": "2.5",
+      "version": "2.1",
+      "summary": "The size of the target for pointer inputs is at least 44 by 44 CSS pixels, with exceptions for inline targets, equivalents available elsewhere, and essential presentations.",
+      "whoItAffects": "Users with motor impairments and tremor, and anyone on a touchscreen. Small targets mean repeated mis-taps and, in a checkout, costly mistakes.",
+      "howToTest": "Measure every interactive target. Icon-only buttons, close buttons, and dense toolbars are the usual failures. Padding counts toward the target, so a small icon in a large button passes.",
+      "automatable": "partial",
+      "automationNote": "Target dimensions are measurable from the rendered layout, but the exceptions require human judgement.",
+      "axeRules": [
+        "target-size"
+      ],
+      "related": [
+        "2.5.8"
+      ],
+      "tags": [
+        "touch",
+        "target-size",
+        "motor",
+        "mobile"
+      ],
+      "demoAxeRules": [],
+      "demoAxeNote": "axe's target-size rule is written against the Level AA threshold of 24 x 24 CSS pixels (2.5.8). The targets on the failing page are 26 to 28 pixels, so the rule passes them. There is no rule for the AAA 44-pixel threshold at all, so a scan can never tell you whether 2.5.5 is met."
+    },
+    {
+      "id": "2.5.6",
+      "slug": "concurrent-input-mechanisms",
+      "title": "Concurrent Input Mechanisms",
+      "level": "AAA",
+      "guideline": "2.5",
+      "version": "2.1",
+      "summary": "Content does not restrict use of input modalities available on a platform, except where necessary for security or to respect user settings.",
+      "whoItAffects": "Users who switch between touch, keyboard, and mouse within a single session — common for users with fluctuating conditions and for anyone on a 2-in-1 device.",
+      "howToTest": "Switch input methods mid-task. A site that detects touch and disables keyboard handlers, or vice versa, fails.",
+      "automatable": "no",
+      "automationNote": "Requires testing with multiple input devices on the same session.",
+      "axeRules": [],
+      "related": [
+        "2.1.1",
+        "2.5.1"
+      ],
+      "tags": [
+        "input",
+        "touch",
+        "keyboard",
+        "mobile"
+      ]
+    },
+    {
+      "id": "2.5.7",
+      "slug": "dragging-movements",
+      "title": "Dragging Movements",
+      "level": "AA",
+      "guideline": "2.5",
+      "version": "2.2",
+      "summary": "Functionality that uses a dragging movement can be achieved with a single pointer without dragging, unless dragging is essential.",
+      "whoItAffects": "Users with tremor, limited dexterity, or a head pointer, who can tap accurately but cannot hold and drag along a path. Drag-only reordering, sliders, and map panning exclude them.",
+      "howToTest": "Find every drag interaction — reorderable lists, sliders, kanban boards, drag-to-upload, map panning. Confirm a click or tap alternative exists: up and down buttons, a numeric input, arrow-key panning.",
+      "automatable": "no",
+      "automationNote": "Requires finding drag handlers and testing for a non-drag path to the same result.",
+      "axeRules": [],
+      "related": [
+        "2.5.1",
+        "2.1.1",
+        "2.1.3"
+      ],
+      "tags": [
+        "touch",
+        "drag",
+        "motor",
+        "wcag22"
+      ]
+    },
+    {
+      "id": "2.5.8",
+      "slug": "target-size-minimum",
+      "title": "Target Size (Minimum)",
+      "level": "AA",
+      "guideline": "2.5",
+      "version": "2.2",
+      "summary": "Targets are at least 24 by 24 CSS pixels, unless spacing, inline position, an equivalent control, or essential presentation applies. Undersized targets can pass if a 24px circle centred on each does not overlap its neighbours.",
+      "whoItAffects": "Users with motor impairments and tremor. Unlike 2.5.5 at AAA, this is a realistic AA baseline that most interfaces can meet.",
+      "howToTest": "Measure each target. If under 24×24, check the spacing exception by testing whether 24px circles centred on adjacent targets overlap. Tightly packed icon rows and small close buttons are the usual failures.",
+      "automatable": "partial",
+      "automationNote": "Size and spacing are computable, and axe covers a good share of cases, but the exceptions still need review.",
+      "axeRules": [
+        "target-size"
+      ],
+      "related": [
+        "2.5.5",
+        "2.5.7"
+      ],
+      "tags": [
+        "touch",
+        "target-size",
+        "motor",
+        "wcag22"
+      ]
+    }
+  ]
+}

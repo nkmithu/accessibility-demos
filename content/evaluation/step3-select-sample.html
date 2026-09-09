@@ -1,0 +1,92 @@
+<!--page
+title: Step 3 — Select a representative sample — WCAG 2.2 Demo Suite
+description: How to build a structured sample and a random sample, and why this step decides whether an audit is worth anything.
+nav: evaluation
+section: Evaluation (WCAG-EM)
+sectionHref: evaluation/index.html
+crumb: Step 3 — Select a sample
+-->
+      <h1>Step 3 — Select a representative sample</h1>
+      <p class="sc-header__summary">This is the step that decides whether your audit is worth
+         anything, and the one most often done carelessly. Two auditors with the same skill and the
+         same standard will reach opposite conclusions about the same site if they sample
+         differently.</p>
+
+      <div class="callout callout--fail">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#10007;</span> The failure mode this step exists to prevent</p>
+        <p>Audit the home page and two content pages, find nine issues, write a report. The checkout
+           — where the real barriers are, and where failure costs the user money — is never opened.
+           The report is not wrong about what it looked at. It is worthless as a statement about the
+           site.</p>
+      </div>
+
+      <h2>3a. The structured sample</h2>
+      <p class="prose">Chosen deliberately. It must include:</p>
+      <ul class="prose">
+        <li><strong>Every common page</strong> you found in Step 2a — home, contact, sitemap,
+            accessibility statement, login, search results, 404.</li>
+        <li><strong>At least one page of every page type</strong> from Step 2c.</li>
+        <li><strong>Every essential task, end to end.</strong> A checkout is not one page; sample every
+            step of it, because the failures hide in the transitions.</li>
+        <li><strong>Every page with unusual interaction</strong> from Step 2e — the drag-and-drop, the
+            map, the media player, the CAPTCHA.</li>
+        <li><strong>The states, not just the routes.</strong> A form has an empty state, a filled state,
+            an error state and a success state. They are different pages as far as accessibility is
+            concerned.</li>
+        <li><strong>At least one page using each web technology</strong> from Step 2d.</li>
+      </ul>
+
+      <h2>3b. The randomly selected sample</h2>
+      <p class="prose">Then add a random sample — WCAG-EM suggests roughly <strong>10% of the size of
+         the structured sample</strong>, chosen without looking at the pages first.</p>
+      <p class="prose">This is not padding. Its purpose is to catch what your structured sample
+         <em>systematically</em> misses: pages built by a different team, old pages predating the
+         design system, content authored by someone who did not know the rules. If a random page
+         fails in a way no structured page did, you have learned that your structured sample was not
+         representative — which is itself a finding.</p>
+      <p class="prose">Select it properly: number the site's URLs from a crawl or a sitemap and pick
+         with a random number generator. "Some pages I clicked on" is not a random sample.</p>
+
+      <h2>3c. Include complete processes</h2>
+      <p class="prose">WCAG has a specific rule here, and it catches people out. If a page is part of
+         a process — a checkout, a multi-step application — then <strong>every page in that process
+         must conform</strong>, or none of them can be claimed as conforming. You cannot sample step
+         2 and step 4 and skip step 3.</p>
+
+      <h2>3d. Compare with the client's expectation</h2>
+      <p class="prose">Show the sample to the client before auditing. Two things come out of this:
+         they tell you about pages you did not know existed, and they cannot later say you audited
+         the wrong things.</p>
+
+      <h2>Worked example: Riverline Books</h2>
+      <p class="prose">The sample site has eight pages. A structured sample for it looks like this:</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="samp-cap">
+        <table>
+          <caption id="samp-cap">A structured sample for the Riverline Books sample site</caption>
+          <thead><tr><th scope="col">Page</th><th scope="col">Why it is in the sample</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Home</th><td>Common page; carousel; rich media</td></tr>
+            <tr><th scope="row">Catalogue</th><td>Page type: listing with filters and sorting</td></tr>
+            <tr><th scope="row">Product</th><td>Page type: detail; images; custom widgets</td></tr>
+            <tr><th scope="row">Basket</th><td>Essential task, step 1; data table; quantity controls</td></tr>
+            <tr><th scope="row">Checkout</th><td>Essential task, step 2; form-heavy; error states</td></tr>
+            <tr><th scope="row">Login</th><td>Common page; authentication; CAPTCHA</td></tr>
+            <tr><th scope="row">Contact</th><td>Common page; form; modal dialog</td></tr>
+            <tr><th scope="row">Help</th><td>Common page; long-form content; help mechanism placement</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">Eight of eight, because the site is small. On a real site of 4,000 pages the
+         same reasoning yields perhaps 15 to 25 pages — and the discipline is identical.</p>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> A test of your sampling</p>
+        <p>The defects in the sample site are seeded so that a correct structured sample finds them
+           and a lazy one does not. Several of the most serious — a keyboard trap, a drag-only
+           control, a checkout with no error prevention — are on pages you only reach by working
+           through an essential task. If you sample only the pages linked from the home page, you
+           will miss them, and your report will say the site is in better shape than it is.</p>
+      </div>
+
+      <p class="prose"><a class="button" href="templates/sample-selection.html">Record your sample</a></p>
+      <p class="prose"><a href="step4-audit.html">Next: Step 4 — Audit the selected sample</a></p>

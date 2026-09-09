@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.7 Low or No Background Audio</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.note{border:1px solid var(--border);border-radius:6px;padding:1rem}</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.7 Low or No Background Audio.</p>
+
+  <!-- excerpt:start -->
+  <h1>Author interview: A. Marsh</h1>
+
+  <!-- FIX: a speech-only version is offered. The criterion is satisfied by ANY
+       ONE of three routes:
+         1. no background sound at all, or
+         2. the background can be turned off by the user, or
+         3. the background is at least 20 dB below the speech. -->
+  <p>
+    <button type="button" class="button button--secondary" id="clean" aria-pressed="true">
+      Music is off</button>
+  </p>
+  <audio controls src="../../assets/media/shop-doorbell.mp3"></audio>
+  <p id="mode" role="status">Playing the speech-only version.</p>
+
+  <div class="note">
+    <h2>What "20 dB below" means in practice</h2>
+    <p>20 decibels is a ratio of ten to one in amplitude, and sounds roughly
+       <strong>four times quieter</strong> to a listener. It is much further down than
+       most people expect: if you can comfortably hear the tune, the mix is almost
+       certainly too loud to conform.</p>
+    <p>Measure it rather than guessing. In any audio editor, compare the loudness of a
+       speech passage against a passage of background alone.</p>
+    <h2>Scope</h2>
+    <p>1.4.7 applies to prerecorded <strong>audio-only</strong> content that is
+       <strong>primarily speech</strong> — a podcast, an interview, an audio guide.
+       It does not apply to music, to singing, or to audio logos shorter than the
+       threshold, and it does not apply to the soundtrack of a video (that is 1.2.x
+       territory).</p>
+    <p>The simplest way to conform is route 1: do not put music under speech at all.</p>
+  </div>
+  <!-- excerpt:end -->
+
+  <script>
+    var b = document.getElementById('clean');
+    b.addEventListener('click', function () {
+      var off = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', String(off));
+      b.textContent = off ? 'Music is off' : 'Music is on';
+      document.getElementById('mode').textContent = off
+        ? 'Playing the speech-only version.'
+        : 'Playing the version with background music.';
+    });
+  </script>
+</body>
+</html>

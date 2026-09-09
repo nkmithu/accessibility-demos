@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.2.6 Timeouts</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.upfront{border:2px solid var(--note-border);background:var(--note-bg);border-radius:6px;padding:1rem;margin-bottom:1rem}</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.2.6 Timeouts.</p>
+
+  <!-- excerpt:start -->
+  <h1>Apply for a library card</h1>
+
+  <!-- FIX: the duration is disclosed BEFORE the user starts, along with what
+       will happen and what they should have to hand. Note the placement - at the
+       top, before the first field, not in a footer or a help page. -->
+  <div class="upfront">
+    <h2>Before you start</h2>
+    <p>This form times out after <strong>20 minutes of inactivity</strong>. If that
+       happens, you will be asked to sign in again and your answers will be restored.</p>
+    <p>You will need your proof of address reference to hand.</p>
+  </div>
+
+  <form>
+    <div class="field"><label for="n">Full name</label><input type="text" id="n" autocomplete="name"></div>
+    <div class="field"><label for="a">Address</label><input type="text" id="a" autocomplete="street-address"></div>
+    <div class="field"><label for="p">Proof of address reference</label><input type="text" id="p"></div>
+    <button type="submit" class="button">Submit application</button>
+  </form>
+
+  <!-- The exception, and it is the better fix where you can take it: 2.2.6 does
+       not apply at all if user data is preserved for MORE THAN 20 HOURS of
+       inactivity. Save a draft that survives overnight and you have nothing to
+       disclose, because nothing is lost.
+
+       How the three timing criteria differ:
+         2.2.1 (A)   the limit must be adjustable, extendable or removable
+         2.2.5 (AAA) re-authenticating must not lose data
+         2.2.6 (AAA) the user must be TOLD the duration up front
+       A well-built form satisfies all three, and they are cheapest to build
+       together rather than retrofitted one at a time. -->
+  <!-- excerpt:end -->
+</body>
+</html>

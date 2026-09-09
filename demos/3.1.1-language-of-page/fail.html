@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- FAILURE: no lang attribute on <html> at all. -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.1.1 Language of Page</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.1.1 Language of Page.
+     The content is Bangla, but the page never declares it.</p>
+
+  <!-- excerpt:start -->
+  <!-- The whole page below is written in Bangla, but <html> carries no lang
+       attribute. A screen reader falls back to its default voice - usually
+       English - and applies English pronunciation rules to Bangla script.
+       The result is not "accented"; it is unintelligible noise.
+
+       This also breaks automatic translation, hyphenation, and the correct
+       choice of font by the browser. -->
+
+  <h1>রিভারলাইন বইঘর</h1>
+
+  <h2>আমাদের সম্পর্কে</h2>
+  <p>আমরা ১৯৯৮ সাল থেকে পুরনো ও নতুন বই বিক্রি করছি। নদীর ধারে আমাদের ছোট দোকানটিতে
+     প্রায় বিশ হাজার বই আছে।</p>
+
+  <h2>খোলার সময়</h2>
+  <ul>
+    <li>সোমবার থেকে শুক্রবার: সকাল ৯টা – সন্ধ্যা ৬টা</li>
+    <li>শনিবার: সকাল ১০টা – বিকাল ৪টা</li>
+    <li>রবিবার: বন্ধ</li>
+  </ul>
+  <!-- excerpt:end -->
+</body>
+</html>

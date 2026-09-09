@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.2.8 Media Alternative (Prerecorded) (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A full text alternative is provided for all prerecorded synchronised media and for prerecorded video-only media.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.2.8 Media Alternative (Prerecorded)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.2.8</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 1.2 Time-based Media</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Media Alternative (Prerecorded)</h1>
+        <p class="sc-header__summary">A full text alternative is provided for all prerecorded synchronised media and for prerecorded video-only media.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Deafblind users, who reach content through a refreshable braille display and cannot use captions or audio description. Also users who prefer to read or search rather than watch.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.2.8
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.2.8 Media Alternative (Prerecorded)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;A short tour of the shop&lt;/h1&gt;
+
+&lt;!-- FAILURE: captions AND audio description are both provided, so this passes
+     1.2.2, 1.2.3 and 1.2.5. It still fails 1.2.8, because there is no full
+     TEXT alternative for the presentation.
+
+     Who that leaves out: DEAFBLIND users. Captions are visual, so they are
+     useless without sight. Audio description is auditory, so it is useless
+     without hearing. A deafblind user reads with a refreshable braille
+     display, which needs TEXT - and there is none here.
+
+     It also leaves out anyone who would rather read than watch, anyone on a
+     slow connection, and every search engine. --&gt;
+&lt;video controls width=&quot;640&quot;&gt;
+  &lt;source src=&quot;../../assets/media/shop-tour.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;track kind=&quot;captions&quot; src=&quot;../../assets/media/shop-tour-captions.vtt&quot;
+         srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
+  &lt;track kind=&quot;descriptions&quot; src=&quot;../../assets/media/shop-tour-descriptions.vtt&quot;
+         srclang=&quot;en&quot; label=&quot;Audio description&quot;&gt;
+&lt;/video&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.2.8
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.2.8 Media Alternative (Prerecorded)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;A short tour of the shop&lt;/h1&gt;
+
+&lt;video controls width=&quot;640&quot;&gt;
+  &lt;source src=&quot;../../assets/media/shop-tour.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;track kind=&quot;captions&quot; src=&quot;../../assets/media/shop-tour-captions.vtt&quot;
+         srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
+  &lt;track kind=&quot;descriptions&quot; src=&quot;../../assets/media/shop-tour-descriptions.vtt&quot;
+         srclang=&quot;en&quot; label=&quot;Audio description&quot;&gt;
+&lt;/video&gt;
+
+&lt;!-- FIX: a complete text alternative for the whole presentation, on the page
+     and reachable as text. It is open by default here, because hiding the only
+     route a deafblind user has behind a control is poor practice.
+
+     What makes this a MEDIA ALTERNATIVE rather than a caption file:
+       - it covers what is SEEN and what is HEARD, in one document
+       - it reads as prose, in order, and makes sense without the video
+       - it identifies speakers and sounds
+       - it is text, so a braille display can render it --&gt;
+&lt;div class=&quot;transcript&quot;&gt;
+  &lt;h2&gt;Full text alternative&lt;/h2&gt;
+  &lt;p&gt;A twenty-second sequence of five title cards, with sound effects and no speech.&lt;/p&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;00:00&lt;/dt&gt;
+    &lt;dd&gt;A title card reads &lt;strong&gt;Riverline Books — A short tour&lt;/strong&gt;, dark blue
+        text on a pale background with a blue rule across the top and bottom.
+        A shop doorbell chimes twice, high then low, as if a customer has entered.&lt;/dd&gt;
+    &lt;dt&gt;00:04&lt;/dt&gt;
+    &lt;dd&gt;A card headed &lt;strong&gt;Opening hours&lt;/strong&gt; lists: Monday to Friday, 9am to 6pm;
+        Saturday, 10am to 4pm; Sunday, closed. No sound.&lt;/dd&gt;
+    &lt;dt&gt;00:08&lt;/dt&gt;
+    &lt;dd&gt;A card reads &lt;strong&gt;Reserve online&lt;/strong&gt;, and below it,
+        &lt;em&gt;Collect in store within 7 days&lt;/em&gt;. A small counter bell rings once.&lt;/dd&gt;
+    &lt;dt&gt;00:12&lt;/dt&gt;
+    &lt;dd&gt;A card reads &lt;strong&gt;Free delivery&lt;/strong&gt;, and below it,
+        &lt;em&gt;on orders over 25 pounds&lt;/em&gt;. A telephone rings four times and is not answered.&lt;/dd&gt;
+    &lt;dt&gt;00:16&lt;/dt&gt;
+    &lt;dd&gt;A closing card reads &lt;strong&gt;riverlinebooks.example&lt;/strong&gt; with
+        &lt;em&gt;Thanks for visiting&lt;/em&gt; beneath it. The doorbell chimes again, low then
+        high, as the door closes.&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/div&gt;
+
+&lt;!-- Note the relationship between the 1.2.x criteria. A single well-written
+     media alternative satisfies 1.2.8 at AAA and can also be used to satisfy
+     1.2.1 and 1.2.3 at Level A. If you are only going to produce one artefact
+     for a video, produce this one - it does the most work. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Confirm a complete text document covering dialogue, speakers, and visual information, reachable from the media, and readable as a standalone narrative.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires comparing the document against the media.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.2.1-audio-only-and-video-only-prerecorded/index.html">1.2.1 Audio-only and Video-only (Prerecorded) (Level A)</a></li>
+          <li><a href="../1.2.3-audio-description-or-media-alternative-prerecorded/index.html">1.2.3 Audio Description or Media Alternative (Prerecorded) (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/media-alternative-prerecorded.html">Understanding 1.2.8 Media Alternative (Prerecorded)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#media-alternative-prerecorded">1.2.8 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.2.7-extended-audio-description-prerecorded/index.html"><span class="sc-pager__dir">Previous criterion</span>1.2.7 Extended Audio Description (Prerecorded)</a>
+        <a href="../1.2.9-audio-only-live/index.html"><span class="sc-pager__dir">Next criterion</span>1.2.9 Audio-only (Live)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

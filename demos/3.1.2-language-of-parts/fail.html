@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.1.2 Language of Parts</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.1.2 Language of Parts.
+     The Bangla passages are not marked as Bangla.</p>
+
+  <!-- excerpt:start -->
+  <h1>Book review: Gitanjali</h1>
+
+  <p>Rabindranath Tagore's collection was first published in Bangla in 1910.
+     The opening line is one of the most quoted in the language:</p>
+
+  <!-- FAILURE 1: a Bangla quotation inside a page declared lang="en".
+       The screen reader stays in its English voice and applies English
+       phonetics to Bangla script. -->
+  <blockquote>
+    <p>আমার সোনার বাংলা, আমি তোমায় ভালোবাসি।</p>
+  </blockquote>
+
+  <!-- FAILURE 2: a Bangla term inline, unmarked. -->
+  <p>The word গীতাঞ্জলি translates roughly as "song offering".</p>
+
+  <!-- FAILURE 3: a language switcher whose options are written in the language
+       they switch to. Each option needs its OWN lang attribute, or a screen
+       reader reads every one of them with English pronunciation - making the
+       switcher useless to the very users who need it. -->
+  <nav aria-label="Language">
+    <ul class="plain">
+      <li><a href="#en">English</a></li>
+      <li><a href="#bn">বাংলা</a></li>
+    </ul>
+  </nav>
+  <h2 id="en">English edition</h2>
+  <p>The English translation, 1912.</p>
+  <h2 id="bn" lang="bn">বাংলা সংস্করণ</h2>
+  <p lang="bn">মূল বাংলা সংস্করণ, ১৯১০ সালে প্রকাশিত।</p>
+  <!-- excerpt:end -->
+</body>
+</html>

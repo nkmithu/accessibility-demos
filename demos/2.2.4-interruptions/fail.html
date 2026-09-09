@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.2.4 Interruptions</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .popup{position:fixed;right:1rem;bottom:1rem;max-width:19rem;background:#14171c;color:#fff;
+           border-radius:8px;padding:1rem;z-index:9}
+    .popup button{margin-top:.5rem}
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.2.4 Interruptions.
+     Start typing and wait.</p>
+
+  <!-- excerpt:start -->
+  <h1>Write a review</h1>
+
+  <!-- FAILURE: three kinds of unrequested interruption, none of which the user
+       can postpone or suppress:
+         1. a chat widget that opens itself after a few seconds
+         2. a promotional banner that appears mid-task
+         3. an auto-updating "others are viewing" counter in a live region, which
+            a screen reader announces over whatever the user is doing
+
+       For a user with an attention or cognitive disability, each of these
+       destroys their place in the task. For a screen reader user, the live
+       region interrupts their reading. There is no setting anywhere to turn any
+       of it off. -->
+  <div class="field">
+    <label for="r">Your review of Tidal Flats</label>
+    <textarea id="r" rows="6"></textarea>
+  </div>
+  <button type="submit" class="button">Post review</button>
+
+  <p>Currently viewing this book: <span id="count" role="status">3</span> people</p>
+
+  <div class="popup" id="chat" hidden>
+    <p><strong>Need a hand?</strong> Chat with us now.</p>
+    <button type="button" class="button" onclick="document.getElementById('chat').hidden=true">Close</button>
+  </div>
+  <!-- excerpt:end -->
+
+  <script>
+    setTimeout(function () { document.getElementById('chat').hidden = false; }, 4000);
+    setInterval(function () {
+      document.getElementById('count').textContent = 2 + Math.floor(Math.random() * 8);
+    }, 3000);
+  </script>
+</body>
+</html>

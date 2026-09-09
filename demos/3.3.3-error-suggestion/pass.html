@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.3.3 Error Suggestion</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .err { color:#94101c; font-weight:600; margin:.25rem 0 0; }
+    .hint { color: var(--text-muted); font-size:.9375rem; margin:.15rem 0 .35rem; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.3.3 Error Suggestion.</p>
+
+  <!-- excerpt:start -->
+  <h1>Book an event ticket</h1>
+
+  <form id="f" novalidate>
+    <div class="field">
+      <label for="em">Email address</label>
+      <input type="email" id="em" autocomplete="email" aria-describedby="em-e" value="anna.example.org">
+      <!-- FIX 1: says what is wrong AND offers the correction. Where the system
+           can work out what the user probably meant, offer it. -->
+      <p class="err" id="em-e" hidden></p>
+    </div>
+
+    <div class="field">
+      <label for="dt">Event date</label>
+      <!-- FIX 2: the format is stated BEFORE the user types, which prevents most
+           of these errors happening at all. 3.3.3 handles the ones that slip
+           through; 3.3.2 stops them being made. -->
+      <p class="hint" id="dt-h">Use the format DD/MM/YYYY, for example 03/03/2026.</p>
+      <input type="text" id="dt" aria-describedby="dt-h dt-e" value="3rd March">
+      <p class="err" id="dt-e" hidden></p>
+    </div>
+
+    <div class="field">
+      <label for="pw">Choose a password</label>
+      <p class="hint" id="pw-h">At least 8 characters, including one number.</p>
+      <input type="password" id="pw" autocomplete="new-password" aria-describedby="pw-h pw-e" value="abc">
+      <!-- FIX 3: the message says which rule failed, not just that one did. -->
+      <p class="err" id="pw-e" hidden></p>
+    </div>
+
+    <button type="submit" class="button">Book ticket</button>
+  </form>
+
+  <!-- The exception: you may withhold the suggestion where giving it would
+       jeopardise security or defeat the purpose of the content - "your password
+       is wrong" must not become "your password should have been hunter2", and a
+       quiz must not suggest the right answer. -->
+  <!-- excerpt:end -->
+
+  <script>
+    document.getElementById('f').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var em = document.getElementById('em').value;
+      var msg = 'Error: enter an email address in the format name@example.org.';
+      // Where a likely correction exists, name it.
+      if (em.indexOf('@') === -1 && em.indexOf('.') > -1) {
+        var guess = em.replace('.', '@');
+        msg += ' Did you mean ' + guess + '?';
+      }
+      var em_e = document.getElementById('em-e'); em_e.textContent = msg; em_e.hidden = false;
+
+      var dt_e = document.getElementById('dt-e');
+      dt_e.textContent = 'Error: enter the date as DD/MM/YYYY. For 3 March 2026, enter 03/03/2026.';
+      dt_e.hidden = false;
+
+      var pw_e = document.getElementById('pw-e');
+      pw_e.textContent = 'Error: your password is 3 characters and has no number. '
+        + 'It needs at least 8 characters and at least one number.';
+      pw_e.hidden = false;
+    });
+  </script>
+</body>
+</html>

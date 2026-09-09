@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.8 Location</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .nav ul{list-style:none;padding:0;display:flex;gap:1rem;flex-wrap:wrap}
+    .nav [aria-current="page"]{font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+    .crumb ol{list-style:none;padding:0;display:flex;gap:.5rem;flex-wrap:wrap;font-size:.9375rem}
+    .crumb li+li::before{content:"/";margin-right:.5rem;color:var(--border-strong)}
+    .steps{list-style:none;padding:0;display:flex;gap:1rem;flex-wrap:wrap}
+    .steps [aria-current="step"]{font-weight:700}
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.8 Location.</p>
+
+  <!-- excerpt:start -->
+  <!-- FIX 1: a breadcrumb trail showing the path from the home page down.
+       Marked up as an ordered list inside a labelled nav, so a screen reader can
+       find it among the page's landmarks. -->
+  <nav class="crumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="#a">Home</a></li>
+      <li><a href="#a">Books</a></li>
+      <li><a href="#a">Non-fiction</a></li>
+      <li><span aria-current="page">Nature writing</span></li>
+    </ol>
+  </nav>
+
+  <!-- FIX 2: aria-current="page" marks the current item programmatically, and
+       the styling uses weight and an underline as well as colour. -->
+  <nav class="nav" aria-label="Main">
+    <ul>
+      <li><a href="#a">Books</a></li>
+      <li><a href="#a" aria-current="page">Nature writing</a></li>
+      <li><a href="#a">Events</a></li>
+    </ul>
+  </nav>
+
+  <h1>Nature writing</h1>
+  <p>Our nature writing shelves.</p>
+
+  <!-- FIX 3: a step indicator, with aria-current="step" and the position also
+       stated in text. The page title should carry it too - see 2.4.2. -->
+  <h2>Reserve a book</h2>
+  <p>Step 2 of 3</p>
+  <ol class="steps">
+    <li>1. Choose a book</li>
+    <li aria-current="step">2. Collection date</li>
+    <li>3. Confirm</li>
+  </ol>
+  <form>
+    <div class="field"><label for="d">Collection date</label><input type="text" id="d"></div>
+    <button type="submit" class="button">Continue</button>
+  </form>
+
+  <!-- The aria-current values worth knowing:
+         page, step, location, date, time, true
+       Use the specific one where it fits; "true" is the generic fallback. -->
+
+  <p id="a">Section.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

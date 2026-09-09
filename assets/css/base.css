@@ -1,0 +1,425 @@
+/* =============================================================================
+   WCAG 2.2 Demo Suite - base design system
+   -----------------------------------------------------------------------------
+   This stylesheet is itself a teaching artifact. Every rule below exists to
+   satisfy a specific success criterion, and the criterion is named in a comment.
+   If you change a value here, re-run `npm run test:a11y` and the contrast check.
+   ============================================================================= */
+
+/* --- Design tokens ---------------------------------------------------------
+   All colour pairs used for text are verified by tools/check-contrast.mjs.
+   Light theme targets 7:1 for body text (1.4.6 AAA), never below 4.5:1 (1.4.3). */
+:root {
+  color-scheme: light dark;
+
+  --bg: #ffffff;
+  --surface: #f2f5f8;
+  --surface-raised: #ffffff;
+  --text: #14171c;
+  --text-muted: #444c55;
+  --border: #b9c2cb;
+  --border-strong: #6d7883;
+
+  --accent: #0a4f9e;
+  --accent-hover: #073c79;
+  --on-accent: #ffffff;
+
+  --fail: #94101c;
+  --fail-bg: #fdf1f2;
+  --fail-border: #d4636e;
+
+  --pass: #0f5533;
+  --pass-bg: #eef8f2;
+  --pass-border: #4c9871;
+
+  --note: #704303;
+  --note-bg: #fdf5e8;
+  --note-border: #c39445;
+
+  --focus: #0a4f9e;
+  --focus-offset: #ffffff;
+
+  --level-a: #1f4e79;
+  --level-aa: #603792;
+  --level-aaa: #763e06;
+
+  /* Spacing scale in rem so it grows with the user's font size (1.4.4) */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+
+  --radius: 6px;
+  --measure: 70ch;          /* 1.4.8 AAA: no more than 80 characters per line */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
+  /* Bangla text (3.1.1 / 3.1.2 demos) needs a font stack that actually has the glyphs */
+  --font-bangla: "Noto Sans Bengali", "Nirmala UI", "Vrinda", "Shonar Bangla", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12161b;
+    --surface: #1a1f26;
+    --surface-raised: #222831;
+    --text: #edf1f5;
+    --text-muted: #b3bec9;
+    --border: #3a434e;
+    --border-strong: #7d8894;
+
+    --accent: #7fb8f5;
+    --accent-hover: #a8cffa;
+    --on-accent: #0d1117;
+
+    --fail: #ff9aa4;
+    --fail-bg: #2a1619;
+    --fail-border: #8f3b45;
+
+    --pass: #86dcae;
+    --pass-bg: #12241b;
+    --pass-border: #3d7a58;
+
+    --note: #ecc07a;
+    --note-bg: #2a2113;
+    --note-border: #8a6a2f;
+
+    --focus: #ffd54a;
+    --focus-offset: #12161b;
+
+    --level-a: #8fc0ec;
+    --level-aa: #cbb0f1;
+    --level-aaa: #edb073;
+  }
+}
+
+/* --- Reset and base --------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  /* Never set a px font-size on html: it breaks the user's browser font setting (1.4.4) */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  /* 1.4.8 AAA: line height at least 1.5 within paragraphs */
+  line-height: 1.6;
+  /* 1.4.8 AAA: never fully justify - it creates rivers that disrupt tracking */
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+/* 1.4.12 Text Spacing: no fixed heights on text containers, so user overrides
+   for line-height, letter-spacing and word-spacing cannot clip content. */
+p, li, dd, dt, blockquote, figcaption, td, th, label, summary {
+  max-width: var(--measure);
+}
+p { margin: 0 0 var(--sp-4); }
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  margin: var(--sp-6) 0 var(--sp-3);
+  max-width: var(--measure);
+  text-wrap: balance;
+}
+h1 { font-size: clamp(1.75rem, 1.3rem + 2vw, 2.5rem); margin-top: 0; }
+h2 { font-size: clamp(1.4rem, 1.15rem + 1.1vw, 1.8rem); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.0625rem; }
+
+:is(h1, h2, h3, h4) + * { margin-top: 0; }
+
+img, svg, video, canvas, iframe { max-width: 100%; }
+img, video { height: auto; }
+
+/* --- Links ------------------------------------------------------------------
+   1.4.1 Use of Color: links in body text are underlined, never colour alone. */
+a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: max(1px, 0.06em);
+}
+a:hover { color: var(--accent-hover); text-decoration-thickness: max(2px, 0.12em); }
+
+/* --- Focus -------------------------------------------------------------------
+   2.4.7 Focus Visible, 2.4.13 Focus Appearance (AAA), 1.4.11 Non-text Contrast.
+   A 3px solid outline with a 2px offset exceeds the 2px-perimeter minimum and
+   holds >=3:1 against both light and dark backgrounds. Never remove this. */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* Older engines without :focus-visible still get an indicator. */
+:focus:not(:focus-visible) { outline: none; }
+
+/* --- Skip link (2.4.1 Bypass Blocks) -----------------------------------------
+   Moved off-screen rather than display:none, so it stays focusable. */
+.skip-link {
+  position: absolute;
+  left: var(--sp-3);
+  top: var(--sp-3);
+  z-index: 100;
+  transform: translateY(-200%);
+  background: var(--accent);
+  color: var(--on-accent);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* --- Visually hidden, but available to assistive technology ------------------ */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Layout ------------------------------------------------------------------
+   1.4.10 Reflow: everything is fluid; nothing has a min-width that would force
+   horizontal scrolling at a 320px viewport. */
+.page {
+  width: min(72rem, 100% - 2rem);
+  margin-inline: auto;
+  padding-block: var(--sp-6) var(--sp-7);
+}
+.prose { max-width: var(--measure); }
+
+.site-header {
+  border-bottom: 2px solid var(--border);
+  background: var(--surface);
+}
+.site-header__inner {
+  width: min(72rem, 100% - 2rem);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;                 /* wraps instead of overflowing at 320px */
+  gap: var(--sp-3) var(--sp-5);
+  align-items: baseline;
+  padding-block: var(--sp-3);
+}
+.site-header__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin: 0;
+}
+.site-header__title a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  color: var(--text);
+  text-decoration: none;
+}
+.site-header__title a:hover { text-decoration: underline; }
+.site-header__logo {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 4px;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  margin: 0;
+  padding: 0;
+}
+/* 3.2.3 Consistent Navigation: this markup is identical on every page, and
+   2.4.8 Location: the current page is marked with aria-current, not colour alone. */
+.site-nav a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration-thickness: max(2px, 0.12em);
+}
+
+.site-footer {
+  border-top: 2px solid var(--border);
+  background: var(--surface);
+  margin-top: var(--sp-7);
+  padding-block: var(--sp-5);
+  color: var(--text-muted);
+}
+.site-footer__inner {
+  width: min(72rem, 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* --- Breadcrumbs (2.4.8 Location) -------------------------------------------- */
+.breadcrumb ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-5);
+  padding: 0;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: var(--sp-2);
+  color: var(--border-strong);
+}
+
+/* --- Buttons and controls ----------------------------------------------------
+   2.5.8 Target Size (Minimum): min 24x24 CSS px. These exceed it at 44px to
+   also satisfy 2.5.5 Target Size (Enhanced) at AAA. */
+.button, button.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  min-width: 44px;
+  padding: var(--sp-2) var(--sp-4);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--on-accent);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--on-accent); }
+.button--secondary {
+  background: transparent;
+  color: var(--accent);
+}
+.button--secondary:hover { background: var(--surface); color: var(--accent-hover); }
+
+/* Form controls used by the filter UI and worksheets.
+   1.4.11 Non-text Contrast: borders are >=3:1 against the page background. */
+input, select, textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface-raised);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: var(--sp-2) var(--sp-3);
+  min-height: 44px;
+  max-width: 100%;
+}
+textarea { min-height: 6rem; line-height: 1.6; }
+label { display: inline-block; font-weight: 600; margin-bottom: var(--sp-1); }
+
+/* --- Level badges ------------------------------------------------------------
+   1.4.1 Use of Color: the level is spelled out in text, not signalled by colour. */
+.level {
+  display: inline-block;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  padding: 0 var(--sp-2);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.level--A { color: var(--level-a); }
+.level--AA { color: var(--level-aa); }
+.level--AAA { color: var(--level-aaa); }
+.level--OBSOLETE { color: var(--text-muted); }
+
+/* --- Callouts ----------------------------------------------------------------
+   Each uses an icon glyph plus a text prefix, never colour alone (1.4.1). */
+.callout {
+  border: 2px solid var(--border);
+  border-left-width: 6px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--sp-4);
+  margin: var(--sp-5) 0;
+  max-width: var(--measure);
+}
+.callout > :last-child { margin-bottom: 0; }
+.callout__title { font-weight: 700; margin: 0 0 var(--sp-2); display: flex; gap: var(--sp-2); }
+.callout--fail { border-color: var(--fail-border); background: var(--fail-bg); }
+.callout--fail .callout__title { color: var(--fail); }
+.callout--pass { border-color: var(--pass-border); background: var(--pass-bg); }
+.callout--pass .callout__title { color: var(--pass); }
+.callout--note { border-color: var(--note-border); background: var(--note-bg); }
+.callout--note .callout__title { color: var(--note); }
+
+/* --- Tables ------------------------------------------------------------------
+   1.4.10 Reflow exempts data tables from the no-horizontal-scroll rule, but the
+   scroll container must be keyboard reachable, so it carries tabindex="0"
+   (see the scrollable-region-focusable axe rule under 2.1.1). */
+.table-scroll {
+  overflow-x: auto;
+  margin: var(--sp-5) 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.table-scroll:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+table { border-collapse: collapse; width: 100%; }
+caption { text-align: left; font-weight: 700; padding: var(--sp-3); }
+th, td {
+  text-align: left;
+  padding: var(--sp-3);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+thead th { background: var(--surface); border-bottom: 2px solid var(--border-strong); }
+
+/* --- Code --------------------------------------------------------------------
+   Exempt from reflow, so it scrolls horizontally inside its own container. */
+pre {
+  overflow-x: auto;
+  /* Without max-width the <pre> reports its full content width as its intrinsic
+     size, which propagates up through grid and flex parents (see .panel in
+     demo.css) and breaks 1.4.10 Reflow. */
+  max-width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  margin: var(--sp-4) 0;
+  line-height: 1.55;
+}
+pre:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+code { font-family: var(--font-mono); font-size: 0.9375em; }
+:not(pre) > code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+
+/* --- Bangla passages (3.1.1 / 3.1.2 demos) ----------------------------------- */
+[lang="bn"] {
+  font-family: var(--font-bangla);
+  line-height: 1.85;   /* Bangla needs more leading than Latin at the same size */
+}
+
+/* --- Motion ------------------------------------------------------------------
+   2.3.3 Animation from Interactions (AAA) and 2.2.2 Pause, Stop, Hide.
+   Motion is removed rather than merely shortened. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Windows High Contrast / forced colours ---------------------------------- */
+@media (forced-colors: active) {
+  .button { border: 2px solid ButtonText; }
+  :focus-visible { outline: 3px solid Highlight; }
+  .level { border-color: CanvasText; }
+}

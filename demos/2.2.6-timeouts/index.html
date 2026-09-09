@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.2.6 Timeouts (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Users are warned about the duration of any inactivity that could cause data loss, unless the data is preserved for more than 20 hours of inactivity.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.2.6 Timeouts</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.2.6</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 2.2 Enough Time</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Timeouts</h1>
+        <p class="sc-header__summary">Users are warned about the duration of any inactivity that could cause data loss, unless the data is preserved for more than 20 hours of inactivity.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with cognitive disabilities who may step away and return, and who cannot anticipate an undisclosed timeout.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.2.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.2.6 Timeouts"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Apply for a library card&lt;/h1&gt;
+
+&lt;!-- FAILURE: there is an inactivity timeout that will discard this
+     application, and the user is never told it exists or how long it is.
+
+     2.2.6 is not about the timeout being adjustable (that is 2.2.1) or about
+     preserving data (that is 2.2.5). It is specifically about DISCLOSURE: the
+     user must be warned at the START how long they have, so they can decide
+     whether to begin now or come back when they have time and the documents
+     they need.
+
+     Someone who reads slowly, or who has to fetch proof of address, has no way
+     to know they should not start this form on a ten-minute break. --&gt;
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;n&quot;&gt;Full name&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;n&quot; autocomplete=&quot;name&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;a&quot;&gt;Address&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;a&quot; autocomplete=&quot;street-address&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;p&quot;&gt;Proof of address reference&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;p&quot;&gt;&lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Submit application&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.2.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.2.6 Timeouts"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Apply for a library card&lt;/h1&gt;
+
+&lt;!-- FIX: the duration is disclosed BEFORE the user starts, along with what
+     will happen and what they should have to hand. Note the placement - at the
+     top, before the first field, not in a footer or a help page. --&gt;
+&lt;div class=&quot;upfront&quot;&gt;
+  &lt;h2&gt;Before you start&lt;/h2&gt;
+  &lt;p&gt;This form times out after &lt;strong&gt;20 minutes of inactivity&lt;/strong&gt;. If that
+     happens, you will be asked to sign in again and your answers will be restored.&lt;/p&gt;
+  &lt;p&gt;You will need your proof of address reference to hand.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;n&quot;&gt;Full name&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;n&quot; autocomplete=&quot;name&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;a&quot;&gt;Address&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;a&quot; autocomplete=&quot;street-address&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;p&quot;&gt;Proof of address reference&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;p&quot;&gt;&lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Submit application&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- The exception, and it is the better fix where you can take it: 2.2.6 does
+     not apply at all if user data is preserved for MORE THAN 20 HOURS of
+     inactivity. Save a draft that survives overnight and you have nothing to
+     disclose, because nothing is lost.
+
+     How the three timing criteria differ:
+       2.2.1 (A)   the limit must be adjustable, extendable or removable
+       2.2.5 (AAA) re-authenticating must not lose data
+       2.2.6 (AAA) the user must be TOLD the duration up front
+     A well-built form satisfies all three, and they are cheapest to build
+     together rather than retrofitted one at a time. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Confirm the timeout duration is stated up front, at the start of the process — not only in a warning as it expires.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires reading the interface for a disclosed duration.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.2.1-timing-adjustable/index.html">2.2.1 Timing Adjustable (Level A)</a></li>
+          <li><a href="../2.2.5-re-authenticating/index.html">2.2.5 Re-authenticating (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/timeouts.html">Understanding 2.2.6 Timeouts</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#timeouts">2.2.6 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.2.5-re-authenticating/index.html"><span class="sc-pager__dir">Previous criterion</span>2.2.5 Re-authenticating</a>
+        <a href="../2.3.1-three-flashes-or-below-threshold/index.html"><span class="sc-pager__dir">Next criterion</span>2.3.1 Three Flashes or Below Threshold</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

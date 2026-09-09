@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- FIX 1: a viewport tag that permits zoom. This is the whole tag you need;
+       never add maximum-scale or user-scalable. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.4 Resize Text</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FIX 2: min-height in rem. The box grows with the text instead of clipping it. */
+    .promo { min-height: 4rem; border:1px solid var(--border);
+             border-radius:6px; padding:.5rem .75rem; margin-bottom:1rem; }
+    /* FIX 3: the button is sized by its padding and content, so the label always
+       fits however large the text becomes. */
+    .cta { display:inline-block; padding:.6rem 1.2rem; min-height:44px;
+           background:#0a4f9e; color:#fff; border:0; border-radius:6px; }
+    /* FIX 4: relative units throughout. rem scales with the user's browser font
+       setting; px does not. */
+    .flexible { font-size: 0.9375rem; max-width: 30rem; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.4 Resize Text.
+     Zoom to 200% — nothing is lost.</p>
+
+  <!-- excerpt:start -->
+  <h1>This week</h1>
+
+  <div class="promo">
+    <p>Spring reading festival: three days of events across both shops, 12 to 14 April.</p>
+  </div>
+
+  <p><span class="cta">Book festival tickets</span></p>
+
+  <p class="flexible">Members save 20% on all festival tickets and get priority booking
+     from 1 March.</p>
+
+  <!-- The rules that prevent nearly every failure of this criterion:
+         - never set font-size in px on body text; use rem or unitless ratios
+         - never set a fixed height on anything containing text; use min-height
+         - never set font-size on the html element in px, because that overrides
+           the user's own browser font-size setting
+         - never add maximum-scale or user-scalable=no to the viewport tag
+
+       Note how this overlaps its neighbours: 1.4.10 Reflow tests the same
+       layout at 400%, and 1.4.12 Text Spacing tests the same containers with
+       increased leading. Build for one and you have largely built for all three. -->
+  <!-- excerpt:end -->
+</body>
+</html>

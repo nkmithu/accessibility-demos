@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.2.2 Captions (Prerecorded) (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Captions are provided for all prerecorded audio content in synchronised media. Captions carry dialogue plus speaker identification and meaningful non-speech sound.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.2.2 Captions (Prerecorded)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.2.2</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 1.2 Time-based Media</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Captions (Prerecorded)</h1>
+        <p class="sc-header__summary">Captions are provided for all prerecorded audio content in synchronised media. Captions carry dialogue plus speaker identification and meaningful non-speech sound.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Deaf and hard-of-hearing users. Also anyone in a loud environment, in a quiet environment without headphones, or watching in a second language.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.2.2
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.2.2 Captions (Prerecorded)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;A short tour of the shop&lt;/h1&gt;
+
+&lt;!-- FAILURE: synchronised media - it has both picture and sound - with no
+     captions track at all.
+
+     Watch it with the sound off. The doorbell, the counter bell and the
+     unanswered telephone are all gone, and nothing on screen replaces them.
+     That soundtrack is information, and a deaf viewer never receives it. --&gt;
+&lt;video controls width=&quot;640&quot; src=&quot;../../assets/media/shop-tour.mp4&quot;&gt;&lt;/video&gt;
+
+&lt;!-- A second common failure: relying on the platform's automatic captions and
+     never correcting them. Auto-captions routinely mangle names, technical
+     terms and punctuation, and they almost never mark non-speech sound at all -
+     so a clip like this one comes out completely blank. Uncorrected
+     auto-captions do not meet 1.2.2. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.2.2
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.2.2 Captions (Prerecorded)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;A short tour of the shop&lt;/h1&gt;
+
+&lt;!-- FIX: a captions track in WebVTT.
+       kind=&quot;captions&quot;  - captions, not subtitles. Subtitles translate dialogue
+                          for people who can hear; captions serve people who
+                          cannot, so they must include non-speech sound too.
+       srclang=&quot;en&quot;     - the language of the cues
+       label=&quot;English&quot;  - what the user sees in the track menu
+     Because the file is loaded over HTTP, note that opening this page from
+     the filesystem may block the track: browsers treat a VTT file as a
+     cross-origin request under file://. Serve the site (npm run dev) to
+     see captions working. --&gt;
+&lt;video controls width=&quot;640&quot;&gt;
+  &lt;source src=&quot;../../assets/media/shop-tour.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;track kind=&quot;captions&quot; src=&quot;../../assets/media/shop-tour-captions.vtt&quot;
+         srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
+  Your browser does not support HTML video.
+&lt;/video&gt;
+
+&lt;!-- The cues themselves, so you can read what good captions contain:
+
+       00:00.500 --&gt; 00:01.700
+       [shop doorbell chimes]
+
+       00:12.900 --&gt; 00:15.500
+       [telephone rings four times]
+
+     Rules worth memorising:
+       - put non-speech sound in square brackets
+       - identify the speaker when it is not obvious: &quot;ANNA: over here&quot;
+       - never let a cue outrun what a person can read, roughly 20 characters
+         per second
+       - caption what MATTERS: a clock ticking in a thriller is information,
+         the same clock in an interview is not --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Play every video with sound off. Confirm captions are synchronised, accurate, identify speakers, and include relevant sounds such as [door slams]. Auto-generated captions with no human correction routinely fail on names, technical terms, and punctuation.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>A scanner can detect that a track element with kind=&quot;captions&quot; is absent. It cannot verify caption accuracy, synchronisation, or completeness.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>video-caption</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.2.4-captions-live/index.html">1.2.4 Captions (Live) (Level AA)</a></li>
+          <li><a href="../1.2.8-media-alternative-prerecorded/index.html">1.2.8 Media Alternative (Prerecorded) (Level AAA)</a></li>
+          <li><a href="../1.4.2-audio-control/index.html">1.4.2 Audio Control (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html">Understanding 1.2.2 Captions (Prerecorded)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#captions-prerecorded">1.2.2 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.2.1-audio-only-and-video-only-prerecorded/index.html"><span class="sc-pager__dir">Previous criterion</span>1.2.1 Audio-only and Video-only (Prerecorded)</a>
+        <a href="../1.2.3-audio-description-or-media-alternative-prerecorded/index.html"><span class="sc-pager__dir">Next criterion</span>1.2.3 Audio Description or Media Alternative (Prerecorded)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

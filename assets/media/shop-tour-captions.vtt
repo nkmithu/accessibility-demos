@@ -1,0 +1,29 @@
+WEBVTT
+
+NOTE
+Captions for shop-tour.mp4.
+This clip has no dialogue, so every cue below is a non-speech sound. Captions are
+NOT just a transcript of speech: WCAG 1.2.2 requires captions to include any sound
+that carries meaning. A deaf viewer who is given only dialogue captions still misses
+the doorbell, the counter bell and the telephone - which is the whole soundtrack here.
+
+Conventions used:
+  - non-speech sound goes in square brackets
+  - a speaker's name would be written as "NAME: dialogue"
+  - cues stay on screen long enough to read: roughly 20 characters per second
+
+1
+00:00.500 --> 00:01.700
+[shop doorbell chimes]
+
+2
+00:08.900 --> 00:10.000
+[counter bell rings]
+
+3
+00:12.900 --> 00:15.500
+[telephone rings four times]
+
+4
+00:17.400 --> 00:18.700
+[doorbell chimes as the door closes]

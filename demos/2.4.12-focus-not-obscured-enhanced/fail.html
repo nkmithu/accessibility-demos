@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.12 Focus Not Obscured (Enhanced)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .sticky-bar{position:sticky;top:0;z-index:5;background:#0a4f9e;color:#fff;
+                padding:.8rem 1rem;font-weight:700}
+    .long{margin-bottom:.9rem}
+    /* Just enough scroll-margin to keep the focused element PARTLY visible -
+       which is all AA requires - but not enough to clear the bar completely. */
+    .long a { scroll-margin-top: 1.6rem; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page passes 2.4.11 at AA but deliberately FAILS
+     2.4.12 at AAA. Tab down the list and watch the top of each link get clipped.</p>
+
+  <!-- excerpt:start -->
+  <!-- The difference between the two criteria:
+         2.4.11 (AA)  the focused element must not be ENTIRELY hidden.
+                      Partly covered is acceptable.
+         2.4.12 (AAA) NO PART of the focused element may be hidden.
+
+       Here the sticky header clips the top few pixels of each focused link. The
+       link is still partly visible, so AA is satisfied. AAA is not.
+
+       Why the stricter rule matters: a focus ring that is half cut off is much
+       harder to spot, especially for a low-vision user or anyone scanning
+       quickly, and a clipped label can be unreadable. -->
+  <div class="sticky-bar">Riverline Books — free delivery over £25</div>
+
+  <h1>Browse by subject</h1>
+  <p class="long"><a href="#a">Archaeology</a></p>
+  <p class="long"><a href="#a">Biography</a></p>
+  <p class="long"><a href="#a">Cookery</a></p>
+  <p class="long"><a href="#a">Drama</a></p>
+  <p class="long"><a href="#a">Economics</a></p>
+  <p class="long"><a href="#a">Fiction</a></p>
+  <p class="long"><a href="#a">Geography</a></p>
+  <p class="long"><a href="#a">History</a></p>
+  <p class="long"><a href="#a">Illustration</a></p>
+  <p class="long"><a href="#a">Journalism</a></p>
+  <p class="long"><a href="#a">Linguistics</a></p>
+  <p class="long" id="a">Music</p>
+  <!-- excerpt:end -->
+</body>
+</html>

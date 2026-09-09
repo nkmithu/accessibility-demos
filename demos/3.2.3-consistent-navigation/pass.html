@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.2.3 Consistent Navigation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .mini { border:1px solid var(--border); border-radius:6px; padding:.75rem; }
+    .mini nav ul { list-style:none; margin:0 0 .5rem; padding:0; display:flex; gap:.6rem;
+                   flex-wrap:wrap; font-size:.9rem; }
+    .mini nav [aria-current="page"] { font-weight:700; text-decoration:underline; }
+    .pages { display:grid; gap:1rem; }
+    @media (min-width:44rem) { .pages { grid-template-columns:1fr 1fr 1fr; } }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.2.3 Consistent Navigation.</p>
+
+  <!-- excerpt:start -->
+  <h1>Three pages from the same site</h1>
+
+  <div class="pages">
+    <!-- FIX: the same items in the same relative order, in the same position, on
+         every page. The current page is marked with aria-current, which gives
+         the user their location without changing the order. -->
+    <div class="mini">
+      <h2>Home</h2>
+      <nav aria-label="Page 1"><ul>
+        <li><span aria-current="page">Home</span></li><li>Books</li><li>Events</li>
+        <li>Membership</li><li>Contact</li>
+      </ul></nav>
+      <p>Welcome.</p>
+    </div>
+
+    <div class="mini">
+      <h2>Books</h2>
+      <nav aria-label="Page 2"><ul>
+        <li>Home</li><li><span aria-current="page">Books</span></li><li>Events</li>
+        <li>Membership</li><li>Contact</li>
+      </ul></nav>
+      <p>Browse our shelves.</p>
+    </div>
+
+    <div class="mini">
+      <h2>Events</h2>
+      <nav aria-label="Page 3"><ul>
+        <li>Home</li><li>Books</li><li><span aria-current="page">Events</span></li>
+        <li>Membership</li><li>Contact</li>
+      </ul></nav>
+      <p>What's on this month.</p>
+    </div>
+  </div>
+
+  <!-- The requirement is "same RELATIVE order", which is more permissive than it
+       sounds:
+         - you MAY add or remove items; the survivors must keep their sequence
+         - you MAY change the visual presentation responsively - a menu that
+           collapses into a disclosure button on narrow screens is fine, as long
+           as the order inside it is unchanged
+         - the user MAY reorder it themselves; personalisation is explicitly allowed
+
+       What you may not do is shuffle it from page to page. -->
+  <!-- excerpt:end -->
+</body>
+</html>

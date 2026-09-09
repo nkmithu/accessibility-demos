@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 2.4.7 Focus Visible</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FAILURE: the single most damaging line of CSS in web accessibility.
+       It is usually added to remove a focus ring a designer disliked on click,
+       but it removes it for keyboard users too, who then cannot see where
+       they are. */
+    *, *:focus, *:focus-visible { outline: none; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.7 Focus Visible.
+     Press Tab repeatedly — you cannot tell where you are.</p>
+
+  <!-- excerpt:start -->
+  <h1>Checkout</h1>
+
+  <!-- Every control below is perfectly operable by keyboard. The problem is
+       purely that you cannot SEE which one is focused, which makes the page
+       unusable for a sighted keyboard user. -->
+  <p><a href="#basket">Back to basket</a></p>
+
+  <div class="field">
+    <label for="promo">Promotion code</label>
+    <input type="text" id="promo">
+  </div>
+
+  <p>
+    <button type="button" class="button button--secondary">Apply code</button>
+    <button type="button" class="button">Pay now</button>
+  </p>
+
+  <p id="basket">Your basket: 2 items.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

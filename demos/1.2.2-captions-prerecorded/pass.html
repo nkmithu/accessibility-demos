@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.2.2 Captions (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.2.2 Captions.
+     Turn captions on in the player controls.</p>
+
+  <!-- excerpt:start -->
+  <h1>A short tour of the shop</h1>
+
+  <!-- FIX: a captions track in WebVTT.
+         kind="captions"  - captions, not subtitles. Subtitles translate dialogue
+                            for people who can hear; captions serve people who
+                            cannot, so they must include non-speech sound too.
+         srclang="en"     - the language of the cues
+         label="English"  - what the user sees in the track menu
+       Because the file is loaded over HTTP, note that opening this page from
+       the filesystem may block the track: browsers treat a VTT file as a
+       cross-origin request under file://. Serve the site (npm run dev) to
+       see captions working. -->
+  <video controls width="640">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+    Your browser does not support HTML video.
+  </video>
+
+  <!-- The cues themselves, so you can read what good captions contain:
+
+         00:00.500 --> 00:01.700
+         [shop doorbell chimes]
+
+         00:12.900 --> 00:15.500
+         [telephone rings four times]
+
+       Rules worth memorising:
+         - put non-speech sound in square brackets
+         - identify the speaker when it is not obvious: "ANNA: over here"
+         - never let a cue outrun what a person can read, roughly 20 characters
+           per second
+         - caption what MATTERS: a clock ticking in a thriller is information,
+           the same clock in an interview is not -->
+  <!-- excerpt:end -->
+</body>
+</html>

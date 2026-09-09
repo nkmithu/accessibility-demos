@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.2.5 Audio Description (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.transcript { border:1px solid var(--border); border-radius:6px; padding:1rem; margin:.75rem 0; }</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.2.5 Audio Description (Prerecorded).</p>
+
+  <!-- excerpt:start -->
+  <h1>A short tour of the shop</h1>
+
+  <!-- FIX 1: offer a described version the user can choose. Two common
+       implementations:
+         a) a separate described video file, selectable like a language track
+         b) a single file with an extra described audio track
+       Option (a) is used here because it works in every browser today. -->
+  <p>
+    <button type="button" class="button button--secondary" id="toggle"
+            aria-pressed="false">Play the audio described version</button>
+  </p>
+
+  <video controls width="640" id="player">
+    <source id="src" src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+    <!-- The descriptions track is correct markup and machine-readable, but no
+         mainstream browser speaks it aloud - so it supplements the described
+         version rather than replacing it. -->
+    <track kind="descriptions" src="../../assets/media/shop-tour-descriptions.vtt"
+           srclang="en" label="Audio description">
+  </video>
+  <p id="mode" role="status">Playing the standard version.</p>
+
+  <!-- FIX 2: a full transcript as well. Not required by 1.2.5, but it is what
+       serves deafblind users (and satisfies 1.2.8 at AAA), and it makes the
+       content searchable. -->
+  <details class="transcript">
+    <summary>Full transcript, including descriptions</summary>
+    <dl>
+      <dt>00:00</dt><dd>Title card: Riverline Books — A short tour. [Doorbell chimes.]</dd>
+      <dt>00:04</dt><dd>Opening hours: Monday to Friday 9am to 6pm; Saturday 10am to 4pm; Sunday closed.</dd>
+      <dt>00:08</dt><dd>Reserve online, collect in store within seven days. [Counter bell.]</dd>
+      <dt>00:12</dt><dd>Free delivery on orders over 25 pounds. [Telephone rings four times.]</dd>
+      <dt>00:16</dt><dd>riverlinebooks.example — Thanks for visiting. [Doorbell chimes.]</dd>
+    </dl>
+  </details>
+
+  <!-- The cheapest way to pass 1.2.5 is to never need it: write the script so
+       the narration already says everything that appears on screen. A video
+       whose audio is self-sufficient requires no description at all - and it is
+       a better video for everyone listening while doing something else. -->
+  <!-- excerpt:end -->
+
+  <script>
+    // In a real implementation this swaps to the described file. Both sources
+    // point at the same clip here, because the suite ships one generated asset.
+    var described = false;
+    document.getElementById('toggle').addEventListener('click', function () {
+      described = !described;
+      this.setAttribute('aria-pressed', String(described));
+      this.textContent = described ? 'Play the standard version' : 'Play the audio described version';
+      document.getElementById('mode').textContent = described
+        ? 'Playing the audio described version.'
+        : 'Playing the standard version.';
+    });
+  </script>
+</body>
+</html>

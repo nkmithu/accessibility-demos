@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.5.6 Concurrent Input Mechanisms</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.5.6.
+     Try it with touch, mouse, keyboard and voice — all at once if you like.</p>
+
+  <!-- excerpt:start -->
+  <h1>Reading list</h1>
+
+  <!-- FIX: no device sniffing at all. A real button plus a click handler works
+       with touch, mouse, stylus, keyboard, switch and voice control
+       simultaneously, because the browser normalises all of them into `click`.
+
+       The rule: bind to `click`, not to `touchstart` or `mousedown`. Use
+       `pointer*` events if you need low-level pointer data, and never remove a
+       control from the tab order because you think the user does not need it. -->
+  <ul class="plain" id="list">
+    <li><button type="button" class="button button--secondary" data-t="Tidal Flats">Tidal Flats</button></li>
+    <li><button type="button" class="button button--secondary" data-t="The Long Field">The Long Field</button></li>
+  </ul>
+  <p id="picked" role="status">Nothing selected yet.</p>
+
+  <!-- If you must adapt the INTERFACE to input type - larger targets once a
+       touch has been seen, say - respond to the most recent interaction rather
+       than to a capability check at load, and never disable another path:
+
+         window.addEventListener('pointerdown', function (e) {
+           document.body.dataset.lastInput = e.pointerType;   // touch | mouse | pen
+         });
+         window.addEventListener('keydown', function () {
+           document.body.dataset.lastInput = 'keyboard';
+         });
+
+       That adapts presentation without ever taking an input method away.
+
+       The permitted exceptions are narrow: restricting input where it is
+       necessary for SECURITY, or to respect a setting the user themselves chose. -->
+  <!-- excerpt:end -->
+
+  <script>
+    document.querySelectorAll('#list button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.getElementById('picked').textContent = 'Selected: ' + b.dataset.t;
+      });
+    });
+  </script>
+</body>
+</html>

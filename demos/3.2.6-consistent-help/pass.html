@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.2.6 Consistent Help</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .mini { border:1px solid var(--border); border-radius:6px; padding:.75rem; }
+    .mini nav ul { list-style:none; margin:0; padding:0; display:flex; gap:.6rem; flex-wrap:wrap; font-size:.9rem; }
+    .pages { display:grid; gap:1rem; }
+    @media (min-width:44rem) { .pages { grid-template-columns:1fr 1fr 1fr; } }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.2.6 Consistent Help.</p>
+
+  <!-- excerpt:start -->
+  <h1>Three pages from the same checkout</h1>
+
+  <div class="pages">
+    <!-- FIX: the help mechanism keeps the same name and the same position
+         relative to the rest of the page on every step. "Same relative order"
+         is the requirement, not identical pixel position - so a responsive
+         layout that moves it visually is still fine, as long as it stays in the
+         same place in the sequence of page content. -->
+    <div class="mini">
+      <h2>Step 1: Basket</h2>
+      <nav aria-label="Page 1"><ul><li>Home</li><li>Books</li><li><a href="#h">Help</a></li></ul></nav>
+      <p>2 items in your basket.</p>
+    </div>
+
+    <div class="mini">
+      <h2>Step 2: Delivery</h2>
+      <nav aria-label="Page 2"><ul><li>Home</li><li>Books</li><li><a href="#h">Help</a></li></ul></nav>
+      <p>Choose a delivery date.</p>
+    </div>
+
+    <div class="mini">
+      <h2>Step 3: Payment</h2>
+      <nav aria-label="Page 3"><ul><li>Home</li><li>Books</li><li><a href="#h">Help</a></li></ul></nav>
+      <p>Enter your card details.</p>
+    </div>
+  </div>
+
+  <!-- Note what 3.2.6 does NOT require: it does not require you to provide help
+       at all. It only says that if help IS present on a page, it must be in a
+       consistent place across the pages that have it. Human contact details,
+       a contact form, a chat widget, a phone number and self-help all count. -->
+
+  <p id="h">Help page.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

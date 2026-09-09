@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.3.4 Error Prevention (Legal, Financial, Data)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.review { border:1px solid var(--border); border-radius:6px; padding:1rem; margin-bottom:1rem; }</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.3.4.</p>
+
+  <!-- excerpt:start -->
+  <h1>Confirm your order</h1>
+
+  <!-- FIX 1 — CHECKED AND CORRECTABLE: everything the user is committing to is
+       shown, itemised, with a way to change each part before paying. -->
+  <div class="review">
+    <h2>What you are ordering</h2>
+    <table>
+      <caption>Order summary</caption>
+      <thead><tr><th scope="col">Item</th><th scope="col">Qty</th><th scope="col">Price</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Tidal Flats</th><td>1</td><td>£12.99</td></tr>
+        <tr><th scope="row">The Long Field</th><td>2</td><td>£35.98</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Total: £48.97</strong></p>
+    <p><a href="#basket">Change your basket</a> · <a href="#addr">Change delivery address</a></p>
+  </div>
+
+  <!-- FIX 2 — CONFIRMED: an explicit act of agreement, with the terms reachable
+       before agreeing rather than referenced after the fact. -->
+  <p class="field">
+    <input type="checkbox" id="agree">
+    <label for="agree">I agree to the <a href="#terms">terms of sale</a></label>
+  </p>
+  <button type="button" class="button" onclick="review()">Review and pay</button>
+
+  <!-- FIX 3 — REVERSIBLE, and confirmed before the fact. Destructive actions get
+       a confirmation naming exactly what will be lost. -->
+  <h2>Account</h2>
+  <button type="button" class="button button--secondary" onclick="askWipe()">Delete all my order history</button>
+  <div id="confirm" hidden>
+    <p><strong>Delete 14 orders going back to 2019?</strong>
+       You will not be able to recover them, and you will lose your purchase history
+       for warranty claims.</p>
+    <button type="button" class="button" onclick="doWipe()">Yes, delete 14 orders</button>
+    <button type="button" class="button button--secondary" onclick="cancelWipe()">Keep my order history</button>
+  </div>
+
+  <p id="log" role="status"></p>
+
+  <h2 id="basket">Your basket</h2>
+  <p>2 titles, 3 items.</p>
+  <h2 id="addr">Delivery address</h2>
+  <p>12 River Street, Riverside.</p>
+
+  <h2 id="terms">Terms of sale</h2>
+  <p>Goods are sold subject to availability. Returns accepted within 30 days.</p>
+
+  <!-- 3.3.4 is satisfied by ANY ONE of three routes:
+         REVERSIBLE   - the submission can be undone (a cancellation window)
+         CHECKED      - data is validated and the user can correct it
+         CONFIRMED    - a review step with an explicit opportunity to confirm
+
+       It applies to pages that create a legal commitment, take a financial
+       transaction, modify or delete user-controllable data, or submit test
+       responses. At AAA, 3.3.6 extends the same protection to EVERY form. -->
+  <!-- excerpt:end -->
+
+  <script>
+    function review() {
+      var ok = document.getElementById('agree').checked;
+      document.getElementById('log').textContent = ok
+        ? 'Taking you to the final confirmation screen…'
+        : 'Please agree to the terms of sale before continuing.';
+    }
+    function askWipe() {
+      document.getElementById('confirm').hidden = false;
+      document.getElementById('confirm').querySelector('button').focus();
+    }
+    function doWipe() {
+      document.getElementById('confirm').hidden = true;
+      document.getElementById('log').textContent = 'Order history deleted.';
+    }
+    function cancelWipe() {
+      document.getElementById('confirm').hidden = true;
+      document.getElementById('log').textContent = 'Cancelled. Your order history is unchanged.';
+    }
+  </script>
+</body>
+</html>

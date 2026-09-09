@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.3.1 Info and Relationships</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.3.1 Info and Relationships.</p>
+
+  <!-- excerpt:start -->
+  <!-- FIX 1: a real heading. It looks the same, and now it is in the heading
+       outline, reachable with the H key and listed in the rotor. -->
+  <h2>Opening hours</h2>
+
+  <!-- FIX 2: a real list. Assistive technology announces "list with 3 items",
+       which tells the user how much there is before they commit to reading it. -->
+  <ul>
+    <li>Monday to Friday, 9am to 6pm</li>
+    <li>Saturday, 10am to 4pm</li>
+    <li>Sunday, closed</li>
+  </ul>
+
+  <h2>Stock by branch</h2>
+
+  <!-- FIX 3: real header cells with an explicit scope. Now a screen reader reads
+       "Old Town, Paperback, 19" instead of a bare "19". The caption names the
+       table so it can be found in a list of tables. -->
+  <table>
+    <caption>Copies in stock by branch and format</caption>
+    <thead>
+      <tr>
+        <th scope="col">Branch</th>
+        <th scope="col">Hardback</th>
+        <th scope="col">Paperback</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Riverside</th><td>12</td><td>34</td></tr>
+      <tr><th scope="row">Old Town</th><td>4</td><td>19</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Join the mailing list</h2>
+
+  <form>
+    <!-- FIX 4: label's "for" matches the input's "id", so the field announces as
+         "Email address, edit". Clicking the label also focuses the field. -->
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email" autocomplete="email">
+    </div>
+
+    <!-- FIX 5: fieldset and legend bind the question to its options, so each
+         radio announces as "How often? Weekly, radio button, 1 of 2". -->
+    <fieldset class="field">
+      <legend>How often?</legend>
+      <div>
+        <input type="radio" id="p-weekly" name="freq" value="weekly">
+        <label for="p-weekly">Weekly</label>
+      </div>
+      <div>
+        <input type="radio" id="p-monthly" name="freq" value="monthly">
+        <label for="p-monthly">Monthly</label>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="button">Subscribe</button>
+  </form>
+  <!-- excerpt:end -->
+</body>
+</html>

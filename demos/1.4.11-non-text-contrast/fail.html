@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.4.11 Non-text Contrast</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .ghost-input { border: 1px solid #ecf0f3; border-radius: 4px; padding:.5rem;
+                   background:#fff; width:100%; max-width:22rem; }   /* 1.1:1 border */
+    .ghost-focus:focus-visible { outline: 2px solid #d6dde4; outline-offset: 2px; } /* 1.4:1 */
+    .toggle { width:44px; height:24px; border-radius:999px; background:#e3e8ec; position:relative; }
+    .toggle::after { content:""; position:absolute; top:3px; left:3px; width:18px; height:18px;
+                     border-radius:50%; background:#f3f6f8; }
+    .icon-faint { color: #dfe5ea; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.4.11 Non-text Contrast.</p>
+
+  <!-- excerpt:start -->
+  <h1>Preferences</h1>
+
+  <!-- FAILURE 1: the input border is 1.1:1 against the page. The LABEL is
+       perfectly readable, so 1.4.3 passes - but a low-vision user cannot see
+       where the box begins or ends, or that there is a box at all.
+       1.4.11 exists precisely because 1.4.3 only covers text. -->
+  <div class="field">
+    <label for="nm">Display name</label>
+    <input type="text" id="nm" class="ghost-input ghost-focus">
+  </div>
+
+  <!-- FAILURE 2: the focus indicator is 1.4:1 against the background.
+       It technically exists, so 2.4.7 Focus Visible is arguably met - but you
+       cannot see it, so 1.4.11 fails. -->
+  <p>Tab to the field above and look for the focus ring.</p>
+
+  <!-- FAILURE 3: a toggle whose track and knob are both near-white. Nothing
+       communicates on or off except a shade change nobody can perceive. -->
+  <p><span class="toggle" role="img" aria-label="Toggle, currently off"></span> Email me about events</p>
+
+  <!-- FAILURE 4: a meaningful icon at 1.2:1. Icons that convey information are
+       "graphical objects" and are in scope. -->
+  <p><span class="icon-faint" aria-hidden="true">★★★★☆</span> Rated 4 out of 5</p>
+  <!-- excerpt:end -->
+</body>
+</html>

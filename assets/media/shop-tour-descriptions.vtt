@@ -1,0 +1,33 @@
+WEBVTT
+
+NOTE
+Audio description track for shop-tour.mp4.
+Every cue below describes information that appears ONLY on screen. Play the clip
+with your eyes closed: without these descriptions you learn nothing except that a
+bell rang somewhere. That is what WCAG 1.2.3 and 1.2.5 are about.
+
+Practical warning for students: browser support for kind="descriptions" is poor,
+and no major browser speaks these cues aloud today. This is the correct markup and
+it is machine-readable, but a real project usually ships audio description as a
+separate described audio track or a described version of the video. Do not assume
+adding this file makes a video conform.
+
+1
+00:00.000 --> 00:03.800
+Title card. Riverline Books. A short tour.
+
+2
+00:04.000 --> 00:07.800
+Opening hours. Monday to Friday, 9am to 6pm. Saturday, 10am to 4pm. Sunday, closed.
+
+3
+00:08.000 --> 00:11.800
+Reserve online. Collect in store within seven days.
+
+4
+00:12.000 --> 00:15.800
+Free delivery on orders over 25 pounds.
+
+5
+00:16.000 --> 00:19.800
+riverlinebooks dot example. Thanks for visiting.

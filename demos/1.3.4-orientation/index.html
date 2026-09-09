@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.3.4 Orientation (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Content does not restrict its view to a single display orientation such as portrait or landscape, unless a specific orientation is essential.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.3.4 Orientation</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.3.4</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 1.3 Adaptable</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Orientation</h1>
+        <p class="sc-header__summary">Content does not restrict its view to a single display orientation such as portrait or landscape, unless a specific orientation is essential.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with a device mounted to a wheelchair or a fixed stand cannot rotate it. Locking to portrait makes the content unusable for them.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.3.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.3.4 Orientation"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;div class=&quot;rotate-nag&quot;&gt;
+  &lt;p&gt;Please rotate your device to portrait to use this page.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;app&quot;&gt;
+  &lt;h1&gt;Reserve a book&lt;/h1&gt;
+  &lt;p&gt;Search our catalogue and reserve a copy for collection.&lt;/p&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;q&quot;&gt;Search the catalogue&lt;/label&gt;
+    &lt;input type=&quot;search&quot; id=&quot;q&quot;&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button&quot;&gt;Search&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- The failure is the LOCK, not the layout. Content may look different in
+     each orientation - that is normal responsive design. What 1.3.4 prohibits
+     is restricting the content to one orientation when the other is not
+     essential. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.3.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.3.4 Orientation"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;div class=&quot;app&quot;&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Reserve a book&lt;/h1&gt;
+    &lt;p&gt;Search our catalogue and reserve a copy for collection.&lt;/p&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;label for=&quot;q&quot;&gt;Search the catalogue&lt;/label&gt;
+      &lt;input type=&quot;search&quot; id=&quot;q&quot;&gt;
+    &lt;/div&gt;
+    &lt;button type=&quot;button&quot; class=&quot;button&quot;&gt;Search&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;aside class=&quot;aside&quot;&gt;
+    &lt;h2&gt;Opening hours&lt;/h2&gt;
+    &lt;p&gt;Monday to Friday, 9am to 6pm.&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;
+
+&lt;!-- Who this protects: a user whose device is permanently mounted to a
+     wheelchair, a desk stand or a mobility aid, and who physically cannot
+     rotate it. A portrait lock makes your site unreachable for them.
+
+     The exception is genuinely narrow - a piano keyboard app, a cheque-scanning
+     camera view, or a game designed around one orientation. &quot;It looks better&quot;
+     is not essential.
+
+     What to look for when testing: CSS with @media (orientation: portrait)
+     that hides content, a screen.orientation.lock() call in script, and an
+     &quot;orientation&quot; field in a web app manifest. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Rotate the device or resize the browser to both orientations. Content must reflow and remain usable in both. Check for CSS orientation media queries that hide content and for scripts that force rotation.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners can flag a locked orientation in a web app manifest or a CSS transform used to force rotation, but not all approaches.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> axe's css-orientation-lock rule detects one narrow technique: a CSS transform used to rotate the page inside an orientation media query. The failure shown here is different and far more common - hiding the content in one orientation and demanding the user rotate. No rule catches that, and none catches screen.orientation.lock() in script.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>css-orientation-lock</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.4.10-reflow/index.html">1.4.10 Reflow (Level AA)</a></li>
+          <li><a href="../1.3.3-sensory-characteristics/index.html">1.3.3 Sensory Characteristics (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/orientation.html">Understanding 1.3.4 Orientation</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#orientation">1.3.4 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.3.3-sensory-characteristics/index.html"><span class="sc-pager__dir">Previous criterion</span>1.3.3 Sensory Characteristics</a>
+        <a href="../1.3.5-identify-input-purpose/index.html"><span class="sc-pager__dir">Next criterion</span>1.3.5 Identify Input Purpose</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

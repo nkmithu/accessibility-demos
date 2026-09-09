@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.1 Error Identification</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .in-error { border-color: #d4121f !important; background: #fff5f5; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.3.1 Error Identification.
+     Submit the empty form and listen with a screen reader.</p>
+
+  <!-- excerpt:start -->
+  <h1>Create your account</h1>
+
+  <form id="signup" novalidate>
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email">
+    </div>
+
+    <div class="field">
+      <label for="pw">Password</label>
+      <input type="password" id="pw" name="pw">
+    </div>
+
+    <!-- FAILURE: on submit the script marks bad fields with a red border and
+         nothing else. There is no text describing the error, no programmatic
+         link between the message and the field, and no announcement.
+         A screen reader user hears silence and has no idea what went wrong,
+         or which of the two fields is the problem. Colour is the only signal,
+         which also fails 1.4.1 Use of Color. -->
+    <button type="submit" class="button">Create account</button>
+  </form>
+  <!-- excerpt:end -->
+
+  <script>
+    document.getElementById('signup').addEventListener('submit', function (e) {
+      e.preventDefault();
+      ['email', 'pw'].forEach(function (id) {
+        var el = document.getElementById(id);
+        el.classList.toggle('in-error', el.value.trim() === '');
+      });
+    });
+  </script>
+</body>
+</html>

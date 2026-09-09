@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.3.2 Three Flashes</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .badge{display:inline-block;background:#94101c;color:#fff;border-radius:999px;
+           padding:.3rem .8rem;font-weight:700;font-size:.9rem}
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.3.2 Three Flashes.</p>
+
+  <!-- excerpt:start -->
+  <h1>New arrivals</h1>
+
+  <!-- FIX: nothing flashes at all. Emphasis comes from colour, weight and
+       position - none of which can trigger a seizure.
+
+       2.3.2 is one of the easiest AAA criteria to adopt, because almost no site
+       needs flashing content in the first place. If you have none, you conform
+       by default, and you should say so in your accessibility statement. -->
+  <ul class="plain">
+    <li><span class="badge">New</span> Tidal Flats, by A. Marsh</li>
+    <li><span class="badge">New</span> The Long Field, by R. Owen</li>
+    <li>Salt, by J. Nandi</li>
+  </ul>
+
+  <!-- Where flashing is hardest to avoid, it is usually inside VIDEO rather than
+       in your own markup - rapid scene cuts, camera flashes at a red carpet,
+       explosions, strobe lighting at a concert. Screen your video with the free
+       Photosensitive Epilepsy Analysis Tool (PEAT) from the Trace Center before
+       publishing it.
+
+       If a clip cannot be made safe, do not autoplay it, warn the user before
+       they start it, and offer an alternative. That is not conformance with
+       2.3.2 - but it is honest, and it is what 2.3.1 requires as a minimum. -->
+  <!-- excerpt:end -->
+</body>
+</html>

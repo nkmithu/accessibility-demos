@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.9 Accessible Authentication (Enhanced)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .grid{display:grid;grid-template-columns:repeat(3,80px);gap:.4rem;margin:.5rem 0}
+    .cell{height:80px;border:2px solid var(--border-strong);border-radius:4px;
+          background:var(--surface);display:flex;align-items:center;justify-content:center;
+          font-size:1.6rem;cursor:pointer}
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page passes 3.3.8 at AA but deliberately FAILS
+     3.3.9 at AAA.</p>
+
+  <!-- excerpt:start -->
+  <h1>Sign in</h1>
+
+  <!-- This page satisfies 3.3.8 at AA:
+         - autocomplete tokens are present, so a password manager can fill the form
+         - paste is not blocked
+         - the CAPTCHA is OBJECT RECOGNITION, which 3.3.8 explicitly permits
+
+       3.3.9 at AAA removes the object-recognition exception, and the
+       personal-content exception with it. "Select every image with a book" is
+       still a cognitive function test: it requires the user to perceive images,
+       categorise them, and hold the instruction in working memory. -->
+  <form>
+    <div class="field">
+      <label for="u">Email address</label>
+      <input type="email" id="u" autocomplete="username">
+    </div>
+    <div class="field">
+      <label for="p">Password</label>
+      <input type="password" id="p" autocomplete="current-password">
+    </div>
+
+    <fieldset>
+      <legend>Select every image that shows a book</legend>
+      <div class="grid">
+        <button type="button" class="cell" aria-pressed="false" aria-label="Image 1: a book">📕</button>
+        <button type="button" class="cell" aria-pressed="false" aria-label="Image 2: a cup">☕</button>
+        <button type="button" class="cell" aria-pressed="false" aria-label="Image 3: a book">📗</button>
+        <button type="button" class="cell" aria-pressed="false" aria-label="Image 4: a tree">🌳</button>
+        <button type="button" class="cell" aria-pressed="false" aria-label="Image 5: a book">📘</button>
+        <button type="button" class="cell" aria-pressed="false" aria-label="Image 6: a car">🚗</button>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="button">Sign in</button>
+  </form>
+  <!-- excerpt:end -->
+
+  <script>
+    document.querySelectorAll('.cell').forEach(function (c) {
+      c.addEventListener('click', function () {
+        c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      });
+    });
+  </script>
+</body>
+</html>

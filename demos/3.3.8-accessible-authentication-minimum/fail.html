@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.8 Accessible Authentication (Minimum)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .captcha { border:1px solid var(--border); border-radius:6px; padding:1rem; margin:1rem 0; }
+    .distorted { font-family: var(--font-mono); font-size: 1.8rem; letter-spacing:.35em;
+                 font-style: italic; transform: skewX(-12deg); display:inline-block;
+                 text-decoration: line-through; color:#444c55; }
+  </style>
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.3.8.</p>
+
+  <!-- excerpt:start -->
+  <h1>Sign in</h1>
+
+  <form>
+    <div class="field">
+      <label for="u">Email address</label>
+      <!-- FAILURE 1: no autocomplete token, so a password manager cannot fill it. -->
+      <input type="email" id="u">
+    </div>
+
+    <div class="field">
+      <label for="p">Password</label>
+      <!-- FAILURE 2: paste is blocked. This is usually added "for security", but
+           it does the opposite: it forces people to choose passwords they can
+           remember and retype, and it breaks every password manager. For a user
+           with a memory or motor disability it can make the account unreachable. -->
+      <input type="password" id="p" onpaste="return false" autocomplete="off">
+    </div>
+
+    <!-- FAILURE 3: a transcription CAPTCHA. Reading distorted text is a cognitive
+         function test - exactly what 3.3.8 prohibits - and there is no
+         alternative offered. -->
+    <div class="captcha">
+      <p>Type the characters you see:</p>
+      <p><span class="distorted" aria-hidden="true">x7Kp9m</span></p>
+      <div class="field">
+        <label for="c">Characters</label>
+        <input type="text" id="c">
+      </div>
+    </div>
+
+    <button type="submit" class="button">Sign in</button>
+  </form>
+  <!-- excerpt:end -->
+</body>
+</html>

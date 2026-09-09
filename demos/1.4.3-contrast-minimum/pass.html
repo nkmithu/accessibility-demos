@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.3 Contrast (Minimum)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .secondary { color: #444c55; }                 /* 8.7:1 on white */
+    .brand { background: #0a4f9e; color: #ffffff; padding:.6rem 1rem; border:0;
+             border-radius:6px; font:inherit; min-height:44px; }      /* 8.0:1 */
+    .scrim { position: relative; border-radius:6px; overflow:hidden; }
+    .scrim img { display:block; width:100%; }
+    .scrim p { position:absolute; inset:auto 0 0 0; margin:0; padding:.75rem 1rem;
+               background: rgba(9,12,16,.82); color:#ffffff; }        /* measured over the scrim */
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.3 Contrast (Minimum).</p>
+
+  <!-- excerpt:start -->
+  <h1>Your order</h1>
+
+  <!-- FIX 1: "secondary" text is still visually quieter, but at 8.7:1 it clears
+       AA with room to spare and even meets 1.4.6 at AAA. You get hierarchy from
+       size, weight and spacing - contrast is the wrong dial to turn down. -->
+  <p class="secondary">Order #1041, placed on 3 March 2026.</p>
+  <p class="secondary">Delivery usually takes 3 to 5 working days.</p>
+
+  <!-- FIX 2: a darker tint of the same brand hue. 8.0:1. -->
+  <button type="button" class="brand">Track this order</button>
+
+  <!-- FIX 3: a real, visible label instead of relying on the placeholder, and no
+       placeholder styling that drops below the threshold. -->
+  <div class="field">
+    <label for="q">Order reference</label>
+    <input type="text" id="q">
+  </div>
+
+  <!-- FIX 4: text over an image needs a guaranteed background. A solid scrim
+       makes the contrast deterministic rather than dependent on which part of
+       the image happens to sit behind the text. -->
+  <div class="scrim">
+    <img src="../../assets/media/sales-chart.svg" alt="" width="360" height="200">
+    <p>Sales are up 40% this quarter.</p>
+  </div>
+
+  <!-- The thresholds:
+         normal text        4.5:1
+         large text         3:1   (18pt / 24px, or 14pt / 18.66px bold)
+         logos, and text in an inactive control    exempt
+       Test EVERY state, not just the default: hover, focus, visited, and
+       disabled controls that still convey information. -->
+  <!-- excerpt:end -->
+</body>
+</html>

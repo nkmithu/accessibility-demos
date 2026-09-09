@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.3.4 Orientation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    /* FIX: the layout ADAPTS to the available space instead of demanding a
+       particular orientation. Everything remains present and operable either
+       way. Note this is a width query, not an orientation query - basing layout
+       on available width is what makes it work at any rotation and any zoom. */
+    .app { display: grid; gap: 1rem; }
+    @media (min-width: 40rem) { .app { grid-template-columns: 3fr 2fr; } }
+    .aside { border:1px solid var(--border); border-radius:6px; padding:.75rem; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.3.4 Orientation.
+     Resize the window to any shape — everything stays usable.</p>
+
+  <!-- excerpt:start -->
+  <div class="app">
+    <div>
+      <h1>Reserve a book</h1>
+      <p>Search our catalogue and reserve a copy for collection.</p>
+      <div class="field">
+        <label for="q">Search the catalogue</label>
+        <input type="search" id="q">
+      </div>
+      <button type="button" class="button">Search</button>
+    </div>
+    <aside class="aside">
+      <h2>Opening hours</h2>
+      <p>Monday to Friday, 9am to 6pm.</p>
+    </aside>
+  </div>
+
+  <!-- Who this protects: a user whose device is permanently mounted to a
+       wheelchair, a desk stand or a mobility aid, and who physically cannot
+       rotate it. A portrait lock makes your site unreachable for them.
+
+       The exception is genuinely narrow - a piano keyboard app, a cheque-scanning
+       camera view, or a game designed around one orientation. "It looks better"
+       is not essential.
+
+       What to look for when testing: CSS with @media (orientation: portrait)
+       that hides content, a screen.orientation.lock() call in script, and an
+       "orientation" field in a web app manifest. -->
+  <!-- excerpt:end -->
+</body>
+</html>

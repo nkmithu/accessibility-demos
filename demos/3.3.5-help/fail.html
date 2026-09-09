@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 3.3.5 Help</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 3.3.5 Help.</p>
+
+  <!-- excerpt:start -->
+  <h1>Apply for a trade account</h1>
+
+  <!-- FAILURE: the fields are correctly labelled - so 3.3.2 passes at Level A -
+       but several of them ask for things a first-time applicant will not
+       understand, and there is no help at the point of need. The only help is a
+       general "Contact us" link in the footer, which requires the user to
+       abandon the form to use it. -->
+  <form>
+    <div class="field">
+      <label for="vat">VAT registration number</label>
+      <input type="text" id="vat">
+    </div>
+    <div class="field">
+      <label for="sic">SIC code</label>
+      <input type="text" id="sic">
+    </div>
+    <div class="field">
+      <label for="terms">Requested payment terms</label>
+      <input type="text" id="terms">
+    </div>
+    <div class="field">
+      <label for="credit">Estimated monthly credit requirement</label>
+      <input type="text" id="credit">
+    </div>
+    <button type="submit" class="button">Submit application</button>
+  </form>
+
+  <hr>
+  <p><a href="#c">Contact us</a></p>
+  <p id="c">Contact page.</p>
+  <!-- excerpt:end -->
+</body>
+</html>

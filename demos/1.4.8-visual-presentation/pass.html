@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.4.8 Visual Presentation</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .article {
+      max-width: 68ch;        /* under the 80-character limit */
+      text-align: left;       /* never justify */
+      line-height: 1.6;       /* over the 1.5 minimum */
+    }
+    .article p { margin-bottom: 1.6em; }  /* 1.6em ≈ 1.5x the line height */
+    .reader-controls { border:1px solid var(--border); border-radius:6px; padding:.75rem;
+                       margin-bottom:1rem; }
+    .theme-sepia { background:#f6efe2; color:#3a3126; }
+    .theme-dark  { background:#14171c; color:#edf1f5; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.4.8 Visual Presentation.</p>
+
+  <!-- excerpt:start -->
+  <h1>About the shop</h1>
+
+  <!-- FIX 5: a mechanism for the user to choose foreground and background
+       colours. This is the requirement teams most often miss, because the other
+       four are just CSS defaults. A reading-mode control like this satisfies it. -->
+  <div class="reader-controls">
+    <fieldset style="border:0;padding:0;margin:0">
+      <legend style="font-weight:700">Reading colours</legend>
+      <button type="button" class="button button--secondary" onclick="setTheme('')">Default</button>
+      <button type="button" class="button button--secondary" onclick="setTheme('theme-sepia')">Sepia</button>
+      <button type="button" class="button button--secondary" onclick="setTheme('theme-dark')">Dark</button>
+    </fieldset>
+  </div>
+
+  <div class="article" id="article">
+    <p>Riverline Books opened in 1998 in a narrow shop by the river, with about four
+       thousand second-hand books and a single armchair. We have grown into three
+       shops across the county, but the armchair is still there, and so is the habit
+       of letting people sit and read for as long as they like.</p>
+    <p>We buy books as well as sell them. If you have a collection you are thinking of
+       parting with, our buyers visit on Tuesdays and Thursdays, and we will always
+       give you an honest valuation even when the answer is that the books are worth
+       more to you than to us.</p>
+  </div>
+
+  <!-- All five requirements, for blocks of text:
+         1. the user can select foreground and background colours
+         2. lines are no wider than 80 characters (40 for CJK)
+         3. text is not justified to both margins
+         4. line spacing at least 1.5 within paragraphs, and paragraph spacing at
+            least 1.5 times the line spacing
+         5. text resizes to 200% without horizontal scrolling
+
+       Points 2, 3 and 4 are free - they are good typography and you should be
+       doing them at any conformance level. Point 1 is the real work, and it is
+       why 1.4.8 sits at AAA. -->
+  <!-- excerpt:end -->
+
+  <script>
+    function setTheme(cls) {
+      var a = document.getElementById('article');
+      a.className = 'article' + (cls ? ' ' + cls : '');
+    }
+  </script>
+</body>
+</html>

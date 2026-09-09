@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.4.4 Resize Text (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Text can be resized up to 200% without assistive technology and without loss of content or functionality.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.4.4 Resize Text</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.4.4</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 1.4 Distinguishable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Resize Text</h1>
+        <p class="sc-header__summary">Text can be resized up to 200% without assistive technology and without loss of content or functionality.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with low vision who enlarge text rather than use a full screen magnifier.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.4.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.4.4 Resize Text"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;This week&lt;/h1&gt;
+
+&lt;div class=&quot;promo&quot;&gt;
+  &lt;p&gt;Spring reading festival: three days of events across both shops, 12 to 14 April.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;span class=&quot;cta&quot;&gt;Book festival tickets&lt;/span&gt;&lt;/p&gt;
+
+&lt;p class=&quot;locked&quot;&gt;Members save 20% on all festival tickets and get priority booking
+   from 1 March.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.4.4
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.4.4 Resize Text"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;This week&lt;/h1&gt;
+
+&lt;div class=&quot;promo&quot;&gt;
+  &lt;p&gt;Spring reading festival: three days of events across both shops, 12 to 14 April.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;span class=&quot;cta&quot;&gt;Book festival tickets&lt;/span&gt;&lt;/p&gt;
+
+&lt;p class=&quot;flexible&quot;&gt;Members save 20% on all festival tickets and get priority booking
+   from 1 March.&lt;/p&gt;
+
+&lt;!-- The rules that prevent nearly every failure of this criterion:
+       - never set font-size in px on body text; use rem or unitless ratios
+       - never set a fixed height on anything containing text; use min-height
+       - never set font-size on the html element in px, because that overrides
+         the user's own browser font-size setting
+       - never add maximum-scale or user-scalable=no to the viewport tag
+
+     Note how this overlaps its neighbours: 1.4.10 Reflow tests the same
+     layout at 400%, and 1.4.12 Text Spacing tests the same containers with
+     increased leading. Build for one and you have largely built for all three. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Zoom the browser to 200% and check for clipped text, overlapping elements, controls pushed off screen, and fixed-height containers that hide overflow. Also test text-only zoom where the browser supports it.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>A scanner can flag a viewport meta tag that blocks zoom. Whether content survives 200% requires actually rendering and looking.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>meta-viewport</code></li>
+              <li><code>meta-viewport-large</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../1.4.10-reflow/index.html">1.4.10 Reflow (Level AA)</a></li>
+          <li><a href="../1.4.12-text-spacing/index.html">1.4.12 Text Spacing (Level AA)</a></li>
+          <li><a href="../1.4.8-visual-presentation/index.html">1.4.8 Visual Presentation (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">Understanding 1.4.4 Resize Text</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#resize-text">1.4.4 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.4.3-contrast-minimum/index.html"><span class="sc-pager__dir">Previous criterion</span>1.4.3 Contrast (Minimum)</a>
+        <a href="../1.4.5-images-of-text/index.html"><span class="sc-pager__dir">Next criterion</span>1.4.5 Images of Text</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

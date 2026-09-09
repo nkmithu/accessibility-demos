@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- FAILURE: the title is the template default. It says nothing about this
+       page, is identical on every page of the site, and is the first thing a
+       screen reader announces on load. It is also what appears in the browser
+       tab, in bookmarks, in history, and in search results. -->
+  <title>Untitled Document</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 2.4.2 Page Titled.
+     Look at the browser tab.</p>
+
+  <!-- excerpt:start -->
+  <!-- The page content is perfectly clear. The problem is entirely in <head>:
+
+       <title>Untitled Document</title>
+
+       A screen reader user arriving here is told "Untitled Document" before
+       anything else. With ten tabs open, none of them can be told apart. -->
+
+  <h1>Payment</h1>
+  <p>Step 3 of 4 — enter your card details.</p>
+  <div class="field">
+    <label for="card">Card number</label>
+    <input type="text" id="card" inputmode="numeric" autocomplete="cc-number">
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.4.8 Location (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Information about the user's location within a set of pages is available — breadcrumbs, a highlighted current navigation item, or a step indicator.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.4.8 Location</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.4.8</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 2.4 Navigable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Location</h1>
+        <p class="sc-header__summary">Information about the user's location within a set of pages is available — breadcrumbs, a highlighted current navigation item, or a step indicator.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with cognitive disabilities who lose track of where they are in a deep hierarchy, and anyone arriving from search directly onto an inner page.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.4.8
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.4.8 Location"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;!-- FAILURE 1: no breadcrumb, so a user arriving from search has no idea where
+     in the hierarchy this page sits or how to get to the parent section. --&gt;
+&lt;nav class=&quot;nav&quot; aria-label=&quot;Main&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Books&lt;/a&gt;&lt;/li&gt;
+    &lt;!-- FAILURE 2: the current page is signalled by colour alone, with no
+         aria-current. A screen reader user is told nothing, and a colour-blind
+         user cannot see it either (also failing 1.4.1). --&gt;
+    &lt;li&gt;&lt;a class=&quot;here&quot; href=&quot;#a&quot;&gt;Nature writing&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;h1&gt;Nature writing&lt;/h1&gt;
+&lt;p&gt;Our nature writing shelves.&lt;/p&gt;
+
+&lt;!-- FAILURE 3: a multi-step process with no step indicator - the user cannot
+     tell how far through they are or how much is left. --&gt;
+&lt;h2&gt;Reserve a book&lt;/h2&gt;
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;d&quot;&gt;Collection date&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;d&quot;&gt;&lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Continue&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;p id=&quot;a&quot;&gt;Section.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.4.8
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.4.8 Location"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;!-- FIX 1: a breadcrumb trail showing the path from the home page down.
+     Marked up as an ordered list inside a labelled nav, so a screen reader can
+     find it among the page's landmarks. --&gt;
+&lt;nav class=&quot;crumb&quot; aria-label=&quot;Breadcrumb&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Books&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Non-fiction&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span aria-current=&quot;page&quot;&gt;Nature writing&lt;/span&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- FIX 2: aria-current=&quot;page&quot; marks the current item programmatically, and
+     the styling uses weight and an underline as well as colour. --&gt;
+&lt;nav class=&quot;nav&quot; aria-label=&quot;Main&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Books&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#a&quot; aria-current=&quot;page&quot;&gt;Nature writing&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#a&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;h1&gt;Nature writing&lt;/h1&gt;
+&lt;p&gt;Our nature writing shelves.&lt;/p&gt;
+
+&lt;!-- FIX 3: a step indicator, with aria-current=&quot;step&quot; and the position also
+     stated in text. The page title should carry it too - see 2.4.2. --&gt;
+&lt;h2&gt;Reserve a book&lt;/h2&gt;
+&lt;p&gt;Step 2 of 3&lt;/p&gt;
+&lt;ol class=&quot;steps&quot;&gt;
+  &lt;li&gt;1. Choose a book&lt;/li&gt;
+  &lt;li aria-current=&quot;step&quot;&gt;2. Collection date&lt;/li&gt;
+  &lt;li&gt;3. Confirm&lt;/li&gt;
+&lt;/ol&gt;
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;&lt;label for=&quot;d&quot;&gt;Collection date&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;d&quot;&gt;&lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Continue&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- The aria-current values worth knowing:
+       page, step, location, date, time, true
+     Use the specific one where it fits; &quot;true&quot; is the generic fallback. --&gt;
+
+&lt;p id=&quot;a&quot;&gt;Section.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Confirm breadcrumbs, a current-page indicator marked with aria-current, or a step counter. The indicator must be programmatic, not colour alone.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires evaluating whether location information is present and meaningful.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.4.5-multiple-ways/index.html">2.4.5 Multiple Ways (Level AA)</a></li>
+          <li><a href="../3.2.3-consistent-navigation/index.html">3.2.3 Consistent Navigation (Level AA)</a></li>
+          <li><a href="../1.4.1-use-of-color/index.html">1.4.1 Use of Color (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/location.html">Understanding 2.4.8 Location</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#location">2.4.8 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.4.7-focus-visible/index.html"><span class="sc-pager__dir">Previous criterion</span>2.4.7 Focus Visible</a>
+        <a href="../2.4.9-link-purpose-link-only/index.html"><span class="sc-pager__dir">Next criterion</span>2.4.9 Link Purpose (Link Only)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

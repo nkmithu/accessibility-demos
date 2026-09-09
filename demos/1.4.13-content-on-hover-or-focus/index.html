@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1.4.13 Content on Hover or Focus (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Additional content triggered by hover or focus must be dismissable without moving the pointer or focus, hoverable so the pointer can move onto it, and persistent until dismissed or no longer valid.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">1.4.13 Content on Hover or Focus</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">1.4.13</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 1.4 Distinguishable</span>
+          <span class="tag">Added in WCAG 2.1</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Content on Hover or Focus</h1>
+        <p class="sc-header__summary">Additional content triggered by hover or focus must be dismissable without moving the pointer or focus, hoverable so the pointer can move onto it, and persistent until dismissed or no longer valid.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen magnifier users whose tooltip disappears the moment they move toward it. Users with tremor who cannot hold a pointer steady. Keyboard users trapped by content they cannot dismiss.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 1.4.13
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 1.4.13 Content on Hover or Focus"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Membership&lt;/h1&gt;
+
+&lt;!-- FAILURE 1 — not hoverable: there is a gap between the trigger and the
+     popup, and the popup is only shown while the TRIGGER is hovered. Move
+     toward the text and it vanishes. A magnifier user, seeing a small slice of
+     the screen at a time, can never read it.
+     FAILURE 2 — not dismissable: Escape does nothing, so a keyboard user with
+     low vision cannot clear content covering what they were reading.
+     FAILURE 3 — not persistent: it is bound to hover only, so it never appears
+     for a keyboard user at all. --&gt;
+&lt;p&gt;
+  Members get
+  &lt;span class=&quot;tip-wrap&quot; tabindex=&quot;0&quot;&gt;
+    &lt;u&gt;priority reservations&lt;/u&gt;
+    &lt;span class=&quot;tip&quot;&gt;Members can reserve up to five titles at once and collect
+      them within fourteen days rather than seven.&lt;/span&gt;
+  &lt;/span&gt;
+  and free delivery.
+&lt;/p&gt;
+
+&lt;!-- FAILURE 4: a &quot;toast&quot; that covers the page controls and disappears on a
+     timer, giving a slow reader no chance and no way to dismiss it early. --&gt;
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;toast()&quot;&gt;Save preferences&lt;/button&gt;&lt;/p&gt;
+&lt;div id=&quot;toast&quot; style=&quot;display:none;position:fixed;left:1rem;bottom:1rem;background:#14171c;
+     color:#fff;padding:.9rem 1.1rem;border-radius:6px;&quot;&gt;Preferences saved.&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 1.4.13
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 1.4.13 Content on Hover or Focus"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Membership&lt;/h1&gt;
+
+&lt;!-- The three requirements, all satisfied:
+       DISMISSABLE - Escape closes it, without moving the pointer or focus.
+       HOVERABLE   - the popup touches the trigger and stays open while the
+                     pointer is over EITHER, so you can move onto it and read.
+       PERSISTENT  - it stays until dismissed, focus moves away, or the
+                     information becomes invalid. No timer.
+
+     aria-describedby ties the description to the trigger, so a screen reader
+     user gets the content without needing the popup at all. --&gt;
+&lt;p&gt;
+  Members get
+  &lt;span class=&quot;tip-wrap&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;link-like&quot; id=&quot;trigger&quot; aria-describedby=&quot;tip&quot;
+            style=&quot;font:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;&quot;&gt;
+      priority reservations&lt;/button&gt;
+    &lt;span class=&quot;tip&quot; id=&quot;tip&quot; role=&quot;tooltip&quot; hidden&gt;Members can reserve up to five titles at
+      once and collect them within fourteen days rather than seven.&lt;/span&gt;
+  &lt;/span&gt;
+  and free delivery.
+&lt;/p&gt;
+
+&lt;!-- FIX: the confirmation is a persistent status message with its own dismiss
+     control, not a disappearing toast. It is in a live region so it is
+     announced (4.1.3), and it does not cover anything. --&gt;
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;save()&quot;&gt;Save preferences&lt;/button&gt;&lt;/p&gt;
+&lt;div id=&quot;saved&quot; role=&quot;status&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Hover over each tooltip or popover: press Escape (must dismiss), move the pointer onto the popup (must stay open), and wait (must not vanish on a timer). Repeat with keyboard focus.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires interactive testing of hover and focus behaviour.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.1.1-keyboard/index.html">2.1.1 Keyboard (Level A)</a></li>
+          <li><a href="../2.4.11-focus-not-obscured-minimum/index.html">2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+          <li><a href="../3.2.1-on-focus/index.html">3.2.1 On Focus (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html">Understanding 1.4.13 Content on Hover or Focus</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#content-on-hover-or-focus">1.4.13 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../1.4.12-text-spacing/index.html"><span class="sc-pager__dir">Previous criterion</span>1.4.12 Text Spacing</a>
+        <a href="../2.1.1-keyboard/index.html"><span class="sc-pager__dir">Next criterion</span>2.1.1 Keyboard</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

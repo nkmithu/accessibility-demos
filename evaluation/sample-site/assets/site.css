@@ -1,0 +1,51 @@
+/* Riverline Books — sample site stylesheet.
+   WARNING: this stylesheet contains deliberate accessibility defects.
+   It is audit material for the WCAG-EM walkthrough. Do not copy from it. */
+:root{
+  --ink:#22262b; --paper:#ffffff; --band:#f4f1ea; --rule:#e0dbd0;
+  --brand:#2f5d50; --brand-dark:#24483f; --accent:#a8582f;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,'Times New Roman',serif;color:var(--ink);
+     background:var(--paper);line-height:1.55;font-size:17px}
+
+/* DEFECT (2.4.7 Focus Visible): focus indicators removed site-wide. */
+*:focus{outline:none}
+
+.wrap{width:min(64rem,100% - 2rem);margin-inline:auto}
+.topbar{background:var(--brand);color:#fff;padding:.5rem 0;font-size:.85rem}
+.masthead{padding:1rem 0;border-bottom:2px solid var(--rule)}
+.masthead .wrap{display:flex;flex-wrap:wrap;gap:1rem;align-items:baseline;justify-content:space-between}
+.logo{font-size:1.4rem;font-weight:bold;color:var(--brand);text-decoration:none}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1.1rem}
+.nav a{color:var(--ink);text-decoration:none}
+.nav a:hover{text-decoration:underline}
+.content{padding:1.5rem 0 3rem}
+h1{font-size:1.9rem;margin:0 0 1rem}
+h2{font-size:1.35rem;margin:1.8rem 0 .6rem}
+h3{font-size:1.1rem;margin:1.2rem 0 .4rem}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:0;border-radius:3px;
+     padding:.5rem 1rem;font:inherit;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--brand-dark)}
+.btn-sm{padding:.2rem .5rem;font-size:.85rem}
+.muted{color:#8b9199}                 /* DEFECT (1.4.3): 2.6:1 on white */
+.price{color:var(--accent);font-weight:bold}
+.grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr))}
+.card{border:1px solid var(--rule);border-radius:4px;padding:.8rem}
+.card img{display:block;width:100%;height:auto;background:var(--band)}
+.field{margin-bottom:.9rem}
+.field label{display:block;margin-bottom:.2rem}
+/* DEFECT (1.4.11 Non-text Contrast): input borders at 1.2:1 */
+input[type=text],input[type=email],input[type=password],input[type=tel],input[type=search],
+textarea,select{font:inherit;padding:.4rem .5rem;border:1px solid #f0eee9;border-radius:3px;
+                background:#fff;width:100%;max-width:24rem}
+.err-field{border-color:#cc2222 !important;background:#fff8f8}
+table{border-collapse:collapse;width:100%}
+td,th{padding:.5rem;border-bottom:1px solid var(--rule);text-align:left}
+.footer{border-top:2px solid var(--rule);background:var(--band);padding:1.5rem 0;margin-top:2rem;
+        font-size:.9rem}
+.footer ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1rem}
+.notice{background:var(--band);border-left:4px solid var(--brand);padding:.8rem 1rem;margin:1rem 0}
+.audit-banner{background:#94101c;color:#fff;padding:.6rem 1rem;font-family:system-ui,sans-serif;
+              font-size:.85rem;text-align:center}
+.audit-banner a{color:#fff}

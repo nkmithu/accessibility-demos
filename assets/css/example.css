@@ -1,0 +1,95 @@
+/* Styles for the isolated fail.html / pass.html example pages.
+   Deliberately minimal: the example should read as a small, plausible page so
+   the accessibility problem is the only thing that stands out. */
+
+/* ---------------------------------------------------------------------------
+   Example pages are pinned to a light palette.
+
+   base.css follows the viewer's OS theme, which is right for the teaching site
+   but wrong for the examples: a demo about colour or contrast must render the
+   same for every student, and many examples hardcode colours that only make
+   sense on a light ground. Loading order does the work - example.css comes
+   after base.css, so this plain :root block overrides base.css's
+   prefers-color-scheme media query.
+
+   The teaching pages around them still follow the viewer's theme.
+   --------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f2f5f8;
+  --surface-raised: #ffffff;
+  --text: #14171c;
+  --text-muted: #444c55;
+  --border: #b9c2cb;
+  --border-strong: #6d7883;
+  --accent: #0a4f9e;
+  --accent-hover: #073c79;
+  --on-accent: #ffffff;
+  --fail: #94101c;
+  --fail-bg: #fdf1f2;
+  --fail-border: #d4636e;
+  --pass: #0f5533;
+  --pass-bg: #eef8f2;
+  --pass-border: #4c9871;
+  --note: #704303;
+  --note-bg: #fdf5e8;
+  --note-border: #c39445;
+  --level-a: #1f4e79;
+  --level-aa: #603792;
+  --level-aaa: #763e06;
+  --focus: #0a4f9e;
+  --focus-offset: #ffffff;
+}
+.example {
+  background: var(--bg);
+  color: var(--text);
+  padding: 1.25rem;
+  max-width: 44rem;
+  margin: 0;
+}
+.example h1 { font-size: 1.25rem; margin-block: 0 0.75rem; }
+.example h2 { font-size: 1.0625rem; margin-block: 1.25rem 0.5rem; }
+.example > :last-child { margin-bottom: 0; }
+
+/* A banner naming what this page is, so a student who opens it standalone knows
+   which half of the pair they are looking at. Hidden when embedded in an iframe
+   on the overview page, where the panel header already says so. */
+.example-banner {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.4rem 0.65rem;
+  border-radius: 4px;
+  margin: 0 0 1rem;
+  border: 2px solid;
+}
+.example--fail .example-banner {
+  color: var(--fail); background: var(--fail-bg); border-color: var(--fail-border);
+}
+.example--pass .example-banner {
+  color: var(--pass); background: var(--pass-bg); border-color: var(--pass-border);
+}
+
+/* Generic furniture the examples reuse. */
+.example .field { margin-bottom: 1rem; }
+.example .field label { display: block; }
+.example .field input,
+.example .field select,
+.example .field textarea { width: 100%; max-width: 22rem; }
+.example .card-ish {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.example ul.plain { list-style: none; padding: 0; }
+
+/* Inline code inside the example banner inherits the banner's colours. Giving it
+   the default code background (--surface) dropped the contrast below the AAA
+   threshold, because the text colour was chosen against the banner background,
+   not against --surface. A reminder that contrast is a property of a PAIR. */
+.example-banner code {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.4.3 Focus Order (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="If a page can be navigated sequentially and the order affects meaning or operation, focusable components receive focus in an order that preserves meaning and operability.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.4.3 Focus Order</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.4.3</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 2.4 Navigable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Focus Order</h1>
+        <p class="sc-header__summary">If a page can be navigated sequentially and the order affects meaning or operation, focusable components receive focus in an order that preserves meaning and operability.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Keyboard and screen reader users, who experience the page as a sequence. Focus that jumps from the header to the footer and back is disorienting and easy to get lost in.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.4.3
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.4.3 Focus Order"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Contact us&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: positive tabindex values scramble the order. Any element with
+     tabindex greater than 0 jumps to the FRONT of the tab order, ahead of
+     everything in the document. Here the user tabs: Message, Send, Name,
+     Email - the reverse of the visual order.
+
+     There is essentially never a good reason to use a positive tabindex.
+     Use 0 to make something focusable, -1 to make it focusable by script
+     only, and fix the DOM order instead. --&gt;
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot; tabindex=&quot;3&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; tabindex=&quot;4&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;msg&quot;&gt;Message&lt;/label&gt;
+    &lt;textarea id=&quot;msg&quot; tabindex=&quot;1&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot; tabindex=&quot;2&quot;&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- FAILURE 2: a dialog that never receives focus. Opening it leaves focus on
+     the button behind it, so a keyboard user has to Tab through the whole page
+     to reach the dialog - and a screen reader user is not told it opened.
+     Focus is also not returned to the trigger on close. --&gt;
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; onclick=&quot;openDlg()&quot;&gt;Open help&lt;/button&gt;&lt;/p&gt;
+&lt;div class=&quot;modal&quot; id=&quot;dlg&quot; hidden&gt;
+  &lt;h2&gt;Help&lt;/h2&gt;
+  &lt;p&gt;We reply within two working days.&lt;/p&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button&quot; onclick=&quot;closeDlg()&quot;&gt;Close&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.4.3
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.4.3 Focus Order"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Contact us&lt;/h1&gt;
+
+&lt;!-- FIX 1: no tabindex at all. The DOM order already matches the visual order,
+     so the browser's natural focus order is correct. This is the goal: if you
+     need tabindex to fix your focus order, fix your DOM instead. --&gt;
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot; autocomplete=&quot;name&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; autocomplete=&quot;email&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;msg&quot;&gt;Message&lt;/label&gt;
+    &lt;textarea id=&quot;msg&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- FIX 2: the dialog moves focus in when it opens and returns it to the
+     trigger when it closes, so the keyboard user never loses their place.
+     Escape closes it (2.1.2 No Keyboard Trap). --&gt;
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;button button--secondary&quot; id=&quot;open-help&quot;&gt;Open help&lt;/button&gt;&lt;/p&gt;
+
+&lt;div class=&quot;modal&quot; id=&quot;dlg&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;dlg-h&quot; hidden&gt;
+  &lt;h2 id=&quot;dlg-h&quot; tabindex=&quot;-1&quot;&gt;Help&lt;/h2&gt;
+  &lt;p&gt;We reply within two working days.&lt;/p&gt;
+  &lt;button type=&quot;button&quot; class=&quot;button&quot; id=&quot;close-help&quot;&gt;Close&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Tab through the page and track where focus goes. It should follow the visual reading order. Watch for positive tabindex values, modals that do not move focus in, and dialogs that do not return focus on close.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Positive tabindex is detectable. Whether the resulting order is meaningful requires tabbing through and watching.</p>
+            <p><strong>This demo's failure is not machine-detectable.</strong> axe does have a tabindex rule that catches positive tabindex values, but it is tagged best-practice rather than as a WCAG rule - so a scan scoped to WCAG conformance, which is how most CI pipelines are configured, reports nothing here. Whether a focus order is meaningful also cannot be computed at all.</p><p>Relevant axe rules:</p>
+            <ul>
+              <li><code>tabindex</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.1.1-keyboard/index.html">2.1.1 Keyboard (Level A)</a></li>
+          <li><a href="../1.3.2-meaningful-sequence/index.html">1.3.2 Meaningful Sequence (Level A)</a></li>
+          <li><a href="../2.4.7-focus-visible/index.html">2.4.7 Focus Visible (Level AA)</a></li>
+          <li><a href="../2.4.11-focus-not-obscured-minimum/index.html">2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html">Understanding 2.4.3 Focus Order</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#focus-order">2.4.3 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.4.2-page-titled/index.html"><span class="sc-pager__dir">Previous criterion</span>2.4.2 Page Titled</a>
+        <a href="../2.4.4-link-purpose-in-context/index.html"><span class="sc-pager__dir">Next criterion</span>2.4.4 Link Purpose (In Context)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

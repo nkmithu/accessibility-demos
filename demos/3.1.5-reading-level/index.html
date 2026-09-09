@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.1.5 Reading Level (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="Where text requires reading ability more advanced than the lower secondary education level, supplemental content or a simpler version is available.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.1.5 Reading Level</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.1.5</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 3.1 Readable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Reading Level</h1>
+        <p class="sc-header__summary">Where text requires reading ability more advanced than the lower secondary education level, supplemental content or a simpler version is available.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Users with cognitive and learning disabilities, users with low literacy, and readers in a second language. Dense legal or medical prose excludes far more people than most authors assume.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.1.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.1.5 Reading Level"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Returns policy&lt;/h1&gt;
+
+&lt;!-- FAILURE: dense, clause-heavy prose written well above lower secondary
+     reading level, with no plain-language summary, no glossary and no
+     illustration.
+
+     Note that everything here is grammatically correct and legally precise.
+     That is exactly the problem: precision has been prioritised over
+     comprehension, and no simpler alternative is offered alongside. Sentences
+     run to forty words, the voice is passive throughout, and the key
+     obligations are buried in subordinate clauses. --&gt;
+&lt;p&gt;Notwithstanding any statutory rights which may accrue to the purchaser, the
+   vendor's liability in respect of any item found to be defective shall be limited
+   to the replacement thereof or, at the vendor's sole discretion, the refund of
+   the purchase price, provided that notification of such defect is received in
+   writing within a period not exceeding thirty days from the date of dispatch,
+   and provided further that the item is returned in a condition substantially
+   equivalent to that in which it was supplied.&lt;/p&gt;
+&lt;p&gt;In circumstances where the aforementioned notification period has elapsed, no
+   obligation shall subsist on the part of the vendor, save where the defect
+   complained of could not reasonably have been ascertained upon inspection at the
+   time of receipt, in which case the provisions of the preceding paragraph shall
+   apply mutatis mutandis from the date upon which the defect became apparent.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.1.5
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.1.5 Reading Level"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Returns policy&lt;/h1&gt;
+
+&lt;!-- FIX: a plain-language summary FIRST, carrying the same obligations in
+     short sentences and the active voice. The legal text is kept below for
+     anyone who needs it - 3.1.5 does not require you to delete precise
+     wording, only to supplement it. --&gt;
+&lt;div class=&quot;summary&quot;&gt;
+  &lt;h2&gt;In short&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;If something is wrong with your book, tell us within &lt;strong&gt;30 days&lt;/strong&gt;.&lt;/li&gt;
+    &lt;li&gt;We will replace it or refund you.&lt;/li&gt;
+    &lt;li&gt;Send it back in the same condition you received it.&lt;/li&gt;
+    &lt;li&gt;If the fault was hidden and you could not have spotted it at first, the
+        30 days start when you find it.&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;p&gt;&lt;a href=&quot;#full&quot;&gt;Read the full policy&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;full&quot;&gt;Full policy&lt;/h2&gt;
+&lt;p&gt;Notwithstanding any statutory rights which may accrue to the purchaser, the
+   vendor's liability in respect of any item found to be defective shall be limited
+   to the replacement thereof or, at the vendor's sole discretion, the refund of
+   the purchase price, provided that notification of such defect is received in
+   writing within a period not exceeding thirty days from the date of dispatch.&lt;/p&gt;
+
+&lt;!-- What the criterion actually asks: where text requires reading ability above
+     LOWER SECONDARY EDUCATION LEVEL - roughly nine years of schooling, about
+     ages 11 to 14 - provide supplemental content. That supplement can be:
+       - a plain-language summary (used here)
+       - a spoken version of the text
+       - illustrations or diagrams that convey the same information
+       - a version written at the lower level
+
+     On readability scores: formulas such as Flesch-Kincaid measure word and
+     sentence LENGTH, not comprehensibility. They are a useful smoke alarm and
+     a poor judge - a short sentence full of jargon scores well and communicates
+     nothing. Use them to find suspicious passages, then read those passages.
+
+     Techniques that genuinely lower reading level: short sentences, one idea
+     each; the active voice; common words; second person; and putting the
+     action before the conditions. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Run a readability measure as a rough indicator, then read critically. Where the text is above roughly a 9-year-schooling level, confirm a plain-language summary, a glossary, or illustrations are provided.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Readability formulas can be computed automatically, but they measure sentence and word length rather than actual comprehensibility, and the required supplement must be judged by a human.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.1.3-unusual-words/index.html">3.1.3 Unusual Words (Level AAA)</a></li>
+          <li><a href="../3.1.4-abbreviations/index.html">3.1.4 Abbreviations (Level AAA)</a></li>
+          <li><a href="../1.4.8-visual-presentation/index.html">1.4.8 Visual Presentation (Level AAA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html">Understanding 3.1.5 Reading Level</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#reading-level">3.1.5 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.1.4-abbreviations/index.html"><span class="sc-pager__dir">Previous criterion</span>3.1.4 Abbreviations</a>
+        <a href="../3.1.6-pronunciation/index.html"><span class="sc-pager__dir">Next criterion</span>3.1.6 Pronunciation</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

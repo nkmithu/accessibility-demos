@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2.4.11 Focus Not Obscured (Minimum) (Level AA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="When a component receives keyboard focus, it is not entirely hidden by author-created content such as a sticky header, footer, or cookie banner.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">2.4.11 Focus Not Obscured (Minimum)</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">2.4.11</span>
+          <span class="level level--AA">Level AA</span>
+          <span class="tag">Guideline 2.4 Navigable</span>
+          <span class="tag">Added in WCAG 2.2</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Focus Not Obscured (Minimum)</h1>
+        <p class="sc-header__summary">When a component receives keyboard focus, it is not entirely hidden by author-created content such as a sticky header, footer, or cookie banner.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Keyboard users who Tab to a control that scrolls under a sticky header and disappears. Focus is technically there but invisible, which is equivalent to having no focus indicator.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 2.4.11
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 2.4.11 Focus Not Obscured (Minimum)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;!-- FAILURE: a tall sticky header and a fixed cookie banner. Tabbing down the
+     list scrolls the focused link to the top of the viewport, where the header
+     covers it completely. Focus is there; the user simply cannot see it.
+
+     This is why 2.4.11 was added in WCAG 2.2. A perfectly good focus indicator
+     satisfies 2.4.7, and the user still cannot tell where they are. --&gt;
+&lt;div class=&quot;sticky-bar&quot;&gt;Riverline Books — free delivery over £25&lt;/div&gt;
+
+&lt;h1&gt;Browse by subject&lt;/h1&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Archaeology&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Biography&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Cookery&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Drama&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Economics&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Fiction&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Geography&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;History&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Illustration&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Journalism&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Linguistics&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Music&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot; id=&quot;a&quot;&gt;Natural history&lt;/p&gt;
+
+&lt;div class=&quot;cookie&quot;&gt;We use cookies. &lt;a href=&quot;#a&quot; style=&quot;color:#9ec9f5&quot;&gt;Manage preferences&lt;/a&gt;&lt;/div&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 2.4.11
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 2.4.11 Focus Not Obscured (Minimum)"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;!-- FIX 1: scroll-margin keeps focused elements clear of the sticky header.
+     FIX 2: the cookie banner is in the normal flow rather than fixed to the
+     bottom, so it cannot cover anything. If a banner must be fixed, dismiss it
+     on first interaction, or make it short enough that it cannot fully cover a
+     focused control.
+
+     Note the AA threshold: the focused element must not be ENTIRELY hidden.
+     Partially covered still passes at AA - it takes 2.4.12 at AAA to require
+     that no part of it is obscured. --&gt;
+&lt;div class=&quot;sticky-bar&quot;&gt;Riverline Books — free delivery over £25&lt;/div&gt;
+
+&lt;h1&gt;Browse by subject&lt;/h1&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Archaeology&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Biography&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Cookery&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Drama&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Economics&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Fiction&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Geography&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;History&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Illustration&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Journalism&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Linguistics&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot;&gt;&lt;a href=&quot;#a&quot;&gt;Music&lt;/a&gt;&lt;/p&gt;
+&lt;p class=&quot;long&quot; id=&quot;a&quot;&gt;Natural history&lt;/p&gt;
+
+&lt;div class=&quot;cookie&quot;&gt;We use cookies. &lt;a href=&quot;#a&quot; style=&quot;color:#9ec9f5&quot;&gt;Manage preferences&lt;/a&gt;&lt;/div&gt;
+
+&lt;!-- Test this at several zoom levels. A sticky bar that covers 15% of the
+     viewport at 100% zoom can cover 60% of it at 400%, so a layout that passes
+     at your desk can fail badly for the user who needs magnification. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Tab through the page slowly with sticky elements present. Confirm the focused control is never completely covered. Test at several zoom levels, since sticky bars take proportionally more space when zoomed.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires tabbing through with sticky content rendered and checking overlap geometry.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../2.4.7-focus-visible/index.html">2.4.7 Focus Visible (Level AA)</a></li>
+          <li><a href="../2.4.12-focus-not-obscured-enhanced/index.html">2.4.12 Focus Not Obscured (Enhanced) (Level AAA)</a></li>
+          <li><a href="../1.4.13-content-on-hover-or-focus/index.html">1.4.13 Content on Hover or Focus (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html">Understanding 2.4.11 Focus Not Obscured (Minimum)</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#focus-not-obscured-minimum">2.4.11 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.4.10-section-headings/index.html"><span class="sc-pager__dir">Previous criterion</span>2.4.10 Section Headings</a>
+        <a href="../2.4.12-focus-not-obscured-enhanced/index.html"><span class="sc-pager__dir">Next criterion</span>2.4.12 Focus Not Obscured (Enhanced)</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- DEFECT 3.1.1: no lang attribute on the html element. -->
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- DEFECT 2.4.2: a template default title, identical to nothing useful. -->
+<title>Untitled Document</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .looks-like-h2{font-size:1.35rem;font-weight:bold;margin:1.8rem 0 .6rem;color:var(--brand)}
+</style>
+</head>
+<body>
+<p class="audit-banner">Audit material — deliberate accessibility defects.
+   <a href="../index.html">Back to the walkthrough</a></p>
+<div class="topbar"><div class="wrap">Free delivery on orders over £25</div></div>
+<div class="masthead"><div class="wrap">
+  <a class="logo" href="index.html">Riverline Books</a>
+  <!-- DEFECT 3.2.6: on every other page "Help" sits inside the main navigation.
+       Here it has been removed from the nav entirely and only appears at the very
+       bottom of the page — the help mechanism is not in a consistent place. -->
+  <div class="nav"><ul>
+    <li><a href="index.html">Home</a></li><li><a href="catalogue.html">Books</a></li>
+    <li><a href="contact.html">Contact</a></li><li><a href="login.html">Sign in</a></li>
+    <li><a href="cart.html">Basket</a></li>
+  </ul></div>
+</div></div>
+
+<div class="content"><div class="wrap">
+  <!-- DEFECT 1.4.5: the page heading is an image of text. It pixelates on zoom,
+       ignores user font and colour settings, and cannot be selected or searched. -->
+  <img src="assets/faq-heading.svg" width="420" height="56"
+       alt="Frequently asked questions">
+
+  <!-- DEFECT 1.3.1: styled divs that look like headings but are not, so the page
+       has no heading structure at all and cannot be navigated by heading.
+       DEFECT 2.4.10: long content divided into topics with no real section
+       headings.
+       DEFECT 2.4.6: and where headings do appear elsewhere they are vague. -->
+  <div class="looks-like-h2">Information</div>
+  <p>Standard delivery takes three to five working days. Orders over twenty-five pounds
+     are delivered free within the United Kingdom. Collection from any of our three shops
+     is free and usually available the next working day. We do not currently deliver
+     outside the United Kingdom, although we can arrange this by special request through
+     our trade desk, which operates on weekdays only and requires a minimum order value.</p>
+
+  <div class="looks-like-h2">More</div>
+  <p>You may return any item within thirty days for a full refund provided that it is in
+     saleable condition, and second-hand books may be returned only where they have been
+     described inaccurately in our listing, with postage on returns payable by you unless
+     the item was faulty or was not the item ordered, in which case we will refund your
+     postage on production of a receipt.</p>
+
+  <!-- DEFECT 3.1.3 / 3.1.4: trade jargon and abbreviations used with no
+       expansion and no glossary. -->
+  <div class="looks-like-h2">Details</div>
+  <p>All prices are RRP excluding VAT. Trade customers should quote their SIC code and
+     their agreed terms. We assess every second-hand book for foxing, ex-libris marks and
+     remainder marks before making an offer, and our buyer will give you a ballpark figure
+     on the day.</p>
+
+  <div class="looks-like-h2">Other</div>
+  <p>Our Riverside shop has step-free access, an accessible toilet and a hearing loop at
+     the counter. Old Town has a single step at the entrance and a portable ramp available
+     on request. Assistance dogs are welcome in all three shops.</p>
+
+  <!-- The help mechanism, buried at the bottom and named differently from
+       everywhere else on the site (3.2.4 as well as 3.2.6). -->
+  <div class="looks-like-h2">Still stuck?</div>
+  <p><a href="contact.html">Get in touch</a></p>
+</div></div>
+
+<div class="footer"><div class="wrap"><ul>
+  <li><a href="help.html">Help</a></li><li><a href="contact.html">Contact us</a></li>
+  <li><a href="help.html">Accessibility</a></li>
+</ul></div></div>
+</body>
+</html>

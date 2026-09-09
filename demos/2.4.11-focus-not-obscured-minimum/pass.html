@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 2.4.11 Focus Not Obscured (Minimum)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .sticky-bar { position: sticky; top: 0; z-index: 5; background: #0a4f9e; color: #fff;
+                  padding: 1.4rem 1rem; font-weight: 700; }
+    .cookie { background: #14171c; color: #fff; padding: 1.2rem 1rem; }
+    .long { margin-bottom: .9rem; }
+
+    /* FIX: scroll-margin reserves room for the sticky bar whenever the browser
+       scrolls an element into view - including when it does so because the
+       element received focus. One property, and the whole class of bug is gone.
+       Set it to at least the height of the sticky element. */
+    :target, a:focus-visible, .long a { scroll-margin-top: 6rem; scroll-margin-bottom: 6rem; }
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.11.
+     Tab down the list — the focused link is always visible.</p>
+
+  <!-- excerpt:start -->
+  <!-- FIX 1: scroll-margin keeps focused elements clear of the sticky header.
+       FIX 2: the cookie banner is in the normal flow rather than fixed to the
+       bottom, so it cannot cover anything. If a banner must be fixed, dismiss it
+       on first interaction, or make it short enough that it cannot fully cover a
+       focused control.
+
+       Note the AA threshold: the focused element must not be ENTIRELY hidden.
+       Partially covered still passes at AA - it takes 2.4.12 at AAA to require
+       that no part of it is obscured. -->
+  <div class="sticky-bar">Riverline Books — free delivery over £25</div>
+
+  <h1>Browse by subject</h1>
+  <p class="long"><a href="#a">Archaeology</a></p>
+  <p class="long"><a href="#a">Biography</a></p>
+  <p class="long"><a href="#a">Cookery</a></p>
+  <p class="long"><a href="#a">Drama</a></p>
+  <p class="long"><a href="#a">Economics</a></p>
+  <p class="long"><a href="#a">Fiction</a></p>
+  <p class="long"><a href="#a">Geography</a></p>
+  <p class="long"><a href="#a">History</a></p>
+  <p class="long"><a href="#a">Illustration</a></p>
+  <p class="long"><a href="#a">Journalism</a></p>
+  <p class="long"><a href="#a">Linguistics</a></p>
+  <p class="long"><a href="#a">Music</a></p>
+  <p class="long" id="a">Natural history</p>
+
+  <div class="cookie">We use cookies. <a href="#a" style="color:#9ec9f5">Manage preferences</a></div>
+
+  <!-- Test this at several zoom levels. A sticky bar that covers 15% of the
+       viewport at 100% zoom can cover 60% of it at 400%, so a layout that passes
+       at your desk can fail badly for the user who needs magnification. -->
+  <!-- excerpt:end -->
+</body>
+</html>

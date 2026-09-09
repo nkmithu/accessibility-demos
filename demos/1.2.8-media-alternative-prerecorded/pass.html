@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 1.2.8 Media Alternative (Prerecorded)</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>
+    .transcript{border:1px solid var(--border);border-radius:6px;padding:1rem;margin:.75rem 0}
+    .transcript dt{font-weight:700;font-family:var(--font-mono)}
+    .transcript dd{margin:0 0 .75rem}
+  </style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 1.2.8 Media Alternative (Prerecorded).</p>
+
+  <!-- excerpt:start -->
+  <h1>A short tour of the shop</h1>
+
+  <video controls width="640">
+    <source src="../../assets/media/shop-tour.mp4" type="video/mp4">
+    <track kind="captions" src="../../assets/media/shop-tour-captions.vtt"
+           srclang="en" label="English" default>
+    <track kind="descriptions" src="../../assets/media/shop-tour-descriptions.vtt"
+           srclang="en" label="Audio description">
+  </video>
+
+  <!-- FIX: a complete text alternative for the whole presentation, on the page
+       and reachable as text. It is open by default here, because hiding the only
+       route a deafblind user has behind a control is poor practice.
+
+       What makes this a MEDIA ALTERNATIVE rather than a caption file:
+         - it covers what is SEEN and what is HEARD, in one document
+         - it reads as prose, in order, and makes sense without the video
+         - it identifies speakers and sounds
+         - it is text, so a braille display can render it -->
+  <div class="transcript">
+    <h2>Full text alternative</h2>
+    <p>A twenty-second sequence of five title cards, with sound effects and no speech.</p>
+    <dl>
+      <dt>00:00</dt>
+      <dd>A title card reads <strong>Riverline Books — A short tour</strong>, dark blue
+          text on a pale background with a blue rule across the top and bottom.
+          A shop doorbell chimes twice, high then low, as if a customer has entered.</dd>
+      <dt>00:04</dt>
+      <dd>A card headed <strong>Opening hours</strong> lists: Monday to Friday, 9am to 6pm;
+          Saturday, 10am to 4pm; Sunday, closed. No sound.</dd>
+      <dt>00:08</dt>
+      <dd>A card reads <strong>Reserve online</strong>, and below it,
+          <em>Collect in store within 7 days</em>. A small counter bell rings once.</dd>
+      <dt>00:12</dt>
+      <dd>A card reads <strong>Free delivery</strong>, and below it,
+          <em>on orders over 25 pounds</em>. A telephone rings four times and is not answered.</dd>
+      <dt>00:16</dt>
+      <dd>A closing card reads <strong>riverlinebooks.example</strong> with
+          <em>Thanks for visiting</em> beneath it. The doorbell chimes again, low then
+          high, as the door closes.</dd>
+    </dl>
+  </div>
+
+  <!-- Note the relationship between the 1.2.x criteria. A single well-written
+       media alternative satisfies 1.2.8 at AAA and can also be used to satisfy
+       1.2.1 and 1.2.3 at Level A. If you are only going to produce one artefact
+       for a video, produce this one - it does the most work. -->
+  <!-- excerpt:end -->
+</body>
+</html>

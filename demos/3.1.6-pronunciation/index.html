@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.1.6 Pronunciation (Level AAA) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="A mechanism is available for identifying specific pronunciation of words where meaning is ambiguous without it.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.1.6 Pronunciation</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.1.6</span>
+          <span class="level level--AAA">Level AAA</span>
+          <span class="tag">Guideline 3.1 Readable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>Pronunciation</h1>
+        <p class="sc-header__summary">A mechanism is available for identifying specific pronunciation of words where meaning is ambiguous without it.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users encountering heteronyms — words spelled alike but pronounced differently, where the wrong reading changes the meaning. Also relevant for names and loanwords.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.1.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.1.6 Pronunciation"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;This month's reading&lt;/h1&gt;
+
+&lt;!-- FAILURE 1: heteronyms - words spelled the same but pronounced differently,
+     with different meanings. A screen reader must guess, and when it guesses
+     wrong the sentence changes meaning.
+
+     &quot;read&quot; (present) vs &quot;read&quot; (past); &quot;lead&quot; (the verb) vs &quot;lead&quot; (the metal);
+     &quot;live&quot; (verb) vs &quot;live&quot; (adjective); &quot;tear&quot; (to rip) vs &quot;tear&quot; (crying);
+     &quot;wound&quot; (an injury) vs &quot;wound&quot; (past tense of wind). --&gt;
+&lt;p&gt;We read the winning entry aloud last night. Anna will read the runner-up tonight.&lt;/p&gt;
+&lt;p&gt;The chapter about the lead mines will lead us into a discussion of the strike.&lt;/p&gt;
+&lt;p&gt;Come to a live reading, or listen to where the authors live.&lt;/p&gt;
+&lt;p&gt;She wound the clock, then described the wound in careful detail.&lt;/p&gt;
+
+&lt;!-- FAILURE 2: a name whose pronunciation is not obvious and is never given. --&gt;
+&lt;p&gt;Our guest is the poet Siobhán Ó Ceallaigh.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.1.6
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.1.6 Pronunciation"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;This month's reading&lt;/h1&gt;
+
+&lt;!-- FIX 1: the cheapest and most reliable fix is to REWRITE so the ambiguity
+     disappears. No markup needed, and it helps every reader, not just those
+     using speech output. --&gt;
+&lt;p&gt;We heard the winning entry aloud last night. Anna will present the runner-up tonight.&lt;/p&gt;
+&lt;p&gt;The chapter about the lead mines takes us into a discussion of the strike.&lt;/p&gt;
+&lt;p&gt;Come to a reading in person, or find out where the authors are based.&lt;/p&gt;
+&lt;p&gt;She wound the clock, then described the injury in careful detail.&lt;/p&gt;
+
+&lt;!-- FIX 2: where the word must stay, give the pronunciation in text next to
+     it. Plain text works everywhere - it is read by every screen reader, shown
+     on every device, and needs no support from anything. --&gt;
+&lt;p&gt;The mines produced &lt;span&gt;lead&lt;/span&gt; &lt;span class=&quot;say&quot;&gt;(pronounced &quot;led&quot;, the metal)&lt;/span&gt;
+   until 1974.&lt;/p&gt;
+
+&lt;!-- FIX 3: names get a phonetic respelling. A short spoken clip is even better
+     for a person's own name - being able to hear it is what people actually
+     want. --&gt;
+&lt;p&gt;Our guest is the poet Siobhán Ó Ceallaigh
+   &lt;span class=&quot;say&quot;&gt;(pronounced &quot;shiv-AWN oh KYAL-ee&quot;)&lt;/span&gt;.&lt;/p&gt;
+
+&lt;!-- FIX 4: ruby annotation, the markup route. It is designed for East Asian
+     scripts, where it is standard for giving readings of characters, and is
+     well supported by browsers and screen readers there. --&gt;
+&lt;p&gt;The Japanese edition is titled
+   &lt;ruby&gt;干潟&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;higata&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;.&lt;/p&gt;
+
+&lt;!-- Scope: 3.1.6 applies only where MEANING IS AMBIGUOUS without knowing the
+     pronunciation. It does not ask you to annotate every unusual word - only
+     the ones where a wrong reading changes what the sentence says.
+
+     Note that the lang attribute (3.1.1 and 3.1.2) does much of this work for
+     free: correctly marking a passage's language switches the screen reader to
+     the right pronunciation engine, which resolves most cross-language cases
+     before 3.1.6 is even reached. --&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Find words whose meaning depends on pronunciation and confirm a pronunciation guide, phonetic spelling, or ruby annotation is available.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires linguistic judgement about ambiguity.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.1.1-language-of-page/index.html">3.1.1 Language of Page (Level A)</a></li>
+          <li><a href="../3.1.2-language-of-parts/index.html">3.1.2 Language of Parts (Level AA)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/pronunciation.html">Understanding 3.1.6 Pronunciation</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#pronunciation">3.1.6 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.1.5-reading-level/index.html"><span class="sc-pager__dir">Previous criterion</span>3.1.5 Reading Level</a>
+        <a href="../3.2.1-on-focus/index.html"><span class="sc-pager__dir">Next criterion</span>3.2.1 On Focus</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

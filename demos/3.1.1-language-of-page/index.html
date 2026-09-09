@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.1.1 Language of Page (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="The default human language of each page can be determined programmatically, using the lang attribute on the html element with a valid BCP 47 language tag.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.1.1 Language of Page</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.1.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 3.1 Readable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Partly detectable automatically</span>
+        </p>
+        <h1>Language of Page</h1>
+        <p class="sc-header__summary">The default human language of each page can be determined programmatically, using the lang attribute on the html element with a valid BCP 47 language tag.</p>
+      </div>
+
+      <div class="callout callout--note">
+        <p class="callout__title"><span class="glyph" aria-hidden="true">&#9432;</span> Note on language</p>
+        <p>This demo is presented in Bangla to show a correctly declared non-English page (lang=&quot;bn&quot;).</p>
+      </div>
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Screen reader users hear the page read with the wrong pronunciation rules when the language is missing or wrong — English phonetics applied to Bangla text produce noise, not words. Braille translation, hyphenation, and machine translation all depend on it.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.1.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.1.1 Language of Page"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;!-- The whole page below is written in Bangla, but &lt;html&gt; carries no lang
+     attribute. A screen reader falls back to its default voice - usually
+     English - and applies English pronunciation rules to Bangla script.
+     The result is not &quot;accented&quot;; it is unintelligible noise.
+
+     This also breaks automatic translation, hyphenation, and the correct
+     choice of font by the browser. --&gt;
+
+&lt;h1&gt;রিভারলাইন বইঘর&lt;/h1&gt;
+
+&lt;h2&gt;আমাদের সম্পর্কে&lt;/h2&gt;
+&lt;p&gt;আমরা ১৯৯৮ সাল থেকে পুরনো ও নতুন বই বিক্রি করছি। নদীর ধারে আমাদের ছোট দোকানটিতে
+   প্রায় বিশ হাজার বই আছে।&lt;/p&gt;
+
+&lt;h2&gt;খোলার সময়&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;সোমবার থেকে শুক্রবার: সকাল ৯টা – সন্ধ্যা ৬টা&lt;/li&gt;
+  &lt;li&gt;শনিবার: সকাল ১০টা – বিকাল ৪টা&lt;/li&gt;
+  &lt;li&gt;রবিবার: বন্ধ&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.1.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.1.1 Language of Page"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;!-- With lang=&quot;bn&quot; on &lt;html&gt;, a screen reader switches to its Bangla voice and
+     pronunciation rules, the browser picks an appropriate font, and translation
+     tools know what they are translating from. --&gt;
+
+&lt;h1&gt;রিভারলাইন বইঘর&lt;/h1&gt;
+
+&lt;h2&gt;আমাদের সম্পর্কে&lt;/h2&gt;
+&lt;p&gt;আমরা ১৯৯৮ সাল থেকে পুরনো ও নতুন বই বিক্রি করছি। নদীর ধারে আমাদের ছোট দোকানটিতে
+   প্রায় বিশ হাজার বই আছে।&lt;/p&gt;
+
+&lt;h2&gt;খোলার সময়&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;সোমবার থেকে শুক্রবার: সকাল ৯টা – সন্ধ্যা ৬টা&lt;/li&gt;
+  &lt;li&gt;শনিবার: সকাল ১০টা – বিকাল ৪টা&lt;/li&gt;
+  &lt;li&gt;রবিবার: বন্ধ&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Check the html element has a lang attribute whose value is a valid, correct language subtag matching the page's actual primary language. lang=&quot;en&quot; on a Bangla page fails just as surely as no lang at all.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Scanners verify that lang is present and is a syntactically valid tag. They cannot tell whether the declared language matches the text actually on the page.</p>
+            <p>Relevant axe rules:</p>
+            <ul>
+              <li><code>html-has-lang</code></li>
+              <li><code>html-lang-valid</code></li>
+              <li><code>valid-lang</code></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.1.2-language-of-parts/index.html">3.1.2 Language of Parts (Level AA)</a></li>
+          <li><a href="../2.4.2-page-titled/index.html">2.4.2 Page Titled (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html">Understanding 3.1.1 Language of Page</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#language-of-page">3.1.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../2.5.8-target-size-minimum/index.html"><span class="sc-pager__dir">Previous criterion</span>2.5.8 Target Size (Minimum)</a>
+        <a href="../3.1.2-language-of-parts/index.html"><span class="sc-pager__dir">Next criterion</span>3.1.2 Language of Parts</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

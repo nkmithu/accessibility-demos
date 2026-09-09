@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passing example — 3.2.2 On Input</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+  <style>.hint { color: var(--text-muted); font-size:.9375rem; margin:.15rem 0 .35rem; }</style>
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 3.2.2 On Input.</p>
+
+  <!-- excerpt:start -->
+  <h1>Your account</h1>
+
+  <form>
+    <!-- FIX 1: the selection changes nothing on its own. An explicit Go button
+         performs the navigation, so the user can browse the options freely and
+         commit when they are ready. -->
+    <div class="field">
+      <label for="section">Go to section</label>
+      <select id="section">
+        <option value="">Choose…</option>
+        <option value="orders">Orders</option>
+        <option value="addresses">Addresses</option>
+        <option value="payment">Payment methods</option>
+      </select>
+      <button type="button" class="button" onclick="navigate()">Go</button>
+    </div>
+
+    <!-- FIX 2: the checkbox only changes state. Nothing is submitted until the
+         user submits. -->
+    <p class="field">
+      <input type="checkbox" id="gift">
+      <label for="gift">This is a gift</label>
+    </p>
+
+    <!-- FIX 3: one field, no auto-advance. If the design really requires split
+         fields, the user must still control focus themselves.
+
+         3.2.2 also permits a change of context on input IF the user is warned
+         BEFORE using the control - so a note like "choosing a country reloads
+         the page" placed before the select would make that pattern conform.
+         Not warning afterwards: warning first. -->
+    <div class="field">
+      <label for="pc">Postcode</label>
+      <p class="hint" id="pc-hint">For example, SW1A 1AA.</p>
+      <input type="text" id="pc" autocomplete="postal-code" aria-describedby="pc-hint">
+    </div>
+
+    <button type="submit" class="button">Save changes</button>
+  </form>
+
+  <p id="log" role="status"></p>
+  <!-- excerpt:end -->
+
+  <script>
+    function navigate() {
+      var v = document.getElementById('section').value;
+      document.getElementById('log').textContent = v ? 'Navigated to ' + v + '.' : 'Choose a section first.';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- FIX: unique, descriptive, and ordered most-specific-first. Putting the
+       page name before the site name matters, because a browser tab truncates
+       from the right - "Payment — Ste..." is useful, "Riverline Bo..." is not. -->
+  <title>Payment (step 3 of 4) — Checkout — Riverline Books</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--pass">
+  <p class="example-banner">This page MEETS WCAG 2.4.2 Page Titled.
+     Look at the browser tab.</p>
+
+  <!-- excerpt:start -->
+  <!-- The title tells the user where they are before they read anything:
+
+       <title>Payment (step 3 of 4) — Checkout — Riverline Books</title>
+
+       It names the page, the process it belongs to, and the site. Including
+       "step 3 of 4" also supports 2.4.8 Location.
+
+       In a single-page app you must update document.title on every route
+       change, and announce the change - the browser will not do it for you. -->
+
+  <h1>Payment</h1>
+  <p>Step 3 of 4 — enter your card details.</p>
+  <div class="field">
+    <label for="card">Card number</label>
+    <input type="text" id="card" inputmode="numeric" autocomplete="cc-number">
+  </div>
+  <!-- excerpt:end -->
+</body>
+</html>

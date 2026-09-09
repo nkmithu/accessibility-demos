@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failing example — 1.3.5 Identify Input Purpose</title>
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/example.css">
+</head>
+<body class="example example--fail">
+  <p class="example-banner">This page deliberately FAILS WCAG 1.3.5 Identify Input Purpose.</p>
+
+  <!-- excerpt:start -->
+  <h1>Delivery details</h1>
+
+  <form>
+    <!-- FAILURE 1: no autocomplete attribute. The fields are properly labelled,
+         so 1.3.1 and 3.3.2 pass - but nothing tells the browser that "fname"
+         means the user's own given name, so autofill cannot help. -->
+    <div class="field"><label for="fn">First name</label><input type="text" id="fn" name="fname"></div>
+    <div class="field"><label for="ln">Last name</label><input type="text" id="ln" name="lname"></div>
+
+    <!-- FAILURE 2: autocomplete="off" actively switches off the help. This is
+         often added by habit; on fields asking for the user's own information
+         it is a conformance failure. -->
+    <div class="field"><label for="em">Email address</label>
+      <input type="email" id="em" autocomplete="off"></div>
+
+    <!-- FAILURE 3: autocomplete="on" is not enough. 1.3.5 requires a token from
+         the specific list in the specification, so that the PURPOSE is
+         machine-readable - not merely that autofill is permitted. -->
+    <div class="field"><label for="ph">Mobile number</label>
+      <input type="tel" id="ph" autocomplete="on"></div>
+
+    <!-- FAILURE 4: an invented token. Not in the list, so it means nothing. -->
+    <div class="field"><label for="pc">Postcode</label>
+      <input type="text" id="pc" autocomplete="zip-code"></div>
+
+    <button type="submit" class="button">Continue</button>
+  </form>
+  <!-- excerpt:end -->
+</body>
+</html>

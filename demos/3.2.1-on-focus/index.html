@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3.2.1 On Focus (Level A) — WCAG 2.2 Demo Suite</title>
+  <meta name="description" content="When any component receives focus, it does not initiate a change of context — no automatic form submission, navigation, new window, or focus move elsewhere.">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/print.css">
+</head>
+<body>
+  <!-- 2.4.1 Bypass Blocks: first focusable element, visible on focus -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="site-header__title"><a href="../../index.html"><img src="../../assets/media/logo.png" alt="" class="site-header__logo">WCAG 2.2 Demo Suite</a></p>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html" aria-current="page">Criteria</a></li>
+        <li><a href="../../evaluation/index.html">Evaluation (WCAG-EM)</a></li>
+        <li><a href="../../testing/index.html">Testing</a></li>
+        <li><a href="../../exercises/index.html">Exercises</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../demos/index.html">Criteria</a></li>
+        <li><span aria-current="page">3.2.1 On Focus</span></li>
+      </ol>
+    </nav>
+    <!-- tabindex="-1" lets the skip link move focus here, not just scroll -->
+    <main id="main" tabindex="-1">
+      <div class="sc-header">
+        <p class="sc-header__meta">
+          <span class="sc-header__number">3.2.1</span>
+          <span class="level level--A">Level A</span>
+          <span class="tag">Guideline 3.2 Predictable</span>
+          <span class="tag">Added in WCAG 2.0</span>
+          <span class="tag">Not detectable automatically</span>
+        </p>
+        <h1>On Focus</h1>
+        <p class="sc-header__summary">When any component receives focus, it does not initiate a change of context — no automatic form submission, navigation, new window, or focus move elsewhere.</p>
+      </div>
+
+      <section aria-labelledby="who-h">
+        <h2 id="who-h">Who this affects</h2>
+        <p>Keyboard and screen reader users, who move focus in order to read. If merely arriving at a control launches a new page, they can never reach the controls beyond it.</p>
+      </section>
+
+      <section aria-labelledby="compare-h">
+        <h2 id="compare-h">The failure and the fix</h2>
+        <p>Each example below is a self-contained page, loaded in a frame so its markup cannot
+           affect this page. Open either one on its own to test it with a keyboard or screen reader.</p>
+
+        <div class="compare">
+          <section class="panel panel--fail" aria-labelledby="fail-h">
+            <h3 class="panel__header" id="fail-h">
+              <span class="glyph" aria-hidden="true">&#10007;</span> Fails 3.2.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="fail.html"
+                      title="Failing example for 3.2.1 On Focus"></iframe>
+              <p class="demo-frame__actions">
+                <a href="fail.html" target="_blank" rel="noopener">Open the failing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">fail.html — the problem</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Find a branch&lt;/h1&gt;
+
+&lt;form&gt;
+  &lt;!-- FAILURE 1: the select submits as soon as it receives focus. A keyboard
+       user tabbing to it, or a screen reader user arrowing through the options
+       to hear them, triggers navigation before they have chosen anything.
+       They can never reach the option they actually want. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;branch&quot;&gt;Branch&lt;/label&gt;
+    &lt;select id=&quot;branch&quot; onfocus=&quot;go()&quot;&gt;
+      &lt;option&gt;Riverside&lt;/option&gt;
+      &lt;option&gt;Old Town&lt;/option&gt;
+      &lt;option&gt;Hillgate&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FAILURE 2: focusing the field opens a dialog, so focus is yanked
+       somewhere else the instant the user arrives. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;date&quot;&gt;Visit date&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;date&quot; onfocus=&quot;openHelp()&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FAILURE 3: focus moves focus. Tabbing here throws the user to the
+       bottom of the page, and everything between is unreachable by Tab. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;post&quot;&gt;Postcode&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;post&quot; onfocus=&quot;document.getElementById('end').focus()&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;p id=&quot;log&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#x&quot; id=&quot;end&quot;&gt;Last link on the page&lt;/a&gt;&lt;/p&gt;
+&lt;p id=&quot;x&quot;&gt;Target.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+
+          <section class="panel panel--pass" aria-labelledby="pass-h">
+            <h3 class="panel__header" id="pass-h">
+              <span class="glyph" aria-hidden="true">&#10003;</span> Meets 3.2.1
+            </h3>
+            <div class="panel__body">
+              <iframe class="demo-frame" src="pass.html"
+                      title="Passing example for 3.2.1 On Focus"></iframe>
+              <p class="demo-frame__actions">
+                <a href="pass.html" target="_blank" rel="noopener">Open the passing example in a new tab</a>
+              </p>
+        <div class="code-block">
+          <p class="code-block__caption">pass.html — the fix</p>
+          <pre tabindex="0"><code>&lt;h1&gt;Find a branch&lt;/h1&gt;
+
+&lt;form&gt;
+  &lt;!-- FIX 1: focus does nothing. The user chooses, then activates an explicit
+       Search button. Receiving focus is how a keyboard user READS a page - it
+       must never be treated as an instruction. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;branch&quot;&gt;Branch&lt;/label&gt;
+    &lt;select id=&quot;branch&quot;&gt;
+      &lt;option&gt;Riverside&lt;/option&gt;
+      &lt;option&gt;Old Town&lt;/option&gt;
+      &lt;option&gt;Hillgate&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+
+  &lt;!-- FIX 2: help is available on demand, from a control the user activates.
+       Hint text that is always visible is better still - it needs no
+       interaction at all. --&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;date&quot;&gt;Visit date&lt;/label&gt;
+    &lt;p class=&quot;hint&quot; id=&quot;date-hint&quot;&gt;Use the format DD/MM/YYYY.&lt;/p&gt;
+    &lt;input type=&quot;text&quot; id=&quot;date&quot; aria-describedby=&quot;date-hint&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label for=&quot;post&quot;&gt;Postcode&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;post&quot; autocomplete=&quot;postal-code&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;button type=&quot;submit&quot; class=&quot;button&quot;&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Note the boundary: 3.2.1 forbids a CHANGE OF CONTEXT on focus - submitting
+     a form, navigating, opening a new window, or moving focus elsewhere.
+     It does not forbid every visible change. Showing a hint, highlighting the
+     field, or expanding help text next to it are all fine, because the user
+     stays where they are and keeps control. --&gt;
+
+&lt;p&gt;&lt;a href=&quot;#x&quot; id=&quot;end&quot;&gt;Last link on the page&lt;/a&gt;&lt;/p&gt;
+&lt;p id=&quot;x&quot;&gt;Target.&lt;/p&gt;</code></pre>
+        </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section aria-labelledby="test-h">
+        <h2 id="test-h">How to test it</h2>
+        <p>Tab through every control without activating anything. Nothing should submit, navigate, open a window, or move focus. Select elements that navigate on focus or change are a classic failure.</p>
+        <ul class="test-methods">
+          <li>
+            <h3>Automated</h3>
+            <p>Requires tabbing through and observing for unexpected context changes.</p>
+            <p>No axe rule maps to this criterion. It has to be checked by a person.</p>
+          </li>
+          <li>
+            <h3>Keyboard</h3>
+            <p>Unplug the mouse. Move through the page with <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>,
+               <kbd>Enter</kbd>, <kbd>Space</kbd> and the arrow keys.
+               See the <a href="../../testing/keyboard.html">keyboard testing script</a>.</p>
+          </li>
+          <li>
+            <h3>Screen reader</h3>
+            <p>Listen to both examples with NVDA, JAWS, VoiceOver or TalkBack and compare what is announced.
+               See the <a href="../../testing/screen-readers.html">screen reader cheat sheets</a>.</p>
+          </li>
+          <li>
+            <h3>Visual</h3>
+            <p>Zoom to 200% and 400%, narrow the viewport to 320&nbsp;px, and apply the text-spacing overrides.
+               See the <a href="../../testing/visual.html">visual testing procedures</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="related-h">
+        <h2 id="related-h">Related criteria</h2>
+        <ul class="related-list">
+          <li><a href="../3.2.2-on-input/index.html">3.2.2 On Input (Level A)</a></li>
+          <li><a href="../3.2.5-change-on-request/index.html">3.2.5 Change on Request (Level AAA)</a></li>
+          <li><a href="../2.4.3-focus-order/index.html">2.4.3 Focus Order (Level A)</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="spec-h">
+        <h2 id="spec-h">In the specification</h2>
+        <ul>
+          <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html">Understanding 3.2.1 On Focus</a> — the W3C explanation, intent and exceptions</li>
+          <li><a href="https://www.w3.org/TR/WCAG22/#on-focus">3.2.1 in the WCAG 2.2 Recommendation</a> — the normative wording</li>
+        </ul>
+      </section>
+
+      <nav class="sc-pager" aria-label="Criterion">
+        <a href="../3.1.6-pronunciation/index.html"><span class="sc-pager__dir">Previous criterion</span>3.1.6 Pronunciation</a>
+        <a href="../3.2.2-on-input/index.html"><span class="sc-pager__dir">Next criterion</span>3.2.2 On Input</a>
+      </nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>A teaching resource covering all 86 WCAG 2.2 success criteria at levels A, AA and AAA,
+         with a full <a href="../../evaluation/index.html">WCAG-EM</a> evaluation walkthrough.</p>
+      <p>Reference: <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2 Recommendation</a> and
+         <a href="https://www.w3.org/WAI/test-evaluate/conformance/wcag-em/">WCAG-EM 1.0</a>.
+         Pages named <code>fail.html</code> contain deliberate accessibility failures for teaching.</p>
+    </div>
+  </footer>
+</body>
+</html>

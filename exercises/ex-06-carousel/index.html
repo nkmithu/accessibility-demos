@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exercise 6 — Carousel</title>
+<link rel="stylesheet" href="../exercise.css">
+<style>
+  .slide{border:1px solid #b9c2cb;border-radius:6px;padding:1rem;min-height:5rem}
+  .dots span{display:inline-block;width:10px;height:10px;border-radius:50%;
+             background:#c9d0d6;margin-right:6px;cursor:pointer}
+  .dots span.on{background:#0a4f9e}
+</style>
+</head>
+<body>
+<p class="task"><strong>Exercise 6.</strong> Make this carousel controllable.
+   See <code>README.md</code>.</p>
+
+<h1>Staff picks</h1>
+
+<div class="slide">
+  <div id="t" style="font-weight:700">Tidal Flats, by A. Marsh</div>
+  <div id="d">A quiet novel about an estuary town.</div>
+</div>
+
+<!-- Dots are spans. Not focusable, no role, no state, no name. -->
+<p class="dots" id="dots">
+  <span class="on" onclick="go(0)"></span><span onclick="go(1)"></span><span onclick="go(2)"></span>
+</p>
+
+<script>
+  var picks = [
+    ['Tidal Flats, by A. Marsh', 'A quiet novel about an estuary town.'],
+    ['The Long Field, by R. Owen', 'Thirty years of one hillside.'],
+    ['Salt, by J. Nandi', 'Essays on food, migration and memory.']
+  ];
+  var i = 0;
+  function render() {
+    document.getElementById('t').textContent = picks[i][0];
+    document.getElementById('d').textContent = picks[i][1];
+    var dots = document.querySelectorAll('#dots span');
+    for (var n = 0; n < dots.length; n++) { dots[n].className = n === i ? 'on' : ''; }
+  }
+  function go(n) { i = n; render(); }
+  // Auto-advances forever, with no way to stop it.
+  setInterval(function () { i = (i + 1) % picks.length; render(); }, 3000);
+</script>
+</body>
+</html>
