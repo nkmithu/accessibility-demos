@@ -8,6 +8,8 @@ against a deliberately broken sample site.
 Plain HTML, CSS and vanilla JavaScript. No framework, no bundler. Every page opens
 directly from the filesystem, so students can read the real markup with View Source.
 
+**Live site:** [https://starlit-marigold-56ebad.netlify.app/](https://starlit-marigold-56ebad.netlify.app/)
+
 ---
 
 ## Quick start
